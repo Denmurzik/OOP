@@ -20,7 +20,7 @@ public class HeapSort {
         }
     }
 
-    private void heapify(int[] arr, int n, int i) {
+    public void heapify(int[] arr, int n, int i) {
         int largest = i;
         int left = 2 * i + 1;
         int right = 2 * i + 2;
@@ -41,7 +41,7 @@ public class HeapSort {
     }
 
 
-    private void swap(int[] arr, int i, int j) {
+    public void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
