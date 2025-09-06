@@ -1,6 +1,6 @@
 
 
-public class HeapSort {
+public class heapsort {
 
     public static void sort(int[] arr) {
         if (arr == null || arr.length <= 1) {
