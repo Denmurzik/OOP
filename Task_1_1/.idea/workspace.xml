@@ -7,6 +7,18 @@
     <list default="true" id="b1f8aba6-9fbc-481a-9ff9-266257a75447" name="Changes" comment="vb">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/HeapSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/HeapSort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/HeapSort.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/HeapSort.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/allclasses-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/allpackages-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/allpackages-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/help-doc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-all.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-all.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/member-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/member-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/overview-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jar/HeapSort.jar" beforeDir="false" afterPath="$PROJECT_DIR$/jar/HeapSort.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +150,14 @@
       <recent name="D:\Intellij IDEA\OOP\Task_1_1\app" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Gradle.HeapSortTest">
+    <configuration name="HeapSort" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="HeapSort" />
+      <module name="Task_1_1.app.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HeapSortTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -235,35 +254,13 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="Task_1_1 [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.HeapSortTest.SortedArray" />
         <item itemvalue="Gradle.HeapSortTest" />
+        <item itemvalue="Application.HeapSort" />
+        <item itemvalue="Gradle.HeapSortTest.SortedArray" />
         <item itemvalue="Gradle.HeapSortTest.shouldHandleEmptyArray" />
         <item itemvalue="Gradle.HeapSortTest.shouldSortSimpleArray" />
-        <item itemvalue="Gradle.Task_1_1 [test]" />
       </list>
     </recent_temporary>
   </component>
@@ -324,8 +321,35 @@
       <option name="project" value="LOCAL" />
       <updated>1757168366559</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="vb">
+      <option name="closed" value="true" />
+      <created>1757170842492</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1757170842492</updated>
+    </task>
+    <task id="LOCAL-00008" summary="vb">
+      <option name="closed" value="true" />
+      <created>1757171079811</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1757171079811</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="vb" />
