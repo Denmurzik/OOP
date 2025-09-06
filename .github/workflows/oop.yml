@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./Task_1_1
+        working-directory: ./${{ github.event.pull_request.title }}
     steps:
       - uses: actions/checkout@v3
       
@@ -34,7 +34,7 @@ jobs:
         id: jacoco
         uses: madrapps/jacoco-report@v1.2
         with:
-          paths: ./Task_1_1/build/reports/jacoco/test/jacocoTestReport.xml
+          paths: ./${{ github.event.pull_request.title }}/build/reports/jacoco/test/jacocoTestReport.xml
           token: ${{ secrets.GITHUB_TOKEN }}
           min-coverage-overall: 80
           min-coverage-changed-files: 80
@@ -48,8 +48,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           clean: true
-          folder: Task_1_1/build/docs/javadoc
-          target-folder: Task_1_1
+          folder: ${{ github.event.pull_request.title }}/build/docs/javadoc
+          target-folder: ${{ github.event.pull_request.title }}
 
   checkstyle:
     runs-on: ubuntu-latest
