@@ -124,6 +124,7 @@
     "Gradle.Task_1_1 [test].executor": "Run",
     "Gradle.Task_1_1.executor": "Run",
     "Gradle.Task_1_1:app [:app:HeapSort.main()].executor": "Run",
+    "Gradle.heapsortTest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "deletionFromPopupRequiresConfirmation": "false",
     "git-widget-placeholder": "Task__1__1",
@@ -141,7 +142,7 @@
       <recent name="D:\Intellij IDEA\OOP\Task_1_1\app" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.HeapSortTest">
+  <component name="RunManager" selected="Gradle.heapsortTest">
     <configuration name="HeapSort" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="HeapSort" />
       <module name="Task_1_1.app.main" />
@@ -221,7 +222,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="HeapSortTest.shouldSortSimpleArray" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="heapsortTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -234,7 +235,7 @@
           <list>
             <option value=":app:test" />
             <option value="--tests" />
-            <option value="&quot;HeapSortTest.shouldSortSimpleArray&quot;" />
+            <option value="&quot;heapsortTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -247,11 +248,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.heapsortTest" />
         <item itemvalue="Gradle.HeapSortTest" />
         <item itemvalue="Application.HeapSort" />
         <item itemvalue="Gradle.HeapSortTest.SortedArray" />
         <item itemvalue="Gradle.HeapSortTest.shouldHandleEmptyArray" />
-        <item itemvalue="Gradle.HeapSortTest.shouldSortSimpleArray" />
       </list>
     </recent_temporary>
   </component>
@@ -352,7 +353,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757172101343</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="vb">
+      <option name="closed" value="true" />
+      <created>1757173027665</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1757173027666</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
