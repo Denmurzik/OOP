@@ -41,7 +41,7 @@ class HeapSortTest {
     }
 
     @Test
-    void HandleEmptyArray() {
+    void EmptyArray() {
 
         int[] testArray = {};
         int[] answerArray = {};
@@ -52,7 +52,7 @@ class HeapSortTest {
     }
 
     @Test
-    void AlreadySortedArray() {
+    void SortedArray() {
 
         int[] testArray = {1, 2, 3, 4, 5};
         int[] answerArray = {1, 2, 3, 4, 5};
@@ -63,7 +63,7 @@ class HeapSortTest {
     }
 
     @Test
-    void WithDuplicateElements() {
+    void WithDuplicates() {
 
         int[] testArray = {5, 2, 8, 2, 5, 1};
         int[] answerArray = {1, 2, 2, 5, 5, 8};
