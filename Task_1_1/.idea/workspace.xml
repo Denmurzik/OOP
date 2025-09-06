@@ -6,19 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b1f8aba6-9fbc-481a-9ff9-266257a75447" name="Changes" comment="vb">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/HeapSortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/HeapSortTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/HeapSort.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/HeapSort.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/allclasses-index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/allpackages-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/allpackages-index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/help-doc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index-all.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-all.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/member-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/member-search-index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/overview-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jar/HeapSort.jar" beforeDir="false" afterPath="$PROJECT_DIR$/jar/HeapSort.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/HeapSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/HeapSort.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,6 +88,9 @@
     &quot;accountId&quot;: &quot;2728093d-467d-47cf-a487-814bd2670533&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -115,6 +106,7 @@
   "keyToString": {
     "Gradle.Build Task_1_1.executor": "Run",
     "Gradle.HeapSortTest (1).executor": "Run",
+    "Gradle.HeapSortTest.SortedArray.executor": "Run",
     "Gradle.HeapSortTest.executor": "Run",
     "Gradle.HeapSortTest.shouldHandleAlreadySortedArray.executor": "Run",
     "Gradle.HeapSortTest.shouldHandleEmptyArray.executor": "Run",
@@ -146,7 +138,7 @@
       <recent name="D:\Intellij IDEA\OOP\Task_1_1\app" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.HeapSortTest">
+  <component name="RunManager">
     <configuration name="HeapSortTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -161,6 +153,30 @@
             <option value=":app:test" />
             <option value="--tests" />
             <option value="&quot;HeapSortTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="HeapSortTest.SortedArray" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;HeapSortTest.SortedArray&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -219,28 +235,6 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="Task_1_1 [jacocoTestReport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="jacocoTestReport" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <method v="2" />
-    </configuration>
     <configuration name="Task_1_1 [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -265,11 +259,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.HeapSortTest.SortedArray" />
         <item itemvalue="Gradle.HeapSortTest" />
         <item itemvalue="Gradle.HeapSortTest.shouldHandleEmptyArray" />
         <item itemvalue="Gradle.HeapSortTest.shouldSortSimpleArray" />
         <item itemvalue="Gradle.Task_1_1 [test]" />
-        <item itemvalue="Gradle.Task_1_1 [jacocoTestReport]" />
       </list>
     </recent_temporary>
   </component>
@@ -314,7 +308,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757167771027</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="vb">
+      <option name="closed" value="true" />
+      <created>1757168128403</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1757168128403</updated>
+    </task>
+    <task id="LOCAL-00006" summary="vb">
+      <option name="closed" value="true" />
+      <created>1757168366559</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1757168366559</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

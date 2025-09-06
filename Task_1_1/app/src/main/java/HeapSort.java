@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Random;
 
 public class HeapSort {
 
@@ -48,12 +49,37 @@ public class HeapSort {
     }
 
 
-    public static void main(String[] args) {
-        int[] data = {5, 4, 3, 2, 1};
-        HeapSort hs = new HeapSort();
-        hs.sort(data);
+    public static void measurePerformance() {
+        int[] sizes = {10000, 50000, 100000, 500000, 1000000, 5000000};
 
-        System.out.println(Arrays.toString(data));
+        Random random = new Random();
+        HeapSort sorter = new HeapSort();
+
+        for (int size : sizes) {
+
+            int[] array = new int[size];
+
+            for (int i = 0; i < size; i++) {
+                array[i] = random.nextInt();
+            }
+
+            long startTime = System.nanoTime();
+            sorter.sort(array);
+            long endTime = System.nanoTime();
+
+
+            long nanos = endTime - startTime;
+
+            double millis = nanos / 1000000.0;
+
+            System.out.printf("sorted %d items by %.2f ms%n", size, millis);
+        }
+
+    }
+
+    public static void main(String[] args) {
+
+        measurePerformance();
 
     }
 }
