@@ -23,8 +23,8 @@ class HeapSortTest {
 
     @Test
     void ReverseSortedArray() {
-        int[] testArray = {9, 8, 5, 2, 1};
-        int[] answerArray = {1, 2, 5, 8, 9};
+        int[] testArray = {985345, 76, 9, 8, 4, 5, 2, 1};
+        int[] answerArray = {1, 2, 4, 5, 8, 9, 76, 985345,};
         sorter.sort(testArray);
         assertArrayEquals(answerArray, testArray);
     }
@@ -65,8 +65,8 @@ class HeapSortTest {
     @Test
     void WithDuplicates() {
 
-        int[] testArray = {5, 2, 8, 2, 5, 1};
-        int[] answerArray = {1, 2, 2, 5, 5, 8};
+        int[] testArray = {23, 5, 2, 8, 2, 5, 1, 23};
+        int[] answerArray = {1, 2, 2, 5, 5, 8, 23, 23};
 
         sorter.sort(testArray);
 
