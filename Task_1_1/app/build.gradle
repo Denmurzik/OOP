@@ -8,6 +8,7 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+    id 'jacoco'
 }
 
 repositories {
@@ -16,10 +17,11 @@ repositories {
 }
 
 dependencies {
-    // Use JUnit test framework.
-    testImplementation libs.junit
 
-    // This dependency is used by the application.
+    testImplementation libs.junit.api
+    testRuntimeOnly "org.junit.platform:junit-platform-launcher"
+    testRuntimeOnly libs.junit.engine
+
     implementation libs.guava
 }
 
@@ -30,7 +32,18 @@ java {
     }
 }
 
-application {
-    // Define the main class for the application.
-    mainClass = 'org.example.App'
+//application {
+//    // Define the main class for the application.
+//    mainClass = 'org.example.App'
+//}
+
+test {
+    useJUnitPlatform()
 }
+
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+}
+
