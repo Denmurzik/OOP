@@ -49,7 +49,7 @@ jobs:
         id: jacoco
         uses: madrapps/jacoco-report@v1.2
         with:
-          paths: ./${{ github.head_ref }}/build/reports/jacoco/test/jacocoTestReport.xml
+          paths: ./${{ github.head_ref }}/app/build/reports/jacoco/test/jacocoTestReport.xml
           token: ${{ secrets.GITHUB_TOKEN }}
           min-coverage-overall: 80
           min-coverage-changed-files: 80
@@ -65,9 +65,9 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           clean: true
-          folder: ${{ github.head_ref }}/build/docs/javadoc
+          # 👇 ИСПРАВЛЕНИЕ ЗДЕСЬ: добавлен 'app' в путь
+          folder: ${{ github.head_ref }}/app/build/docs/javadoc
           target-folder: ${{ github.head_ref }}
-
   checkstyle:
     runs-on: ubuntu-latest
     steps:

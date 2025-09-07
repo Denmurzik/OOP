@@ -51,7 +51,7 @@ jacocoTestReport {
     reports {
         // XML-отчёт для CI/CD (один файл)
         xml.required = true
-        xml.outputLocation = file("${rootProject.buildDir}/reports/jacoco/test/jacocoTestReport.xml")
+//        xml.outputLocation = file("${rootProject.buildDir}/reports/jacoco/test/jacocoTestReport.xml")
 
         // HTML-отчёт для локального просмотра (папка с файлами)
 
