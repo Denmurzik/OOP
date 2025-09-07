@@ -41,9 +41,23 @@ test {
     useJUnitPlatform()
 }
 
-jacocoTestReport {
-    reports {
-        xml.required = true
-    }
-}
+apply plugin: 'jacoco'
 
+// 2. Настраиваем задачу для генерации отчёта
+jacocoTestReport {
+    // Указываем, что наши отчёты зависят от результатов тестов
+    dependsOn test
+
+    reports {
+        // XML-отчёт для CI/CD (один файл)
+        xml.required = true
+        xml.outputLocation = file("${rootProject.buildDir}/reports/jacoco/test/jacocoTestReport.xml")
+
+        // HTML-отчёт для локального просмотра (папка с файлами)
+
+    }
+
+    // Включаем в отчёт только исходный код нашего приложения, исключая всё лишнее
+    sourceDirectories.setFrom(files("$projectDir/src/main/java"))
+    classDirectories.setFrom(files("$buildDir/classes/java/main"))
+}

@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b1f8aba6-9fbc-481a-9ff9-266257a75447" name="Changes" comment="df">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/HeapSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/HeapSort.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,44 +109,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.Build Task_1_1.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HeapSortTest (1).executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HeapSortTest.SortedArray.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HeapSortTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HeapSortTest.shouldHandleAlreadySortedArray.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HeapSortTest.shouldHandleEmptyArray.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HeapSortTest.shouldSortSimpleArray (1).executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HeapSortTest.shouldSortSimpleArray.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Task_1_0 [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Task_1_1 [check].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Task_1_1 [compileTestJava].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Task_1_1 [dependencies].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Task_1_1 [jacocoTestReport].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Task_1_1 [processTestResources].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Task_1_1 [test].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Task_1_1.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Task_1_1:app [:app:HeapSort.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.heapsortTest.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;#2 on Task__1__1&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Intellij IDEA/OOP/Task_1_1&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Build Task_1_1.executor": "Run",
+    "Gradle.HeapSortTest (1).executor": "Run",
+    "Gradle.HeapSortTest.SortedArray.executor": "Run",
+    "Gradle.HeapSortTest.executor": "Run",
+    "Gradle.HeapSortTest.shouldHandleAlreadySortedArray.executor": "Run",
+    "Gradle.HeapSortTest.shouldHandleEmptyArray.executor": "Run",
+    "Gradle.HeapSortTest.shouldSortSimpleArray (1).executor": "Run",
+    "Gradle.HeapSortTest.shouldSortSimpleArray.executor": "Run",
+    "Gradle.Task_1_0 [build].executor": "Run",
+    "Gradle.Task_1_1 [check].executor": "Run",
+    "Gradle.Task_1_1 [compileTestJava].executor": "Run",
+    "Gradle.Task_1_1 [dependencies].executor": "Run",
+    "Gradle.Task_1_1 [jacocoTestReport].executor": "Run",
+    "Gradle.Task_1_1 [processTestResources].executor": "Run",
+    "Gradle.Task_1_1 [test].executor": "Run",
+    "Gradle.Task_1_1.executor": "Run",
+    "Gradle.Task_1_1:app [:app:HeapSort.main()].executor": "Run",
+    "Gradle.heapSortTest.executor": "Run",
+    "Gradle.heapsortTest.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "git-widget-placeholder": "#2 on Task__1__1",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Intellij IDEA/OOP/Task_1_1",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "terminal"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Intellij IDEA\OOP\Task_1_1" />
       <recent name="D:\Intellij IDEA\OOP\Task_1_1\app" />
+      <recent name="D:\Intellij IDEA\OOP\Task_1_1" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.heapsortTest">
+  <component name="RunManager" selected="Gradle.heapSortTest">
     <configuration name="HeapSort" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="HeapSort" />
       <module name="Task_1_1.app.main" />
@@ -200,7 +203,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="HeapSortTest.shouldHandleEmptyArray" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="heapSortTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -213,7 +216,7 @@
           <list>
             <option value=":app:test" />
             <option value="--tests" />
-            <option value="&quot;HeapSortTest.shouldHandleEmptyArray&quot;" />
+            <option value="&quot;heapSortTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -250,11 +253,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.heapSortTest" />
         <item itemvalue="Gradle.heapsortTest" />
         <item itemvalue="Gradle.HeapSortTest" />
         <item itemvalue="Application.HeapSort" />
         <item itemvalue="Gradle.HeapSortTest.SortedArray" />
-        <item itemvalue="Gradle.HeapSortTest.shouldHandleEmptyArray" />
       </list>
     </recent_temporary>
   </component>
@@ -403,7 +406,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757174647444</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="df">
+      <option name="closed" value="true" />
+      <created>1757212875867</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1757212875867</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
