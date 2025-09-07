@@ -8,9 +8,7 @@ on:
     branches: [ "main" ]  
   workflow_dispatch:
 
-# oop.yml
 
-# ... (часть файла без изменений)
 
 jobs:
   build:
@@ -30,7 +28,7 @@ jobs:
         uses: madrapps/jacoco-report@v1.2
         with:
           # ⬇️ И ИСПРАВЛЕНО ЗДЕСЬ
-          paths: ./${{ github.head_ref }}/build/reports/jacoco/test/jacocoTestReport.xml
+          paths: ./${{ github.event.pull_request.title }}/build/reports/jacoco/test/jacocoTestReport.xml
           token: ${{ secrets.GITHUB_TOKEN }}
           min-coverage-overall: 80
           min-coverage-changed-files: 80

@@ -56,8 +56,4 @@ jacocoTestReport {
         // HTML-отчёт для локального просмотра (папка с файлами)
 
     }
-
-    // Включаем в отчёт только исходный код нашего приложения, исключая всё лишнее
-    sourceDirectories.setFrom(files("$projectDir/src/main/java"))
-    classDirectories.setFrom(files("$buildDir/classes/java/main"))
 }
