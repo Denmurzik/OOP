@@ -129,7 +129,7 @@
     &quot;Gradle.heapsortTest.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Task__1__1&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#2 on Task__1__1&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Intellij IDEA/OOP/Task_1_1&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
@@ -395,7 +395,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757174143706</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="df">
+      <option name="closed" value="true" />
+      <created>1757174647444</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1757174647444</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
