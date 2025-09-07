@@ -1,8 +1,9 @@
+import java.util.Arrays;
+
 /**
  * Класс, реализующий классический алгоритм пирамидальной сортировки (Heapsort).
  */
 public class HeapSort {
-
     /**
      * arr Массив для сортировки. Может быть null или пустым.
      */
@@ -66,4 +67,11 @@ public class HeapSort {
         arr[i] = arr[j];
         arr[j] = temp;
     }
+
+    public static void main(String[] args) {
+        int[] testArray = {5, 2, 8, 1, 9};
+        HeapSort.sort(testArray);
+        System.out.println(Arrays.toString(testArray));
+    }
+
 }

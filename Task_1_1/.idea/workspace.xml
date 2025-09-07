@@ -4,9 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1f8aba6-9fbc-481a-9ff9-266257a75447" name="Changes" comment="df">
-      <change beforePath="$PROJECT_DIR$/../.github/workflows/oop.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../.github/workflows/oop.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+    <list default="true" id="b1f8aba6-9fbc-481a-9ff9-266257a75447" name="Changes" comment="done">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/HeapSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/HeapSort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/allclasses-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/allpackages-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/allpackages-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/heapsort.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/heapsort.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/help-doc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index-all.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index-all.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/member-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/member-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/overview-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/type-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/type-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jar/HeapSort.jar" beforeDir="false" afterPath="$PROJECT_DIR$/jar/HeapSort.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,23 +52,6 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Task_1_1" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Task_1_1" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="other" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Task_1_1" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="verification" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Task_1_1" type="f1a62948:ProjectNode" />
-                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -119,6 +116,7 @@
     "Gradle.HeapSortTest.shouldSortSimpleArray (1).executor": "Run",
     "Gradle.HeapSortTest.shouldSortSimpleArray.executor": "Run",
     "Gradle.Task_1_0 [build].executor": "Run",
+    "Gradle.Task_1_1 [build].executor": "Run",
     "Gradle.Task_1_1 [check].executor": "Run",
     "Gradle.Task_1_1 [compileTestJava].executor": "Run",
     "Gradle.Task_1_1 [dependencies].executor": "Run",
@@ -130,14 +128,25 @@
     "Gradle.heapSortTest.executor": "Run",
     "Gradle.heapsortTest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHELLCHECK.PATH": "C:\\Users\\murue\\AppData\\Roaming\\JetBrains\\IdeaIC2024.2\\plugins\\Shell Script\\shellcheck.exe",
     "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "#2 on Task__1__1",
+    "git-widget-placeholder": "Task__1__1",
+    "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/Intellij IDEA/OOP/Task_1_1",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "terminal"
+    "settings.editor.selected.configurable": "editor.preferences.inline.completion",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -146,7 +155,7 @@
       <recent name="D:\Intellij IDEA\OOP\Task_1_1" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.heapSortTest">
+  <component name="RunManager" selected="Gradle.Task_1_1 [build]">
     <configuration name="HeapSort" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="HeapSort" />
       <module name="Task_1_1.app.main" />
@@ -178,28 +187,26 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="HeapSortTest.SortedArray" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Task_1_1 [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
+        <option name="scriptParameters" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value=":app:test" />
-            <option value="--tests" />
-            <option value="&quot;HeapSortTest.SortedArray&quot;" />
+            <option value="build" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
+      <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="heapSortTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -252,13 +259,21 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Task_1_1 [build]" />
         <item itemvalue="Gradle.heapSortTest" />
         <item itemvalue="Gradle.heapsortTest" />
         <item itemvalue="Gradle.HeapSortTest" />
         <item itemvalue="Application.HeapSort" />
-        <item itemvalue="Gradle.HeapSortTest.SortedArray" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-IU-252.25557.131" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -268,6 +283,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1757137697735</updated>
+      <workItem from="1757252713919" duration="113000" />
+      <workItem from="1757252849627" duration="1232000" />
     </task>
     <task id="LOCAL-00001" summary="vb">
       <option name="closed" value="true" />
@@ -445,8 +462,19 @@
       <option name="project" value="LOCAL" />
       <updated>1757214834162</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="done">
+      <option name="closed" value="true" />
+      <created>1757215060580</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1757215060580</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -462,6 +490,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="vb" />
     <MESSAGE value="df" />
-    <option name="LAST_COMMIT_MESSAGE" value="df" />
+    <MESSAGE value="done" />
+    <option name="LAST_COMMIT_MESSAGE" value="done" />
   </component>
 </project>
