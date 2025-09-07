@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b1f8aba6-9fbc-481a-9ff9-266257a75447" name="Changes" comment="df">
       <change beforePath="$PROJECT_DIR$/../.github/workflows/oop.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../.github/workflows/oop.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -428,7 +429,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757214428869</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="df">
+      <option name="closed" value="true" />
+      <created>1757214592165</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1757214592165</updated>
+    </task>
+    <task id="LOCAL-00022" summary="df">
+      <option name="closed" value="true" />
+      <created>1757214834162</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1757214834162</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

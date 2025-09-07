@@ -16,35 +16,31 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        # Устанавливаем рабочую директорию для всех команд run
+
         working-directory: ./${{ github.head_ref }}
     steps:
-      # 1. Скачиваем код репозитория
+
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. Устанавливаем Java (необходима для Gradle)
+
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
 
-      # 3. Делаем Gradle wrapper исполняемым
       - name: Make gradlew executable
         run: chmod +x ./gradlew
-    
-      # 4. ЗАПУСКАЕМ СБОРКУ И ТЕСТЫ (ЭТОТ ШАГ БЫЛ ПРОПУЩЕН)
-      # Эта команда соберёт проект, запустит тесты и создаст отчёт jacoco
+
       - name: Build with Gradle and generate report
         run: ./gradlew build jacocoTestReport
 
-      # 5. (Опционально) Шаг для отладки, чтобы посмотреть все созданные файлы
       - name: List files for debugging
         run: ls -R
-        working-directory: . # Запускаем из корня, чтобы увидеть всю структуру
+        working-directory: . 
 
-      # 6. Публикуем отчёт о покрытии
+
       - name: Check coverage and publish
         id: jacoco
         uses: madrapps/jacoco-report@v1.2
@@ -54,18 +50,18 @@ jobs:
           min-coverage-overall: 80
           min-coverage-changed-files: 80
 
-      # 7. Генерируем Javadoc
+
       - name: Generate javadoc
         run: ./gradlew javadoc
 
-      # 8. Публикуем Javadoc
+
       - name: Publish javadoc
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           clean: true
-          # 👇 ИСПРАВЛЕНИЕ ЗДЕСЬ: добавлен 'app' в путь
+
           folder: ${{ github.head_ref }}/app/build/docs/javadoc
           target-folder: ${{ github.head_ref }}
   checkstyle:
