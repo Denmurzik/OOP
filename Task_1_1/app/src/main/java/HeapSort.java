@@ -68,10 +68,6 @@ public class HeapSort {
         arr[j] = temp;
     }
 
-    public static void main(String[] args) {
-        int[] testArray = {5, 2, 8, 1, 9};
-        HeapSort.sort(testArray);
-        System.out.println(Arrays.toString(testArray));
-    }
+
 
 }
