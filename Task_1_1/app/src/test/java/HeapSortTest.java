@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 /**
  * Тестовый класс для проверки алгоритма пирамидальной сортировки HeapSort.
  */
-class heapSortTest {
+class HeapSortTest {
 
     /**
      * Проверяет сортировку массива из одного элемента.

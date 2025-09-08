@@ -1,4 +1,4 @@
-import java.util.Arrays;
+
 
 /**
  * Класс, реализующий классический алгоритм пирамидальной сортировки (Heapsort).
@@ -30,8 +30,8 @@ public class HeapSort {
      * Восстанавливает свойство max-heap для поддерева с корнем в узле i.
      *
      *  arr Массив, представляющий кучу.
-     *  n   Размер кучи.
-     *  i   Индекс корневого узла поддерева.
+     *  n  Размер кучи.
+     *  i Индекс корневого узла поддерева.
      */
     private static void heapify(int[] arr, int n, int i) {
         int largest = i; // Инициализируем наибольший элемент как корень.
@@ -42,6 +42,7 @@ public class HeapSort {
         if (left < n && arr[left] > arr[largest]) {
             largest = left;
         }
+        
 
 
         if (right < n && arr[right] > arr[largest]) {
