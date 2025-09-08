@@ -153,7 +153,7 @@
       <recent name="D:\Intellij IDEA\OOP\Task_1_1" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Task_1_1 [test]">
+  <component name="RunManager" selected="Gradle.HeapSortTest">
     <configuration name="HeapSortTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -272,11 +272,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.HeapSortTest" />
         <item itemvalue="Gradle.Task_1_1 [test]" />
         <item itemvalue="Gradle.Task_1_1 [build]" />
         <item itemvalue="Gradle.heapSortTest" />
         <item itemvalue="Gradle.heapsortTest" />
-        <item itemvalue="Gradle.HeapSortTest" />
       </list>
     </recent_temporary>
   </component>
