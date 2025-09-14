@@ -51,6 +51,6 @@ public class Deck {
         if (cards.isEmpty()) {
             throw new IllegalStateException("Нет карт в колоде");
         }
-        return cards.remove(0); // Используем remove(0) для ArrayList
+        return cards.remove(0);
     }
 }
