@@ -8,7 +8,7 @@ jar
 gradle
 *.bat
 *.properties
-gradlew
+
 .idea
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
