@@ -88,16 +88,16 @@ public class BlackjackGame {
 
         while (player.getScore() < 21 && player.wantsToHit(scanner)) {
             player.addCard(deck.dealCard());
-            System.out.println("Вы открыли карту " +
-                    player.getHand().getCards().get(player.getHand().getCards().size() - 1));
+            System.out.println("Вы открыли карту "
+                    + player.getHand().getCards().get(player.getHand().getCards().size() - 1));
             showHands(true);
         }
 
         if (!player.isBusted()) {
             System.out.println("\nХод дилера");
             System.out.println("--------------------");
-            System.out.println("Дилер открывает закрытую карту " +
-                    dealer.getHand().getCards().get(dealer.getHand().getCards().size() - 1));
+            System.out.println("Дилер открывает закрытую карту "
+                    + dealer.getHand().getCards().get(dealer.getHand().getCards().size() - 1));
             showHands(false);
 
             while (dealer.getScore() < 17) {
