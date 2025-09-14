@@ -14,7 +14,10 @@ jobs:
   build:
     permissions: write-all
     runs-on: ubuntu-latest
-    # Блок defaults удален отсюда
+    defaults:
+      run:
+        # Указываем правильную рабочую директорию
+        working-directory: ./Task_1_2
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -25,21 +28,18 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      # Теперь все команды ниже выполняются внутри папки Task_1_2
       - name: Make gradlew executable
-        # Теперь эта команда выполнится в корне проекта, где лежит gradlew
         run: chmod +x ./gradlew
 
       - name: Build with Gradle and generate report
         run: ./gradlew build jacocoTestReport
 
-      - name: List files for debugging
-        run: ls -R
-
       - name: Check coverage and publish
         id: jacoco
         uses: madrapps/jacoco-report@v1.2
         with:
-          # Путь исправлен: убран префикс с названием ветки
+          # Пути теперь корректны, так как они ищутся относительно Task_1_2
           paths: ./app/build/reports/jacoco/test/jacocoTestReport.xml
           token: ${{ secrets.GITHUB_TOKEN }}
           min-coverage-overall: 80
@@ -54,9 +54,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           clean: true
-          # Путь исправлен: убран префикс с названием ветки
-          folder: app/build/docs/javadoc
-          # Можно оставить target-folder, если вы хотите публиковать javadoc в папку с именем ветки на gh-pages
+          # Путь к папке с документацией
+          folder: ./Task_1_2/app/build/docs/javadoc
           target-folder: ${{ github.head_ref }}
 
   # Задача checkstyle остается без изменений
