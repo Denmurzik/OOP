@@ -5,7 +5,7 @@
 build
 Task_1_2/docs/
 jar
-gradle
+
 *.bat
 *.properties
 
