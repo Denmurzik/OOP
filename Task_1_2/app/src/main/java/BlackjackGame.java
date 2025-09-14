@@ -165,7 +165,7 @@ public class BlackjackGame {
                     dealerWins + " в пользу дилера. ");
         } else {
             System.out.println("Счёт " + playerWins + " : " +
-                    ealerWins + " Ничья. ");
+                    dealerWins + " Ничья. ");
         }
     }
 }
