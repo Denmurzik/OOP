@@ -16,7 +16,7 @@ jobs:
     defaults:
       run:
         # Replace 'your-project-folder' with the actual folder name
-        working-directory: /Task_1_2/app
+        working-directory: ./Task_1_2/app
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
