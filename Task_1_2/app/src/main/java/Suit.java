@@ -10,8 +10,8 @@ public enum Suit {
     private String name;
 
     /**
-     * Создает масть
-     * @param name название масти на русском языке
+     * Создает масть.
+     * @param name название масти на русском языке.
      */
     private Suit(String name) {
         this.name = name;
@@ -19,7 +19,7 @@ public enum Suit {
 
     /**
      * Возвращает русскоязычное название масти.
-     * @return название масти
+     * @return название масти.
      */
     public String toString() {
         return name;

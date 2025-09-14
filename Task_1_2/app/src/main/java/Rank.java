@@ -31,7 +31,7 @@ public enum Rank {
 
     /**
      * Возвращает стоимость ранга в очках.
-     * @return количество очков
+     * @return количество очков.
      */
     public int getValue() {
         return value;
@@ -39,7 +39,7 @@ public enum Rank {
 
     /**
      * Возвращает русскоязычное название ранга.
-     * @return название ранга
+     * @return название ранга.
      */
     public String toString() {
         return name;

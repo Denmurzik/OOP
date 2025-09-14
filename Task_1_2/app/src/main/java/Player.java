@@ -15,7 +15,7 @@ public class Player extends Participant {
 
     /**
      * Запрашивает у пользователя, хочет ли он взять еще одну карту ("hit").
-     * @param scanner объект Scanner для чтения ввода из консоли
+     * @param scanner объект Scanner для чтения ввода из консоли.
      * @return {@code true}, если игрок хочет взять карту (ввел '1'), иначе {@code false}
      */
     public boolean wantsToHit(Scanner scanner) {
