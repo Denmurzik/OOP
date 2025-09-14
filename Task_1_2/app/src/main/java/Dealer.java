@@ -22,7 +22,9 @@ public class Dealer extends Participant {
      */
     public String getHandAsString(boolean hideFirstCard) {
         if (hideFirstCard) {
-            if (hand.getCards().isEmpty()) return "[]";
+            if (hand.getCards().isEmpty()) {
+                return "[]";
+            }
             return "[" + hand.getCards().get(0) + ", <закрытая карта>]";
         } else {
             return hand.toDetailedString() + " ⇒ " + hand.getScore();

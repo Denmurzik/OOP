@@ -110,6 +110,7 @@ public class BlackjackGame {
 
     /**
      * Отображает в консоли текущие руки и очки игрока и дилера.
+     *
      * @param hideDealerCard {@code true}, если нужно скрыть вторую карту дилера, иначе {@code false}
      */
     private void showHands(boolean hideDealerCard) {
@@ -147,6 +148,7 @@ public class BlackjackGame {
 
     /**
      * Выводит в консоль общий счет побед игрока и дилера.
+     *
      * @param playerWins количество побед игрока
      * @param dealerWins количество побед дилера
      */

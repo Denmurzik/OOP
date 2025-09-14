@@ -7,6 +7,7 @@ public class Card {
 
     /**
      * Создает карту с заданным рангом и мастью.
+     *
      * @param rank ранг карты (например, {@code Rank.ACE})
      * @param suit масть карты (например, {@code Suit.SPADES})
      */
