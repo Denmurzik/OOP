@@ -26,7 +26,7 @@ public class BlackjackGame {
 
     /**
      * Запускает основной игровой цикл, который продолжается до тех пор,
-     * пока пользователь не решит закончить игру.
+     *  пока пользователь не решит закончить игру.
      */
     public void startGame() {
         System.out.println("Добро пожаловать в Блэкджек!");
@@ -88,14 +88,16 @@ public class BlackjackGame {
 
         while (player.getScore() < 21 && player.wantsToHit(scanner)) {
             player.addCard(deck.dealCard());
-            System.out.println("Вы открыли карту " + player.getHand().getCards().get(player.getHand().getCards().size() - 1));
+            System.out.println("Вы открыли карту " +
+                    player.getHand().getCards().get(player.getHand().getCards().size() - 1));
             showHands(true);
         }
 
         if (!player.isBusted()) {
             System.out.println("\nХод дилера");
             System.out.println("--------------------");
-            System.out.println("Дилер открывает закрытую карту " + dealer.getHand().getCards().get(dealer.getHand().getCards().size() - 1));
+            System.out.println("Дилер открывает закрытую карту " +
+                    dealer.getHand().getCards().get(dealer.getHand().getCards().size() - 1));
             showHands(false);
 
             while (dealer.getScore() < 17) {
@@ -114,8 +116,10 @@ public class BlackjackGame {
      * @param hideDealerCard {@code true}, если нужно скрыть вторую карту дилера, иначе {@code false}
      */
     private void showHands(boolean hideDealerCard) {
-        System.out.println("    Ваши карты: " + player.getHand().toDetailedString() + " ⇒ " + player.getScore());
-        System.out.println("    Карты дилера: " + dealer.getHandAsString(hideDealerCard));
+        System.out.println("    Ваши карты: " +
+                player.getHand().toDetailedString() + " ⇒ " + player.getScore());
+        System.out.println("    Карты дилера: " +
+                dealer.getHandAsString(hideDealerCard));
     }
 
     /**
@@ -154,11 +158,14 @@ public class BlackjackGame {
      */
     private void printScore(int playerWins, int dealerWins) {
         if (playerWins > dealerWins) {
-            System.out.println("Счёт " + playerWins + " : " + dealerWins + " в вашу пользу. ");
+            System.out.println("Счёт " + playerWins + " : " +
+                    dealerWins + " в вашу пользу. ");
         } else if (dealerWins > playerWins) {
-            System.out.println("Счёт " + playerWins + " : " + dealerWins + " в пользу дилера. ");
+            System.out.println("Счёт " + playerWins + " : " +
+                    dealerWins + " в пользу дилера. ");
         } else {
-            System.out.println("Счёт " + playerWins + " : " + dealerWins + " Ничья. ");
+            System.out.println("Счёт " + playerWins + " : " +
+                    ealerWins + " Ничья. ");
         }
     }
 }
