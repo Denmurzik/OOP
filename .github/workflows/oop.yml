@@ -12,43 +12,48 @@ on:
 
 jobs:
   build:
+    permissions: write-all
     runs-on: ubuntu-latest
     defaults:
       run:
-        # Replace 'your-project-folder' with the actual folder name
-        working-directory: ./Task_1_2/app
+
+        working-directory: ./${{ github.head_ref }}
     steps:
+
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
+
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
 
-      # This command will now run inside './your-project-folder'
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
-      - name: Build with Gradle
-        run: ./gradlew build
-
       - name: Build with Gradle and generate report
         run: ./gradlew build jacocoTestReport
+
+      - name: List files for debugging
+        run: ls -R
+        working-directory: .
+
 
       - name: Check coverage and publish
         id: jacoco
         uses: madrapps/jacoco-report@v1.2
         with:
-          # Пути теперь корректны, так как они ищутся относительно Task_1_2
-          paths: ./app/build/reports/jacoco/test/jacocoTestReport.xml
+          paths: ./${{ github.head_ref }}/app/build/reports/jacoco/test/jacocoTestReport.xml
           token: ${{ secrets.GITHUB_TOKEN }}
           min-coverage-overall: 80
           min-coverage-changed-files: 80
 
+
       - name: Generate javadoc
         run: ./gradlew javadoc
+
 
       - name: Publish javadoc
         uses: JamesIves/github-pages-deploy-action@v4
@@ -56,11 +61,9 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           clean: true
-          # Путь к папке с документацией
-          folder: ./Task_1_2/app/build/docs/javadoc
-          target-folder: ${{ github.head_ref }}
 
-  # Задача checkstyle остается без изменений
+          folder: ${{ github.head_ref }}/app/build/docs/javadoc
+          target-folder: ${{ github.head_ref }}
   checkstyle:
     runs-on: ubuntu-latest
     steps:
