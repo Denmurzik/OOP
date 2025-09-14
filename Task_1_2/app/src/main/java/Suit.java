@@ -11,6 +11,7 @@ public enum Suit {
 
     /**
      * Создает масть.
+     *
      * @param name название масти на русском языке.
      */
     private Suit(String name) {
@@ -19,6 +20,7 @@ public enum Suit {
 
     /**
      * Возвращает русскоязычное название масти.
+     *
      * @return название масти.
      */
     public String toString() {

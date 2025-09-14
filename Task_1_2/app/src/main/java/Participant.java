@@ -17,6 +17,7 @@ public class Participant {
 
     /**
      * Добавляет карту в руку участника.
+     *
      * @param card карта для добавления
      */
     public void addCard(Card card){
@@ -25,6 +26,7 @@ public class Participant {
 
     /**
      * Возвращает текущий счет очков в руке.
+     *
      * @return сумма очков
      */
     public int getScore() {
@@ -33,6 +35,7 @@ public class Participant {
 
     /**
      * Возвращает объект руки участника.
+     *
      * @return объект {@link Hand}
      */
     public Hand getHand(){
@@ -48,6 +51,7 @@ public class Participant {
 
     /**
      * Проверяет, есть ли у участника "перебор" (счет больше 21).
+     *
      * @return {@code true}, если счет больше 21, иначе {@code false}
      */
     public boolean isBusted(){

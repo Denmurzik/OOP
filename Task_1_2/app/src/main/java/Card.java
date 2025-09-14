@@ -17,6 +17,7 @@ public class Card {
 
     /**
      * Возвращает стоимость карты в очках.
+     *
      * @return количество очков
      */
     public int getValue() {
@@ -25,6 +26,7 @@ public class Card {
 
     /**
      * Возвращает ранг карты.
+     *
      * @return объект {@link Rank}
      */
     public Rank getRank() {
@@ -33,6 +35,7 @@ public class Card {
 
     /**
      * Возвращает масть карты.
+     *
      * @return объект {@link Suit}
      */
     public Suit getSuit() {
@@ -41,6 +44,7 @@ public class Card {
 
     /**
      * Возвращает полное строковое представление карты.
+     *
      * @return строка вида "Туз Пики (11)"
      */
     public String toString() {
