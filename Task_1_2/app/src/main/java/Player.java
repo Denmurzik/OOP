@@ -23,7 +23,17 @@ public class Player extends Participant {
         System.out.println("\nВаш ход");
         System.out.println("--------------------");
         System.out.print("Введите \"1\", чтобы взять карту, и \"0\", чтобы остановиться: ");
-        String input = scanner.nextLine();
-        return "1".equals(input);
+
+        while (true) {
+            String input = scanner.nextLine();
+
+            if ("1".equals(input)) {
+                return true;
+            }
+            if ("0".equals(input)) {
+                return false;
+            }
+            System.out.print("\nНекорректный ввод. Пожалуйста, введите 1 или 0: ");
+        }
     }
 }
