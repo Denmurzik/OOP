@@ -116,10 +116,10 @@ public class BlackjackGame {
      * @param hideDealerCard {@code true}, если нужно скрыть вторую карту дилера, иначе {@code false}
      */
     private void showHands(boolean hideDealerCard) {
-        System.out.println("    Ваши карты: " +
-                player.getHand().toDetailedString() + " ⇒ " + player.getScore());
-        System.out.println("    Карты дилера: " +
-                dealer.getHandAsString(hideDealerCard));
+        System.out.println("    Ваши карты: "
+                + player.getHand().toDetailedString() + " ⇒ " + player.getScore());
+        System.out.println("    Карты дилера: "
+                + dealer.getHandAsString(hideDealerCard));
     }
 
     /**
@@ -158,14 +158,14 @@ public class BlackjackGame {
      */
     private void printScore(int playerWins, int dealerWins) {
         if (playerWins > dealerWins) {
-            System.out.println("Счёт " + playerWins + " : " +
-                    dealerWins + " в вашу пользу. ");
+            System.out.println("Счёт " + playerWins + " : "
+                    + dealerWins + " в вашу пользу. ");
         } else if (dealerWins > playerWins) {
-            System.out.println("Счёт " + playerWins + " : " +
-                    dealerWins + " в пользу дилера. ");
+            System.out.println("Счёт " + playerWins + " : "
+                    + dealerWins + " в пользу дилера. ");
         } else {
-            System.out.println("Счёт " + playerWins + " : " +
-                    dealerWins + " Ничья. ");
+            System.out.println("Счёт " + playerWins + " : "
+                    + dealerWins + " Ничья. ");
         }
     }
 }
