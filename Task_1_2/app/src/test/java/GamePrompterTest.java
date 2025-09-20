@@ -63,6 +63,7 @@ class GamePrompterTest {
 
         int result = prompter.askForNumberOfDecks();
 
-        assertEquals(2, result, "Метод должен продолжать спрашивать до получения корректного ввода.");
+        assertEquals(2, result,
+                "Метод должен продолжать спрашивать до получения корректного ввода.");
     }
 }
