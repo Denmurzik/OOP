@@ -16,7 +16,6 @@ public class TestPrompter extends GamePrompter {
      * @param actions   Последовательность ходов игрока (HIT/STAND).
      */
     public TestPrompter(boolean playAgain, PlayerAction... actions) {
-        // ИСПРАВЛЕНИЕ ЗДЕСЬ: передаем два null, один для Scanner, второй для ConsoleView
         super(null, null);
         this.shouldPlayAgain = playAgain;
         this.actionsToReturn = Arrays.asList(actions);
