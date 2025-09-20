@@ -61,17 +61,25 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Добавляет карту в руку участника.</div>
 </dd>
+<dt><a href="GamePrompter.html#askForNumberOfDecks()" class="member-name-link">askForNumberOfDecks()</a> - Method in class <a href="GamePrompter.html" title="class in Unnamed Package">GamePrompter</a></dt>
+<dd>
+<div class="block">Спрашивает у пользователя количество колод и возвращает корректное значение.</div>
+</dd>
+<dt><a href="GamePrompter.html#askPlayerAction()" class="member-name-link">askPlayerAction()</a> - Method in class <a href="GamePrompter.html" title="class in Unnamed Package">GamePrompter</a></dt>
+<dd>
+<div class="block">Спрашивает у игрока его ход.</div>
+</dd>
+<dt><a href="GamePrompter.html#askToPlayAgain()" class="member-name-link">askToPlayAgain()</a> - Method in class <a href="GamePrompter.html" title="class in Unnamed Package">GamePrompter</a></dt>
+<dd>
+<div class="block">Спрашивает у пользователя, хочет ли он сыграть еще один раунд.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:B">B</h2>
 <dl class="index">
 <dt><a href="BlackjackGame.html" class="type-name-link" title="class in Unnamed Package">BlackjackGame</a> - Class in <a href="package-summary.html">Unnamed Package</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="BlackjackGame.html#%3Cinit%3E()" class="member-name-link">BlackjackGame()</a> - Constructor for class <a href="BlackjackGame.html" title="class in Unnamed Package">BlackjackGame</a></dt>
+<dt><a href="BlackjackGame.html#%3Cinit%3E(Player,Dealer,GamePrompter,ConsoleView,GameRoundFactory)" class="member-name-link">BlackjackGame(Player, Dealer, GamePrompter, ConsoleView, GameRoundFactory)</a> - Constructor for class <a href="BlackjackGame.html" title="class in Unnamed Package">BlackjackGame</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="BlackjackGame.html#%3Cinit%3E(java.util.Scanner)" class="member-name-link">BlackjackGame(Scanner)</a> - Constructor for class <a href="BlackjackGame.html" title="class in Unnamed Package">BlackjackGame</a></dt>
-<dd>
-<div class="block">Конструктор для тестирования.</div>
-</dd>
 </dl>
 <h2 class="title" id="I:C">C</h2>
 <dl class="index">
@@ -83,6 +91,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Создает карту с заданным рангом и мастью.</div>
 </dd>
+<dt><a href="Deck.html#cards" class="member-name-link">cards</a> - Variable in class <a href="Deck.html" title="class in Unnamed Package">Deck</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="Hand.html#clear()" class="member-name-link">clear()</a> - Method in class <a href="Hand.html" title="class in Unnamed Package">Hand</a></dt>
 <dd>
 <div class="block">Удаляет все карты из руки.</div>
@@ -93,11 +103,13 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="Suit.html#CLUBS" class="member-name-link">CLUBS</a> - Enum constant in enum class <a href="Suit.html" title="enum class in Unnamed Package">Suit</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="ConsoleUtils.html" class="type-name-link" title="class in Unnamed Package">ConsoleUtils</a> - Class in <a href="package-summary.html">Unnamed Package</a></dt>
+<dt><a href="ConsoleView.html" class="type-name-link" title="class in Unnamed Package">ConsoleView</a> - Class in <a href="package-summary.html">Unnamed Package</a></dt>
 <dd>
 <div class="block">Утилитный класс для вывода всей информации о ходе игры в консоль.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#%3Cinit%3E()" class="member-name-link">ConsoleUtils()</a> - Constructor for class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#%3Cinit%3E()" class="member-name-link">ConsoleView()</a> - Constructor for class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="GameRoundFactory.html#create(Player,Dealer,Deck,GamePrompter,ConsoleView)" class="member-name-link">create(Player, Dealer, Deck, GamePrompter, ConsoleView)</a> - Method in class <a href="GameRoundFactory.html" title="class in Unnamed Package">GameRoundFactory</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:D">D</h2>
@@ -146,11 +158,28 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:G">G</h2>
 <dl class="index">
+<dt><a href="GamePrompter.html" class="type-name-link" title="class in Unnamed Package">GamePrompter</a> - Class in <a href="package-summary.html">Unnamed Package</a></dt>
+<dd>
+<div class="block">Отвечает за взаимодействие с пользователем:
+ выводит запросы и считывает введенные данные.</div>
+</dd>
+<dt><a href="GamePrompter.html#%3Cinit%3E(java.util.Scanner)" class="member-name-link">GamePrompter(Scanner)</a> - Constructor for class <a href="GamePrompter.html" title="class in Unnamed Package">GamePrompter</a></dt>
+<dd>
+<div class="block">Создает новый prompter с указанным сканером.</div>
+</dd>
 <dt><a href="GameResult.html" class="type-name-link" title="enum class in Unnamed Package">GameResult</a> - Enum Class in <a href="package-summary.html">Unnamed Package</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Enam для представления возможных результатов игры.</div>
+</dd>
 <dt><a href="GameRound.html" class="type-name-link" title="class in Unnamed Package">GameRound</a> - Class in <a href="package-summary.html">Unnamed Package</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="GameRound.html#%3Cinit%3E(Player,Dealer,Deck,java.util.Scanner)" class="member-name-link">GameRound(Player, Dealer, Deck, Scanner)</a> - Constructor for class <a href="GameRound.html" title="class in Unnamed Package">GameRound</a></dt>
+<dt><a href="GameRound.html#%3Cinit%3E(Player,Dealer,Deck,GamePrompter,ConsoleView)" class="member-name-link">GameRound(Player, Dealer, Deck, GamePrompter, ConsoleView)</a> - Constructor for class <a href="GameRound.html" title="class in Unnamed Package">GameRound</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="GameRoundFactory.html" class="type-name-link" title="class in Unnamed Package">GameRoundFactory</a> - Class in <a href="package-summary.html">Unnamed Package</a></dt>
+<dd>
+<div class="block">Создаёт раунд игры.</div>
+</dd>
+<dt><a href="GameRoundFactory.html#%3Cinit%3E()" class="member-name-link">GameRoundFactory()</a> - Constructor for class <a href="GameRoundFactory.html" title="class in Unnamed Package">GameRoundFactory</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="Deck.html#getCardCount()" class="member-name-link">getCardCount()</a> - Method in class <a href="Deck.html" title="class in Unnamed Package">Deck</a></dt>
 <dd>&nbsp;</dd>
@@ -211,6 +240,8 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="Suit.html#HEARTS" class="member-name-link">HEARTS</a> - Enum constant in enum class <a href="Suit.html" title="enum class in Unnamed Package">Suit</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="PlayerAction.html#HIT" class="member-name-link">HIT</a> - Enum constant in enum class <a href="PlayerAction.html" title="enum class in Unnamed Package">PlayerAction</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:I">I</h2>
 <dl class="index">
@@ -260,9 +291,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Создает нового участника с пустой рукой карт.</div>
 </dd>
 <dt><a href="GameRound.html#play()" class="member-name-link">play()</a> - Method in class <a href="GameRound.html" title="class in Unnamed Package">GameRound</a></dt>
-<dd>
-<div class="block">Запускает и управляет логикой одного полного раунда игры.</div>
-</dd>
+<dd>&nbsp;</dd>
 <dt><a href="Player.html" class="type-name-link" title="class in Unnamed Package">Player</a> - Class in <a href="package-summary.html">Unnamed Package</a></dt>
 <dd>
 <div class="block">Представляет игрока-пользователя в игре Блэкджек.</div>
@@ -273,99 +302,103 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="GameResult.html#PLAYER_WINS" class="member-name-link">PLAYER_WINS</a> - Enum constant in enum class <a href="GameResult.html" title="enum class in Unnamed Package">GameResult</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="ConsoleUtils.html#printBlackjackPush()" class="member-name-link">printBlackjackPush()</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="PlayerAction.html" class="type-name-link" title="enum class in Unnamed Package">PlayerAction</a> - Enum Class in <a href="package-summary.html">Unnamed Package</a></dt>
+<dd>
+<div class="block">Действия игрока в игре</div>
+</dd>
+<dt><a href="ConsoleView.html#printBlackjackPush()" class="member-name-link">printBlackjackPush()</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Сообщает о ничьей, когда у обоих участников блэкджек.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#printCardsDealt()" class="member-name-link">printCardsDealt()</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#printCardsDealt()" class="member-name-link">printCardsDealt()</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Сообщает, что дилер раздал карты.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#printDealerBlackjack()" class="member-name-link">printDealerBlackjack()</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#printDealerBlackjack()" class="member-name-link">printDealerBlackjack()</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Сообщает о победе дилера с блэкджеком.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#printDealerBust()" class="member-name-link">printDealerBust()</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#printDealerBust()" class="member-name-link">printDealerBust()</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Сообщает, что у дилера перебор.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#printDealerDrawnCard(Card)" class="member-name-link">printDealerDrawnCard(Card)</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#printDealerDrawnCard(Card)" class="member-name-link">printDealerDrawnCard(Card)</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Показывает, какую карту вытянул дилер.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#printDealerRevealsHiddenCard(Card)" class="member-name-link">printDealerRevealsHiddenCard(Card)</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#printDealerRevealsHiddenCard(Card)" class="member-name-link">printDealerRevealsHiddenCard(Card)</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Показывает скрытую карту дилера.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#printDealerTurn()" class="member-name-link">printDealerTurn()</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#printDealerTurn()" class="member-name-link">printDealerTurn()</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Объявляет о начале хода дилера.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#printDealerWinsRound()" class="member-name-link">printDealerWinsRound()</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#printDealerWinsRound()" class="member-name-link">printDealerWinsRound()</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Сообщает о проигрыше игрока в раунде.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#printGoodbyeMessage()" class="member-name-link">printGoodbyeMessage()</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#printGoodbyeMessage()" class="member-name-link">printGoodbyeMessage()</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Выводит прощальное сообщение в конце игры.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#printInvalidInput()" class="member-name-link">printInvalidInput()</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#printInvalidInput()" class="member-name-link">printInvalidInput()</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Сообщает о неверном вводе данных.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#printInvalidNumberOfDecks()" class="member-name-link">printInvalidNumberOfDecks()</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#printInvalidNumberOfDecks()" class="member-name-link">printInvalidNumberOfDecks()</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Сообщает о неверном вводе количества колод.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#printOverallScore(int,int)" class="member-name-link">printOverallScore(int, int)</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#printOverallScore(int,int)" class="member-name-link">printOverallScore(int, int)</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Выводит общий счет побед игрока и дилера.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#printPlayerBlackjack()" class="member-name-link">printPlayerBlackjack()</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#printPlayerBlackjack()" class="member-name-link">printPlayerBlackjack()</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Сообщает о победе игрока с блэкджеком.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#printPlayerBust()" class="member-name-link">printPlayerBust()</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#printPlayerBust()" class="member-name-link">printPlayerBust()</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Сообщает, что у игрока перебор.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#printPlayerDrawnCard(Card)" class="member-name-link">printPlayerDrawnCard(Card)</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#printPlayerDrawnCard(Card)" class="member-name-link">printPlayerDrawnCard(Card)</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Показывает, какую карту вытянул игрок.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#printPlayerTurnHeader()" class="member-name-link">printPlayerTurnHeader()</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#printPlayerTurnHeader()" class="member-name-link">printPlayerTurnHeader()</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Отображает заголовок для хода игрока.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#printPlayerWinsRound()" class="member-name-link">printPlayerWinsRound()</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#printPlayerWinsRound()" class="member-name-link">printPlayerWinsRound()</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Сообщает о победе игрока в раунде.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#printPush()" class="member-name-link">printPush()</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#printPush()" class="member-name-link">printPush()</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Сообщает о ничьей в раунде.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#printRoundHeader(int)" class="member-name-link">printRoundHeader(int)</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#printRoundHeader(int)" class="member-name-link">printRoundHeader(int)</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Отображает заголовок с номером текущего раунда.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#printSeparator()" class="member-name-link">printSeparator()</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#printSeparator()" class="member-name-link">printSeparator()</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Печатает линию-разделитель для форматирования вывода.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#printWelcomeMessage()" class="member-name-link">printWelcomeMessage()</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#printWelcomeMessage()" class="member-name-link">printWelcomeMessage()</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Выводит приветственное сообщение в начале игры.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#promptNumberOfDecks()" class="member-name-link">promptNumberOfDecks()</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#promptNumberOfDecks()" class="member-name-link">promptNumberOfDecks()</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Просит пользователя ввести количество колод для игры.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#promptPlayAgain()" class="member-name-link">promptPlayAgain()</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#promptPlayAgain()" class="member-name-link">promptPlayAgain()</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Спрашивает игрока, хочет ли он сыграть еще раз.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#promptPlayerAction()" class="member-name-link">promptPlayerAction()</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#promptPlayerAction()" class="member-name-link">promptPlayerAction()</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Просит игрока сделать ход (взять карту или остановиться).</div>
 </dd>
@@ -388,11 +421,11 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="Rank.html#SEVEN" class="member-name-link">SEVEN</a> - Enum constant in enum class <a href="Rank.html" title="enum class in Unnamed Package">Rank</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="ConsoleUtils.html#showDealerHand(java.lang.String)" class="member-name-link">showDealerHand(String)</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#showDealerHand(java.lang.String)" class="member-name-link">showDealerHand(String)</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Отображает текущую руку дилера.</div>
 </dd>
-<dt><a href="ConsoleUtils.html#showPlayerHand(java.lang.String,int)" class="member-name-link">showPlayerHand(String, int)</a> - Static method in class <a href="ConsoleUtils.html" title="class in Unnamed Package">ConsoleUtils</a></dt>
+<dt><a href="ConsoleView.html#showPlayerHand(java.lang.String,int)" class="member-name-link">showPlayerHand(String, int)</a> - Method in class <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a></dt>
 <dd>
 <div class="block">Отображает текущую руку и счет игрока.</div>
 </dd>
@@ -404,9 +437,11 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="Suit.html#SPADES" class="member-name-link">SPADES</a> - Enum constant in enum class <a href="Suit.html" title="enum class in Unnamed Package">Suit</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="PlayerAction.html#STAND" class="member-name-link">STAND</a> - Enum constant in enum class <a href="PlayerAction.html" title="enum class in Unnamed Package">PlayerAction</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="BlackjackGame.html#startGame()" class="member-name-link">startGame()</a> - Method in class <a href="BlackjackGame.html" title="class in Unnamed Package">BlackjackGame</a></dt>
 <dd>
-<div class="block">Запускает игру и управляет циклом раундов до тех пор, пока игрок не решит выйти.</div>
+<div class="block">Запускает игру и управляет циклом раундов.</div>
 </dd>
 <dt><a href="Suit.html" class="type-name-link" title="enum class in Unnamed Package">Suit</a> - Enum Class in <a href="package-summary.html">Unnamed Package</a></dt>
 <dd>
@@ -448,6 +483,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Returns the enum constant of this class with the specified name.</div>
 </dd>
+<dt><a href="PlayerAction.html#valueOf(java.lang.String)" class="member-name-link">valueOf(String)</a> - Static method in enum class <a href="PlayerAction.html" title="enum class in Unnamed Package">PlayerAction</a></dt>
+<dd>
+<div class="block">Returns the enum constant of this class with the specified name.</div>
+</dd>
 <dt><a href="Rank.html#valueOf(java.lang.String)" class="member-name-link">valueOf(String)</a> - Static method in enum class <a href="Rank.html" title="enum class in Unnamed Package">Rank</a></dt>
 <dd>
 <div class="block">Returns the enum constant of this class with the specified name.</div>
@@ -457,6 +496,11 @@ loadScripts(document, 'script');</script>
 <div class="block">Returns the enum constant of this class with the specified name.</div>
 </dd>
 <dt><a href="GameResult.html#values()" class="member-name-link">values()</a> - Static method in enum class <a href="GameResult.html" title="enum class in Unnamed Package">GameResult</a></dt>
+<dd>
+<div class="block">Returns an array containing the constants of this enum class, in
+the order they are declared.</div>
+</dd>
+<dt><a href="PlayerAction.html#values()" class="member-name-link">values()</a> - Static method in enum class <a href="PlayerAction.html" title="enum class in Unnamed Package">PlayerAction</a></dt>
 <dd>
 <div class="block">Returns an array containing the constants of this enum class, in
 the order they are declared.</div>
@@ -474,10 +518,6 @@ the order they are declared.</div>
 </dl>
 <h2 class="title" id="I:W">W</h2>
 <dl class="index">
-<dt><a href="Player.html#wantsToHit(java.lang.String)" class="member-name-link">wantsToHit(String)</a> - Method in class <a href="Player.html" title="class in Unnamed Package">Player</a></dt>
-<dd>
-<div class="block">Запрашивает у пользователя, хочет ли он взять еще одну карту ("hit").</div>
-</dd>
 <dt><a href="WinnerEvaluator.html" class="type-name-link" title="class in Unnamed Package">WinnerEvaluator</a> - Class in <a href="package-summary.html">Unnamed Package</a></dt>
 <dd>
 <div class="block">Утилитный класс для определения победителя в раунде Блэкджека.</div>

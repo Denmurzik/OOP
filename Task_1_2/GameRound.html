@@ -100,10 +100,11 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(Player,Dealer,Deck,java.util.Scanner)" class="member-name-link">GameRound</a><wbr>(<a href="Player.html" title="class in Unnamed Package">Player</a>&nbsp;player,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(Player,Dealer,Deck,GamePrompter,ConsoleView)" class="member-name-link">GameRound</a><wbr>(<a href="Player.html" title="class in Unnamed Package">Player</a>&nbsp;player,
  <a href="Dealer.html" title="class in Unnamed Package">Dealer</a>&nbsp;dealer,
  <a href="Deck.html" title="class in Unnamed Package">Deck</a>&nbsp;deck,
- <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Scanner.html" title="class or interface in java.util" class="external-link">Scanner</a>&nbsp;scanner)</code></div>
+ <a href="GamePrompter.html" title="class in Unnamed Package">GamePrompter</a>&nbsp;prompter,
+ <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a>&nbsp;view)</code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 </div>
 </section>
@@ -130,9 +131,7 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="GameResult.html" title="enum class in Unnamed Package">GameResult</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#play()" class="member-name-link">play</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Запускает и управляет логикой одного полного раунда игры.</div>
-</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 </div>
 </div>
 </div>
@@ -151,12 +150,13 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(Player,Dealer,Deck,java.util.Scanner)">
+<section class="detail" id="&lt;init&gt;(Player,Dealer,Deck,GamePrompter,ConsoleView)">
 <h3>GameRound</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">GameRound</span><wbr><span class="parameters">(<a href="Player.html" title="class in Unnamed Package">Player</a>&nbsp;player,
  <a href="Dealer.html" title="class in Unnamed Package">Dealer</a>&nbsp;dealer,
  <a href="Deck.html" title="class in Unnamed Package">Deck</a>&nbsp;deck,
- <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Scanner.html" title="class or interface in java.util" class="external-link">Scanner</a>&nbsp;scanner)</span></div>
+ <a href="GamePrompter.html" title="class in Unnamed Package">GamePrompter</a>&nbsp;prompter,
+ <a href="ConsoleView.html" title="class in Unnamed Package">ConsoleView</a>&nbsp;view)</span></div>
 </section>
 </li>
 </ul>
@@ -189,11 +189,6 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="play()">
 <h3>play</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="GameResult.html" title="enum class in Unnamed Package">GameResult</a></span>&nbsp;<span class="element-name">play</span>()</div>
-<div class="block">Запускает и управляет логикой одного полного раунда игры.</div>
-<dl class="notes">
-<dt>Returns:</dt>
-<dd>GameResult - результат раунда (победа игрока, дилера или ничья).</dd>
-</dl>
 </section>
 </li>
 </ul>
