@@ -7,7 +7,7 @@ import java.util.List;
  *  из одного или нескольких наборов по 52 карты.
  */
 public class Deck {
-    private List<Card> cards;
+    protected List<Card> cards;
 
     /**
      * Создает колоду, состоящую из указанного количества 52-карточных наборов.

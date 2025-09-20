@@ -1,23 +1,23 @@
-import java.util.Scanner;
 
 public class GameRound {
-    private Player player;
-    private Dealer dealer;
-    private Deck deck;
-    private Scanner scanner;
 
-    public Player getPlayer() {
-        return this.player;
-    }
-    public Dealer getDealer() {
-        return this.dealer;
-    }
+    private final Player player;
+    private final Dealer dealer;
+    private final Deck deck;
+    private final GamePrompter prompter; // <-- Вместо Scanner
+    private final ConsoleView view;     // <-- Наш объект для вывода
 
-    public GameRound(Player player, Dealer dealer, Deck deck, Scanner scanner) {
+
+    public Player getPlayer() { return this.player; }
+    public Dealer getDealer() { return this.dealer; }
+
+
+    public GameRound(Player player, Dealer dealer, Deck deck, GamePrompter prompter, ConsoleView view) {
         this.player = player;
         this.dealer = dealer;
         this.deck = deck;
-        this.scanner = scanner;
+        this.prompter = prompter; // <-- Сохраняем prompter
+        this.view = view;         // <-- Сохраняем view
     }
 
     public void initialDeal() {
@@ -31,17 +31,12 @@ public class GameRound {
         dealer.addCard(deck.dealCard());
     }
 
-    /**
-     * Запускает и управляет логикой одного полного раунда игры.
-     * @return GameResult - результат раунда (победа игрока, дилера или ничья).
-     */
     public GameResult play() {
         initialDeal();
 
-        ConsoleUtils.printCardsDealt();
+        view.printCardsDealt(); 
         showHands(true);
 
-        // Проверка на блэкджек в начале раунда
         boolean playerHasBlackjack = (player.getScore() == 21);
         boolean dealerHasBlackjack = (dealer.getScore() == 21);
 
@@ -49,75 +44,55 @@ public class GameRound {
             return handleBlackjackResult(playerHasBlackjack, dealerHasBlackjack);
         }
 
-        // Ход игрока
         playerTurn();
 
-        // Если у игрока не перебор, ходит дилер
         if (!player.isBusted()) {
             dealerTurn();
         }
 
-        // Определение победителя в конце раунда
         return WinnerEvaluator.determineWinner(player, dealer);
     }
 
-    /**
-     * Управляет ходом игрока.
-     */
     private void playerTurn() {
-        ConsoleUtils.printPlayerTurnHeader();
-        ConsoleUtils.promptPlayerAction();
-
-        while (player.getScore() < 21 && player.wantsToHit(scanner.nextLine()) == 1) {
+        view.printPlayerTurnHeader();
+        while (player.getScore() < 21 && prompter.askPlayerAction() == PlayerAction.HIT) {
             Card newCard = deck.dealCard();
             player.addCard(newCard);
-            ConsoleUtils.printPlayerDrawnCard(newCard);
+            view.printPlayerDrawnCard(newCard); 
             showHands(true);
-            ConsoleUtils.printPlayerTurnHeader();
-            ConsoleUtils.promptPlayerAction();
         }
     }
 
-    /**
-     * Управляет ходом дилера.
-     */
     private void dealerTurn() {
-        ConsoleUtils.printDealerTurn();
-        Card hiddenCard = dealer.getHand().getCards().get(1); // Получаем скрытую карту
-        ConsoleUtils.printDealerRevealsHiddenCard(hiddenCard);
-        showHands(false); // Показываем обе карты дилера
+        view.printDealerTurn(); 
+        Card hiddenCard = dealer.getHand().getCards().get(1);
+        view.printDealerRevealsHiddenCard(hiddenCard); 
+        showHands(false);
 
         while (dealer.getScore() < 17) {
             Card newCard = deck.dealCard();
             dealer.addCard(newCard);
-            ConsoleUtils.printDealerDrawnCard(newCard);
+            view.printDealerDrawnCard(newCard); 
             showHands(false);
         }
     }
 
-    /**
-     * Обрабатывает результат при наличии блэкджека.
-     * @return GameResult, соответствующий исходу.
-     */
     private GameResult handleBlackjackResult(boolean playerHasBlackjack, boolean dealerHasBlackjack) {
         showHands(false);
         if (playerHasBlackjack && dealerHasBlackjack) {
-            ConsoleUtils.printBlackjackPush();
+            view.printBlackjackPush(); 
             return GameResult.PUSH;
         } else if (playerHasBlackjack) {
-            ConsoleUtils.printPlayerBlackjack();
+            view.printPlayerBlackjack(); 
             return GameResult.PLAYER_WINS;
         } else {
-            ConsoleUtils.printDealerBlackjack();
+            view.printDealerBlackjack(); 
             return GameResult.DEALER_WINS;
         }
     }
 
-    /**
-     * Отображает руки игрока и дилера.
-     */
     private void showHands(boolean hideDealerCard) {
-        ConsoleUtils.showPlayerHand(player.getHand().toDetailedString(), player.getScore());
-        ConsoleUtils.showDealerHand(dealer.getHandAsString(hideDealerCard));
+        view.showPlayerHand(player.getHand().toDetailedString(), player.getScore()); 
+        view.showDealerHand(dealer.getHandAsString(hideDealerCard)); 
     }
 }

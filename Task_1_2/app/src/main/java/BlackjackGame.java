@@ -1,120 +1,86 @@
-import java.util.Scanner;
-
 public class BlackjackGame {
-    private Player player;
-    private Dealer dealer;
-    private Deck deck;
-    private Scanner scanner;
+    private final Player player;
+    private final Dealer dealer;
+    private final GamePrompter prompter;
+    private final ConsoleView view;
+    private final GameRoundFactory roundFactory;
 
+    private Deck deck;
     private int playerWins;
     private int dealerWins;
 
-    public BlackjackGame() {
-        this.player = new Player();
-        this.dealer = new Dealer();
-        this.scanner = new Scanner(System.in);
+    public BlackjackGame(Player player, Dealer dealer, GamePrompter prompter, ConsoleView view, GameRoundFactory roundFactory) {
+        this.player = player;
+        this.dealer = dealer;
+        this.prompter = prompter;
+        this.view = view;
         this.playerWins = 0;
         this.dealerWins = 0;
+        this.roundFactory = roundFactory;
     }
 
     /**
-     * Конструктор для тестирования. Позволяет подменить источник ввода.
-     *
-     * @param scanner Сканер для считывания ввода.
-     */
-    public BlackjackGame(Scanner scanner) {
-        this.player = new Player();
-        this.dealer = new Dealer();
-        this.scanner = scanner;
-        this.playerWins = 0;
-        this.dealerWins = 0;
-    }
-
-    /**
-     * Запускает игру и управляет циклом раундов до тех пор, пока игрок не решит выйти.
+     * Запускает игру и управляет циклом раундов.
      */
     public void startGame() {
-        ConsoleUtils.printWelcomeMessage();
+        view.printWelcomeMessage();
 
-        int numberOfDecks = 0;
-        while (numberOfDecks <= 0) {
-            try {
-                ConsoleUtils.promptNumberOfDecks();
-                String input = scanner.nextLine();
-                numberOfDecks = Integer.parseInt(input);
-                if (numberOfDecks <= 0) {
-                    ConsoleUtils.printInvalidNumberOfDecks();
-                }
-            } catch (NumberFormatException e) {
-                ConsoleUtils.printInvalidNumberOfDecks();
-            }
-        }
-
+        int numberOfDecks = prompter.askForNumberOfDecks();
         int round = 1;
 
-        while (true) {
-            ConsoleUtils.printRoundHeader(round);
+        do {
+            view.printRoundHeader(round);
 
             this.deck = new Deck(numberOfDecks);
 
-            GameRound gameRound = new GameRound(player, dealer, deck, scanner);
+            GameRound gameRound = roundFactory.create(player, dealer, deck, prompter, view);
             GameResult result = gameRound.play();
+
 
             updateScoreAndDisplayResult(result);
 
-            ConsoleUtils.printSeparator();
-            ConsoleUtils.promptPlayAgain();
-            String choice = scanner.nextLine();
-            if (!"1".equals(choice)) {
-                break;
-            }
             round++;
-        }
+        } while (prompter.askToPlayAgain());
 
-        ConsoleUtils.printGoodbyeMessage();
-        scanner.close();
+        view.printGoodbyeMessage();
     }
 
     /**
-     * Обновляет общий счет и отображает результат раунда.
-     * @param result Итог раунда (PLAYER_WINS, DEALER_WINS, или PUSH).
+     * Обновляет счет и отображает результат раунда через ConsoleView.
+     *
+     * @param result Итог раунда.
      */
     private void updateScoreAndDisplayResult(GameResult result) {
         switch (result) {
             case PLAYER_WINS:
-                // Сообщение о блэкджеке уже выведено в GameRound,
-                // поэтому здесь обрабатываем только обычные победы.
                 if (player.getScore() != 21) {
                     if (dealer.isBusted()) {
-                        ConsoleUtils.printDealerBust();
+                        view.printDealerBust();
                     } else {
-                        ConsoleUtils.printPlayerWinsRound();
+                        view.printPlayerWinsRound();
                     }
                 }
                 playerWins++;
                 break;
             case DEALER_WINS:
-                // Аналогично для дилера
                 if (dealer.getScore() != 21) {
                     if (player.isBusted()) {
-                        ConsoleUtils.printPlayerBust();
+                        view.printPlayerBust();
                     } else {
-                        ConsoleUtils.printDealerWinsRound();
+                        view.printDealerWinsRound();
                     }
                 }
                 dealerWins++;
                 break;
             case PUSH:
                 if (player.getScore() != 21) {
-                    ConsoleUtils.printPush();
+                    view.printPush();
                 }
                 break;
         }
-        ConsoleUtils.printOverallScore(playerWins, dealerWins);
+        view.printOverallScore(playerWins, dealerWins);
     }
 
-
-    //методы для теста
     public int getPlayerWins() {
         return playerWins;
     }

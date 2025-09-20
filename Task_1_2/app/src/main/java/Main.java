@@ -1,15 +1,27 @@
+import java.util.Scanner;
+
 /**
  * Главный класс приложения, отвечающий за запуск игры Блэкджек.
+ * Собирает все компоненты игры и запускает игровой процесс.
  */
 public class Main {
     /**
      * Точка входа в программу.
-     * Создает экземпляр {@link BlackjackGame} и запускает игровой процесс.
-     *
-     * @param args аргументы командной строки (не используются)
      */
     public static void main(String[] args) {
-        BlackjackGame game = new BlackjackGame();
+
+        Player player = new Player();
+        Dealer dealer = new Dealer();
+
+        Scanner scanner = new Scanner(System.in);
+
+        ConsoleView view = new ConsoleView();
+        GamePrompter prompter = new GamePrompter(scanner);
+
+        GameRoundFactory roundFactory = new GameRoundFactory();
+
+        BlackjackGame game = new BlackjackGame(player, dealer, prompter, view, roundFactory);
+
         game.startGame();
     }
 }
