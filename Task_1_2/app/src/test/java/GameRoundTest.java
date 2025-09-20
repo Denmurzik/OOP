@@ -20,7 +20,7 @@ class GameRoundTest {
     }
 
     @Test
-    void initialDeal_shouldGiveTwoCardsToPlayerAndDealer() {
+    void initialDealShouldGiveTwoCardsToPlayerAndDealer() {
         Deck deck = new Deck(1);
         GamePrompter prompter = new TestPrompter(false); // Не имеет значения для этого теста
         GameRound gameRound = new GameRound(player, dealer, deck, prompter, silentView);
@@ -32,7 +32,7 @@ class GameRoundTest {
     }
 
     @Test
-    void play_whenPlayerGetsBlackjack_returnsPlayerWins() {
+    void playWhenPlayerGetsBlackjack_returnsPlayerWins() {
         Deck predictableDeck = new PredictableDeck(Arrays.asList(
                 new Card(Rank.ACE, Suit.SPADES),   // Карта игрока 1
                 new Card(Rank.FIVE, Suit.HEARTS),  // Карта дилера 1
@@ -49,7 +49,7 @@ class GameRoundTest {
     }
 
     @Test
-    void play_whenPlayerStandsAndWins_returnsPlayerWins() {
+    void playWhenPlayerStandsAndWins_returnsPlayerWins() {
         Deck predictableDeck = new PredictableDeck(Arrays.asList(
                 new Card(Rank.TEN, Suit.SPADES),   // Игрок: 10
                 new Card(Rank.EIGHT, Suit.HEARTS), // Дилер: 8
@@ -67,7 +67,7 @@ class GameRoundTest {
     }
 
     @Test
-    void play_whenPlayerHitsAndBusts_returnsDealerWins() {
+    void playWhenPlayerHitsAndBusts_returnsDealerWins() {
         Deck predictableDeck = new PredictableDeck(Arrays.asList(
                 new Card(Rank.TEN, Suit.SPADES),   // Игрок: 10
                 new Card(Rank.TEN, Suit.HEARTS),   // Дилер: 10
@@ -85,7 +85,7 @@ class GameRoundTest {
     }
 
     @Test
-    void play_whenDealerMustHitAndWins_returnsDealerWins() {
+    void playWhenDealerMustHitAndWins_returnsDealerWins() {
         Deck predictableDeck = new PredictableDeck(Arrays.asList(
                 new Card(Rank.TEN, Suit.SPADES),    // Игрок: 10
                 new Card(Rank.TEN, Suit.HEARTS),    // Дилер: 10

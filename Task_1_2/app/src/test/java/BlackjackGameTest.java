@@ -19,7 +19,7 @@ class BlackjackGameTest {
     }
 
     @Test
-    void startGame_whenRoundResultsInPlayerWin_shouldIncrementPlayerScore() {
+    void startGameWhenRoundResultsInPlayerWin_shouldIncrementPlayerScore() {
 
         GamePrompter prompter = new TestPrompter(false);
         GameRoundFactory fakeFactory = new FakeGameRoundFactory(GameResult.PLAYER_WINS);
@@ -33,7 +33,7 @@ class BlackjackGameTest {
     }
 
     @Test
-    void startGame_whenRoundResultsInDealerWin_shouldIncrementDealerScore() {
+    void startGameWhenRoundResultsInDealerWin_shouldIncrementDealerScore() {
         GamePrompter prompter = new TestPrompter(false);
         GameRoundFactory fakeFactory = new FakeGameRoundFactory(GameResult.DEALER_WINS);
 
@@ -46,7 +46,7 @@ class BlackjackGameTest {
     }
 
     @Test
-    void startGame_whenRoundResultsInPush_shouldNotChangeScores() {
+    void startGameWhenRoundResultsInPush_shouldNotChangeScores() {
         GamePrompter prompter = new TestPrompter(false);
         GameRoundFactory fakeFactory = new FakeGameRoundFactory(GameResult.PUSH);
         BlackjackGame game = new BlackjackGame(player, dealer, prompter, silentView, fakeFactory);

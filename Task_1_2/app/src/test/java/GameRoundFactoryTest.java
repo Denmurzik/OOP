@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class GameRoundFactoryTest {
 
     @Test
-    void create_shouldReturnNonNullInstanceOfGameRound() {
+    void createShouldReturnNonNullInstanceOfGameRound() {
         GameRoundFactory factory = new GameRoundFactory();
         GameRound gameRound = factory.create(null, null, null, null, null);
 

@@ -7,11 +7,20 @@ public class GameRound {
     private final GamePrompter prompter;
     private final ConsoleView view;
 
-
+    /**
+     * Получает игрока.
+     *
+     * @return игрок.
+     */
     public Player getPlayer() {
         return this.player;
     }
 
+    /**
+     * Получает дилера.
+     *
+     * @return дилер.
+     */
     public Dealer getDealer() {
         return this.dealer;
     }

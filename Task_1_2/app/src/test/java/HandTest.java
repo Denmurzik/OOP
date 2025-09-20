@@ -1,7 +1,9 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class HandTest {
 
@@ -19,13 +21,13 @@ class HandTest {
     }
 
     @Test
-    void newHand_shouldBeEmptyAndHaveScoreOfZero() {
+    void newHandShouldBeEmptyAndHaveScoreOfZero() {
         assertEquals(0, hand.getCards().size(), "Новая рука должна быть пустой.");
         assertEquals(0, hand.getScore(), "Счет новой руки должен быть равен 0.");
     }
 
     @Test
-    void addCard_shouldIncreaseCardCount() {
+    void addCardShouldIncreaseCardCount() {
         hand.addCard(FIVE_HEARTS);
         assertEquals(1, hand.getCards().size());
         hand.addCard(NINE_SPADES);
@@ -33,7 +35,7 @@ class HandTest {
     }
 
     @Test
-    void clear_shouldRemoveAllCardsAndResetScore() {
+    void clearShouldRemoveAllCardsAndResetScore() {
         hand.addCard(KING_HEARTS);
         hand.addCard(QUEEN_CLUBS);
         assertNotEquals(0, hand.getCards().size());
@@ -46,28 +48,28 @@ class HandTest {
 
 
     @Test
-    void getScore_withNumberAndFaceCards_shouldBeCorrectSum() {
+    void getScoreWithNumberAndFaceCards_shouldBeCorrectSum() {
         hand.addCard(NINE_SPADES); // 9
         hand.addCard(KING_HEARTS); // 10
         assertEquals(19, hand.getScore());
     }
 
     @Test
-    void getScore_withBlackjack_shouldBe21() {
+    void getScoreWithBlackjack_shouldBe21() {
         hand.addCard(ACE_SPADES);  // 11
         hand.addCard(TEN_DIAMONDS); // 10
         assertEquals(21, hand.getScore(), "Туз и десятка должны давать 21 (Блэкджек).");
     }
 
     @Test
-    void getScore_withSingleAceAs11_shouldNotBust() {
+    void getScoreWithSingleAceAs11_shouldNotBust() {
         hand.addCard(ACE_SPADES); // 11
         hand.addCard(NINE_SPADES); // 9
         assertEquals(20, hand.getScore(), "Туз должен считаться как 11, если нет перебора.");
     }
 
     @Test
-    void getScore_withSingleAceAs1_shouldPreventBust() {
+    void getScoreWithSingleAceAs1_shouldPreventBust() {
         hand.addCard(KING_HEARTS); // 10
         hand.addCard(FIVE_HEARTS); // 5
         hand.addCard(ACE_SPADES);  //  1
@@ -75,14 +77,14 @@ class HandTest {
     }
 
     @Test
-    void getScore_withTwoAces_shouldBe12() {
+    void getScoreWithTwoAces_shouldBe12() {
         hand.addCard(ACE_SPADES);  // Считается как 11
         hand.addCard(new Card(Rank.ACE, Suit.CLUBS)); // Считается как 1
         assertEquals(12, hand.getScore(), "Два туза должны давать 12 (11 + 1).");
     }
 
     @Test
-    void getScore_withMultipleAcesAndCards_shouldBeCalculatedCorrectly() {
+    void getScoreWithMultipleAcesAndCards_shouldBeCalculatedCorrectly() {
         hand.addCard(ACE_SPADES); // 11
         hand.addCard(new Card(Rank.ACE, Suit.CLUBS)); // 1
         hand.addCard(NINE_SPADES); // 9
@@ -91,7 +93,7 @@ class HandTest {
     }
 
     @Test
-    void getScore_withBustedHandWithAces_shouldCountAllAcesAs1() {
+    void getScoreWithBustedHandWithAces_shouldCountAllAcesAs1() {
         hand.addCard(NINE_SPADES); // 9
         hand.addCard(FIVE_HEARTS); // 5
         hand.addCard(ACE_SPADES);  // 1
