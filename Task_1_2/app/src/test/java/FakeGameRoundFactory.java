@@ -7,7 +7,7 @@ public class FakeGameRoundFactory extends GameRoundFactory {
     /**
      * Конструктор, принимающий результат, который должен быть возвращен созданным раундом.
      *
-     * @param result
+     * @param result предопределенный результат для фиктивного раунда.
      */
     public FakeGameRoundFactory(GameResult result) {
         this.resultToProduce = result;
@@ -16,13 +16,13 @@ public class FakeGameRoundFactory extends GameRoundFactory {
     /**
      * Создает новый фиктивный игровой раунд, который всегда возвращает предопределенный результат.
      *
-     * @param p
-     * @param d
-     * @param deck
-     * @param prompter
-     * @param view
+     * @param p Игрок
+     * @param d Дилер
+     * @param deck Колода карт
+     * @param prompter Промптер для взаимодействия с игроком
+     * @param view Консольный интерфейс для отображения информации
      *
-     * @return
+     * @return Фиктивный игровой раунд с предопределенным результатом.
      */
     @Override
     public GameRound create(Player p, Dealer d, Deck deck,
