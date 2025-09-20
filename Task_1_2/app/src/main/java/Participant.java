@@ -11,7 +11,7 @@ public class Participant {
     /**
      * Создает нового участника с пустой рукой карт.
      */
-    public Participant(){
+    public Participant() {
         this.hand = new Hand();
     }
 
@@ -20,7 +20,7 @@ public class Participant {
      *
      * @param card карта для добавления
      */
-    public void addCard(Card card){
+    public void addCard(Card card) {
         this.hand.addCard(card);
     }
 
@@ -38,14 +38,14 @@ public class Participant {
      *
      * @return объект {@link Hand}
      */
-    public Hand getHand(){
+    public Hand getHand() {
         return this.hand;
     }
 
     /**
      * Очищает руку участника, удаляя все карты.
      */
-    public void clearHand(){
+    public void clearHand() {
         this.hand.clear();
     }
 
@@ -54,7 +54,7 @@ public class Participant {
      *
      * @return {@code true}, если счет больше 21, иначе {@code false}
      */
-    public boolean isBusted(){
+    public boolean isBusted() {
         return this.hand.getScore() > 21;
     }
 }
