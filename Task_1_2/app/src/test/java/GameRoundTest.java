@@ -1,6 +1,7 @@
+import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -74,7 +75,7 @@ class GameRoundTest {
                 new Card(Rank.TEN, Suit.HEARTS),   // Дилер: 10
                 new Card(Rank.FIVE, Suit.SPADES),  // Игрок: 10 + 5 = 15
                 new Card(Rank.SEVEN, Suit.HEARTS), // Дилер: 10 + 7 = 17
-                new Card(Rank.QUEEN, Suit.CLUBS)   // Карта для добора игроком -> 15 + 10 = 25 (перебор)
+                new Card(Rank.QUEEN, Suit.CLUBS)   // -> 15 + 10 = 25 (перебор)
         ));
         GamePrompter prompter = new TestPrompter(false, PlayerAction.HIT);
         GameRound gameRound = new GameRound(player, dealer, predictableDeck, prompter, silentView);
