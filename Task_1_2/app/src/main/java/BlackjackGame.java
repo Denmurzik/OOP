@@ -1,3 +1,7 @@
+/**
+ * Класс, управляющий логикой игры в блэкджек.
+ * Отвечает за инициализацию компонентов игры, управление раундами и подсчетом очков.
+ */
 public class BlackjackGame {
     private final Player player;
     private final Dealer dealer;
@@ -13,8 +17,7 @@ public class BlackjackGame {
      * Конструктор для инициализации компонентов игры.
      *
      */
-    public BlackjackGame(Player player, Dealer dealer, GamePrompter prompter,
-                         ConsoleView view, GameRoundFactory roundFactory) {
+    public BlackjackGame(Player player, Dealer dealer, GamePrompter prompter, ConsoleView view, GameRoundFactory roundFactory) {
         this.player = player;
         this.dealer = dealer;
         this.prompter = prompter;

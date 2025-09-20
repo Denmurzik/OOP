@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * Представляет игральную колоду, которая может состоять
- *  из одного или нескольких наборов по 52 карты.
+ * из одного или нескольких наборов по 52 карты.
  */
 public class Deck {
     protected List<Card> cards;
@@ -37,8 +37,8 @@ public class Deck {
     /**
      * Выдает (удаляет и возвращает) одну карту с верха колоды.
      *
-     * @return верхняя карта в колоде
-     * @throws IllegalStateException если в колоде не осталось карт
+     * @return верхняя карта в колоде.
+     * @throws IllegalStateException если в колоде не осталось карт.
      */
     public Card dealCard() {
         return cards.remove(0);
@@ -46,7 +46,8 @@ public class Deck {
 
     /**
      * Возвращает количество оставшихся карт в колоде.
-     * @return количество карт в колоде
+     *
+     * @return количество карт в колоде.
      */
     public int getCardCount() {
         return this.cards.size();

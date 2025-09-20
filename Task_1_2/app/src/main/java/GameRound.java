@@ -8,8 +8,13 @@ public class GameRound {
     private final ConsoleView view;
 
 
-    public Player getPlayer() { return this.player; }
-    public Dealer getDealer() { return this.dealer; }
+    public Player getPlayer() {
+        return this.player;
+    }
+
+    public Dealer getDealer() {
+        return this.dealer;
+    }
 
     /**
      * Конструктор для инициализации компонентов раунда.
@@ -22,6 +27,7 @@ public class GameRound {
         this.prompter = prompter;
         this.view = view;
     }
+
     /**
      * Начальная раздача карт игроку и дилеру.
      */
@@ -44,7 +50,7 @@ public class GameRound {
     public GameResult play() {
         initialDeal();
 
-        view.printCardsDealt(); 
+        view.printCardsDealt();
         showHands(true);
 
         boolean playerHasBlackjack = (player.getScore() == 21);
@@ -71,7 +77,7 @@ public class GameRound {
         while (player.getScore() < 21 && prompter.askPlayerAction() == PlayerAction.HIT) {
             Card newCard = deck.dealCard();
             player.addCard(newCard);
-            view.printPlayerDrawnCard(newCard); 
+            view.printPlayerDrawnCard(newCard);
             showHands(true);
         }
     }
@@ -80,15 +86,15 @@ public class GameRound {
      * Логика хода дилера.
      */
     private void dealerTurn() {
-        view.printDealerTurn(); 
+        view.printDealerTurn();
         Card hiddenCard = dealer.getHand().getCards().get(1);
-        view.printDealerRevealsHiddenCard(hiddenCard); 
+        view.printDealerRevealsHiddenCard(hiddenCard);
         showHands(false);
 
         while (dealer.getScore() < 17) {
             Card newCard = deck.dealCard();
             dealer.addCard(newCard);
-            view.printDealerDrawnCard(newCard); 
+            view.printDealerDrawnCard(newCard);
             showHands(false);
         }
     }
@@ -104,13 +110,13 @@ public class GameRound {
                                              boolean dealerHasBlackjack) {
         showHands(false);
         if (playerHasBlackjack && dealerHasBlackjack) {
-            view.printBlackjackPush(); 
+            view.printBlackjackPush();
             return GameResult.PUSH;
         } else if (playerHasBlackjack) {
-            view.printPlayerBlackjack(); 
+            view.printPlayerBlackjack();
             return GameResult.PLAYER_WINS;
         } else {
-            view.printDealerBlackjack(); 
+            view.printDealerBlackjack();
             return GameResult.DEALER_WINS;
         }
     }
@@ -121,7 +127,7 @@ public class GameRound {
      * @param hideDealerCard true, если нужно скрыть одну карту дилера.
      */
     private void showHands(boolean hideDealerCard) {
-        view.showPlayerHand(player.getHand().toDetailedString(), player.getScore()); 
-        view.showDealerHand(dealer.getHandAsString(hideDealerCard)); 
+        view.showPlayerHand(player.getHand().toDetailedString(), player.getScore());
+        view.showDealerHand(dealer.getHandAsString(hideDealerCard));
     }
 }

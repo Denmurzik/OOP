@@ -86,7 +86,7 @@ public class ConsoleView {
      * Отображает текущую руку и счет игрока.
      *
      * @param handDetails Строковое представление руки.
-     * @param score Текущий счет.
+     * @param score       Текущий счет.
      */
     public void showPlayerHand(String handDetails, int score) {
         System.out.println("    Ваши карты: " + handDetails + " ⇒ " + score);
