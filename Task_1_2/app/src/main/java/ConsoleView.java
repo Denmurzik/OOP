@@ -75,6 +75,7 @@ public class ConsoleView {
 
     /**
      * Показывает, какую карту вытянул дилер.
+     *
      * @param card Вытянутая карта.
      */
     public void printDealerDrawnCard(Card card) {

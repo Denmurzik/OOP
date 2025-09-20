@@ -4,22 +4,26 @@ public class GameRound {
     private final Player player;
     private final Dealer dealer;
     private final Deck deck;
-    private final GamePrompter prompter; // <-- Вместо Scanner
-    private final ConsoleView view;     // <-- Наш объект для вывода
+    private final GamePrompter prompter;
+    private final ConsoleView view;
 
 
     public Player getPlayer() { return this.player; }
     public Dealer getDealer() { return this.dealer; }
 
-
+    /**
+     * Конструктор для инициализации компонентов раунда.
+     */
     public GameRound(Player player, Dealer dealer, Deck deck, GamePrompter prompter, ConsoleView view) {
         this.player = player;
         this.dealer = dealer;
         this.deck = deck;
-        this.prompter = prompter; // <-- Сохраняем prompter
-        this.view = view;         // <-- Сохраняем view
+        this.prompter = prompter;
+        this.view = view;
     }
-
+    /**
+     * Начальная раздача карт игроку и дилеру.
+     */
     public void initialDeal() {
         deck.shuffle();
         player.clearHand();
@@ -31,6 +35,10 @@ public class GameRound {
         dealer.addCard(deck.dealCard());
     }
 
+    /**
+     * Основной игровой цикл раунда.
+     * @return результат раунда.
+     */
     public GameResult play() {
         initialDeal();
 
@@ -53,6 +61,9 @@ public class GameRound {
         return WinnerEvaluator.determineWinner(player, dealer);
     }
 
+    /**
+     * Логика хода игрока.
+     */
     private void playerTurn() {
         view.printPlayerTurnHeader();
         while (player.getScore() < 21 && prompter.askPlayerAction() == PlayerAction.HIT) {
@@ -63,6 +74,9 @@ public class GameRound {
         }
     }
 
+    /**
+     * Логика хода дилера.
+     */
     private void dealerTurn() {
         view.printDealerTurn(); 
         Card hiddenCard = dealer.getHand().getCards().get(1);
@@ -77,6 +91,13 @@ public class GameRound {
         }
     }
 
+    /**
+     * Обрабатывает ситуацию, когда у игрока или дилера блэкджек.
+     *
+     * @param playerHasBlackjack true, если у игрока блэкджек.
+     * @param dealerHasBlackjack true, если у дилера блэкджек.
+     * @return результат раунда.
+     */
     private GameResult handleBlackjackResult(boolean playerHasBlackjack, boolean dealerHasBlackjack) {
         showHands(false);
         if (playerHasBlackjack && dealerHasBlackjack) {
@@ -91,6 +112,11 @@ public class GameRound {
         }
     }
 
+    /**
+     * Отображает руки игрока и дилера.
+     *
+     * @param hideDealerCard true, если нужно скрыть одну карту дилера.
+     */
     private void showHands(boolean hideDealerCard) {
         view.showPlayerHand(player.getHand().toDetailedString(), player.getScore()); 
         view.showDealerHand(dealer.getHandAsString(hideDealerCard)); 

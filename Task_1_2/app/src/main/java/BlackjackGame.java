@@ -9,7 +9,12 @@ public class BlackjackGame {
     private int playerWins;
     private int dealerWins;
 
-    public BlackjackGame(Player player, Dealer dealer, GamePrompter prompter, ConsoleView view, GameRoundFactory roundFactory) {
+    /**
+     * Конструктор для инициализации компонентов игры.
+     *
+     */
+    public BlackjackGame(Player player, Dealer dealer, GamePrompter prompter,
+                         ConsoleView view, GameRoundFactory roundFactory) {
         this.player = player;
         this.dealer = dealer;
         this.prompter = prompter;
