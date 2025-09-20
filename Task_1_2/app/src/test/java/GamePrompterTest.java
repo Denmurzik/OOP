@@ -2,7 +2,9 @@ import java.util.Scanner;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GamePrompterTest {
@@ -46,7 +48,7 @@ class GamePrompterTest {
 
     @Test
     void askForNumberOfDecks_whenInputIsValid_returnsNumber() {
-        String simulatedInput = "4"; // Корректный ввод
+        String simulatedInput = "4";
         Scanner testScanner = new Scanner(simulatedInput);
         GamePrompter prompter = new GamePrompter(testScanner, new SilentView());
 
@@ -57,7 +59,7 @@ class GamePrompterTest {
 
     @Test
     void askForNumberOfDecks_whenInputIsInvalidThenValid_returnsValidNumber() {
-        String simulatedInput = "abc\n-5\n0\n2\n"; // \n - это перенос строки
+        String simulatedInput = "abc\n-5\n0\n2\n"; //
         Scanner testScanner = new Scanner(simulatedInput);
         GamePrompter prompter = new GamePrompter(testScanner, new SilentView());
 
