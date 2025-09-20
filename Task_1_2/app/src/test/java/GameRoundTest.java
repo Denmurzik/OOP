@@ -26,8 +26,10 @@ class GameRoundTest {
 
         gameRound.initialDeal();
 
-        assertEquals(2, player.getHand().getCards().size(), "У игрока должно быть 2 карты.");
-        assertEquals(2, dealer.getHand().getCards().size(), "У дилера должно быть 2 карты.");
+        assertEquals(2, player.getHand().getCards().size(),
+                "У игрока должно быть 2 карты.");
+        assertEquals(2, dealer.getHand().getCards().size(),
+                "У дилера должно быть 2 карты.");
     }
 
     @Test

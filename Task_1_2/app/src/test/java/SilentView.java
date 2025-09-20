@@ -29,7 +29,7 @@ public class SilentView extends ConsoleView {
     /**
      * Создаёт SilentView.
      *
-     * @param round
+     * @param round номер раунда
      */
     @Override
     public void printRoundHeader(int round) {
@@ -55,7 +55,7 @@ public class SilentView extends ConsoleView {
     /**
      * Создаёт SilentView.
      *
-     * @param card
+     * @param card карта
      */
     @Override
     public void printPlayerDrawnCard(Card card) {
@@ -73,7 +73,7 @@ public class SilentView extends ConsoleView {
     /**
      * Создаёт SilentView.
      *
-     * @param card
+     * @param card карта
      */
     @Override
     public void printDealerRevealsHiddenCard(Card card) {
@@ -83,7 +83,7 @@ public class SilentView extends ConsoleView {
     /**
      * Создаёт SilentView.
      *
-     * @param card
+     * @param card карта
      */
     @Override
     public void printDealerDrawnCard(Card card) {
@@ -93,8 +93,8 @@ public class SilentView extends ConsoleView {
     /**
      * Создаёт SilentView.
      *
-     * @param handDetails
-     * @param score
+     * @param handDetails строковое представление руки
+     * @param score текущий счёт
      */
     @Override
     public void showPlayerHand(String handDetails, int score) {
@@ -104,7 +104,7 @@ public class SilentView extends ConsoleView {
     /**
      * Создаёт SilentView.
      *
-     * @param handDetails
+     * @param handDetails строковое представление руки
      */
     @Override
     public void showDealerHand(String handDetails) {
@@ -178,8 +178,8 @@ public class SilentView extends ConsoleView {
     /**
      * Создаёт SilentView.
      *
-     * @param playerWins
-     * @param dealerWins
+     * @param playerWins количество побед игрока
+     * @param dealerWins количество побед дилера
      */
     @Override
     public void printOverallScore(int playerWins, int dealerWins) {
