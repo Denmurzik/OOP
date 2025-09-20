@@ -44,6 +44,10 @@ public class Deck {
         return cards.remove(0);
     }
 
+    /**
+     * Возвращает количество оставшихся карт в колоде.
+     * @return количество карт в колоде
+     */
     public int getCardCount() {
         return this.cards.size();
     }

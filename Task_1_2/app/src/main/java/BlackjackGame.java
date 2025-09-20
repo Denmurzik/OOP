@@ -86,10 +86,16 @@ public class BlackjackGame {
         view.printOverallScore(playerWins, dealerWins);
     }
 
+    /**
+     * Возвращает количество побед игрока.
+     */
     public int getPlayerWins() {
         return playerWins;
     }
 
+    /**
+     * Возвращает количество побед дилера.
+     */
     public int getDealerWins() {
         return dealerWins;
     }
