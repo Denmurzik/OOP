@@ -6,19 +6,22 @@ import java.util.Scanner;
  */
 public class GamePrompter {
     private final Scanner scanner;
-    ConsoleView view = new ConsoleView();
+    private final ConsoleView view; // <-- Больше не создает, а получает
+
     /**
      * Создает новый prompter с указанным сканером.
      *
      * @param scanner Сканер для чтения ввода.
      */
-    public GamePrompter(Scanner scanner) {
+    public GamePrompter(Scanner scanner, ConsoleView view) { // <-- Принимает в конструкторе
         this.scanner = scanner;
+        this.view = view;
     }
 
     /**
      * Спрашивает у пользователя количество колод и возвращает корректное значение.
      * Метод будет повторять запрос до тех пор, пока не будет введено положительное число.
+     *
      * @return Количество колод, выбранное пользователем.
      */
     public int askForNumberOfDecks() {
@@ -38,6 +41,7 @@ public class GamePrompter {
 
     /**
      * Спрашивает у пользователя, хочет ли он сыграть еще один раунд.
+     *
      * @return true, если пользователь ввел "1", иначе false.
      */
     public boolean askToPlayAgain() {
@@ -48,6 +52,7 @@ public class GamePrompter {
 
     /**
      * Спрашивает у игрока его ход.
+     *
      * @return PlayerAction.HIT, если игрок ввел "1", иначе PlayerAction.STAND.
      */
     public PlayerAction askPlayerAction() {

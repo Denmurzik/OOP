@@ -5,5 +5,6 @@ public class FakeGameRound extends GameRound {
         super(null, null, null, null, null);
         this.resultToReturn = result;
     }
-    @Override public GameResult play() { return this.resultToReturn; }
+    @Override public GameResult play() {
+        return this.resultToReturn; }
 }

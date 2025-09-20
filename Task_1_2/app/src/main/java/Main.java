@@ -16,8 +16,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         ConsoleView view = new ConsoleView();
-        GamePrompter prompter = new GamePrompter(scanner);
-
+        GamePrompter prompter = new GamePrompter(scanner, view);
         GameRoundFactory roundFactory = new GameRoundFactory();
 
         BlackjackGame game = new BlackjackGame(player, dealer, prompter, view, roundFactory);

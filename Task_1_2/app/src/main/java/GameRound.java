@@ -14,7 +14,8 @@ public class GameRound {
     /**
      * Конструктор для инициализации компонентов раунда.
      */
-    public GameRound(Player player, Dealer dealer, Deck deck, GamePrompter prompter, ConsoleView view) {
+    public GameRound(Player player, Dealer dealer, Deck deck,
+                     GamePrompter prompter, ConsoleView view) {
         this.player = player;
         this.dealer = dealer;
         this.deck = deck;
@@ -37,6 +38,7 @@ public class GameRound {
 
     /**
      * Основной игровой цикл раунда.
+     *
      * @return результат раунда.
      */
     public GameResult play() {
@@ -98,7 +100,8 @@ public class GameRound {
      * @param dealerHasBlackjack true, если у дилера блэкджек.
      * @return результат раунда.
      */
-    private GameResult handleBlackjackResult(boolean playerHasBlackjack, boolean dealerHasBlackjack) {
+    private GameResult handleBlackjackResult(boolean playerHasBlackjack,
+                                             boolean dealerHasBlackjack) {
         showHands(false);
         if (playerHasBlackjack && dealerHasBlackjack) {
             view.printBlackjackPush(); 

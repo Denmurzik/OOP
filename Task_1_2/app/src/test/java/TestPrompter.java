@@ -11,11 +11,13 @@ public class TestPrompter extends GamePrompter {
 
     /**
      * Основной конструктор для полного контроля.
+     *
      * @param playAgain Ответ на вопрос "играть ли снова?".
-     * @param actions Последовательность ходов игрока (HIT/STAND).
+     * @param actions   Последовательность ходов игрока (HIT/STAND).
      */
     public TestPrompter(boolean playAgain, PlayerAction... actions) {
-        super(null); // Scanner не нужен, передаем null
+        // ИСПРАВЛЕНИЕ ЗДЕСЬ: передаем два null, один для Scanner, второй для ConsoleView
+        super(null, null);
         this.shouldPlayAgain = playAgain;
         this.actionsToReturn = Arrays.asList(actions);
     }
@@ -24,7 +26,7 @@ public class TestPrompter extends GamePrompter {
      * Упрощенный конструктор для тестов, где важен только ответ "играть ли снова".
      */
     public TestPrompter(boolean playAgain) {
-        this(playAgain, PlayerAction.STAND); // По умолчанию игрок всегда пасует
+        this(playAgain, PlayerAction.STAND);
     }
 
     /**
@@ -32,7 +34,6 @@ public class TestPrompter extends GamePrompter {
      */
     @Override
     public boolean askToPlayAgain() {
-        // Возвращает тот ответ, который мы задали в конструкторе
         return this.shouldPlayAgain;
     }
 

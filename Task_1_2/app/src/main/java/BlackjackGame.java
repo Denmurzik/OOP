@@ -77,7 +77,7 @@ public class BlackjackGame {
                 }
                 dealerWins++;
                 break;
-            case PUSH:
+            default:
                 if (player.getScore() != 21) {
                     view.printPush();
                 }
@@ -88,6 +88,8 @@ public class BlackjackGame {
 
     /**
      * Возвращает количество побед игрока.
+     *
+     * @return количество побед игрока.
      */
     public int getPlayerWins() {
         return playerWins;
@@ -95,6 +97,8 @@ public class BlackjackGame {
 
     /**
      * Возвращает количество побед дилера.
+     *
+     * @return количество побед дилера.
      */
     public int getDealerWins() {
         return dealerWins;
