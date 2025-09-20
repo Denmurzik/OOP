@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * имитация ввода пользователя.
+ * Имитация ввода пользователя.
  */
 public class TestPrompter extends GamePrompter {
     private final List<PlayerAction> actionsToReturn;

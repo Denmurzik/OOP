@@ -1,4 +1,6 @@
-
+/**
+ * Класс, управляющий логикой одного раунда игры в блэкджек.
+ */
 public class GameRound {
 
     private final Player player;

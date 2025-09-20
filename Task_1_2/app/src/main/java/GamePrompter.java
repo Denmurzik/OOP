@@ -34,6 +34,7 @@ public class GamePrompter {
                     return decks;
                 }
             } catch (NumberFormatException e) {
+                // Игнорируем и повторяем запрос
             }
             view.printInvalidNumberOfDecks();
         }
