@@ -10,13 +10,6 @@ public class Deck {
     private List<Card> cards;
 
     /**
-     * Создает стандартную колоду из одного 52-карточного набора.
-     */
-    public Deck() {
-        this(1);
-    }
-
-    /**
      * Создает колоду, состоящую из указанного количества 52-карточных наборов.
      *
      * @param numberOfDecks количество 52-карточных наборов для включения в колоду
@@ -48,9 +41,10 @@ public class Deck {
      * @throws IllegalStateException если в колоде не осталось карт
      */
     public Card dealCard() {
-        if (cards.isEmpty()) {
-            throw new IllegalStateException("Нет карт в колоде");
-        }
         return cards.remove(0);
+    }
+
+    public int getCardCount() {
+        return this.cards.size();
     }
 }
