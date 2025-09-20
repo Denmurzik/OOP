@@ -106,7 +106,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E()" class="member-name-link">Player</a>()</code></div>
 <div class="col-last even-row-color">
-<div class="block">Создает нового игрока с именем по умолчанию.</div>
+<div class="block">Создает нового игрока.</div>
 </div>
 </div>
 </section>
@@ -122,8 +122,8 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#wantsToHit(java.util.Scanner)" class="member-name-link">wantsToHit</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Scanner.html" title="class or interface in java.util" class="external-link">Scanner</a>&nbsp;scanner)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#wantsToHit(java.lang.String)" class="member-name-link">wantsToHit</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;input)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Запрашивает у пользователя, хочет ли он взять еще одну карту ("hit").</div>
 </div>
@@ -151,7 +151,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;()">
 <h3>Player</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Player</span>()</div>
-<div class="block">Создает нового игрока с именем по умолчанию.</div>
+<div class="block">Создает нового игрока.</div>
 </section>
 </li>
 </ul>
@@ -163,13 +163,13 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="wantsToHit(java.util.Scanner)">
+<section class="detail" id="wantsToHit(java.lang.String)">
 <h3>wantsToHit</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">wantsToHit</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Scanner.html" title="class or interface in java.util" class="external-link">Scanner</a>&nbsp;scanner)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">wantsToHit</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;input)</span></div>
 <div class="block">Запрашивает у пользователя, хочет ли он взять еще одну карту ("hit").</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>scanner</code> - объект Scanner для чтения ввода из консоли.</dd>
+<dd><code>input</code> - ввод пользователя с консоли</dd>
 <dt>Returns:</dt>
 <dd><code>true</code>, если игрок хочет взять карту (ввел '1'), иначе <code>false</code></dd>
 </dl>
