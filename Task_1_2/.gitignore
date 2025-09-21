@@ -8,6 +8,8 @@ jar
 gradle
 *.bat
 *.properties
+Task_1_2/app/build
+
 
 .idea
 !gradle/wrapper/gradle-wrapper.jar
