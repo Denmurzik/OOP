@@ -1,7 +1,6 @@
+import java.util.List;
 import model.Card;
 import model.Deck;
-
-import java.util.List;
 
 /**
  * Тестовый класс-заглушка для колоды карт.

@@ -1,11 +1,10 @@
 package model;
 
-import model.enums.Rank;
-import model.enums.Suit;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import model.enums.Rank;
+import model.enums.Suit;
 
 /**
  * Представляет игральную колоду, которая может состоять

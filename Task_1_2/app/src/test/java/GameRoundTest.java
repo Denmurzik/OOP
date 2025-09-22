@@ -3,6 +3,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import core.GameRound;
+import java.util.Arrays;
 import model.Card;
 import model.Deck;
 import model.enums.GameResult;
@@ -15,8 +16,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ui.ConsoleView;
 import ui.GamePrompter;
-
-import java.util.Arrays;
 
 class GameRoundTest {
 
