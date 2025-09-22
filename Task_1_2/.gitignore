@@ -3,19 +3,20 @@
 
 # Ignore Gradle build output directory
 build
-Task_1_2/docs/
+docs/
 jar
-
+gradle
 *.bat
-
 *.properties
+Task_1_2/app/build
+
 
 .idea
-
+!gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### IntelliJ IDEA ##
+### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
