@@ -1,10 +1,13 @@
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import model.enums.PlayerAction;
 import org.junit.jupiter.api.Test;
 import ui.GamePrompter;
 
 import java.util.Scanner;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class GamePrompterTest {
 

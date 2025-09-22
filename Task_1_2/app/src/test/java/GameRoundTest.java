@@ -1,3 +1,7 @@
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import core.GameRound;
 import model.Card;
 import model.Deck;
@@ -13,8 +17,6 @@ import ui.ConsoleView;
 import ui.GamePrompter;
 
 import java.util.Arrays;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class GameRoundTest {
 

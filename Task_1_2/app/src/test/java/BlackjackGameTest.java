@@ -1,3 +1,5 @@
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import core.BlackjackGame;
 import logic.GameRoundFactory;
 import model.enums.GameResult;
@@ -7,8 +9,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ui.ConsoleView;
 import ui.GamePrompter;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BlackjackGameTest {
 
