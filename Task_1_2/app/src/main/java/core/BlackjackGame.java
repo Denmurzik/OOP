@@ -1,3 +1,13 @@
+package core;
+
+import logic.GameRoundFactory;
+import model.Deck;
+import model.enums.GameResult;
+import model.participant.Dealer;
+import model.participant.Player;
+import ui.ConsoleView;
+import ui.GamePrompter;
+
 /**
  * Класс, управляющий логикой игры в блэкджек.
  * Отвечает за инициализацию компонентов игры, управление раундами и подсчетом очков.
@@ -55,13 +65,13 @@ public class BlackjackGame {
     }
 
     /**
-     * Обновляет счет и отображает результат раунда через ConsoleView.
+     * Обновляет счет и отображает результат раунда через ui.ConsoleView.
      *
      * @param result Итог раунда.
      */
     private void updateScoreAndDisplayResult(GameResult result) {
         switch (result) {
-            case PLAYER_WINS:
+            case GameResult.PLAYER_WINS:
                 if (player.getScore() != 21) {
                     if (dealer.isBusted()) {
                         view.printDealerBust();
@@ -71,7 +81,7 @@ public class BlackjackGame {
                 }
                 playerWins++;
                 break;
-            case DEALER_WINS:
+            case GameResult.DEALER_WINS:
                 if (dealer.getScore() != 21) {
                     if (player.isBusted()) {
                         view.printPlayerBust();

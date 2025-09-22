@@ -4,7 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Scanner;
 
+import model.enums.PlayerAction;
 import org.junit.jupiter.api.Test;
+import ui.GamePrompter;
 
 class GamePrompterTest {
 

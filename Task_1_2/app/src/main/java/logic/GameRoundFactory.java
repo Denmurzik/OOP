@@ -1,3 +1,12 @@
+package logic;
+
+import core.GameRound;
+import model.Deck;
+import model.participant.Dealer;
+import model.participant.Player;
+import ui.ConsoleView;
+import ui.GamePrompter;
+
 /**
  * Создаёт раунд игры.
  */

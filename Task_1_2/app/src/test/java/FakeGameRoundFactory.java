@@ -1,3 +1,12 @@
+import core.GameRound;
+import logic.GameRoundFactory;
+import model.Deck;
+import model.enums.GameResult;
+import model.participant.Dealer;
+import model.participant.Player;
+import ui.ConsoleView;
+import ui.GamePrompter;
+
 /**
  * Фабрика для создания фиктивных игровых раундов с предопределенным результатом.
  */

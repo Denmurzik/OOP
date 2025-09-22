@@ -1,5 +1,8 @@
+import core.GameRound;
+import model.enums.GameResult;
+
 /**
- * A fake implementation of GameRound for testing purposes.
+ * A fake implementation of core.GameRound for testing purposes.
  */
 public class FakeGameRound extends GameRound {
     private final GameResult resultToReturn;

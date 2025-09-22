@@ -1,3 +1,7 @@
+package ui;
+
+import model.enums.PlayerAction;
+
 import java.util.Scanner;
 
 /**
@@ -6,14 +10,14 @@ import java.util.Scanner;
  */
 public class GamePrompter {
     private final Scanner scanner;
-    private final ConsoleView view; // <-- Больше не создает, а получает
+    private final ConsoleView view;
 
     /**
      * Создает новый prompter с указанным сканером.
      *
      * @param scanner Сканер для чтения ввода.
      */
-    public GamePrompter(Scanner scanner, ConsoleView view) { // <-- Принимает в конструкторе
+    public GamePrompter(Scanner scanner, ConsoleView view) {
         this.scanner = scanner;
         this.view = view;
     }
@@ -34,7 +38,6 @@ public class GamePrompter {
                     return decks;
                 }
             } catch (NumberFormatException e) {
-                // Игнорируем и повторяем запрос
             }
             view.printInvalidNumberOfDecks();
         }
@@ -54,7 +57,7 @@ public class GamePrompter {
     /**
      * Спрашивает у игрока его ход.
      *
-     * @return PlayerAction.HIT, если игрок ввел "1", иначе PlayerAction.STAND.
+     * @return model.enums.PlayerAction.HIT, если игрок ввел "1", иначе model.enums.PlayerAction.STAND.
      */
     public PlayerAction askPlayerAction() {
         view.promptPlayerAction();

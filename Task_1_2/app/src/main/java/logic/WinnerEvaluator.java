@@ -1,3 +1,9 @@
+package logic;
+
+import model.enums.GameResult;
+import model.participant.Dealer;
+import model.participant.Player;
+
 /**
  * Утилитный класс для определения победителя в раунде Блэкджека.
  */
@@ -8,7 +14,7 @@ public class WinnerEvaluator {
      *
      * @param player Игрок
      * @param dealer Дилер
-     * @return GameResult, указывающий на исход раунда (победа игрока, победа дилера или ничья).
+     * @return model.enums.GameResult, указывающий на исход раунда (победа игрока, победа дилера или ничья).
      */
     public static GameResult determineWinner(Player player, Dealer dealer) {
         int playerScore = player.getScore();

@@ -1,3 +1,10 @@
+import core.BlackjackGame;
+import logic.GameRoundFactory;
+import model.participant.Dealer;
+import model.participant.Player;
+import ui.ConsoleView;
+import ui.GamePrompter;
+
 import java.util.Scanner;
 
 /**

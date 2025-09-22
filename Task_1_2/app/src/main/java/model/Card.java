@@ -1,3 +1,8 @@
+package model;
+
+import model.enums.Rank;
+import model.enums.Suit;
+
 /**
  * Представляет одну игральную карту, имеющую ранг и масть.
  */
@@ -8,8 +13,8 @@ public class Card {
     /**
      * Создает карту с заданным рангом и мастью.
      *
-     * @param rank ранг карты (например, {@code Rank.ACE})
-     * @param suit масть карты (например, {@code Suit.SPADES})
+     * @param rank ранг карты (например, {@code model.enums.Rank.ACE})
+     * @param suit масть карты (например, {@code model.enums.Suit.SPADES})
      */
     public Card(Rank rank, Suit suit) {
         this.rank = rank;

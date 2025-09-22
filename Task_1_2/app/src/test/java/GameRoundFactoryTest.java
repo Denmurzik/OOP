@@ -1,6 +1,8 @@
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import core.GameRound;
+import logic.GameRoundFactory;
 import org.junit.jupiter.api.Test;
 
 class GameRoundFactoryTest {
@@ -11,8 +13,8 @@ class GameRoundFactoryTest {
         GameRound gameRound = factory.create(null, null,
                 null, null, null);
 
-        assertNotNull(gameRound, "Фабрика должна создавать не-null объект GameRound.");
+        assertNotNull(gameRound, "Фабрика должна создавать не-null объект core.GameRound.");
         assertInstanceOf(GameRound.class, gameRound,
-                "Созданный объект должен быть экземпляром GameRound.");
+                "Созданный объект должен быть экземпляром core.GameRound.");
     }
 }

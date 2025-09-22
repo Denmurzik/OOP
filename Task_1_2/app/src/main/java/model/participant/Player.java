@@ -1,6 +1,8 @@
+package model.participant;
+
 /**
  * Представляет игрока-пользователя в игре Блэкджек.
- * а логика ходов управляется извне (классами GameRound и GamePrompter).
+ * а логика ходов управляется извне (классами core.GameRound и ui.GamePrompter).
  */
 public class Player extends Participant {
 

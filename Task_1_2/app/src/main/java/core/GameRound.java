@@ -1,3 +1,16 @@
+package core;
+
+import model.Deck;
+import model.Card;
+import model.participant.Dealer;
+import model.participant.Player;
+import ui.ConsoleView;
+import ui.GamePrompter;
+import model.enums.GameResult;
+import logic.WinnerEvaluator;
+import model.enums.PlayerAction;
+
+
 /**
  * Класс, управляющий логикой одного раунда игры в блэкджек.
  */

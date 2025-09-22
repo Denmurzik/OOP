@@ -1,3 +1,9 @@
+package model;
+
+import model.enums.Suit;
+import model.enums.Rank;
+
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

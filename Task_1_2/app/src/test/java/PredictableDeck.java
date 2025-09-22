@@ -1,3 +1,6 @@
+import model.Card;
+import model.Deck;
+
 import java.util.List;
 
 /**

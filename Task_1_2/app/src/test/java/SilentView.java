@@ -1,3 +1,6 @@
+import model.Card;
+import ui.ConsoleView;
+
 /**
  * без вывода в консоль.
  */

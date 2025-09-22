@@ -4,8 +4,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 
+import core.GameRound;
+import model.Card;
+import model.Deck;
+import model.enums.GameResult;
+import model.enums.PlayerAction;
+import model.enums.Rank;
+import model.enums.Suit;
+import model.participant.Dealer;
+import model.participant.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ui.ConsoleView;
+import ui.GamePrompter;
 
 class GameRoundTest {
 
@@ -104,4 +115,25 @@ class GameRoundTest {
         assertEquals(GameResult.DEALER_WINS, result);
         assertEquals(21, dealer.getScore());
     }
+
+    @Test
+    void playWhenPlayerOverTake_returnsDealerWins() {
+        Deck predictableDeck = new PredictableDeck(Arrays.asList(
+                new Card(Rank.TEN, Suit.SPADES),    // Игрок: 10
+                new Card(Rank.TEN, Suit.HEARTS),    // Дилер: 10
+                new Card(Rank.FIVE, Suit.SPADES),  // Игрок: 10 + 5 = 15
+                new Card(Rank.SIX, Suit.HEARTS),    // Дилер: 10 + 6 = 16 (обязан брать)
+                new Card(Rank.TWO, Suit.CLUBS),     // Карта для добора дилером -> 16 + 2 = 18
+                new Card(Rank.THREE, Suit.CLUBS),    // 15 + 3 = 18
+                new Card(Rank.FOUR, Suit.CLUBS)   // 18 + 4 = 22
+        ));
+        GamePrompter prompter = new TestPrompter(false, PlayerAction.HIT);
+        GameRound gameRound = new GameRound(player, dealer, predictableDeck, prompter, silentView);
+
+        GameResult result = gameRound.play();
+
+        assertEquals(GameResult.DEALER_WINS, result);
+
+    }
+
 }

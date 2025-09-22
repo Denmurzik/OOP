@@ -1,3 +1,8 @@
+package model.participant;
+
+import model.Card;
+import model.Hand;
+
 /**
  * Представляет общего участника игры в Блэкджек, у которого есть рука карт.
  * Этот класс служит базовым для {@link Player} и {@link Dealer}.
