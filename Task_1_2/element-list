@@ -1,1 +1,7 @@
 unnamed package
+core
+logic
+model
+model.enums
+model.participant
+ui
