@@ -1,8 +1,7 @@
 package ui;
 
-import model.enums.PlayerAction;
-
 import java.util.Scanner;
+import model.enums.PlayerAction;
 
 /**
  * Отвечает за взаимодействие с пользователем:
@@ -23,8 +22,10 @@ public class GamePrompter {
     }
 
     /**
-     * Спрашивает у пользователя количество колод и возвращает корректное значение.
-     * Метод будет повторять запрос до тех пор, пока не будет введено положительное число.
+     * Спрашивает у пользователя количество колод
+     * и возвращает корректное значение.
+     * Метод будет повторять запрос до тех пор,
+     * пока не будет введено положительное число.
      *
      * @return Количество колод, выбранное пользователем.
      */
@@ -38,6 +39,7 @@ public class GamePrompter {
                     return decks;
                 }
             } catch (NumberFormatException e) {
+                // игнор
             }
             view.printInvalidNumberOfDecks();
         }
@@ -57,7 +59,7 @@ public class GamePrompter {
     /**
      * Спрашивает у игрока его ход.
      *
-     * @return model.enums.PlayerAction.HIT, если игрок ввел "1", иначе model.enums.PlayerAction.STAND.
+     * @return model.enums.PlayerAction.HIT.
      */
     public PlayerAction askPlayerAction() {
         view.promptPlayerAction();

@@ -1,8 +1,7 @@
 package model;
 
-import model.enums.Suit;
 import model.enums.Rank;
-
+import model.enums.Suit;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,9 +1,8 @@
 package model;
 
-import model.enums.Rank;
-
 import java.util.ArrayList;
 import java.util.List;
+import model.enums.Rank;
 
 /**
  * Представляет руку карт, принадлежащую участнику игры.

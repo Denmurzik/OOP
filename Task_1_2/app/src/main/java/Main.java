@@ -3,9 +3,9 @@ import logic.GameRoundFactory;
 import model.participant.Dealer;
 import model.participant.Player;
 import ui.ConsoleView;
+import java.util.Scanner;
 import ui.GamePrompter;
 
-import java.util.Scanner;
 
 /**
  * Главный класс приложения, отвечающий за запуск игры Блэкджек.

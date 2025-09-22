@@ -14,7 +14,7 @@ public class WinnerEvaluator {
      *
      * @param player Игрок
      * @param dealer Дилер
-     * @return model.enums.GameResult, указывающий на исход раунда (победа игрока, победа дилера или ничья).
+     * @return model.enums.GameResult, указывающий на исход раунда.
      */
     public static GameResult determineWinner(Player player, Dealer dealer) {
         int playerScore = player.getScore();

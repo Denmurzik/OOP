@@ -1,14 +1,14 @@
 package core;
 
-import model.Deck;
+import logic.WinnerEvaluator;
 import model.Card;
+import model.Deck;
+import model.enums.GameResult;
+import model.enums.PlayerAction;
 import model.participant.Dealer;
 import model.participant.Player;
 import ui.ConsoleView;
 import ui.GamePrompter;
-import model.enums.GameResult;
-import logic.WinnerEvaluator;
-import model.enums.PlayerAction;
 
 
 /**
