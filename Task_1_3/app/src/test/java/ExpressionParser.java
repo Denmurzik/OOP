@@ -74,28 +74,35 @@ class ExpressionParserTest {
 
     @Test
     void testThrowsExceptionForMismatchedParentheses() {
-        assertThrows(IllegalArgumentException.class, () -> ExpressionParser.parse("(3 + 2 * x"));
-        assertThrows(IllegalArgumentException.class, () -> ExpressionParser.parse("3 + 2) * x"));
+        assertThrows(IllegalArgumentException.class,
+                () -> ExpressionParser.parse("(3 + 2 * x"));
+        assertThrows(IllegalArgumentException.class,
+                () -> ExpressionParser.parse("3 + 2) * x"));
     }
 
     @Test
     void testThrowsExceptionForInvalidToken() {
-        assertThrows(IllegalArgumentException.class, () -> ExpressionParser.parse("3 # 5"));
+        assertThrows(IllegalArgumentException.class,
+                () -> ExpressionParser.parse("3 # 5"));
     }
 
     @Test
     void testThrowsExceptionForConsecutiveOperators() {
-        assertThrows(IllegalArgumentException.class, () -> ExpressionParser.parse("3 + * 5"));
+        assertThrows(IllegalArgumentException.class,
+                () -> ExpressionParser.parse("3 + * 5"));
     }
 
     @Test
     void testThrowsExceptionForEmptyInput() {
-        assertThrows(IllegalArgumentException.class, () -> ExpressionParser.parse(""));
-        assertThrows(IllegalArgumentException.class, () -> ExpressionParser.parse("   "));
+        assertThrows(IllegalArgumentException.class,
+                () -> ExpressionParser.parse(""));
+        assertThrows(IllegalArgumentException.class,
+                () -> ExpressionParser.parse("   "));
     }
 
     @Test
     void testThrowsExceptionForIncompleteExpression() {
-        assertThrows(IllegalArgumentException.class, () -> ExpressionParser.parse("5 +"));
+        assertThrows(IllegalArgumentException.class,
+                () -> ExpressionParser.parse("5 +"));
     }
 }

@@ -38,10 +38,12 @@ class DivTest {
     @Test
     void testEvalDivisionByZero() {
         Expression divByZero = new Div(number6, zero);
-        assertThrows(ArithmeticException.class, () -> divByZero.eval(Map.of()));
+        assertThrows(ArithmeticException.class,
+                () -> divByZero.eval(Map.of()));
 
         Expression divVarByZero = new Div(variableX, new Sub(variableX, new Number(10)));
-        assertThrows(ArithmeticException.class, () -> divVarByZero.eval(Map.of("x", 10.0)));
+        assertThrows(ArithmeticException.class,
+                () -> divVarByZero.eval(Map.of("x", 10.0)));
     }
 
     @Test
@@ -67,13 +69,13 @@ class DivTest {
     }
 
     @Test
-    void testSimplifyXDividedByOne() {
+    void testSimplifyxDividedByOne() {
         Expression div = new Div(variableX, one);
         assertEquals(variableX, div.simplify());
     }
 
     @Test
-    void testSimplifyXDividedByX() {
+    void testSimplifyxDividedByX() {
         Expression div = new Div(variableX, new Variable("x"));
         assertEquals(one, div.simplify());
 

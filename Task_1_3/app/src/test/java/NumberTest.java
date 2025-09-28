@@ -36,7 +36,8 @@ class NumberTest {
     @Test
     void testSimplify() {
         Number num = new Number(7);
-        assertSame(num, num.simplify(), "Simplify не должен изменять объект Number");
+        assertSame(num, num.simplify(),
+                "Simplify не должен изменять объект Number");
     }
 
     @Test

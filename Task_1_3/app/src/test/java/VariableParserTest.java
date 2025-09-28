@@ -39,24 +39,30 @@ class VariableParserTest {
     @Test
     void testThrowsExceptionForEmptyValues() {
         // Пустые значения
-        assertThrows(IllegalArgumentException.class, () -> VariableParser.parseVariables("x=; y=5"));
+        assertThrows(IllegalArgumentException.class,
+                () -> VariableParser.parseVariables("x=; y=5"));
         // Пустое имя переменной
-        assertThrows(IllegalArgumentException.class, () -> VariableParser.parseVariables("x=5; =5"));
+        assertThrows(IllegalArgumentException.class,
+                () -> VariableParser.parseVariables("x=5; =5"));
     }
 
     @Test
     void testThrowsExceptionForNonNumericValue() {
         // Не число в качестве значения
-        assertThrows(IllegalArgumentException.class, () -> VariableParser.parseVariables("x=abc"));
+        assertThrows(IllegalArgumentException.class,
+                () -> VariableParser.parseVariables("x=abc"));
     }
 
     @Test
     void testThrowsExceptionForInvalidFormat() {
         // Нет разделителя '='
-        assertThrows(IllegalArgumentException.class, () -> VariableParser.parseVariables("x 5"));
+        assertThrows(IllegalArgumentException.class,
+                () -> VariableParser.parseVariables("x 5"));
         // Нет разделителя ';'
-        assertThrows(IllegalArgumentException.class, () -> VariableParser.parseVariables("x=5 y=3"));
+        assertThrows(IllegalArgumentException.class,
+                () -> VariableParser.parseVariables("x=5 y=3"));
         // Нестандартные разделители
-        assertThrows(IllegalArgumentException.class, () -> VariableParser.parseVariables("x=3, y=4"));
+        assertThrows(IllegalArgumentException.class,
+                () -> VariableParser.parseVariables("x=3, y=4"));
     }
 }

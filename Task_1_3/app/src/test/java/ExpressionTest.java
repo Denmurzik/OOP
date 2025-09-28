@@ -108,10 +108,13 @@ class ExpressionTest {
     @Test
     void testInvalidExpressionParsing() {
         // Несогласованные скобки
-        assertThrows(IllegalArgumentException.class, () -> ExpressionParser.parse("(x + 5"));
-        assertThrows(IllegalArgumentException.class, () -> ExpressionParser.parse("x + 5)"));
+        assertThrows(IllegalArgumentException.class,
+                () -> ExpressionParser.parse("(x + 5"));
+        assertThrows(IllegalArgumentException.class,
+                () -> ExpressionParser.parse("x + 5)"));
         // Неверный оператор
-        assertThrows(IllegalArgumentException.class, () -> ExpressionParser.parse("x ++ 5"));
+        assertThrows(IllegalArgumentException.class,
+                () -> ExpressionParser.parse("x ++ 5"));
     }
 
     @Test
@@ -167,16 +170,21 @@ class ExpressionTest {
         Expression e = ExpressionParser.parse("x*y + z/2"); // (x*y) + (z/2)
 
         // Стандартный тест
-        assertEquals(17.0, e.eval(Map.of("x", 3.0, "y", 4.0, "z", 10.0)), 1e-9);
-        assertEquals(4.0, e.eval(Map.of("x", 0.0, "y", 100.0, "z", 8.0)), 1e-9);
+        assertEquals(17.0, e.eval(Map.of("x", 3.0, "y",
+                4.0, "z", 10.0)), 1e-9);
+        assertEquals(4.0, e.eval(Map.of("x", 0.0, "y",
+                100.0, "z", 8.0)), 1e-9);
 
         // Переменные в разном порядке
-        assertEquals(17.0, e.eval(Map.of("z", 10.0, "x", 3.0, "y", 4.0)), 1e-9);
+        assertEquals(17.0, e.eval(Map.of("z", 10.0, "x",
+                3.0, "y", 4.0)), 1e-9);
 
         // Лишние переменные
-        assertEquals(17.0, e.eval(Map.of("x", 3.0, "y", 4.0, "z", 10.0, "w", 100.0)), 1e-9);
+        assertEquals(17.0, e.eval(Map.of("x", 3.0, "y",
+                4.0, "z", 10.0, "w", 100.0)), 1e-9);
 
         // Недостаточно переменных
-        assertThrows(IllegalArgumentException.class, () -> e.eval(Map.of("x", 3.0, "y", 4.0)));
+        assertThrows(IllegalArgumentException.class, () -> e.eval(Map.of("x",
+                3.0, "y", 4.0)));
     }
 }
