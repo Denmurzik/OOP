@@ -9,7 +9,7 @@ docs/
 jar
 
 *.bat
-
+*.properties
 Task_1_2/app/build
 
 
