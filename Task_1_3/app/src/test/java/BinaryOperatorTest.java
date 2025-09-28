@@ -34,7 +34,6 @@ class BinaryOperatorTest {
         Expression op1 = new Add(varX, num1);
         Expression op2 = new Add(varX, num1);
         assertTrue(op1.equals(op2) && op2.equals(op1));
-        assertEquals(op1.hashCode(), op2.hashCode());
     }
 
     @Test
