@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Юнит-тесты специально для класса Sub.
+ * Юнит-тесты класса Sub.
  */
 class SubTest {
 

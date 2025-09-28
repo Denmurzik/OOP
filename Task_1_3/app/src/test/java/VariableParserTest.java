@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Юнит-тесты специально для класса VariableParser.
+ * Юнит-тесты VariableParser.
  */
 class VariableParserTest {
 

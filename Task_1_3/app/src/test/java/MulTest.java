@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * Юнит-тесты специально для класса Mul.
+ * Юнит-тесты класса Mul.
  */
 class MulTest {
 

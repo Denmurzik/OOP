@@ -7,8 +7,7 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Юнит-тесты для абстрактного класса BinaryOperator.
- * Тестирование проводится через его конкретные реализации (Add, Sub).
+ * Юнит-тесты BinaryOperator.
  */
 class BinaryOperatorTest {
 
