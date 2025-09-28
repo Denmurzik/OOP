@@ -80,7 +80,6 @@ class SubTest {
 
     @Test
     void testSimplifyNoChange() {
-        // Вычитание двух разных переменных не упрощается
         Expression subVars = new Sub(new Variable("x"), new Variable("y"));
         Expression simplified = subVars.simplify();
 

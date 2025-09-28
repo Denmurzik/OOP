@@ -33,7 +33,7 @@ public final class Add extends BinaryOperator {
         if (simplifiedLeft instanceof Number && ((Number) simplifiedLeft).getValue() == 0) {
             return simplifiedRight;
         }
-        //  Свертка констант ( 2 + 3 = 5)
+        //  Свертка констант
         if (simplifiedLeft instanceof Number && simplifiedRight instanceof Number) {
             double val1 = ((Number) simplifiedLeft).getValue();
             double val2 = ((Number) simplifiedRight).getValue();

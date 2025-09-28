@@ -16,16 +16,9 @@ public abstract class BinaryOperator extends Expression {
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        // Проверяем, что это один и тот же класс оператора (Add не может быть равен Sub)
         if (obj == null || getClass() != obj.getClass()) return false;
         BinaryOperator that = (BinaryOperator) obj;
-        // Два оператора равны, если их операнды равны
         return left.equals(that.left) && right.equals(that.right);
     }
 
-    @Override
-    public int hashCode() {
-        // Включаем имя класса в хэш, чтобы различать операторы
-        return Objects.hash(left, right, getClass().getName());
-    }
 }

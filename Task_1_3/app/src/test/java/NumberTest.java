@@ -48,7 +48,7 @@ class NumberTest {
     }
 
     @Test
-    void testEqualsAndHashCode() {
+    void testEquals() {
         Number numA = new Number(10.0);
         Number numB = new Number(10.0);
         Number numC = new Number(20.0);
@@ -57,10 +57,8 @@ class NumberTest {
         assertEquals(numA, numA);
 
         assertTrue(numA.equals(numB) && numB.equals(numA));
-        assertEquals(numA.hashCode(), numB.hashCode());
 
         assertNotEquals(numA, numC);
-        assertNotEquals(numA.hashCode(), numC.hashCode());
 
         assertNotEquals(numA, numD);
 

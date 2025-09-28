@@ -25,7 +25,7 @@ public class ExpressionParser {
      */
     public static Expression parse(String expressionString) {
         List<String> tokens = tokenize(expressionString);
-        Queue<String> postfixQueue = shuntingYard(tokens);
+        Queue<String> postfixQueue = postfix(tokens);
         return buildExpressionTree(postfixQueue);
     }
 
@@ -57,7 +57,7 @@ public class ExpressionParser {
     /**
      * Преобразования в постфиксную нотацию.
      */
-    private static Queue<String> shuntingYard(List<String> tokens) {
+    private static Queue<String> postfix(List<String> tokens) {
         Queue<String> outputQueue = new LinkedList<>();
         Stack<String> operatorStack = new Stack<>();
 

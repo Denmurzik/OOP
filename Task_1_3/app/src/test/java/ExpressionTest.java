@@ -118,9 +118,7 @@ class ExpressionTest {
 
     @Test
     void testDirectVariableDerivative() {
-        // Производная переменной по себе
         assertEquals(new Number(1), new Variable("x").derivative("x"));
-        // Производная переменной по другой переменной
         assertEquals(new Number(0), new Variable("x").derivative("y"));
     }
 

@@ -53,7 +53,7 @@ public final class Div extends BinaryOperator {
             return simplifiedLeft;
         }
 
-        // Свертка констант (6 / 3 = 2)
+        // Свертка констант
         if (simplifiedLeft instanceof Number && simplifiedRight instanceof Number) {
             double val1 = ((Number) simplifiedLeft).getValue();
             double val2 = ((Number) simplifiedRight).getValue();

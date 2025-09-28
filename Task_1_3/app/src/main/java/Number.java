@@ -48,8 +48,4 @@ public final class Number extends Expression {
         return Double.compare(number.value, value) == 0;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(value);
-    }
 }

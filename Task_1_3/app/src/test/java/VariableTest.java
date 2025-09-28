@@ -60,23 +60,18 @@ class VariableTest {
     }
 
     @Test
-    void testEqualsAndHashCode() {
+    void testEquals() {
         Variable varA = new Variable("x");
         Variable varB = new Variable("x");
         Variable varC = new Variable("y");
 
-        // Рефлексивность
         assertEquals(varA, varA);
 
-        // Симметричность
         assertTrue(varA.equals(varB) && varB.equals(varA));
-        assertEquals(varA.hashCode(), varB.hashCode());
 
-        // Неравенство
         assertNotEquals(varA, varC);
-        assertNotEquals(varA.hashCode(), varC.hashCode());
 
-        // Сравнение с null и другими типами
+
         assertNotEquals(null, varA);
         assertNotEquals("x", varA);
     }

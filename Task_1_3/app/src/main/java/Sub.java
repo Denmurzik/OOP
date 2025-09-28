@@ -16,7 +16,6 @@ public final class Sub extends BinaryOperator {
 
     @Override
     public Expression derivative(String var) {
-        // Правило: (u - v)' = u' - v' [cite: 9]
         return new Sub(left.derivative(var), right.derivative(var));
     }
 
