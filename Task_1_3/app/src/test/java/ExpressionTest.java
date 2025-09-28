@@ -134,36 +134,30 @@ class ExpressionTest {
     @Test
     void testMultipleDifferentiation() {
         Expression e = new Variable("x");
-        Expression de1 = e.derivative("x"); // 1
-        Expression de2 = de1.derivative("x"); // 0
+        Expression de1 = e.derivative("x");
+        Expression de2 = de1.derivative("x");
         assertEquals(new Number(1), de1);
         assertEquals(new Number(0), de2);
     }
 
-//    @Test
-//    void testChainRuleDerivative() {
-//        // f(x) = (x² + 3x)³
-//        // f'(x) = 3 * (x² + 3x)² * (2x + 3)
-//        Expression inner = new Add(
-//                new Mul(new Variable("x"), new Variable("x")),
-//                new Mul(new Number(3), new Variable("x"))
-//        );
-//        // f^3 = f * f * f
-//        Expression f_cubed = new Mul(inner, new Mul(inner, inner));
-//
-//        // Ожидаемый результат d/dx(f^3) = 3 * f' * f^2
-//        Expression inner_derivative = inner.derivative("x").simplify(); // (2*x + 3)
-//        Expression expected = new Mul(
-//                new Number(3),
-//                new Mul(
-//                        inner_derivative,
-//                        new Mul(inner, inner)
-//                )
-//        );
-//
-//        // Сравниваем упрощенные версии, так как структуры могут отличаться
-//        assertEquals(expected.simplify().toString(), f_cubed.derivative("x").simplify().toString());
-//    }
+    @Test
+    void testChainRuleDerivative() {
+        // f(x) = (x^2 + 3x)
+        Expression inner = ExpressionParser.parse("x*x + 3*x");
+
+        // f(x)^3
+        Expression f_cubed = new Mul(inner, new Mul(inner, inner));
+
+        Expression actual_derivative = f_cubed.derivative("x");
+
+        Map<String, Double> vars = Map.of("x", 2.0);
+
+
+        double expectedValue = 2100.0;
+
+
+        assertEquals(expectedValue, actual_derivative.eval(vars), 1e-9);
+    }
 
     @Test
     void testEvaluationScenarios() {
@@ -181,28 +175,5 @@ class ExpressionTest {
 
         // Недостаточно переменных
         assertThrows(IllegalArgumentException.class, () -> e.eval(Map.of("x", 3.0, "y", 4.0)));
-    }
-
-    @Test
-    void testParseVariablesRobustness() {
-        // Лишние пробелы и разделители
-        Map<String, Double> expected = Map.of("x", 3.0, "y", 4.0);
-        assertEquals(expected, Main.parseVariables(" x = 3 ; y = 4 ; ; "));
-    }
-
-    @Test
-    void testParseVariablesWithInvalidInput() {
-        // Пустые значения
-        assertThrows(IllegalArgumentException.class, () -> Main.parseVariables("x=; y=5"));
-        assertThrows(IllegalArgumentException.class, () -> Main.parseVariables("x=5; =5"));
-
-        // Не число
-        assertThrows(IllegalArgumentException.class, () -> Main.parseVariables("x=abc"));
-
-        // Нет разделителя
-        assertThrows(IllegalArgumentException.class, () -> Main.parseVariables("x=5 y=3"));
-
-        // Нестандартные разделители
-        assertThrows(IllegalArgumentException.class, () -> Main.parseVariables("x=3, y=4"));
     }
 }

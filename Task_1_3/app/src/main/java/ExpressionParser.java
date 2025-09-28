@@ -77,7 +77,7 @@ public class ExpressionParser {
                     outputQueue.add(operatorStack.pop());
                 }
                 if (!operatorStack.isEmpty() && operatorStack.peek().equals("(")) {
-                    operatorStack.pop(); // Выбрасываем открывающую скобку
+                    operatorStack.pop();
                 } else {
                     throw new IllegalArgumentException("Ошибка: несогласованные скобки.");
                 }
