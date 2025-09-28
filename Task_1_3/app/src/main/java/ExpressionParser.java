@@ -1,4 +1,10 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -9,6 +15,7 @@ public class ExpressionParser {
 
     // Map для хранения приоритетов операторов
     private static final Map<String, Integer> PRECEDENCE = new HashMap<>();
+
     static {
         PRECEDENCE.put("-", 1);
         PRECEDENCE.put("+", 1);
@@ -65,8 +72,8 @@ public class ExpressionParser {
             if (isNumber(token) || isVariable(token)) {
                 outputQueue.add(token);
             } else if (isOperator(token)) {
-                while (!operatorStack.isEmpty() && isOperator(operatorStack.peek()) &&
-                        PRECEDENCE.get(operatorStack.peek()) >= PRECEDENCE.get(token)) {
+                while (!operatorStack.isEmpty() && isOperator(operatorStack.peek())
+                        && PRECEDENCE.get(operatorStack.peek()) >= PRECEDENCE.get(token)) {
                     outputQueue.add(operatorStack.pop());
                 }
                 operatorStack.push(token);
@@ -111,23 +118,36 @@ public class ExpressionParser {
             } else if (isOperator(token)) {
                 // Унарный оператор
                 if (token.equals("~")) {
-                    if (stack.isEmpty()) throw new IllegalArgumentException("Неверное выражение.");
+                    if (stack.isEmpty()) {
+                        throw new IllegalArgumentException("Неверное выражение.");
+                    }
                     Expression operand = stack.pop();
                     stack.push(new Sub(new Number(0), operand)); // Представляем ~x как (0 - x)
                     continue;
                 }
 
                 // Бинарные операторы
-                if (stack.size() < 2) throw new IllegalArgumentException("Неверное выражение.");
+                if (stack.size() < 2) {
+                    throw new IllegalArgumentException("Неверное выражение.");
+                }
                 Expression right = stack.pop();
                 Expression left = stack.pop();
 
                 switch (token) {
-                    case "+": stack.push(new Add(left, right)); break;
-                    case "-": stack.push(new Sub(left, right)); break;
-                    case "*": stack.push(new Mul(left, right)); break;
-                    case "/": stack.push(new Div(left, right)); break;
-                    default: throw new IllegalArgumentException("Неизвестный оператор: " + token);
+                    case "+":
+                        stack.push(new Add(left, right));
+                        break;
+                    case "-":
+                        stack.push(new Sub(left, right));
+                        break;
+                    case "*":
+                        stack.push(new Mul(left, right));
+                        break;
+                    case "/":
+                        stack.push(new Div(left, right));
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Неизвестный оператор: " + token);
                 }
             }
         }

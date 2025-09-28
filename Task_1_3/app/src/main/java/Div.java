@@ -37,7 +37,7 @@ public final class Div extends BinaryOperator {
 
         // x / x = 1
         if (simplifiedLeft.equals(simplifiedRight)) {
-            if (simplifiedLeft instanceof Number && ((Number)simplifiedLeft).getValue() == 0) {
+            if (simplifiedLeft instanceof Number && ((Number) simplifiedLeft).getValue() == 0) {
                 return new Div(simplifiedLeft, simplifiedRight);
             }
             return new Number(1);

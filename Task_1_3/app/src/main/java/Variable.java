@@ -19,7 +19,8 @@ public final class Variable extends Expression {
     @Override
     public double eval(Map<String, Double> variables) {
         if (!variables.containsKey(name)) {
-            throw new IllegalArgumentException("Переменная '" + name + "' не найдена в переданном списке.");
+            throw new IllegalArgumentException("Переменная '" + name
+                    + "' не найдена в переданном списке.");
         }
         return variables.get(name);
     }
@@ -45,8 +46,12 @@ public final class Variable extends Expression {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || this.getClass() != obj.getClass()) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || this.getClass() != obj.getClass()) {
+            return false;
+        }
         Variable variable = (Variable) obj;
         return name.equals(variable.name);
     }

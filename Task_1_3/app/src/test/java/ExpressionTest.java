@@ -11,7 +11,8 @@ import java.util.Map;
  */
 class ExpressionTest {
 
-    private final Map<String, Double> vars = Map.of("x", 2.0, "y", 4.0, "z", 5.0);
+    private final Map<String, Double> vars = Map.of("x", 2.0,
+            "y", 4.0, "z", 5.0);
 
     @Test
     void testParsingAndToString() {
@@ -148,9 +149,9 @@ class ExpressionTest {
         Expression inner = ExpressionParser.parse("x*x + 3*x");
 
         // f(x)^3
-        Expression f_cubed = new Mul(inner, new Mul(inner, inner));
+        Expression fCubed = new Mul(inner, new Mul(inner, inner));
 
-        Expression actual_derivative = f_cubed.derivative("x");
+        Expression actualDerivative = fCubed.derivative("x");
 
         Map<String, Double> vars = Map.of("x", 2.0);
 
@@ -158,7 +159,7 @@ class ExpressionTest {
         double expectedValue = 2100.0;
 
 
-        assertEquals(expectedValue, actual_derivative.eval(vars), 1e-9);
+        assertEquals(expectedValue, actualDerivative.eval(vars), 1e-9);
     }
 
     @Test

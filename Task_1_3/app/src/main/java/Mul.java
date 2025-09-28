@@ -29,8 +29,8 @@ public final class Mul extends BinaryOperator {
         Expression simplifiedRight = right.simplify();
 
         // x * 0 = 0 или 0 * x = 0
-        if ((simplifiedLeft instanceof Number && ((Number) simplifiedLeft).getValue() == 0) ||
-                (simplifiedRight instanceof Number && ((Number) simplifiedRight).getValue() == 0)) {
+        if ((simplifiedLeft instanceof Number && ((Number) simplifiedLeft).getValue() == 0)
+                || (simplifiedRight instanceof Number && ((Number) simplifiedRight).getValue() == 0)) {
             return new Number(0);
         }
         // x * 1 = x

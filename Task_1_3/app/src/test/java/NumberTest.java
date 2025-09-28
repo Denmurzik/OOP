@@ -3,8 +3,8 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
 import java.util.Map;
+import org.junit.jupiter.api.Test;
 
 /**
  * Юнит-тесты для класса Number.
