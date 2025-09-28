@@ -2,9 +2,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
 import java.util.Map;
-
+import org.junit.jupiter.api.Test;
 
 /**
  * Юнит-тесты.
@@ -152,9 +151,9 @@ class ExpressionTest {
         Expression inner = ExpressionParser.parse("x*x + 3*x");
 
         // f(x)^3
-        Expression fCubed = new Mul(inner, new Mul(inner, inner));
+        Expression funcCubed = new Mul(inner, new Mul(inner, inner));
 
-        Expression actualDerivative = fCubed.derivative("x");
+        Expression actualDerivative = funcCubed.derivative("x");
 
         Map<String, Double> vars = Map.of("x", 2.0);
 

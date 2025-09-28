@@ -57,7 +57,6 @@ class NumberTest {
         Number numA = new Number(10.0);
         Number numB = new Number(10.0);
         Number numC = new Number(20.0);
-        Number numD = new Number(10.000000001);
 
         assertEquals(numA, numA);
 
@@ -65,6 +64,7 @@ class NumberTest {
 
         assertNotEquals(numA, numC);
 
+        Number numD = new Number(10.000000001);
         assertNotEquals(numA, numD);
 
         assertNotEquals(null, numA);

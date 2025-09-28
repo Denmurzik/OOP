@@ -29,21 +29,24 @@ public final class VariableParser {
 
             String[] keyValue = pair.split("\\s*=\\s*");
             if (keyValue.length != 2) {
-                throw new IllegalArgumentException("Неверный формат пары ключ-значение: " + pair);
+                throw new IllegalArgumentException(
+                        "Неверный формат пары ключ-значение: " + pair);
             }
 
             String varName = keyValue[0].trim();
             String valueStr = keyValue[1].trim();
 
             if (varName.isEmpty() || valueStr.isEmpty()) {
-                throw new IllegalArgumentException("Пустое имя переменной или значение в паре: " + pair);
+                throw new IllegalArgumentException(
+                        "Пустое имя переменной или значение в паре: " + pair);
             }
 
             try {
                 double value = Double.parseDouble(valueStr);
                 variables.put(varName, value);
             } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("Значение переменной не является числом: " + valueStr);
+                throw new IllegalArgumentException(
+                        "Значение переменной не является числом: " + valueStr);
             }
         }
         return variables;
