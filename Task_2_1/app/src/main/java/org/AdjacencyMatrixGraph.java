@@ -1,7 +1,7 @@
 package org;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -10,21 +10,17 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- * Реализация интерфейса Graph с использованием матрицы смежности.
- *
+ * Реализация Graph с использованием списка списков для матрицы смежности.
  * @param <V> Тип данных для вершин.
  */
 public class AdjacencyMatrixGraph<V> implements Graph<V> {
 
-    private int[][] adjacencyMatrix;
+    private final List<List<Integer>> adjacencyMatrix;
     private final List<V> vertices;
     private final Map<V, Integer> vertexIndices;
 
-    /**
-     * Конструктор для создания пустого графа.
-     */
     public AdjacencyMatrixGraph() {
-        this.adjacencyMatrix = new int[0][0];
+        this.adjacencyMatrix = new ArrayList<>();
         this.vertices = new ArrayList<>();
         this.vertexIndices = new HashMap<>();
     }
@@ -36,14 +32,11 @@ public class AdjacencyMatrixGraph<V> implements Graph<V> {
             vertices.add(vertex);
             vertexIndices.put(vertex, newIndex);
 
-            // Увеличиваем размер матрицы
-            int newSize = newIndex + 1;
-            int[][] newMatrix = new int[newSize][newSize];
-            for (int i = 0; i < adjacencyMatrix.length; i++) {
-                System.arraycopy(adjacencyMatrix[i], 0, newMatrix[i],
-                        0, adjacencyMatrix.length);
+            for (List<Integer> row : adjacencyMatrix) {
+                row.add(0);
             }
-            adjacencyMatrix = newMatrix;
+            List<Integer> newRow = new ArrayList<>(Collections.nCopies(newIndex + 1, 0));
+            adjacencyMatrix.add(newRow);
         }
     }
 
@@ -51,37 +44,23 @@ public class AdjacencyMatrixGraph<V> implements Graph<V> {
     public void removeVertex(V vertex) {
         Integer indexToRemove = vertexIndices.get(vertex);
         if (indexToRemove == null) {
-            return; // Вершины нет в графе
+            return;
         }
 
-        int oldSize = vertices.size();
-        int newSize = oldSize - 1;
-
+        int size = vertices.size();
         vertices.remove(indexToRemove.intValue());
         vertexIndices.remove(vertex);
+        adjacencyMatrix.remove(indexToRemove.intValue());
 
-        for (int i = indexToRemove; i < newSize; i++) {
+        for (List<Integer> row : adjacencyMatrix) {
+            row.remove(indexToRemove.intValue());
+        }
+
+        for (int i = indexToRemove; i < size - 1; i++) {
             V v = vertices.get(i);
             vertexIndices.put(v, i);
         }
-
-        int[][] newMatrix = new int[newSize][newSize];
-        for (int i = 0, newI = 0; i < oldSize; i++) {
-            if (i == indexToRemove) {
-                continue;
-            }
-            for (int j = 0, newJ = 0; j < oldSize; j++) {
-                if (j == indexToRemove) {
-                    continue;
-                }
-                newMatrix[newI][newJ] = adjacencyMatrix[i][j];
-                newJ++;
-            }
-            newI++;
-        }
-        adjacencyMatrix = newMatrix;
     }
-
 
     @Override
     public void addEdge(V source, V destination) {
@@ -90,7 +69,8 @@ public class AdjacencyMatrixGraph<V> implements Graph<V> {
 
         int sourceIndex = vertexIndices.get(source);
         int destIndex = vertexIndices.get(destination);
-        adjacencyMatrix[sourceIndex][destIndex] = 1;
+        // Используем get().set() вместо прямого доступа
+        adjacencyMatrix.get(sourceIndex).set(destIndex, 1);
     }
 
     @Override
@@ -98,7 +78,7 @@ public class AdjacencyMatrixGraph<V> implements Graph<V> {
         if (vertexIndices.containsKey(source) && vertexIndices.containsKey(destination)) {
             int sourceIndex = vertexIndices.get(source);
             int destIndex = vertexIndices.get(destination);
-            adjacencyMatrix[sourceIndex][destIndex] = 0;
+            adjacencyMatrix.get(sourceIndex).set(destIndex, 0);
         }
     }
 
@@ -107,8 +87,9 @@ public class AdjacencyMatrixGraph<V> implements Graph<V> {
         List<V> neighbors = new ArrayList<>();
         Integer sourceIndex = vertexIndices.get(vertex);
         if (sourceIndex != null) {
-            for (int j = 0; j < adjacencyMatrix[sourceIndex].length; j++) {
-                if (adjacencyMatrix[sourceIndex][j] == 1) {
+            List<Integer> row = adjacencyMatrix.get(sourceIndex);
+            for (int j = 0; j < row.size(); j++) {
+                if (row.get(j) == 1) {
                     neighbors.add(vertices.get(j));
                 }
             }
@@ -121,34 +102,28 @@ public class AdjacencyMatrixGraph<V> implements Graph<V> {
         return new HashSet<>(vertices);
     }
 
-
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         AdjacencyMatrixGraph<?> that = (AdjacencyMatrixGraph<?>) o;
-        return Objects.equals(vertices, that.vertices)
-                && Arrays.deepEquals(adjacencyMatrix, that.adjacencyMatrix);
+        return Objects.equals(vertices, that.vertices) &&
+                Objects.equals(adjacencyMatrix, that.adjacencyMatrix);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(vertices);
-        result = 31 * result + Arrays.deepHashCode(adjacencyMatrix);
-        return result;
+        return Objects.hash(vertices, adjacencyMatrix);
     }
+
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Матрица смежности:\n");
-        sb.append("Веришины: ").append(vertices).append("\n");
+        sb.append("Вершины: ").append(vertices).append("\n");
         sb.append("Матрица:\n");
-        for (int[] row : adjacencyMatrix) {
-            sb.append("  ").append(Arrays.toString(row)).append("\n");
+        for (List<Integer> row : adjacencyMatrix) {
+            sb.append("  ").append(row).append("\n");
         }
         return sb.toString();
     }

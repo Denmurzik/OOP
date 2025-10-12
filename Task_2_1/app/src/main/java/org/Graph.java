@@ -70,7 +70,7 @@ public interface Graph<V> {
      * @return тот же самый граф.
      * @throws IOException если возникает ошибка при чтении файла.
      */
-    static <V> Graph<V> fromFile(String filePath, Graph<V> graph) throws IOException {
+    default  <V> Graph<V> fromFile(String filePath, Graph<V> graph) throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {

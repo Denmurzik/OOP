@@ -14,22 +14,22 @@ import java.util.Set;
  */
 public class AdjacencyListGraph<V> implements Graph<V> {
 
-    private final Map<V, List<V>> adjacencyList;
+    private final Map<V, List<V>> adjacencyMap;
 
     public AdjacencyListGraph() {
-        this.adjacencyList = new HashMap<>();
+        this.adjacencyMap = new HashMap<>();
     }
 
     @Override
     public void addVertex(V vertex) {
-        adjacencyList.putIfAbsent(vertex, new LinkedList<>());
+        adjacencyMap.putIfAbsent(vertex, new LinkedList<>());
     }
 
     @Override
     public void removeVertex(V vertex) {
-        adjacencyList.remove(vertex);
+        adjacencyMap.remove(vertex);
 
-        for (List<V> neighbors : adjacencyList.values()) {
+        for (List<V> neighbors : adjacencyMap.values()) {
             neighbors.remove(vertex);
         }
     }
@@ -39,26 +39,26 @@ public class AdjacencyListGraph<V> implements Graph<V> {
         addVertex(source);
         addVertex(destination);
 
-        if (!adjacencyList.get(source).contains(destination)) {
-            adjacencyList.get(source).add(destination);
+        if (!adjacencyMap.get(source).contains(destination)) {
+            adjacencyMap.get(source).add(destination);
         }
     }
 
     @Override
     public void removeEdge(V source, V destination) {
-        if (adjacencyList.containsKey(source)) {
-            adjacencyList.get(source).remove(destination);
+        if (adjacencyMap.containsKey(source)) {
+            adjacencyMap.get(source).remove(destination);
         }
     }
 
     @Override
     public List<V> getNeighbors(V vertex) {
-        return adjacencyList.getOrDefault(vertex, new LinkedList<>());
+        return adjacencyMap.getOrDefault(vertex, new LinkedList<>());
     }
 
     @Override
     public Set<V> getAllVertices() {
-        return adjacencyList.keySet();
+        return adjacencyMap.keySet();
     }
 
     @Override
@@ -70,18 +70,18 @@ public class AdjacencyListGraph<V> implements Graph<V> {
             return false;
         }
         AdjacencyListGraph<?> that = (AdjacencyListGraph<?>) o;
-        return Objects.equals(adjacencyList, that.adjacencyList);
+        return Objects.equals(adjacencyMap, that.adjacencyMap);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(adjacencyList);
+        return Objects.hash(adjacencyMap);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Списки смежности:\n");
-        for (Map.Entry<V, List<V>> entry : adjacencyList.entrySet()) {
+        for (Map.Entry<V, List<V>> entry : adjacencyMap.entrySet()) {
             sb.append("  ").append(entry.getKey()).append(" -> ")
                     .append(entry.getValue()).append("\n");
         }

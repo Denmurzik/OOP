@@ -106,7 +106,6 @@ class IncidenceMatrixGraphTest {
         graph.addEdge("A", "B");
         graph.addEdge("A", "C");
         List<String> neighbors = graph.getNeighbors("A");
-        // В HashSet, так как порядок не гарантирован
         assertEquals(Set.of("B", "C"), new HashSet<>(neighbors),
                 "Соседями A должны быть B и C");
         assertEquals(2, neighbors.size(),

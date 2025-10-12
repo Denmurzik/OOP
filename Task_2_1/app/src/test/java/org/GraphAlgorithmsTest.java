@@ -44,7 +44,6 @@ class GraphAlgorithmsTest {
     @Test
     @DisplayName("Сортировка простого направленного ациклического графа")
     void topologicalSortForSimpleDagShouldReturnValidOrder() {
-        // Зависимости: 5->0, 5->2, 4->0, 4->1, 2->3, 3->1
         graph.addEdge("5", "0");
         graph.addEdge("5", "2");
         graph.addEdge("4", "0");

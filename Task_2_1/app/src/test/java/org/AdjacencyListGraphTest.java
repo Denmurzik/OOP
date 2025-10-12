@@ -141,7 +141,7 @@ class AdjacencyListGraphTest {
         graph1.addEdge("A", "B");
 
         Graph<String> graph2 = new AdjacencyListGraph<>();
-        graph2.addEdge("A", "C"); // Другое ребро
+        graph2.addEdge("A", "C");
 
         assertNotEquals(graph1, graph2,
                 "Графы с разной структурой не должны быть равны");
