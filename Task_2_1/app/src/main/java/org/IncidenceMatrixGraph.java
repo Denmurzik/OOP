@@ -72,7 +72,8 @@ public class IncidenceMatrixGraph<V> implements Graph<V> {
             int[][] newMatrix = new int[numVertices][numEdges];
 
             for (int i = 0; i < numVertices - 1; i++) {
-                System.arraycopy(incidenceMatrix[i], 0, newMatrix[i], 0, numEdges);
+                System.arraycopy(incidenceMatrix[i], 0,
+                        newMatrix[i], 0, numEdges);
             }
             incidenceMatrix = newMatrix;
         }
@@ -97,7 +98,8 @@ public class IncidenceMatrixGraph<V> implements Graph<V> {
         int[][] newMatrix = new int[numVertices][numEdges];
 
         for (int i = 0; i < numVertices; i++) {
-            System.arraycopy(incidenceMatrix[i], 0, newMatrix[i], 0, numEdges - 1);
+            System.arraycopy(incidenceMatrix[i], 0,
+                    newMatrix[i], 0, numEdges - 1);
         }
 
         newMatrix[sourceIndex][numEdges - 1] = 1;
@@ -140,7 +142,8 @@ public class IncidenceMatrixGraph<V> implements Graph<V> {
             if (i == indexToRemove) {
                 continue;
             }
-            System.arraycopy(incidenceMatrix[i], 0, newMatrix[newI], 0, numEdges);
+            System.arraycopy(incidenceMatrix[i], 0,
+                    newMatrix[newI], 0, numEdges);
             newI++;
         }
         incidenceMatrix = newMatrix;
@@ -202,12 +205,16 @@ public class IncidenceMatrixGraph<V> implements Graph<V> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         IncidenceMatrixGraph<?> that = (IncidenceMatrixGraph<?>) o;
         // Для сравнения достаточно сравнить множества вершин и ребер
-        return Objects.equals(new HashSet<>(vertices), new HashSet<>(that.vertices)) &&
-                Objects.equals(new HashSet<>(edges), new HashSet<>(that.edges));
+        return Objects.equals(new HashSet<>(vertices), new HashSet<>(that.vertices))
+                && Objects.equals(new HashSet<>(edges), new HashSet<>(that.edges));
     }
 
     @Override
@@ -219,7 +226,8 @@ public class IncidenceMatrixGraph<V> implements Graph<V> {
     public String toString() {
         StringBuilder sb = new StringBuilder("Матрица инцидентности:\n");
         sb.append("Вершины: ").append(vertices).append("\n");
-        sb.append("Рёбра: ").append(edges.stream().map(e -> "(" + e.source + "->" + e.destination + ")").toList()).append("\n");
+        sb.append("Рёбра: ").append(edges.stream().map(e -> "(" + e.source
+                + "->" + e.destination + ")").toList()).append("\n");
         sb.append("Матрица:\n");
         for (int i = 0; i < vertices.size(); i++) {
             sb.append(String.format("%5s: ", vertices.get(i)));
