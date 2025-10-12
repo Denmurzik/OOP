@@ -75,10 +75,14 @@ class AdjacencyListGraphTest {
 
         graph.removeVertex("B");
 
-        assertFalse(graph.getAllVertices().contains("B"), "Вершина B должна быть удалена");
-        assertFalse(graph.getNeighbors("A").contains("B"), "Ребро от A к B должно быть удалено");
-        assertTrue(graph.getNeighbors("C").contains("A"), "Ребро от C к A должно остаться");
-        assertEquals(1, graph.getNeighbors("C").size(), "У С не должно остаться один сосед A");
+        assertFalse(graph.getAllVertices().contains("B"),
+                "Вершина B должна быть удалена");
+        assertFalse(graph.getNeighbors("A").contains("B"),
+                "Ребро от A к B должно быть удалено");
+        assertTrue(graph.getNeighbors("C").contains("A"),
+                "Ребро от C к A должно остаться");
+        assertEquals(1, graph.getNeighbors("C").size(),
+                "У С не должно остаться один сосед A");
 
     }
 
@@ -95,7 +99,8 @@ class AdjacencyListGraphTest {
     @Test
     @DisplayName("Получение соседей для несуществующей вершины возвращает пустой список")
     void getNeighbors_forNonExistentVertex_shouldReturnEmptyList() {
-        assertTrue(graph.getNeighbors("X").isEmpty(), "Список соседей для несуществующей вершины должен быть пустым");
+        assertTrue(graph.getNeighbors("X").isEmpty(),
+                "Список соседей для несуществующей вершины должен быть пустым");
     }
 
     @Test
@@ -105,7 +110,8 @@ class AdjacencyListGraphTest {
         graph.addVertex("B");
         graph.addVertex("C");
         Set<String> vertices = graph.getAllVertices();
-        assertTrue(vertices.containsAll(Set.of("A", "B", "C")), "Множество должно содержать все добавленные вершины");
+        assertTrue(vertices.containsAll(Set.of("A", "B", "C")),
+                "Множество должно содержать все добавленные вершины");
         assertEquals(3, vertices.size(), "Размер множества должен быть 3");
     }
 
@@ -121,7 +127,8 @@ class AdjacencyListGraphTest {
         graph2.addEdge("B", "C");
 
         assertEquals(graph1, graph2, "Графы с одинаковой структурой должны быть равны");
-        assertEquals(graph1.hashCode(), graph2.hashCode(), "Хеш-коды равных графов должны совпадать");
+        assertEquals(graph1.hashCode(), graph2.hashCode(),
+                "Хеш-коды равных графов должны совпадать");
     }
 
     @Test
