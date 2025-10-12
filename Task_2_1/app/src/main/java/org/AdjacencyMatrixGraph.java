@@ -40,7 +40,8 @@ public class AdjacencyMatrixGraph<V> implements Graph<V> {
             int newSize = newIndex + 1;
             int[][] newMatrix = new int[newSize][newSize];
             for (int i = 0; i < adjacencyMatrix.length; i++) {
-                System.arraycopy(adjacencyMatrix[i], 0, newMatrix[i], 0, adjacencyMatrix.length);
+                System.arraycopy(adjacencyMatrix[i], 0, newMatrix[i],
+                        0, adjacencyMatrix.length);
             }
             adjacencyMatrix = newMatrix;
         }
@@ -130,8 +131,8 @@ public class AdjacencyMatrixGraph<V> implements Graph<V> {
             return false;
         }
         AdjacencyMatrixGraph<?> that = (AdjacencyMatrixGraph<?>) o;
-        return Objects.equals(vertices, that.vertices) &&
-                Arrays.deepEquals(adjacencyMatrix, that.adjacencyMatrix);
+        return Objects.equals(vertices, that.vertices)
+                && Arrays.deepEquals(adjacencyMatrix, that.adjacencyMatrix);
     }
 
     @Override

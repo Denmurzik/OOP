@@ -92,8 +92,10 @@ class AdjacencyListGraphTest {
         graph.addEdge("A", "B");
         graph.addEdge("A", "C");
         List<String> neighbors = graph.getNeighbors("A");
-        assertTrue(neighbors.containsAll(List.of("B", "C")), "Соседями A должны быть B и C");
-        assertEquals(2, neighbors.size(), "У вершины A должно быть 2 соседа");
+        assertTrue(neighbors.containsAll(List.of("B", "C")),
+                "Соседями A должны быть B и C");
+        assertEquals(2, neighbors.size(),
+                "У вершины A должно быть 2 соседа");
     }
 
     @Test
@@ -126,7 +128,8 @@ class AdjacencyListGraphTest {
         graph2.addEdge("A", "B");
         graph2.addEdge("B", "C");
 
-        assertEquals(graph1, graph2, "Графы с одинаковой структурой должны быть равны");
+        assertEquals(graph1, graph2,
+                "Графы с одинаковой структурой должны быть равны");
         assertEquals(graph1.hashCode(), graph2.hashCode(),
                 "Хеш-коды равных графов должны совпадать");
     }
@@ -140,6 +143,7 @@ class AdjacencyListGraphTest {
         Graph<String> graph2 = new AdjacencyListGraph<>();
         graph2.addEdge("A", "C"); // Другое ребро
 
-        assertNotEquals(graph1, graph2, "Графы с разной структурой не должны быть равны");
+        assertNotEquals(graph1, graph2,
+                "Графы с разной структурой не должны быть равны");
     }
 }

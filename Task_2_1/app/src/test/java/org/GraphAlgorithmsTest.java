@@ -1,12 +1,13 @@
 package org;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 
 class GraphAlgorithmsTest {
@@ -24,15 +25,18 @@ class GraphAlgorithmsTest {
      * @param sortedList    отсортированный список вершин.
      * @param originalGraph исходный граф.
      */
-    private <V> void assertIsValidTopologicalSort(List<V> sortedList, Graph<V> originalGraph) {
+    private <V> void assertIsValidTopologicalSort(
+            List<V> sortedList, Graph<V> originalGraph) {
         assertEquals(originalGraph.getAllVertices().size(), sortedList.size(),
-                "Размер отсортированного списка должен совпадать с количеством вершин в графе");
+                "Размер отсортированного списка "
+                        + "должен совпадать с количеством вершин в графе");
         assertTrue(sortedList.containsAll(originalGraph.getAllVertices()),
                 "Отсортированный список должен содержать все вершины графа");
         for (V u : originalGraph.getAllVertices()) {
             for (V v : originalGraph.getNeighbors(u)) {
                 assertTrue(sortedList.indexOf(u) < sortedList.indexOf(v),
-                        "Для ребра " + u + " -> " + v + ", вершина " + u + " должна быть раньше " + v);
+                        "Для ребра " + u + " -> " + v + ", вершина "
+                                + u + " должна быть раньше " + v);
             }
         }
     }
@@ -71,7 +75,8 @@ class GraphAlgorithmsTest {
         graph.addEdge("C", "D");
 
         List<String> sortedList = GraphAlgorithms.topologicalSort(graph);
-        assertEquals(List.of("A", "B", "C", "D"), sortedList, "Для линейного графа порядок должен быть строгим");
+        assertEquals(List.of("A", "B", "C", "D"), sortedList,
+                "Для линейного графа порядок должен быть строгим");
     }
 
 
@@ -93,7 +98,8 @@ class GraphAlgorithmsTest {
     @DisplayName("Сортировка пустого графа возвращает пустой список")
     void topologicalSortForEmptyGraphShouldReturnEmptyList() {
         List<String> sortedList = GraphAlgorithms.topologicalSort(graph);
-        assertTrue(sortedList.isEmpty(), "Для пустого графа результат должен быть пустым списком");
+        assertTrue(sortedList.isEmpty(),
+                "Для пустого графа результат должен быть пустым списком");
     }
 
     @Test
@@ -101,6 +107,7 @@ class GraphAlgorithmsTest {
     void topologicalSortForSingleVertexGraphShouldReturnListWithOneVertex() {
         graph.addVertex("A");
         List<String> sortedList = GraphAlgorithms.topologicalSort(graph);
-        assertEquals(List.of("A"), sortedList, "Результат должен содержать одну вершину");
+        assertEquals(List.of("A"), sortedList,
+                "Результат должен содержать одну вершину");
     }
 }

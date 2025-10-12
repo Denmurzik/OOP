@@ -131,7 +131,7 @@ public class IncidenceMatrixGraph<V> implements Graph<V> {
         vertices.remove(indexToRemove.intValue());
         vertexIndices.remove(vertex);
 
-        for(int i = indexToRemove; i < newSize; i++) {
+        for (int i = indexToRemove; i < newSize; i++) {
             V v = vertices.get(i);
             vertexIndices.put(v, i);
         }
