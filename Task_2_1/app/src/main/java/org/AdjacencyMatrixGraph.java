@@ -19,6 +19,9 @@ public class AdjacencyMatrixGraph<V> implements Graph<V> {
     private final List<V> vertices;
     private final Map<V, Integer> vertexIndices;
 
+    /**
+     * Конструктор
+     */
     public AdjacencyMatrixGraph() {
         this.adjacencyMatrix = new ArrayList<>();
         this.vertices = new ArrayList<>();
@@ -69,7 +72,6 @@ public class AdjacencyMatrixGraph<V> implements Graph<V> {
 
         int sourceIndex = vertexIndices.get(source);
         int destIndex = vertexIndices.get(destination);
-        // Используем get().set() вместо прямого доступа
         adjacencyMatrix.get(sourceIndex).set(destIndex, 1);
     }
 
@@ -104,11 +106,15 @@ public class AdjacencyMatrixGraph<V> implements Graph<V> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         AdjacencyMatrixGraph<?> that = (AdjacencyMatrixGraph<?>) o;
-        return Objects.equals(vertices, that.vertices) &&
-                Objects.equals(adjacencyMatrix, that.adjacencyMatrix);
+        return Objects.equals(vertices, that.vertices)
+                && Objects.equals(adjacencyMatrix, that.adjacencyMatrix);
     }
 
     @Override

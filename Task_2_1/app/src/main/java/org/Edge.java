@@ -4,6 +4,7 @@ import java.util.Objects;
 
 /**
  * Класс, представляющий направленное ребро графа.
+ *
  * @param <V> Тип данных для вершин.
  */
 public class Edge<V> {

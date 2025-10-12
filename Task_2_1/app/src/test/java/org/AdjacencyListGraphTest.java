@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 import java.util.Set;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,8 +26,10 @@ class AdjacencyListGraphTest {
     @DisplayName("Добавление одной вершины в пустой граф")
     void addVertex_whenGraphIsEmpty_shouldContainVertex() {
         graph.addVertex("A");
-        assertTrue(graph.getAllVertices().contains("A"), "Граф должен содержать вершину A");
-        assertEquals(1, graph.getAllVertices().size(), "Размер графа должен быть 1");
+        assertTrue(graph.getAllVertices().contains("A"),
+                "Граф должен содержать вершину A");
+        assertEquals(1, graph.getAllVertices().size(),
+                "Размер графа должен быть 1");
     }
 
     @Test
@@ -36,7 +37,8 @@ class AdjacencyListGraphTest {
     void addVertex_whenVertexExists_shouldNotChangeGraph() {
         graph.addVertex("A");
         graph.addVertex("A");
-        assertEquals(1, graph.getAllVertices().size(), "Размер графа не должен измениться при добавлении дубликата");
+        assertEquals(1, graph.getAllVertices().size(),
+                "Размер графа не должен измениться при добавлении дубликата");
     }
 
     @Test
@@ -45,16 +47,20 @@ class AdjacencyListGraphTest {
         graph.addVertex("A");
         graph.addVertex("B");
         graph.addEdge("A", "B");
-        assertTrue(graph.getNeighbors("A").contains("B"), "B должен быть соседом A");
-        assertFalse(graph.getNeighbors("B").contains("A"), "A не должен быть соседом B (граф направленный)");
+        assertTrue(graph.getNeighbors("A").contains("B"),
+                "B должен быть соседом A");
+        assertFalse(graph.getNeighbors("B").contains("A"),
+                "A не должен быть соседом B (граф направленный)");
     }
 
     @Test
     @DisplayName("Добавление ребра создает вершины, если их нет")
     void addEdge_whenVerticesDoNotExist_shouldCreateVerticesAndEdge() {
         graph.addEdge("A", "B");
-        assertTrue(graph.getAllVertices().containsAll(Set.of("A", "B")), "Обе вершины A и B должны быть созданы");
-        assertTrue(graph.getNeighbors("A").contains("B"), "B должен быть соседом A");
+        assertTrue(graph.getAllVertices().containsAll(Set.of("A", "B")),
+                "Обе вершины A и B должны быть созданы");
+        assertTrue(graph.getNeighbors("A").contains("B"),
+                "B должен быть соседом A");
     }
 
     @Test
@@ -63,7 +69,8 @@ class AdjacencyListGraphTest {
         graph.addEdge("A", "B");
         assertTrue(graph.getNeighbors("A").contains("B")); // Проверка до удаления
         graph.removeEdge("A", "B");
-        assertFalse(graph.getNeighbors("A").contains("B"), "Ребро от A к B должно быть удалено");
+        assertFalse(graph.getNeighbors("A").contains("B"),
+                "Ребро от A к B должно быть удалено");
     }
 
     @Test
