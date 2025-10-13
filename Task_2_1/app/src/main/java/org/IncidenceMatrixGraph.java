@@ -1,7 +1,7 @@
 package org;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -10,13 +10,13 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- * Реализация интерфейса Graph с использованием матрицы инцидентности.
+ * Реализация интерфейса Graph с использованием матрицы инцидентности на основе List<List<Integer>>.
  *
  * @param <V> Тип данных для вершин.
  */
 public class IncidenceMatrixGraph<V> implements Graph<V> {
 
-    private int[][] incidenceMatrix;
+    private final List<List<Integer>> incidenceMatrix;
     private final List<V> vertices;
     private final List<Edge<V>> edges;
     private final Map<V, Integer> vertexIndices;
@@ -25,12 +25,11 @@ public class IncidenceMatrixGraph<V> implements Graph<V> {
      * Конструктор для создания пустого графа.
      */
     public IncidenceMatrixGraph() {
-        this.incidenceMatrix = new int[0][0];
+        this.incidenceMatrix = new ArrayList<>();
         this.vertices = new ArrayList<>();
         this.edges = new ArrayList<>();
         this.vertexIndices = new HashMap<>();
     }
-
 
     @Override
     public void addVertex(V vertex) {
@@ -39,15 +38,8 @@ public class IncidenceMatrixGraph<V> implements Graph<V> {
             vertices.add(vertex);
             vertexIndices.put(vertex, newIndex);
 
-            int numVertices = vertices.size();
-            int numEdges = edges.size();
-            int[][] newMatrix = new int[numVertices][numEdges];
-
-            for (int i = 0; i < numVertices - 1; i++) {
-                System.arraycopy(incidenceMatrix[i], 0,
-                        newMatrix[i], 0, numEdges);
-            }
-            incidenceMatrix = newMatrix;
+            List<Integer> newRow = new ArrayList<>(Collections.nCopies(edges.size(), 0));
+            incidenceMatrix.add(newRow);
         }
     }
 
@@ -64,20 +56,14 @@ public class IncidenceMatrixGraph<V> implements Graph<V> {
         edges.add(newEdge);
         int sourceIndex = vertexIndices.get(source);
         int destIndex = vertexIndices.get(destination);
+        int newEdgeIndex = edges.size() - 1;
 
-        int numVertices = vertices.size();
-        int numEdges = edges.size();
-        int[][] newMatrix = new int[numVertices][numEdges];
-
-        for (int i = 0; i < numVertices; i++) {
-            System.arraycopy(incidenceMatrix[i], 0,
-                    newMatrix[i], 0, numEdges - 1);
+        for (List<Integer> row : incidenceMatrix) {
+            row.add(0);
         }
 
-        newMatrix[sourceIndex][numEdges - 1] = 1;
-        newMatrix[destIndex][numEdges - 1] = -1;
-
-        incidenceMatrix = newMatrix;
+        incidenceMatrix.get(sourceIndex).set(newEdgeIndex, 1);
+        incidenceMatrix.get(destIndex).set(newEdgeIndex, -1);
     }
 
     @Override
@@ -93,32 +79,20 @@ public class IncidenceMatrixGraph<V> implements Graph<V> {
                 edgesToRemove.add(edge);
             }
         }
-        for (Edge<V> edge : edgesToRemove) {
+        for (int i = edgesToRemove.size() - 1; i >= 0; i--) {
+            Edge<V> edge = edgesToRemove.get(i);
             removeEdge(edge.source, edge.destination);
         }
 
-        int oldSize = vertices.size();
-        int newSize = oldSize - 1;
+        incidenceMatrix.remove(indexToRemove.intValue());
 
         vertices.remove(indexToRemove.intValue());
         vertexIndices.remove(vertex);
 
-        for (int i = indexToRemove; i < newSize; i++) {
+        for (int i = indexToRemove; i < vertices.size(); i++) {
             V v = vertices.get(i);
             vertexIndices.put(v, i);
         }
-
-        int numEdges = edges.size();
-        int[][] newMatrix = new int[newSize][numEdges];
-        for (int i = 0, newI = 0; i < oldSize; i++) {
-            if (i == indexToRemove) {
-                continue;
-            }
-            System.arraycopy(incidenceMatrix[i], 0,
-                    newMatrix[newI], 0, numEdges);
-            newI++;
-        }
-        incidenceMatrix = newMatrix;
     }
 
 
@@ -133,26 +107,13 @@ public class IncidenceMatrixGraph<V> implements Graph<V> {
 
         edges.remove(edgeIndex);
 
-        int numVertices = vertices.size();
-        int newNumEdges = edges.size();
-
-        if (newNumEdges == 0) {
-            incidenceMatrix = new int[numVertices][0];
-            return;
-        }
-
-        int[][] newMatrix = new int[numVertices][newNumEdges];
-
-        for (int i = 0; i < numVertices; i++) {
-            for (int j = 0, newJ = 0; j < newNumEdges + 1; j++) {
-                if (j == edgeIndex) {
-                    continue;
+        if (!incidenceMatrix.isEmpty()) {
+            for (List<Integer> row : incidenceMatrix) {
+                if (row.size() > edgeIndex) {
+                    row.remove(edgeIndex);
                 }
-                newMatrix[i][newJ] = incidenceMatrix[i][j];
-                newJ++;
             }
         }
-        incidenceMatrix = newMatrix;
     }
 
     @Override
@@ -161,8 +122,9 @@ public class IncidenceMatrixGraph<V> implements Graph<V> {
         Integer vertexIndex = vertexIndices.get(vertex);
 
         if (vertexIndex != null) {
-            for (int j = 0; j < edges.size(); j++) {
-                if (incidenceMatrix[vertexIndex][j] == 1) {
+            List<Integer> row = incidenceMatrix.get(vertexIndex);
+            for (int j = 0; j < row.size(); j++) {
+                if (row.get(j) == 1) {
                     neighbors.add(edges.get(j).destination);
                 }
             }
@@ -177,14 +139,9 @@ public class IncidenceMatrixGraph<V> implements Graph<V> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         IncidenceMatrixGraph<?> that = (IncidenceMatrixGraph<?>) o;
-        // Для сравнения достаточно сравнить множества вершин и ребер
         return Objects.equals(new HashSet<>(vertices), new HashSet<>(that.vertices))
                 && Objects.equals(new HashSet<>(edges), new HashSet<>(that.edges));
     }
@@ -203,7 +160,7 @@ public class IncidenceMatrixGraph<V> implements Graph<V> {
         sb.append("Матрица:\n");
         for (int i = 0; i < vertices.size(); i++) {
             sb.append(String.format("%5s: ", vertices.get(i)));
-            sb.append(Arrays.toString(incidenceMatrix[i])).append("\n");
+            sb.append(incidenceMatrix.get(i)).append("\n");
         }
         return sb.toString();
     }
