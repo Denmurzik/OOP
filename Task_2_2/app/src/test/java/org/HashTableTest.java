@@ -140,8 +140,7 @@ class HashTableTest {
         void testIteration() {
             Set<String> keysFound = new HashSet<>();
             int count = 0;
-
-            // Используем for-each (благодаря Iterable)
+            
             for (HashTable.Node<String, Integer> node : table) {
                 keysFound.add(node.getKey());
                 count++;
@@ -160,8 +159,7 @@ class HashTableTest {
             iterator.next();
 
             table.put("four", 4);
-
-            // Следующий вызов next() должен упасть
+            
             assertThrows(ConcurrentModificationException.class, () -> {
                 iterator.next();
             });
@@ -243,10 +241,8 @@ class HashTableTest {
     @Test
     @DisplayName("Вывод в строку (toString)")
     void testToString() {
-        // 1. Пустая таблица
         assertEquals("{}", table.toString());
 
-        // 2. Таблица с элементами
         table.put("one", 1);
         table.put("two", 2);
 
@@ -349,26 +345,21 @@ class HashTableTest {
         @Test
         @DisplayName("Учет оптимальной памяти (resize)")
         void testResize() {
-            // Стандартная емкость = 16, load factor = 0.75
-            // Порог (threshold) = 16 * 0.75 = 12
-            // Добавление 13-го элемента должно вызвать resize()
+            // Стандартная емкость = 16, порог = 16.
+            // Добавление 16-го элемента должно вызвать resize().
 
-            // Добавляем 12 элементов
-            for (int i = 0; i < 12; i++) {
+            // Добавляем 15 элементов. Resize еще не должен произойти.
+            for (int i = 0; i < 15; i++) {
                 table.put("key" + i, i);
             }
-            assertEquals(12, table.size());
-
-            // Добавляем 13-й
-            table.put("key12", 12);
-            assertEquals(13, table.size());
-
-            table.put("key13", 13);
-            table.put("key14", 14);
             assertEquals(15, table.size());
 
-            // Проверяем, что все элементы на месте после resize
-            for (int i = 0; i < 15; i++) {
+            // Добавляем 16-й элемент. Это должно вызвать resize.
+            table.put("key15", 15);
+            assertEquals(16, table.size());
+
+            // Проверяем, что все 16 элементов на месте после resize.
+            for (int i = 0; i < 16; i++) {
                 assertEquals(i, table.get("key" + i));
             }
         }
