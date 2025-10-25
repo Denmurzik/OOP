@@ -67,7 +67,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
     private int capacity;
 
     /**
-     * Порог, при котором произойдет resize (capacity * loadFactor).
+     * Порог, при котором произойдет resize (capacity).
      */
     private int threshold;
 
@@ -80,11 +80,6 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
      * Максимальная емкость.
      */
     private static final int MAXIMUM_CAPACITY = 1 << 30; // 2^30
-
-    /**
-     * Коэффициент загрузки по умолчанию.
-     */
-    private static final float DEFAULT_LOAD_FACTOR = 0.75f;
 
     /**
      * Счетчик модификаций. Используется для обнаружения одновременных
@@ -109,7 +104,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
             throw new IllegalArgumentException("Illegal initial capacity: " + initialCapacity);
         }
         this.capacity = tableSizeFor(initialCapacity);
-        this.threshold = (int) (this.capacity * DEFAULT_LOAD_FACTOR);
+        this.threshold = this.capacity;
         this.table = (Node<K, V>[]) new Node[this.capacity];
         this.size = 0;
     }
@@ -127,7 +122,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
      * Вычисляет индекс корзины в массиве table.
      */
     private int indexFor(int hash) {
-        return hash & (capacity - 1);
+        return hash % capacity;
     }
 
     /**
@@ -271,7 +266,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
 
         table = newTable;
         capacity = newCapacity;
-        threshold = (int) (newCapacity * DEFAULT_LOAD_FACTOR);
+        threshold = newCapacity;
 
         for (int i = 0; i < oldCapacity; i++) {
             Node<K, V> node = oldTable[i];
