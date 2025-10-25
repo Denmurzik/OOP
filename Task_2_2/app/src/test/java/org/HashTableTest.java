@@ -1,7 +1,7 @@
 package org;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -297,7 +297,10 @@ class HashTableTest {
 
         class BadKey {
             final String key;
-            BadKey(String key) { this.key = key; }
+
+            BadKey(String key) {
+                this.key = key;
+            }
 
             @Override
             public int hashCode() {
@@ -306,8 +309,12 @@ class HashTableTest {
 
             @Override
             public boolean equals(Object o) {
-                if (this == o) return true;
-                if (o == null || getClass() != o.getClass()) return false;
+                if (this == o) {
+                    return true;
+                }
+                if (o == null || getClass() != o.getClass()) {
+                    return false;
+                }
                 BadKey badKey = (BadKey) o;
                 return Objects.equals(key, badKey.key);
             }

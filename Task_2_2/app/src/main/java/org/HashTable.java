@@ -1,13 +1,13 @@
 package org;
 
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.NoSuchElementException;
 import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Objects;
 
 /**
- * Реализация параметризованной хеш-таблицы.
- * Реализует Iterable для поддержки итерации (включая fail-fast).
+ * Реализация параметризованной хеш-таблицы. Реализует Iterable для поддержки итерации (включая
+ * fail-fast).
  *
  * @param <K> Тип ключа
  * @param <V> Тип значения
@@ -30,9 +30,17 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
             this.next = next;
         }
 
-        public final K getKey() { return key; }
-        public final V getValue() { return value; }
-        public final String toString() { return key + "=" + value; }
+        public final K getKey() {
+            return key;
+        }
+
+        public final V getValue() {
+            return value;
+        }
+
+        public final String toString() {
+            return key + "=" + value;
+        }
 
         @Override
         public final int hashCode() {
@@ -41,11 +49,12 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
 
         @Override
         public final boolean equals(Object o) {
-            if (o == this) return true;
+            if (o == this) {
+                return true;
+            }
             if (o instanceof HashTable.Node) {
                 Node<?, ?> e = (Node<?, ?>) o;
-                return Objects.equals(key, e.getKey()) &&
-                        Objects.equals(value, e.getValue());
+                return Objects.equals(key, e.getKey()) && Objects.equals(value, e.getValue());
             }
             return false;
         }
@@ -67,7 +76,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
     private int capacity;
 
     /**
-     * Порог, при котором произойдет resize (capacity).
+     * Порог, при котором произойдет resize.
      */
     private int threshold;
 
@@ -82,8 +91,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
     private static final int MAXIMUM_CAPACITY = 1 << 30; // 2^30
 
     /**
-     * Счетчик модификаций. Используется для обнаружения одновременных
-     * изменений во время итерации (Fail-Fast).
+     * Счетчик модификаций. Используется для обнаружения одновременных изменений во время итерации.
      */
     private int modCount = 0;
 
@@ -116,7 +124,9 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
      * Вычисляет хеш-код для ключа.
      */
     private int hash(Object key) {
-        if (key == null) return 0;
+        if (key == null) {
+            return 0;
+        }
         return key.hashCode();
     }
 
@@ -142,8 +152,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
     }
 
     /**
-     * Добавляет пару ключ-значение.
-     * Если ключ уже существует, обновляет его значение.
+     * Добавляет пару ключ-значение. Если ключ уже существует, обновляет его значение.
      *
      * @param key   Ключ
      * @param value Значение
@@ -157,7 +166,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
         while (current != null) {
             if (current.hash == hash && (Objects.equals(key, current.key))) {
                 V oldValue = current.value;
-                current.value = value; // Обновляем
+                current.value = value;
                 return oldValue;
             }
             current = current.next;
@@ -227,8 +236,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
     }
 
     /**
-     * Увеличивает размер хеш-таблицы и перераспределяет
-     * все существующие элементы.
+     * Увеличивает размер хеш-таблицы и перераспределяет все существующие элементы.
      *
      * @param newCapacity Новая емкость
      */
@@ -238,12 +246,10 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
             return;
         }
 
-        Node<K, V>[] oldTable = table;
-
         if (newCapacity > MAXIMUM_CAPACITY) {
             newCapacity = MAXIMUM_CAPACITY;
         }
-
+        Node<K, V>[] oldTable = table;
         // Создаем новую таблицу и обновляем поля
         this.table = (Node<K, V>[]) new Node[newCapacity];
         this.capacity = newCapacity;
@@ -300,7 +306,9 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
      */
     @Override
     public String toString() {
-        if (isEmpty()) return "{}";
+        if (isEmpty()) {
+            return "{}";
+        }
 
         StringBuilder sb = new StringBuilder();
         sb.append('{');
@@ -328,9 +336,13 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
      */
     @Override
     public boolean equals(Object o) {
-        if (o == this) return true;
+        if (o == this) {
+            return true;
+        }
 
-        if (!(o instanceof HashTable)) return false;
+        if (!(o instanceof HashTable)) {
+            return false;
+        }
 
         HashTable<?, ?> other;
         try {
@@ -339,10 +351,12 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
             return false;
         }
 
-        if (this.size() != other.size()) return false;
+        if (this.size() != other.size()) {
+            return false;
+        }
 
         try {
-            for(Node<K, V> node : this) {
+            for (Node<K, V> node : this) {
                 K key = node.key;
                 V value = node.value;
 
@@ -392,10 +406,10 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
      */
     private class HashIterator implements Iterator<Node<K, V>> {
 
-        private int expectedModCount;  // Ожидаемое число модификаций
-        private int bucketIndex;       // Текущая корзина
-        private Node<K, V> currentNode;   // Следующий узел для возврата
-        private Node<K, V> lastReturned;  // Последний возвращенный
+        private int expectedModCount; // Ожидаемое число модификаций
+        private int bucketIndex;      // Текущая корзина
+        private Node<K, V> currentNode;  // Следующий узел для возврата
+        private Node<K, V> lastReturned; // Последний возвращенный
 
         HashIterator() {
             this.expectedModCount = modCount;
@@ -424,9 +438,9 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
 
         /**
          * Возвращает следующий элемент итерации.
-         * @throws ConcurrentModificationException если таблица была
-         * изменена извне во время итерации.
-         * @throws NoSuchElementException если элементы закончились.
+         *
+         * @throws ConcurrentModificationException если таблица была изменена извне во время итерации.
+         * @throws NoSuchElementException          если элементы закончились.
          */
         @Override
         public Node<K, V> next() {
@@ -457,8 +471,8 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
         }
 
         /**
-         * Удаляет из хеш-таблицы последний элемент, возвращенный
-         * этим итератором (методом next()).
+         * Удаляет из хеш-таблицы последний элемент, возвращенный этим итератором (методом
+         * next()).
          */
         @Override
         public void remove() {
