@@ -429,7 +429,7 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
     }
 
     /**
-     * Внутренний класс, реализующий итератор.
+     * Класс реализующий итератор.
      */
     private class HashIterator implements Iterator<Node<K, V>> {
 
