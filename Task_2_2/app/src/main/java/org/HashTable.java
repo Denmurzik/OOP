@@ -103,7 +103,10 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
         if (initialCapacity < 0) {
             throw new IllegalArgumentException("Illegal initial capacity: " + initialCapacity);
         }
-        this.capacity = tableSizeFor(initialCapacity);
+        if (initialCapacity > MAXIMUM_CAPACITY) {
+            initialCapacity = MAXIMUM_CAPACITY;
+        }
+        this.capacity = initialCapacity;
         this.threshold = this.capacity;
         this.table = (Node<K, V>[]) new Node[this.capacity];
         this.size = 0;
@@ -114,33 +117,14 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
      */
     private int hash(Object key) {
         if (key == null) return 0;
-        int h = key.hashCode();
-        return h ^ (h >>> 16);
+        return key.hashCode();
     }
 
     /**
      * Вычисляет индекс корзины в массиве table.
      */
     private int indexFor(int hash) {
-        return hash % capacity;
-    }
-
-    /**
-     * Находит и возвращает ближайшую степень двойки,
-     * большую или равную заданному числу.
-     */
-    private static int tableSizeFor(int cap) {
-        int n = cap - 1;
-        n |= n >>> 1;
-        n |= n >>> 2;
-        n |= n >>> 4;
-        n |= n >>> 8;
-        n |= n >>> 16;
-        if (n < 0) {
-            return 1;
-        } else {
-            return (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
-        }
+        return Math.abs(hash % capacity);
     }
 
     /**
@@ -185,8 +169,8 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
         table[index] = newNode;
         size++;
 
-        if (size > threshold) {
-            resize(capacity * 2); // Этап 3
+        if (size >= threshold) {
+            resize(capacity * 2);
         }
         return null;
     }
@@ -203,7 +187,6 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
 
         Node<K, V> current = table[index];
         while (current != null) {
-            // Objects.equals() безопасно сравнит Object с K
             if (current.hash == hash && (Objects.equals(key, current.key))) {
                 return current.value;
             }
@@ -250,57 +233,37 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
      * @param newCapacity Новая емкость
      */
     private void resize(int newCapacity) {
-        Node<K, V>[] oldTable = table;
-        int oldCapacity = capacity;
-
-        if (oldCapacity == MAXIMUM_CAPACITY) {
+        if (capacity == MAXIMUM_CAPACITY) {
             threshold = Integer.MAX_VALUE;
             return;
         }
+
+        Node<K, V>[] oldTable = table;
 
         if (newCapacity > MAXIMUM_CAPACITY) {
             newCapacity = MAXIMUM_CAPACITY;
         }
 
-        Node<K, V>[] newTable = (Node<K, V>[]) new Node[newCapacity];
+        // Создаем новую таблицу и обновляем поля
+        this.table = (Node<K, V>[]) new Node[newCapacity];
+        this.capacity = newCapacity;
+        this.threshold = newCapacity;
 
-        table = newTable;
-        capacity = newCapacity;
-        threshold = newCapacity;
+        // Переносим все элементы из старой таблицы в новую
+        for (Node<K, V> headNode : oldTable) {
+            Node<K, V> current = headNode;
+            while (current != null) {
+                Node<K, V> next = current.next;
 
-        for (int i = 0; i < oldCapacity; i++) {
-            Node<K, V> node = oldTable[i];
-            if (node == null) continue;
+                // Вычисляем новый индекс и вставляем узел
+                int newIndex = indexFor(current.hash);
+                current.next = table[newIndex];
+                table[newIndex] = current;
 
-            Node<K, V> lowHead = null, lowTail = null;
-            Node<K, V> highHead = null, highTail = null;
-
-            while (node != null) {
-                Node<K, V> next = node.next;
-                if ((node.hash & oldCapacity) == 0) {
-                    if (lowTail == null) lowHead = node;
-                    else lowTail.next = node;
-                    lowTail = node;
-                } else {
-                    if (highTail == null) highHead = node;
-                    else highTail.next = node;
-                    highTail = node;
-                }
-                node = next;
-            }
-
-            if (lowTail != null) {
-                lowTail.next = null;
-                newTable[i] = lowHead;
-            }
-            if (highTail != null) {
-                highTail.next = null;
-                newTable[i + oldCapacity] = highHead;
+                current = next;
             }
         }
     }
-
-
 
     /**
      * Обновляет значение по ключу.
@@ -319,7 +282,6 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
      * @return true, если ключ найден, иначе false
      */
     public boolean containsKey(Object key) {
-        // Логика почти идентична get(), но возвращает boolean
         int hash = hash(key);
         int index = indexFor(hash);
 
@@ -391,7 +353,6 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
                         return false;
                     }
                 } else {
-
                     if (!value.equals(otherValue)) {
                         return false;
                     }
@@ -416,8 +377,6 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
         return h;
     }
 
-
-
     /**
      * Возвращает итератор по элементам (парам) в хеш-таблице.
      *
@@ -429,20 +388,21 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
     }
 
     /**
-     * Класс реализующий итератор.
+     * Внутренний класс реализующий итератор.
      */
     private class HashIterator implements Iterator<Node<K, V>> {
 
         private int expectedModCount;  // Ожидаемое число модификаций
         private int bucketIndex;       // Текущая корзина
         private Node<K, V> currentNode;   // Следующий узел для возврата
-        private Node<K, V> lastReturned;  // Последний возвращенный (для remove)
+        private Node<K, V> lastReturned;  // Последний возвращенный
 
         HashIterator() {
             this.expectedModCount = modCount;
             this.currentNode = null;
             this.lastReturned = null;
             this.bucketIndex = 0;
+
 
             if (size > 0) {
                 while (bucketIndex < capacity && table[bucketIndex] == null) {
@@ -481,13 +441,13 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
             Node<K, V> nodeToReturn = currentNode;
             lastReturned = nodeToReturn;
 
+
             currentNode = nodeToReturn.next;
-
             if (currentNode == null) {
-                do {
+                bucketIndex++;
+                while (bucketIndex < capacity && table[bucketIndex] == null) {
                     bucketIndex++;
-                } while (bucketIndex < capacity && table[bucketIndex] == null);
-
+                }
                 if (bucketIndex < capacity) {
                     currentNode = table[bucketIndex];
                 }
