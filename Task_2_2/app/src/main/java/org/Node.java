@@ -20,10 +20,17 @@ public class Node<K, V> {
         this.next = next;
     }
 
+    /**
+     * Возвращает ключ.
+     * @return ключ
+     */
     public final K getKey() {
         return key;
     }
 
+    /**
+     * @return значение
+     */
     public final V getValue() {
         return value;
     }

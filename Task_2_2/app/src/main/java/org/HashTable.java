@@ -75,10 +75,9 @@ public class HashTable<K, V> implements Iterable<Node<K, V>> {
     }
 
     /**
-     * Вычисляет хеш-код для ключа.
-     */
-    /**
      * Возвращает количество пар ключ-значение в хеш-таблице.
+     *
+     * @return количество пар ключ-значение
      */
     public int size() {
         return size;
@@ -86,6 +85,8 @@ public class HashTable<K, V> implements Iterable<Node<K, V>> {
 
     /**
      * Проверяет, пуста ли хеш-таблица.
+     *
+     * @return true, если таблица пуста, иначе false
      */
     public boolean isEmpty() {
         return size == 0;
@@ -111,7 +112,6 @@ public class HashTable<K, V> implements Iterable<Node<K, V>> {
      *
      * @param key   Ключ
      * @param value Значение
-     * @return Старое значение или null, если ключа не было
      */
     public void put(K key, V value) {
         int hash = hash(key);
