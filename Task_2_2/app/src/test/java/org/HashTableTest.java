@@ -44,20 +44,19 @@ class HashTableTest {
         @Test
         @DisplayName("put должен добавлять элемент, get - возвращать его")
         void testPutAndGet() {
-            assertNull(table.put("one", 1)); // put нового ключа возвращает null
+            table.put("one", 1);
             assertEquals(1, table.get("one"));
             assertEquals(1, table.size());
         }
 
         @Test
-        @DisplayName("put должен обновлять значение и возвращать старое")
-        void testPutReturnsOldValue() {
+        @DisplayName("put должен обновлять значение")
+        void testPutUpdatesValue() {
             table.put("one", 1);
-            Integer oldValue = table.put("one", 10); // put существующего ключа
+            table.put("one", 10); 
 
-            assertEquals(1, oldValue); // Должен вернуть старое значение
-            assertEquals(10, table.get("one")); // get должен вернуть новое
-            assertEquals(1, table.size()); // Размер не должен измениться
+            assertEquals(10, table.get("one")); 
+            assertEquals(1, table.size()); 
         }
 
         @Test
@@ -141,7 +140,7 @@ class HashTableTest {
             Set<String> keysFound = new HashSet<>();
             int count = 0;
             
-            for (HashTable.Node<String, Integer> node : table) {
+            for (Node<String, Integer> node : table) {
                 keysFound.add(node.getKey());
                 count++;
             }
@@ -155,7 +154,7 @@ class HashTableTest {
         @Test
         @DisplayName("Итератор должен бросить ConcurrentModificationException при put")
         void testConcurrentModificationExceptionOnPut() {
-            Iterator<HashTable.Node<String, Integer>> iterator = table.iterator();
+            Iterator<Node<String, Integer>> iterator = table.iterator();
             iterator.next();
 
             table.put("four", 4);
@@ -168,7 +167,7 @@ class HashTableTest {
         @Test
         @DisplayName("Итератор должен бросить ConcurrentModificationException при remove")
         void testConcurrentModificationExceptionOnRemove() {
-            Iterator<HashTable.Node<String, Integer>> iterator = table.iterator();
+            Iterator<Node<String, Integer>> iterator = table.iterator();
             iterator.next();
 
             table.remove("one");
@@ -180,9 +179,9 @@ class HashTableTest {
 
         @Test
         void testIteratorRemove() {
-            Iterator<HashTable.Node<String, Integer>> iterator = table.iterator();
+            Iterator<Node<String, Integer>> iterator = table.iterator();
 
-            HashTable.Node<String, Integer> nodeToRemove = iterator.next();
+            Node<String, Integer> nodeToRemove = iterator.next();
             String keyToRemove = nodeToRemove.getKey();
 
             iterator.remove();
@@ -196,7 +195,7 @@ class HashTableTest {
         @Test
         @DisplayName("iterator.remove() без next() должен бросить IllegalStateException")
         void testIteratorRemoveWithoutNext() {
-            Iterator<HashTable.Node<String, Integer>> iterator = table.iterator();
+            Iterator<Node<String, Integer>> iterator = table.iterator();
             assertThrows(IllegalStateException.class, () -> {
                 iterator.remove();
             });
@@ -262,13 +261,12 @@ class HashTableTest {
         @Test
         @DisplayName("Корректная работа с null ключом")
         void testNullKey() {
-            assertNull(table.put(null, 100)); // Добавление
+            table.put(null, 100); // Добавление
             assertEquals(1, table.size());
             assertEquals(100, table.get(null)); // Поиск
             assertTrue(table.containsKey(null)); // Проверка
 
-            Integer oldValue = table.put(null, 200); // Обновление
-            assertEquals(100, oldValue);
+            table.put(null, 200); // Обновление
             assertEquals(200, table.get(null));
 
             Integer removedValue = table.remove(null); // Удаление
@@ -283,13 +281,12 @@ class HashTableTest {
         void testNullValue() {
             table.put("one", 1);
 
-            assertNull(table.put("keyWithNull", null)); // Добавление
+            table.put("keyWithNull", null); // Добавление
             assertEquals(2, table.size());
             assertNull(table.get("keyWithNull"));
             assertTrue(table.containsKey("keyWithNull")); // get=null, containsKey=true
 
-            Integer oldValue = table.put("one", null); // Обновление на null
-            assertEquals(1, oldValue);
+            table.put("one", null); // Обновление на null
             assertNull(table.get("one"));
             assertTrue(table.containsKey("one"));
         }

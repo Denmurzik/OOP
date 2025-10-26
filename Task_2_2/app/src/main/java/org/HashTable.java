@@ -12,53 +12,7 @@ import java.util.Objects;
  * @param <K> Тип ключа
  * @param <V> Тип значения
  */
-public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
-
-    /**
-     * Класс для хранения записи (пары ключ-значение).
-     */
-    public static class Node<K, V> {
-        final K key;
-        V value;
-        Node<K, V> next;
-        final int hash;
-
-        Node(K key, V value, int hash, Node<K, V> next) {
-            this.key = key;
-            this.value = value;
-            this.hash = hash;
-            this.next = next;
-        }
-
-        public final K getKey() {
-            return key;
-        }
-
-        public final V getValue() {
-            return value;
-        }
-
-        public final String toString() {
-            return key + "=" + value;
-        }
-
-        @Override
-        public final int hashCode() {
-            return Objects.hashCode(key) ^ Objects.hashCode(value);
-        }
-
-        @Override
-        public final boolean equals(Object o) {
-            if (o == this) {
-                return true;
-            }
-            if (o instanceof HashTable.Node) {
-                Node<?, ?> e = (Node<?, ?>) o;
-                return Objects.equals(key, e.getKey()) && Objects.equals(value, e.getValue());
-            }
-            return false;
-        }
-    }
+public class HashTable<K, V> implements Iterable<Node<K, V>> {
 
     /**
      * Массив корзин.
@@ -123,20 +77,6 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
     /**
      * Вычисляет хеш-код для ключа.
      */
-    private int hash(Object key) {
-        if (key == null) {
-            return 0;
-        }
-        return key.hashCode();
-    }
-
-    /**
-     * Вычисляет индекс корзины в массиве table.
-     */
-    private int indexFor(int hash) {
-        return Math.abs(hash % capacity);
-    }
-
     /**
      * Возвращает количество пар ключ-значение в хеш-таблице.
      */
@@ -151,6 +91,21 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
         return size == 0;
     }
 
+    private int hash(Object key) {
+        if (key == null) {
+            return 0;
+        }
+        return key.hashCode();
+    }
+
+    /**
+     * Вычисляет индекс корзины в массиве table.
+     */
+    private int indexFor(int hash) {
+        return Math.abs(hash % capacity);
+    }
+
+
     /**
      * Добавляет пару ключ-значение. Если ключ уже существует, обновляет его значение.
      *
@@ -158,16 +113,15 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
      * @param value Значение
      * @return Старое значение или null, если ключа не было
      */
-    public V put(K key, V value) {
+    public void put(K key, V value) {
         int hash = hash(key);
         int index = indexFor(hash);
 
         Node<K, V> current = table[index];
         while (current != null) {
             if (current.hash == hash && (Objects.equals(key, current.key))) {
-                V oldValue = current.value;
                 current.value = value;
-                return oldValue;
+                return;
             }
             current = current.next;
         }
@@ -181,7 +135,6 @@ public class HashTable<K, V> implements Iterable<HashTable.Node<K, V>> {
         if (size >= threshold) {
             resize(capacity * 2);
         }
-        return null;
     }
 
     /**
