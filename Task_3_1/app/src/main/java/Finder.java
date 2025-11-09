@@ -73,6 +73,7 @@ public class Finder {
         int overlapSize = 0;
         long globalCharOffset = 0;
         long lastReportedMatch = -1;
+        StringBuilder textToSearch = new StringBuilder(bufferSize + overlapLength);
 
         try (Reader reader = new BufferedReader(
                 new InputStreamReader(
@@ -89,9 +90,9 @@ public class Finder {
                     break;
                 }
 
-                String overlapStr = new String(overlap, 0, overlapSize);
-                String bufferStr = new String(buffer, 0, charsRead);
-                String textToSearch = overlapStr + bufferStr;
+                textToSearch.setLength(0);
+                textToSearch.append(overlap, 0, overlapSize);
+                textToSearch.append(buffer, 0, charsRead);
 
                 int searchFrom = 0;
                 int localIndex;
