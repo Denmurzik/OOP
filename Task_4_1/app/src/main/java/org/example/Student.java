@@ -12,6 +12,13 @@ public class Student {
     private int currentSemester;
     private final GradeBook gradeBook;
 
+    /**
+     * Конструктор.
+     *
+     * @param name            Имя студента
+     * @param currentSemester Текущий семестр
+     * @param gradeBook       Зачетная книжка
+     */
     public Student(String name, int currentSemester, GradeBook gradeBook) {
         this.name = name;
         this.currentSemester = currentSemester;
@@ -21,7 +28,7 @@ public class Student {
     /**
      * Геттер.
      *
-     * @return
+     * @return имя студента
      */
     public String getName() {
         return name;
@@ -30,7 +37,7 @@ public class Student {
     /**
      * Геттер.
      *
-     * @return
+     * @return текущий семестр
      */
     public int getCurrentSemester() {
         return currentSemester;
@@ -39,7 +46,7 @@ public class Student {
     /**
      * Сеттер.
      *
-     * @param currentSemester
+     * @param currentSemester новый семестр
      */
     public void setCurrentSemester(int currentSemester) {
         this.currentSemester = currentSemester;
@@ -48,7 +55,7 @@ public class Student {
     /**
      * Геттер.
      *
-     * @return
+     * @return зачетная книжка
      */
     public GradeBook getGradeBook() {
         return gradeBook;
@@ -76,11 +83,10 @@ public class Student {
 
         List<Grade> grades = gradeBook.getGrades();
 
-
         boolean lastSessionOk = checkSessionForBudget(grades, lastSession);
-        if (!lastSessionOk)
+        if (!lastSessionOk) {
             return false;
-
+        }
 
         if (prevSession > 0) {
             return checkSessionForBudget(grades, prevSession);

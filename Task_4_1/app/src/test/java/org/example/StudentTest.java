@@ -31,10 +31,8 @@ class StudentTest {
         GradeBook book = new GradeBook();
         book.addGrade(new Grade("Математика", 1, GradeType.EXAM, Mark.EXCELLENT));
         book.addGrade(new Grade("Физкультура", 1, GradeType.PASS_FAIL_TEST, Mark.PASS));
-        book.addGrade(new Grade("Физика", 2, GradeType.EXAM, Mark.FAIL)); // 2 is FAIL? No, FAIL is 0. Let's assume 2 is
-                                                                          // not in Enum.
-        book.addGrade(new Grade("Физика", 2, GradeType.EXAM, Mark.FAIL)); // 0
-
+        book.addGrade(new Grade("Физика", 2, GradeType.EXAM, Mark.FAIL));
+        book.addGrade(new Grade("Физика", 2, GradeType.EXAM, Mark.FAIL));
         Student student = new Student("Тестов Тест", 3, book);
 
         assertEquals(5.0, student.calculateAverageGrade());

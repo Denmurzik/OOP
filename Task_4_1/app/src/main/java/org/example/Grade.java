@@ -26,6 +26,8 @@ public class Grade {
     }
 
     /**
+     * Проверяет, идет ли оценка в диплом.
+     *
      * @return true, если это оценка, идущая в диплом (экзамен или дифф. зачет)
      */
     public boolean isDiplomGrade() {
@@ -33,10 +35,13 @@ public class Grade {
     }
 
     /**
-     * Геттеры для полей класса.
+     * Геттер.
      *
      * @return название предмета
      */
+    public String getSubjectName() {
+        return subjectName;
+    }
 
     /**
      * Геттер.
