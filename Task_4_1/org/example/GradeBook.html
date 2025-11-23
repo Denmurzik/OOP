@@ -91,7 +91,7 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">GradeBook</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
 <div class="block">Класс зачетная книжка.
- Хранит список оценок и предоставляет методы для их анализа.</div>
+ Хранит список оценок.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -103,8 +103,7 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String,int)" class="member-name-link">GradeBook</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;studentName,
- int&nbsp;currentSemester)</code></div>
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E()" class="member-name-link">GradeBook</a>()</code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 </div>
 </section>
@@ -130,20 +129,10 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Расчет текущего среднего балла за все время обучения.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#canGetIncreasedScholarship()" class="member-name-link">canGetIncreasedScholarship</a>()</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a><wbr>&lt;<a href="Grade.html" title="class in org.example">Grade</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getGrades()" class="member-name-link">getGrades</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Возможность получения повышенной стипендии в текущем семестре.</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#canGetRedDiplom()" class="member-name-link">canGetRedDiplom</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Возможность получения красного диплома.</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#canTransferToBudget()" class="member-name-link">canTransferToBudget</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Возможность перевода с платной на бюджетную форму.</div>
+<div class="block">Возвращает список оценок.</div>
 </div>
 </div>
 </div>
@@ -163,10 +152,9 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(java.lang.String,int)">
+<section class="detail" id="&lt;init&gt;()">
 <h3>GradeBook</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">GradeBook</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;studentName,
- int&nbsp;currentSemester)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">GradeBook</span>()</div>
 </section>
 </li>
 </ul>
@@ -185,37 +173,22 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="getGrades()">
+<h3>getGrades</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Grade.html" title="class in org.example">Grade</a>&gt;</span>&nbsp;<span class="element-name">getGrades</span>()</div>
+<div class="block">Возвращает список оценок.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>неизменяемый список оценок</dd>
+</dl>
+</section>
+</li>
+<li>
 <section class="detail" id="calculateCurrentGpa()">
 <h3>calculateCurrentGpa</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">calculateCurrentGpa</span>()</div>
 <div class="block">Расчет текущего среднего балла за все время обучения.
  Учитываются экзамены и дифф зачеты.</div>
-</section>
-</li>
-<li>
-<section class="detail" id="canTransferToBudget()">
-<h3>canTransferToBudget</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">canTransferToBudget</span>()</div>
-<div class="block">Возможность перевода с платной на бюджетную форму.
- Нет "3" за последние две сессии.
- По дифф зачетам "3" допустимы.</div>
-</section>
-</li>
-<li>
-<section class="detail" id="canGetRedDiplom()">
-<h3>canGetRedDiplom</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">canGetRedDiplom</span>()</div>
-<div class="block">Возможность получения красного диплома.
- Это прогноз основанный на всех имеющихся оценках.</div>
-</section>
-</li>
-<li>
-<section class="detail" id="canGetIncreasedScholarship()">
-<h3>canGetIncreasedScholarship</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">canGetIncreasedScholarship</span>()</div>
-<div class="block">Возможность получения повышенной стипендии в текущем семестре.
- Закрыта последняя сессия без '3'
- и без 'незачетов'.</div>
 </section>
 </li>
 </ul>
