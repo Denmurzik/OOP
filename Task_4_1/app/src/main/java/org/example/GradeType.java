@@ -7,5 +7,9 @@ public enum GradeType {
     EXAM,
     DIFF_TEST,
     PASS_FAIL_TEST,
-    THESIS
+    THESIS,
+    ASSIGNMENT,
+    CONTROL_WORK,
+    COLLOQUIUM,
+    PRACTICE_REPORT_DEFENSE
 }

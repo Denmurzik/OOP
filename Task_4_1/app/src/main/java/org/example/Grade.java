@@ -5,29 +5,24 @@ package org.example;
  */
 public class Grade {
 
-    public static final int EXCELLENT = 5;
-    public static final int GOOD = 4;
-    public static final int SATISFACTORY = 3;
-    public static final int PASSED = 1;
-
     private final String subjectName;
     private final int semester;
     private final GradeType type;
-    private final int value;
+    private final Mark mark;
 
     /**
      * Конструктор для создания объекта оценки.
      *
      * @param subjectName Название предмета
-     * @param semester Номер семестра
-     * @param type Тип контроля (экзамен, дифф. зачет, зачет и т.д.)
-     * @param value Значение оценки (5, 4, 3 или 1/0 для зачета)
+     * @param semester    Номер семестра
+     * @param type        Тип контроля (экзамен, дифф. зачет, зачет и т.д.)
+     * @param mark        Оценка
      */
-    public Grade(String subjectName, int semester, GradeType type, int value) {
+    public Grade(String subjectName, int semester, GradeType type, Mark mark) {
         this.subjectName = subjectName;
         this.semester = semester;
         this.type = type;
-        this.value = value;
+        this.mark = mark;
     }
 
     /**
@@ -42,9 +37,6 @@ public class Grade {
      *
      * @return название предмета
      */
-    public String getSubjectName() {
-        return subjectName;
-    }
 
     /**
      * Геттер.
@@ -70,6 +62,15 @@ public class Grade {
      * @return значение оценки
      */
     public int getValue() {
-        return value;
+        return mark.getValue();
+    }
+
+    /**
+     * Геттер.
+     *
+     * @return оценка
+     */
+    public Mark getMark() {
+        return mark;
     }
 }
