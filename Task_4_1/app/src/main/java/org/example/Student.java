@@ -11,6 +11,7 @@ public class Student {
     private final String name;
     private int currentSemester;
     private final GradeBook gradeBook;
+    private Curriculum curriculum;
 
     /**
      * Конструктор.
@@ -23,6 +24,10 @@ public class Student {
         this.name = name;
         this.currentSemester = currentSemester;
         this.gradeBook = gradeBook;
+    }
+
+    public void setCurriculum(Curriculum curriculum) {
+        this.curriculum = curriculum;
     }
 
     /**
@@ -107,6 +112,10 @@ public class Student {
      * Это прогноз основанный на всех имеющихся оценках.
      */
     public boolean canGetRedDiplom() {
+        if (curriculum != null && !curriculum.checkAllSubjectsPassed(gradeBook)) {
+            return false;
+        }
+
         List<Grade> grades = gradeBook.getGrades();
         List<Grade> finalGrades = grades.stream()
                 .filter(Grade::isDiplomGrade)
