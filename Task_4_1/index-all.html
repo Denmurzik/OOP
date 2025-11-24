@@ -55,6 +55,14 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Добавляет новую оценку в зачетку.</div>
 </dd>
+<dt><a href="org/example/Semester.html#addGrade(org.example.Grade)" class="member-name-link">addGrade(Grade)</a> - Method in class org.example.<a href="org/example/Semester.html" title="class in org.example">Semester</a></dt>
+<dd>
+<div class="block">Добавляет оценку в семестр.</div>
+</dd>
+<dt><a href="org/example/Curriculum.html#addRequirement(int,java.lang.String,org.example.GradeType)" class="member-name-link">addRequirement(int, String, GradeType)</a> - Method in class org.example.<a href="org/example/Curriculum.html" title="class in org.example">Curriculum</a></dt>
+<dd>
+<div class="block">Добавляет требование в учебный план.</div>
+</dd>
 <dt><a href="org/example/GradeType.html#ASSIGNMENT" class="member-name-link">ASSIGNMENT</a> - Enum constant in enum class org.example.<a href="org/example/GradeType.html" title="enum class in org.example">GradeType</a></dt>
 <dd>&nbsp;</dd>
 </dl>
@@ -80,9 +88,19 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Возможность перевода с платной на бюджетную форму.</div>
 </dd>
+<dt><a href="org/example/Curriculum.html#checkAllSubjectsPassed(org.example.GradeBook)" class="member-name-link">checkAllSubjectsPassed(GradeBook)</a> - Method in class org.example.<a href="org/example/Curriculum.html" title="class in org.example">Curriculum</a></dt>
+<dd>
+<div class="block">Проверяет, сдал ли студент все предметы из плана.</div>
+</dd>
 <dt><a href="org/example/GradeType.html#COLLOQUIUM" class="member-name-link">COLLOQUIUM</a> - Enum constant in enum class org.example.<a href="org/example/GradeType.html" title="enum class in org.example">GradeType</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/GradeType.html#CONTROL_WORK" class="member-name-link">CONTROL_WORK</a> - Enum constant in enum class org.example.<a href="org/example/GradeType.html" title="enum class in org.example">GradeType</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/Curriculum.html" class="type-name-link" title="class in org.example">Curriculum</a> - Class in <a href="org/example/package-summary.html">org.example</a></dt>
+<dd>
+<div class="block">Учебный план.</div>
+</dd>
+<dt><a href="org/example/Curriculum.html#%3Cinit%3E()" class="member-name-link">Curriculum()</a> - Constructor for class org.example.<a href="org/example/Curriculum.html" title="class in org.example">Curriculum</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:D">D</h2>
@@ -114,7 +132,11 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="org/example/GradeBook.html#getGrades()" class="member-name-link">getGrades()</a> - Method in class org.example.<a href="org/example/GradeBook.html" title="class in org.example">GradeBook</a></dt>
 <dd>
-<div class="block">Возвращает список оценок.</div>
+<div class="block">Возвращает список всех оценок.</div>
+</dd>
+<dt><a href="org/example/Semester.html#getGrades()" class="member-name-link">getGrades()</a> - Method in class org.example.<a href="org/example/Semester.html" title="class in org.example">Semester</a></dt>
+<dd>
+<div class="block">Возвращает список оценок семестра.</div>
 </dd>
 <dt><a href="org/example/Grade.html#getMark()" class="member-name-link">getMark()</a> - Method in class org.example.<a href="org/example/Grade.html" title="class in org.example">Grade</a></dt>
 <dd>
@@ -124,18 +146,30 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Геттер.</div>
 </dd>
+<dt><a href="org/example/Semester.html#getNumber()" class="member-name-link">getNumber()</a> - Method in class org.example.<a href="org/example/Semester.html" title="class in org.example">Semester</a></dt>
+<dd>
+<div class="block">Геттер.</div>
+</dd>
 <dt><a href="org/example/Grade.html#getSemester()" class="member-name-link">getSemester()</a> - Method in class org.example.<a href="org/example/Grade.html" title="class in org.example">Grade</a></dt>
 <dd>
 <div class="block">Геттер.</div>
+</dd>
+<dt><a href="org/example/GradeBook.html#getSemester(int)" class="member-name-link">getSemester(int)</a> - Method in class org.example.<a href="org/example/GradeBook.html" title="class in org.example">GradeBook</a></dt>
+<dd>
+<div class="block">Возвращает семестр по номеру.</div>
 </dd>
 <dt><a href="org/example/Grade.html#getSubjectName()" class="member-name-link">getSubjectName()</a> - Method in class org.example.<a href="org/example/Grade.html" title="class in org.example">Grade</a></dt>
 <dd>
 <div class="block">Геттер.</div>
 </dd>
+<dt><a href="org/example/SubjectRequirement.html#getSubjectName()" class="member-name-link">getSubjectName()</a> - Method in class org.example.<a href="org/example/SubjectRequirement.html" title="class in org.example">SubjectRequirement</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="org/example/Grade.html#getType()" class="member-name-link">getType()</a> - Method in class org.example.<a href="org/example/Grade.html" title="class in org.example">Grade</a></dt>
 <dd>
 <div class="block">Геттер.</div>
 </dd>
+<dt><a href="org/example/SubjectRequirement.html#getType()" class="member-name-link">getType()</a> - Method in class org.example.<a href="org/example/SubjectRequirement.html" title="class in org.example">SubjectRequirement</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="org/example/Grade.html#getValue()" class="member-name-link">getValue()</a> - Method in class org.example.<a href="org/example/Grade.html" title="class in org.example">Grade</a></dt>
 <dd>
 <div class="block">Геттер.</div>
@@ -195,15 +229,33 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="org/example/Mark.html#SATISFACTORY" class="member-name-link">SATISFACTORY</a> - Enum constant in enum class org.example.<a href="org/example/Mark.html" title="enum class in org.example">Mark</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="org/example/Semester.html" class="type-name-link" title="class in org.example">Semester</a> - Class in <a href="org/example/package-summary.html">org.example</a></dt>
+<dd>
+<div class="block">Класс Семестр.</div>
+</dd>
+<dt><a href="org/example/Semester.html#%3Cinit%3E(int)" class="member-name-link">Semester(int)</a> - Constructor for class org.example.<a href="org/example/Semester.html" title="class in org.example">Semester</a></dt>
+<dd>
+<div class="block">Конструктор.</div>
+</dd>
 <dt><a href="org/example/Student.html#setCurrentSemester(int)" class="member-name-link">setCurrentSemester(int)</a> - Method in class org.example.<a href="org/example/Student.html" title="class in org.example">Student</a></dt>
 <dd>
 <div class="block">Сеттер.</div>
 </dd>
+<dt><a href="org/example/Student.html#setCurriculum(org.example.Curriculum)" class="member-name-link">setCurriculum(Curriculum)</a> - Method in class org.example.<a href="org/example/Student.html" title="class in org.example">Student</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="org/example/Student.html" class="type-name-link" title="class in org.example">Student</a> - Class in <a href="org/example/package-summary.html">org.example</a></dt>
 <dd>
 <div class="block">Класс Студент.</div>
 </dd>
 <dt><a href="org/example/Student.html#%3Cinit%3E(java.lang.String,int,org.example.GradeBook)" class="member-name-link">Student(String, int, GradeBook)</a> - Constructor for class org.example.<a href="org/example/Student.html" title="class in org.example">Student</a></dt>
+<dd>
+<div class="block">Конструктор.</div>
+</dd>
+<dt><a href="org/example/SubjectRequirement.html" class="type-name-link" title="class in org.example">SubjectRequirement</a> - Class in <a href="org/example/package-summary.html">org.example</a></dt>
+<dd>
+<div class="block">Требование к предмету в учебном плане.</div>
+</dd>
+<dt><a href="org/example/SubjectRequirement.html#%3Cinit%3E(java.lang.String,org.example.GradeType)" class="member-name-link">SubjectRequirement(String, GradeType)</a> - Constructor for class org.example.<a href="org/example/SubjectRequirement.html" title="class in org.example">SubjectRequirement</a></dt>
 <dd>
 <div class="block">Конструктор.</div>
 </dd>
