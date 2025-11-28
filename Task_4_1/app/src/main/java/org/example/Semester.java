@@ -49,4 +49,37 @@ public class Semester {
     public List<Grade> getGrades() {
         return Collections.unmodifiableList(grades);
     }
+
+    /**
+     * Проверяет, есть ли тройки за экзамены в этом семестре.
+     *
+     * @return true, если есть тройка
+     */
+    public boolean hasSatisfactoryInExams() {
+        return grades.stream()
+                .filter(g -> g.getType() == GradeType.EXAM)
+                .anyMatch(g -> g.getMark() == Mark.SATISFACTORY);
+    }
+
+    /**
+     * Проверяет, есть ли тройки за экзамены или дифф. зачеты.
+     *
+     * @return true, если есть тройка
+     */
+    public boolean hasSatisfactoryInDiplomGrades() {
+        return grades.stream()
+                .filter(Grade::isDiplomGrade)
+                .anyMatch(g -> g.getMark() == Mark.SATISFACTORY);
+    }
+
+    /**
+     * Проверяет, есть ли незачеты.
+     *
+     * @return true, если есть незачет
+     */
+    public boolean hasFailedPassFail() {
+        return grades.stream()
+                .filter(g -> g.getType() == GradeType.PASS_FAIL_TEST)
+                .anyMatch(g -> g.getMark() != Mark.PASS);
+    }
 }

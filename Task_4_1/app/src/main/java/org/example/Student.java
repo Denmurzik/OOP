@@ -86,25 +86,20 @@ public class Student {
             return false;
         }
 
-        List<Grade> grades = gradeBook.getGrades();
-
-        boolean lastSessionOk = checkSessionForBudget(grades, lastSession);
-        if (!lastSessionOk) {
+        if (checkSessionForBudget(lastSession)) {
             return false;
         }
 
         if (prevSession > 0) {
-            return checkSessionForBudget(grades, prevSession);
+            return !checkSessionForBudget(prevSession);
         }
 
         return true;
     }
 
-    private boolean checkSessionForBudget(List<Grade> grades, int semester) {
-        return grades.stream()
-                .filter(g -> g.getSemester() == semester)
-                .filter(g -> g.getType() == GradeType.EXAM)
-                .noneMatch(g -> g.getMark() == Mark.SATISFACTORY);
+    private boolean checkSessionForBudget(int semesterNum) {
+        Semester semester = gradeBook.getSemester(semesterNum);
+        return semester != null && semester.hasSatisfactoryInExams();
     }
 
     /**
@@ -125,21 +120,31 @@ public class Student {
             return false;
         }
 
-        boolean hasSatisfactory = finalGrades.stream()
-                .anyMatch(g -> g.getMark() == Mark.SATISFACTORY);
-        if (hasSatisfactory) {
+        if (hasSatisfactory(finalGrades)) {
             return false;
         }
 
-        long excellentCount = finalGrades.stream()
+        if (!hasExcellentPercentage(finalGrades)) {
+            return false;
+        }
+
+        return isThesisExcellent(grades);
+    }
+
+    private boolean hasSatisfactory(List<Grade> grades) {
+        return grades.stream()
+                .anyMatch(g -> g.getMark() == Mark.SATISFACTORY);
+    }
+
+    private boolean hasExcellentPercentage(List<Grade> grades) {
+        long excellentCount = grades.stream()
                 .filter(g -> g.getMark() == Mark.EXCELLENT)
                 .count();
+        double excellentPercentage = (double) excellentCount / grades.size();
+        return excellentPercentage >= 0.75;
+    }
 
-        double excellentPercentage = (double) excellentCount / finalGrades.size();
-        if (excellentPercentage < 0.75) {
-            return false;
-        }
-
+    private boolean isThesisExcellent(List<Grade> grades) {
         return grades.stream()
                 .filter(g -> g.getType() == GradeType.THESIS)
                 .findFirst()
@@ -158,18 +163,11 @@ public class Student {
             return false;
         }
 
-        List<Grade> grades = gradeBook.getGrades();
+        Semester semester = gradeBook.getSemester(lastSession);
+        if (semester == null) {
+            return false;
+        }
 
-        boolean hasSatisfactory = grades.stream()
-                .filter(g -> g.getSemester() == lastSession
-                        && g.isDiplomGrade())
-                .anyMatch(g -> g.getMark() == Mark.SATISFACTORY);
-
-        boolean hasFailedPassFail = grades.stream()
-                .filter(g -> g.getSemester() == lastSession
-                        && g.getType() == GradeType.PASS_FAIL_TEST)
-                .anyMatch(g -> g.getMark() != Mark.PASS);
-
-        return !hasSatisfactory && !hasFailedPassFail;
+        return !semester.hasSatisfactoryInDiplomGrades() && !semester.hasFailedPassFail();
     }
 }
