@@ -6,7 +6,6 @@ package org.example.core;
 public class Grade {
 
     private final String subjectName;
-    private final int semester;
     private final GradeType type;
     private final Mark mark;
 
@@ -14,13 +13,11 @@ public class Grade {
      * Конструктор для создания объекта оценки.
      *
      * @param subjectName Название предмета
-     * @param semester    Номер семестра
      * @param type        Тип контроля (экзамен, дифф. зачет, зачет и т.д.)
      * @param mark        Оценка
      */
-    public Grade(String subjectName, int semester, GradeType type, Mark mark) {
+    public Grade(String subjectName, GradeType type, Mark mark) {
         this.subjectName = subjectName;
-        this.semester = semester;
         this.type = type;
         this.mark = mark;
     }
@@ -41,15 +38,6 @@ public class Grade {
      */
     public String getSubjectName() {
         return subjectName;
-    }
-
-    /**
-     * Геттер.
-     *
-     * @return номер семестра
-     */
-    public int getSemester() {
-        return semester;
     }
 
     /**

@@ -31,8 +31,8 @@ class CurriculumTest {
         curriculum.addRequirement(1, "Physics", GradeType.DIFF_TEST);
 
         GradeBook book = new GradeBook();
-        book.addGrade(new Grade("Math", 1, GradeType.EXAM, Mark.GOOD));
-        book.addGrade(new Grade("Physics", 1, GradeType.DIFF_TEST, Mark.SATISFACTORY));
+        book.addGrade(1, new Grade("Math", GradeType.EXAM, Mark.GOOD));
+        book.addGrade(1, new Grade("Physics", GradeType.DIFF_TEST, Mark.SATISFACTORY));
 
         assertTrue(curriculum.checkAllSubjectsPassed(book));
     }
@@ -55,7 +55,7 @@ class CurriculumTest {
         curriculum.addRequirement(1, "Math", GradeType.EXAM);
 
         GradeBook book = new GradeBook();
-        book.addGrade(new Grade("Math", 1, GradeType.EXAM, Mark.FAIL)); // Двойка
+        book.addGrade(1, new Grade("Math", GradeType.EXAM, Mark.FAIL)); // Двойка
 
         assertFalse(curriculum.checkAllSubjectsPassed(book));
     }

@@ -1,3 +1,4 @@
+
 package org.example;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -21,9 +22,9 @@ class GradeBookTest {
     @DisplayName("Добавление оценки и получение списка")
     void testAddAndGetGrades() {
         GradeBook book = new GradeBook();
-        Grade grade = new Grade("Math", 1, GradeType.EXAM, Mark.EXCELLENT);
+        Grade grade = new Grade("Math", GradeType.EXAM, Mark.EXCELLENT);
 
-        book.addGrade(grade);
+        book.addGrade(1, grade);
 
         List<Grade> grades = book.getGrades();
         assertEquals(1, grades.size());
@@ -37,7 +38,7 @@ class GradeBookTest {
         List<Grade> grades = book.getGrades();
 
         assertThrows(UnsupportedOperationException.class, () -> {
-            grades.add(new Grade("History", 1, GradeType.EXAM, Mark.GOOD));
+            grades.add(new Grade("History", GradeType.EXAM, Mark.GOOD));
         });
     }
 
@@ -46,13 +47,12 @@ class GradeBookTest {
     void testCalculateCurrentGpa() {
         GradeBook book = new GradeBook();
 
-        book.addGrade(new Grade("Math", 1, GradeType.EXAM, Mark.EXCELLENT));
+        book.addGrade(1, new Grade("Math", GradeType.EXAM, Mark.EXCELLENT));
+        book.addGrade(1, new Grade("Physics", GradeType.DIFF_TEST, Mark.GOOD));
 
-        book.addGrade(new Grade("Physics", 1, GradeType.DIFF_TEST, Mark.GOOD));
+        book.addGrade(1, new Grade("PE", GradeType.PASS_FAIL_TEST, Mark.PASS));
 
-        book.addGrade(new Grade("PE", 1, GradeType.PASS_FAIL_TEST, Mark.PASS));
-
-        book.addGrade(new Grade("Chemistry", 1, GradeType.EXAM, Mark.FAIL));
+        book.addGrade(1, new Grade("Chemistry", GradeType.EXAM, Mark.FAIL));
 
         assertEquals(4.5, book.calculateCurrentGpa());
     }
@@ -68,8 +68,8 @@ class GradeBookTest {
     @DisplayName("Средний балл игнорирует неудовлетворительные оценки")
     void testCalculateCurrentGpaIgnoresFails() {
         GradeBook book = new GradeBook();
-        book.addGrade(new Grade("Math", 1, GradeType.EXAM, Mark.SATISFACTORY));
-        book.addGrade(new Grade("Physics", 1, GradeType.EXAM, Mark.FAIL));
+        book.addGrade(1, new Grade("Math", GradeType.EXAM, Mark.EXCELLENT));
+        book.addGrade(8, new Grade("Thesis", GradeType.THESIS, Mark.EXCELLENT));
 
         assertEquals(3.0, book.calculateCurrentGpa());
     }

@@ -22,8 +22,7 @@ public class GradeBook {
      * Добавляет новую оценку в зачетку.
      * Попадает в семестр.
      */
-    public void addGrade(Grade grade) {
-        int semesterNum = grade.getSemester();
+    public void addGrade(int semesterNum, Grade grade) {
         Semester semester = semesters.computeIfAbsent(semesterNum, Semester::new);
         semester.addGrade(grade);
     }
