@@ -68,8 +68,8 @@ class GradeBookTest {
     @DisplayName("Средний балл игнорирует неудовлетворительные оценки")
     void testCalculateCurrentGpaIgnoresFails() {
         GradeBook book = new GradeBook();
-        book.addGrade(1, new Grade("Math", GradeType.EXAM, Mark.EXCELLENT));
-        book.addGrade(8, new Grade("Thesis", GradeType.THESIS, Mark.EXCELLENT));
+        book.addGrade(1, new Grade("Math", GradeType.EXAM, Mark.SATISFACTORY));
+        book.addGrade(1, new Grade("Physics", GradeType.EXAM, Mark.FAIL));
 
         assertEquals(3.0, book.calculateCurrentGpa());
     }
