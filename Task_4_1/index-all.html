@@ -26,7 +26,8 @@ loadScripts(document, 'script');</script>
 <div class="top-nav" id="navbar-top"><button id="navbar-toggle-button" aria-controls="navbar-top" aria-expanded="false" aria-label="Toggle navigation links"><span class="nav-bar-toggle-icon">&nbsp;</span><span class="nav-bar-toggle-icon">&nbsp;</span><span class="nav-bar-toggle-icon">&nbsp;</span></button>
 <div class="skip-nav"><a href="#skip-navbar-top" title="Skip navigation links">Skip navigation links</a></div>
 <ul id="navbar-top-firstrow" class="nav-list" title="Navigation">
-<li><a href="org/example/package-summary.html">Package</a></li>
+<li><a href="index.html">Overview</a></li>
+<li>Package</li>
 <li>Class</li>
 <li><a href="overview-tree.html">Tree</a></li>
 <li class="nav-bar-cell1-rev">Index</li>
@@ -51,251 +52,277 @@ loadScripts(document, 'script');</script>
 <a href="#I:A">A</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:V">V</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
 <h2 class="title" id="I:A">A</h2>
 <dl class="index">
-<dt><a href="org/example/GradeBook.html#addGrade(org.example.Grade)" class="member-name-link">addGrade(Grade)</a> - Method in class org.example.<a href="org/example/GradeBook.html" title="class in org.example">GradeBook</a></dt>
+<dt><a href="org/example/model/GradeBook.html#addGrade(org.example.core.Grade)" class="member-name-link">addGrade(Grade)</a> - Method in class org.example.model.<a href="org/example/model/GradeBook.html" title="class in org.example.model">GradeBook</a></dt>
 <dd>
 <div class="block">Добавляет новую оценку в зачетку.</div>
 </dd>
-<dt><a href="org/example/Semester.html#addGrade(org.example.Grade)" class="member-name-link">addGrade(Grade)</a> - Method in class org.example.<a href="org/example/Semester.html" title="class in org.example">Semester</a></dt>
+<dt><a href="org/example/model/Semester.html#addGrade(org.example.core.Grade)" class="member-name-link">addGrade(Grade)</a> - Method in class org.example.model.<a href="org/example/model/Semester.html" title="class in org.example.model">Semester</a></dt>
 <dd>
 <div class="block">Добавляет оценку в семестр.</div>
 </dd>
-<dt><a href="org/example/Curriculum.html#addRequirement(int,java.lang.String,org.example.GradeType)" class="member-name-link">addRequirement(int, String, GradeType)</a> - Method in class org.example.<a href="org/example/Curriculum.html" title="class in org.example">Curriculum</a></dt>
+<dt><a href="org/example/model/Curriculum.html#addRequirement(int,java.lang.String,org.example.core.GradeType)" class="member-name-link">addRequirement(int, String, GradeType)</a> - Method in class org.example.model.<a href="org/example/model/Curriculum.html" title="class in org.example.model">Curriculum</a></dt>
 <dd>
 <div class="block">Добавляет требование в учебный план.</div>
 </dd>
-<dt><a href="org/example/GradeType.html#ASSIGNMENT" class="member-name-link">ASSIGNMENT</a> - Enum constant in enum class org.example.<a href="org/example/GradeType.html" title="enum class in org.example">GradeType</a></dt>
+<dt><a href="org/example/core/GradeType.html#ASSIGNMENT" class="member-name-link">ASSIGNMENT</a> - Enum constant in enum class org.example.core.<a href="org/example/core/GradeType.html" title="enum class in org.example.core">GradeType</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:C">C</h2>
 <dl class="index">
-<dt><a href="org/example/Student.html#calculateAverageGrade()" class="member-name-link">calculateAverageGrade()</a> - Method in class org.example.<a href="org/example/Student.html" title="class in org.example">Student</a></dt>
+<dt><a href="org/example/model/Student.html#calculateAverageGrade()" class="member-name-link">calculateAverageGrade()</a> - Method in class org.example.model.<a href="org/example/model/Student.html" title="class in org.example.model">Student</a></dt>
 <dd>
 <div class="block">Расчет текущего среднего балла за все время обучения.</div>
 </dd>
-<dt><a href="org/example/GradeBook.html#calculateCurrentGpa()" class="member-name-link">calculateCurrentGpa()</a> - Method in class org.example.<a href="org/example/GradeBook.html" title="class in org.example">GradeBook</a></dt>
+<dt><a href="org/example/model/GradeBook.html#calculateCurrentGpa()" class="member-name-link">calculateCurrentGpa()</a> - Method in class org.example.model.<a href="org/example/model/GradeBook.html" title="class in org.example.model">GradeBook</a></dt>
 <dd>
-<div class="block">Расчет текущего среднего балла за все время обучения.</div>
+<div class="block">Вычисляет текущий средний балл.</div>
 </dd>
-<dt><a href="org/example/Student.html#canGetIncreasedScholarship()" class="member-name-link">canGetIncreasedScholarship()</a> - Method in class org.example.<a href="org/example/Student.html" title="class in org.example">Student</a></dt>
+<dt><a href="org/example/model/Student.html#canGetIncreasedScholarship()" class="member-name-link">canGetIncreasedScholarship()</a> - Method in class org.example.model.<a href="org/example/model/Student.html" title="class in org.example.model">Student</a></dt>
 <dd>
 <div class="block">Возможность получения повышенной стипендии в текущем семестре.</div>
 </dd>
-<dt><a href="org/example/Student.html#canGetRedDiplom()" class="member-name-link">canGetRedDiplom()</a> - Method in class org.example.<a href="org/example/Student.html" title="class in org.example">Student</a></dt>
+<dt><a href="org/example/model/Student.html#canGetRedDiplom()" class="member-name-link">canGetRedDiplom()</a> - Method in class org.example.model.<a href="org/example/model/Student.html" title="class in org.example.model">Student</a></dt>
 <dd>
 <div class="block">Возможность получения красного диплома.</div>
 </dd>
-<dt><a href="org/example/Student.html#canTransferToBudget()" class="member-name-link">canTransferToBudget()</a> - Method in class org.example.<a href="org/example/Student.html" title="class in org.example">Student</a></dt>
+<dt><a href="org/example/model/Student.html#canTransferToBudget()" class="member-name-link">canTransferToBudget()</a> - Method in class org.example.model.<a href="org/example/model/Student.html" title="class in org.example.model">Student</a></dt>
 <dd>
 <div class="block">Возможность перевода с платной на бюджетную форму.</div>
 </dd>
-<dt><a href="org/example/Curriculum.html#checkAllSubjectsPassed(org.example.GradeBook)" class="member-name-link">checkAllSubjectsPassed(GradeBook)</a> - Method in class org.example.<a href="org/example/Curriculum.html" title="class in org.example">Curriculum</a></dt>
+<dt><a href="org/example/model/Curriculum.html#checkAllSubjectsPassed(org.example.model.GradeBook)" class="member-name-link">checkAllSubjectsPassed(GradeBook)</a> - Method in class org.example.model.<a href="org/example/model/Curriculum.html" title="class in org.example.model">Curriculum</a></dt>
 <dd>
 <div class="block">Проверяет, сдал ли студент все предметы из плана.</div>
 </dd>
-<dt><a href="org/example/GradeType.html#COLLOQUIUM" class="member-name-link">COLLOQUIUM</a> - Enum constant in enum class org.example.<a href="org/example/GradeType.html" title="enum class in org.example">GradeType</a></dt>
+<dt><a href="org/example/core/GradeType.html#COLLOQUIUM" class="member-name-link">COLLOQUIUM</a> - Enum constant in enum class org.example.core.<a href="org/example/core/GradeType.html" title="enum class in org.example.core">GradeType</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="org/example/GradeType.html#CONTROL_WORK" class="member-name-link">CONTROL_WORK</a> - Enum constant in enum class org.example.<a href="org/example/GradeType.html" title="enum class in org.example">GradeType</a></dt>
+<dt><a href="org/example/core/GradeType.html#CONTROL_WORK" class="member-name-link">CONTROL_WORK</a> - Enum constant in enum class org.example.core.<a href="org/example/core/GradeType.html" title="enum class in org.example.core">GradeType</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="org/example/Curriculum.html" class="type-name-link" title="class in org.example">Curriculum</a> - Class in <a href="org/example/package-summary.html">org.example</a></dt>
+<dt><a href="org/example/model/Curriculum.html" class="type-name-link" title="class in org.example.model">Curriculum</a> - Class in <a href="org/example/model/package-summary.html">org.example.model</a></dt>
 <dd>
 <div class="block">Учебный план.</div>
 </dd>
-<dt><a href="org/example/Curriculum.html#%3Cinit%3E()" class="member-name-link">Curriculum()</a> - Constructor for class org.example.<a href="org/example/Curriculum.html" title="class in org.example">Curriculum</a></dt>
+<dt><a href="org/example/model/Curriculum.html#%3Cinit%3E()" class="member-name-link">Curriculum()</a> - Constructor for class org.example.model.<a href="org/example/model/Curriculum.html" title="class in org.example.model">Curriculum</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:D">D</h2>
 <dl class="index">
-<dt><a href="org/example/GradeType.html#DIFF_TEST" class="member-name-link">DIFF_TEST</a> - Enum constant in enum class org.example.<a href="org/example/GradeType.html" title="enum class in org.example">GradeType</a></dt>
+<dt><a href="org/example/core/GradeType.html#DIFF_TEST" class="member-name-link">DIFF_TEST</a> - Enum constant in enum class org.example.core.<a href="org/example/core/GradeType.html" title="enum class in org.example.core">GradeType</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:E">E</h2>
 <dl class="index">
-<dt><a href="org/example/GradeType.html#EXAM" class="member-name-link">EXAM</a> - Enum constant in enum class org.example.<a href="org/example/GradeType.html" title="enum class in org.example">GradeType</a></dt>
+<dt><a href="org/example/core/GradeType.html#EXAM" class="member-name-link">EXAM</a> - Enum constant in enum class org.example.core.<a href="org/example/core/GradeType.html" title="enum class in org.example.core">GradeType</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="org/example/Mark.html#EXCELLENT" class="member-name-link">EXCELLENT</a> - Enum constant in enum class org.example.<a href="org/example/Mark.html" title="enum class in org.example">Mark</a></dt>
+<dt><a href="org/example/core/Mark.html#EXCELLENT" class="member-name-link">EXCELLENT</a> - Enum constant in enum class org.example.core.<a href="org/example/core/Mark.html" title="enum class in org.example.core">Mark</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:F">F</h2>
 <dl class="index">
-<dt><a href="org/example/Mark.html#FAIL" class="member-name-link">FAIL</a> - Enum constant in enum class org.example.<a href="org/example/Mark.html" title="enum class in org.example">Mark</a></dt>
+<dt><a href="org/example/core/Mark.html#FAIL" class="member-name-link">FAIL</a> - Enum constant in enum class org.example.core.<a href="org/example/core/Mark.html" title="enum class in org.example.core">Mark</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:G">G</h2>
 <dl class="index">
-<dt><a href="org/example/Student.html#getCurrentSemester()" class="member-name-link">getCurrentSemester()</a> - Method in class org.example.<a href="org/example/Student.html" title="class in org.example">Student</a></dt>
+<dt><a href="org/example/model/Student.html#getCurrentSemester()" class="member-name-link">getCurrentSemester()</a> - Method in class org.example.model.<a href="org/example/model/Student.html" title="class in org.example.model">Student</a></dt>
 <dd>
 <div class="block">Геттер.</div>
 </dd>
-<dt><a href="org/example/Student.html#getGradeBook()" class="member-name-link">getGradeBook()</a> - Method in class org.example.<a href="org/example/Student.html" title="class in org.example">Student</a></dt>
+<dt><a href="org/example/model/GradeBook.html#getExcellentPercentage()" class="member-name-link">getExcellentPercentage()</a> - Method in class org.example.model.<a href="org/example/model/GradeBook.html" title="class in org.example.model">GradeBook</a></dt>
+<dd>
+<div class="block">Вычисляет процент отличных оценок среди тех, что идут в диплом.</div>
+</dd>
+<dt><a href="org/example/model/Student.html#getGradeBook()" class="member-name-link">getGradeBook()</a> - Method in class org.example.model.<a href="org/example/model/Student.html" title="class in org.example.model">Student</a></dt>
 <dd>
 <div class="block">Геттер.</div>
 </dd>
-<dt><a href="org/example/GradeBook.html#getGrades()" class="member-name-link">getGrades()</a> - Method in class org.example.<a href="org/example/GradeBook.html" title="class in org.example">GradeBook</a></dt>
+<dt><a href="org/example/model/Semester.html#getGradeCount()" class="member-name-link">getGradeCount()</a> - Method in class org.example.model.<a href="org/example/model/Semester.html" title="class in org.example.model">Semester</a></dt>
+<dd>
+<div class="block">Количество оценок, идущих в диплом (для расчета среднего балла).</div>
+</dd>
+<dt><a href="org/example/model/GradeBook.html#getGrades()" class="member-name-link">getGrades()</a> - Method in class org.example.model.<a href="org/example/model/GradeBook.html" title="class in org.example.model">GradeBook</a></dt>
 <dd>
 <div class="block">Возвращает список всех оценок.</div>
 </dd>
-<dt><a href="org/example/Semester.html#getGrades()" class="member-name-link">getGrades()</a> - Method in class org.example.<a href="org/example/Semester.html" title="class in org.example">Semester</a></dt>
+<dt><a href="org/example/model/Semester.html#getGrades()" class="member-name-link">getGrades()</a> - Method in class org.example.model.<a href="org/example/model/Semester.html" title="class in org.example.model">Semester</a></dt>
 <dd>
 <div class="block">Возвращает список оценок семестра.</div>
 </dd>
-<dt><a href="org/example/Grade.html#getMark()" class="member-name-link">getMark()</a> - Method in class org.example.<a href="org/example/Grade.html" title="class in org.example">Grade</a></dt>
+<dt><a href="org/example/model/Semester.html#getGradeSum()" class="member-name-link">getGradeSum()</a> - Method in class org.example.model.<a href="org/example/model/Semester.html" title="class in org.example.model">Semester</a></dt>
+<dd>
+<div class="block">Сумма значений оценок, идущих в диплом (для расчета среднего балла).</div>
+</dd>
+<dt><a href="org/example/core/Grade.html#getMark()" class="member-name-link">getMark()</a> - Method in class org.example.core.<a href="org/example/core/Grade.html" title="class in org.example.core">Grade</a></dt>
 <dd>
 <div class="block">Геттер.</div>
 </dd>
-<dt><a href="org/example/Student.html#getName()" class="member-name-link">getName()</a> - Method in class org.example.<a href="org/example/Student.html" title="class in org.example">Student</a></dt>
+<dt><a href="org/example/model/Student.html#getName()" class="member-name-link">getName()</a> - Method in class org.example.model.<a href="org/example/model/Student.html" title="class in org.example.model">Student</a></dt>
 <dd>
 <div class="block">Геттер.</div>
 </dd>
-<dt><a href="org/example/Semester.html#getNumber()" class="member-name-link">getNumber()</a> - Method in class org.example.<a href="org/example/Semester.html" title="class in org.example">Semester</a></dt>
+<dt><a href="org/example/model/Semester.html#getNumber()" class="member-name-link">getNumber()</a> - Method in class org.example.model.<a href="org/example/model/Semester.html" title="class in org.example.model">Semester</a></dt>
 <dd>
 <div class="block">Геттер.</div>
 </dd>
-<dt><a href="org/example/Grade.html#getSemester()" class="member-name-link">getSemester()</a> - Method in class org.example.<a href="org/example/Grade.html" title="class in org.example">Grade</a></dt>
+<dt><a href="org/example/core/Grade.html#getSemester()" class="member-name-link">getSemester()</a> - Method in class org.example.core.<a href="org/example/core/Grade.html" title="class in org.example.core">Grade</a></dt>
 <dd>
 <div class="block">Геттер.</div>
 </dd>
-<dt><a href="org/example/GradeBook.html#getSemester(int)" class="member-name-link">getSemester(int)</a> - Method in class org.example.<a href="org/example/GradeBook.html" title="class in org.example">GradeBook</a></dt>
+<dt><a href="org/example/model/GradeBook.html#getSemester(int)" class="member-name-link">getSemester(int)</a> - Method in class org.example.model.<a href="org/example/model/GradeBook.html" title="class in org.example.model">GradeBook</a></dt>
 <dd>
 <div class="block">Возвращает семестр по номеру.</div>
 </dd>
-<dt><a href="org/example/Grade.html#getSubjectName()" class="member-name-link">getSubjectName()</a> - Method in class org.example.<a href="org/example/Grade.html" title="class in org.example">Grade</a></dt>
+<dt><a href="org/example/core/Grade.html#getSubjectName()" class="member-name-link">getSubjectName()</a> - Method in class org.example.core.<a href="org/example/core/Grade.html" title="class in org.example.core">Grade</a></dt>
 <dd>
 <div class="block">Геттер.</div>
 </dd>
-<dt><a href="org/example/SubjectRequirement.html#getSubjectName()" class="member-name-link">getSubjectName()</a> - Method in class org.example.<a href="org/example/SubjectRequirement.html" title="class in org.example">SubjectRequirement</a></dt>
+<dt><a href="org/example/model/SubjectRequirement.html#getSubjectName()" class="member-name-link">getSubjectName()</a> - Method in class org.example.model.<a href="org/example/model/SubjectRequirement.html" title="class in org.example.model">SubjectRequirement</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="org/example/Grade.html#getType()" class="member-name-link">getType()</a> - Method in class org.example.<a href="org/example/Grade.html" title="class in org.example">Grade</a></dt>
+<dt><a href="org/example/core/Grade.html#getType()" class="member-name-link">getType()</a> - Method in class org.example.core.<a href="org/example/core/Grade.html" title="class in org.example.core">Grade</a></dt>
 <dd>
 <div class="block">Геттер.</div>
 </dd>
-<dt><a href="org/example/SubjectRequirement.html#getType()" class="member-name-link">getType()</a> - Method in class org.example.<a href="org/example/SubjectRequirement.html" title="class in org.example">SubjectRequirement</a></dt>
+<dt><a href="org/example/model/SubjectRequirement.html#getType()" class="member-name-link">getType()</a> - Method in class org.example.model.<a href="org/example/model/SubjectRequirement.html" title="class in org.example.model">SubjectRequirement</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="org/example/Grade.html#getValue()" class="member-name-link">getValue()</a> - Method in class org.example.<a href="org/example/Grade.html" title="class in org.example">Grade</a></dt>
+<dt><a href="org/example/core/Grade.html#getValue()" class="member-name-link">getValue()</a> - Method in class org.example.core.<a href="org/example/core/Grade.html" title="class in org.example.core">Grade</a></dt>
 <dd>
 <div class="block">Геттер.</div>
 </dd>
-<dt><a href="org/example/Mark.html#getValue()" class="member-name-link">getValue()</a> - Method in enum class org.example.<a href="org/example/Mark.html" title="enum class in org.example">Mark</a></dt>
+<dt><a href="org/example/core/Mark.html#getValue()" class="member-name-link">getValue()</a> - Method in enum class org.example.core.<a href="org/example/core/Mark.html" title="enum class in org.example.core">Mark</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="org/example/Mark.html#GOOD" class="member-name-link">GOOD</a> - Enum constant in enum class org.example.<a href="org/example/Mark.html" title="enum class in org.example">Mark</a></dt>
+<dt><a href="org/example/core/Mark.html#GOOD" class="member-name-link">GOOD</a> - Enum constant in enum class org.example.core.<a href="org/example/core/Mark.html" title="enum class in org.example.core">Mark</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="org/example/Grade.html" class="type-name-link" title="class in org.example">Grade</a> - Class in <a href="org/example/package-summary.html">org.example</a></dt>
+<dt><a href="org/example/core/Grade.html" class="type-name-link" title="class in org.example.core">Grade</a> - Class in <a href="org/example/core/package-summary.html">org.example.core</a></dt>
 <dd>
 <div class="block">Хранит информацию об одной оценке.</div>
 </dd>
-<dt><a href="org/example/Grade.html#%3Cinit%3E(java.lang.String,int,org.example.GradeType,org.example.Mark)" class="member-name-link">Grade(String, int, GradeType, Mark)</a> - Constructor for class org.example.<a href="org/example/Grade.html" title="class in org.example">Grade</a></dt>
+<dt><a href="org/example/core/Grade.html#%3Cinit%3E(java.lang.String,int,org.example.core.GradeType,org.example.core.Mark)" class="member-name-link">Grade(String, int, GradeType, Mark)</a> - Constructor for class org.example.core.<a href="org/example/core/Grade.html" title="class in org.example.core">Grade</a></dt>
 <dd>
 <div class="block">Конструктор для создания объекта оценки.</div>
 </dd>
-<dt><a href="org/example/GradeBook.html" class="type-name-link" title="class in org.example">GradeBook</a> - Class in <a href="org/example/package-summary.html">org.example</a></dt>
+<dt><a href="org/example/model/GradeBook.html" class="type-name-link" title="class in org.example.model">GradeBook</a> - Class in <a href="org/example/model/package-summary.html">org.example.model</a></dt>
 <dd>
 <div class="block">Класс зачетная книжка.</div>
 </dd>
-<dt><a href="org/example/GradeBook.html#%3Cinit%3E()" class="member-name-link">GradeBook()</a> - Constructor for class org.example.<a href="org/example/GradeBook.html" title="class in org.example">GradeBook</a></dt>
+<dt><a href="org/example/model/GradeBook.html#%3Cinit%3E()" class="member-name-link">GradeBook()</a> - Constructor for class org.example.model.<a href="org/example/model/GradeBook.html" title="class in org.example.model">GradeBook</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="org/example/GradeType.html" class="type-name-link" title="enum class in org.example">GradeType</a> - Enum Class in <a href="org/example/package-summary.html">org.example</a></dt>
+<dt><a href="org/example/core/GradeType.html" class="type-name-link" title="enum class in org.example.core">GradeType</a> - Enum Class in <a href="org/example/core/package-summary.html">org.example.core</a></dt>
 <dd>
 <div class="block">Тип аттестации.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:H">H</h2>
 <dl class="index">
-<dt><a href="org/example/Semester.html#hasFailedPassFail()" class="member-name-link">hasFailedPassFail()</a> - Method in class org.example.<a href="org/example/Semester.html" title="class in org.example">Semester</a></dt>
+<dt><a href="org/example/model/Semester.html#hasFailedPassFail()" class="member-name-link">hasFailedPassFail()</a> - Method in class org.example.model.<a href="org/example/model/Semester.html" title="class in org.example.model">Semester</a></dt>
 <dd>
 <div class="block">Проверяет, есть ли незачеты.</div>
 </dd>
-<dt><a href="org/example/Semester.html#hasSatisfactoryInDiplomGrades()" class="member-name-link">hasSatisfactoryInDiplomGrades()</a> - Method in class org.example.<a href="org/example/Semester.html" title="class in org.example">Semester</a></dt>
+<dt><a href="org/example/model/GradeBook.html#hasSatisfactoryGrades()" class="member-name-link">hasSatisfactoryGrades()</a> - Method in class org.example.model.<a href="org/example/model/GradeBook.html" title="class in org.example.model">GradeBook</a></dt>
+<dd>
+<div class="block">Проверяет наличие троек за все время обучения.</div>
+</dd>
+<dt><a href="org/example/model/Semester.html#hasSatisfactoryInDiplomGrades()" class="member-name-link">hasSatisfactoryInDiplomGrades()</a> - Method in class org.example.model.<a href="org/example/model/Semester.html" title="class in org.example.model">Semester</a></dt>
 <dd>
 <div class="block">Проверяет, есть ли тройки за экзамены или дифф.</div>
 </dd>
-<dt><a href="org/example/Semester.html#hasSatisfactoryInExams()" class="member-name-link">hasSatisfactoryInExams()</a> - Method in class org.example.<a href="org/example/Semester.html" title="class in org.example">Semester</a></dt>
+<dt><a href="org/example/model/Semester.html#hasSatisfactoryInExams()" class="member-name-link">hasSatisfactoryInExams()</a> - Method in class org.example.model.<a href="org/example/model/Semester.html" title="class in org.example.model">Semester</a></dt>
 <dd>
 <div class="block">Проверяет, есть ли тройки за экзамены в этом семестре.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:I">I</h2>
 <dl class="index">
-<dt><a href="org/example/Grade.html#isDiplomGrade()" class="member-name-link">isDiplomGrade()</a> - Method in class org.example.<a href="org/example/Grade.html" title="class in org.example">Grade</a></dt>
+<dt><a href="org/example/model/Semester.html#isClosed(java.util.List)" class="member-name-link">isClosed(List&lt;SubjectRequirement&gt;)</a> - Method in class org.example.model.<a href="org/example/model/Semester.html" title="class in org.example.model">Semester</a></dt>
+<dd>
+<div class="block">Проверяет, закрыт ли семестр (все предметы сданы и нет двоек).</div>
+</dd>
+<dt><a href="org/example/core/Grade.html#isDiplomGrade()" class="member-name-link">isDiplomGrade()</a> - Method in class org.example.core.<a href="org/example/core/Grade.html" title="class in org.example.core">Grade</a></dt>
 <dd>
 <div class="block">Проверяет, идет ли оценка в диплом.</div>
+</dd>
+<dt><a href="org/example/model/GradeBook.html#isThesisExcellent()" class="member-name-link">isThesisExcellent()</a> - Method in class org.example.model.<a href="org/example/model/GradeBook.html" title="class in org.example.model">GradeBook</a></dt>
+<dd>
+<div class="block">Проверяет, сдана ли ВКР на отлично.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:M">M</h2>
 <dl class="index">
-<dt><a href="org/example/Mark.html" class="type-name-link" title="enum class in org.example">Mark</a> - Enum Class in <a href="org/example/package-summary.html">org.example</a></dt>
+<dt><a href="org/example/core/Mark.html" class="type-name-link" title="enum class in org.example.core">Mark</a> - Enum Class in <a href="org/example/core/package-summary.html">org.example.core</a></dt>
 <dd>
 <div class="block">Оценка.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:O">O</h2>
 <dl class="index">
-<dt><a href="org/example/package-summary.html">org.example</a> - package org.example</dt>
+<dt><a href="org/example/core/package-summary.html">org.example.core</a> - package org.example.core</dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/model/package-summary.html">org.example.model</a> - package org.example.model</dt>
 <dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:P">P</h2>
 <dl class="index">
-<dt><a href="org/example/Mark.html#PASS" class="member-name-link">PASS</a> - Enum constant in enum class org.example.<a href="org/example/Mark.html" title="enum class in org.example">Mark</a></dt>
+<dt><a href="org/example/core/Mark.html#PASS" class="member-name-link">PASS</a> - Enum constant in enum class org.example.core.<a href="org/example/core/Mark.html" title="enum class in org.example.core">Mark</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="org/example/GradeType.html#PASS_FAIL_TEST" class="member-name-link">PASS_FAIL_TEST</a> - Enum constant in enum class org.example.<a href="org/example/GradeType.html" title="enum class in org.example">GradeType</a></dt>
+<dt><a href="org/example/core/GradeType.html#PASS_FAIL_TEST" class="member-name-link">PASS_FAIL_TEST</a> - Enum constant in enum class org.example.core.<a href="org/example/core/GradeType.html" title="enum class in org.example.core">GradeType</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="org/example/GradeType.html#PRACTICE_REPORT_DEFENSE" class="member-name-link">PRACTICE_REPORT_DEFENSE</a> - Enum constant in enum class org.example.<a href="org/example/GradeType.html" title="enum class in org.example">GradeType</a></dt>
+<dt><a href="org/example/core/GradeType.html#PRACTICE_REPORT_DEFENSE" class="member-name-link">PRACTICE_REPORT_DEFENSE</a> - Enum constant in enum class org.example.core.<a href="org/example/core/GradeType.html" title="enum class in org.example.core">GradeType</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:S">S</h2>
 <dl class="index">
-<dt><a href="org/example/Mark.html#SATISFACTORY" class="member-name-link">SATISFACTORY</a> - Enum constant in enum class org.example.<a href="org/example/Mark.html" title="enum class in org.example">Mark</a></dt>
+<dt><a href="org/example/core/Mark.html#SATISFACTORY" class="member-name-link">SATISFACTORY</a> - Enum constant in enum class org.example.core.<a href="org/example/core/Mark.html" title="enum class in org.example.core">Mark</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="org/example/Semester.html" class="type-name-link" title="class in org.example">Semester</a> - Class in <a href="org/example/package-summary.html">org.example</a></dt>
+<dt><a href="org/example/model/Semester.html" class="type-name-link" title="class in org.example.model">Semester</a> - Class in <a href="org/example/model/package-summary.html">org.example.model</a></dt>
 <dd>
 <div class="block">Класс Семестр.</div>
 </dd>
-<dt><a href="org/example/Semester.html#%3Cinit%3E(int)" class="member-name-link">Semester(int)</a> - Constructor for class org.example.<a href="org/example/Semester.html" title="class in org.example">Semester</a></dt>
+<dt><a href="org/example/model/Semester.html#%3Cinit%3E(int)" class="member-name-link">Semester(int)</a> - Constructor for class org.example.model.<a href="org/example/model/Semester.html" title="class in org.example.model">Semester</a></dt>
 <dd>
 <div class="block">Конструктор.</div>
 </dd>
-<dt><a href="org/example/Student.html#setCurrentSemester(int)" class="member-name-link">setCurrentSemester(int)</a> - Method in class org.example.<a href="org/example/Student.html" title="class in org.example">Student</a></dt>
+<dt><a href="org/example/model/Student.html#setCurrentSemester(int)" class="member-name-link">setCurrentSemester(int)</a> - Method in class org.example.model.<a href="org/example/model/Student.html" title="class in org.example.model">Student</a></dt>
 <dd>
 <div class="block">Сеттер.</div>
 </dd>
-<dt><a href="org/example/Student.html#setCurriculum(org.example.Curriculum)" class="member-name-link">setCurriculum(Curriculum)</a> - Method in class org.example.<a href="org/example/Student.html" title="class in org.example">Student</a></dt>
+<dt><a href="org/example/model/Student.html#setCurriculum(org.example.model.Curriculum)" class="member-name-link">setCurriculum(Curriculum)</a> - Method in class org.example.model.<a href="org/example/model/Student.html" title="class in org.example.model">Student</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="org/example/Student.html" class="type-name-link" title="class in org.example">Student</a> - Class in <a href="org/example/package-summary.html">org.example</a></dt>
+<dt><a href="org/example/model/Student.html" class="type-name-link" title="class in org.example.model">Student</a> - Class in <a href="org/example/model/package-summary.html">org.example.model</a></dt>
 <dd>
 <div class="block">Класс Студент.</div>
 </dd>
-<dt><a href="org/example/Student.html#%3Cinit%3E(java.lang.String,int,org.example.GradeBook)" class="member-name-link">Student(String, int, GradeBook)</a> - Constructor for class org.example.<a href="org/example/Student.html" title="class in org.example">Student</a></dt>
+<dt><a href="org/example/model/Student.html#%3Cinit%3E(java.lang.String,int,org.example.model.GradeBook)" class="member-name-link">Student(String, int, GradeBook)</a> - Constructor for class org.example.model.<a href="org/example/model/Student.html" title="class in org.example.model">Student</a></dt>
 <dd>
 <div class="block">Конструктор.</div>
 </dd>
-<dt><a href="org/example/SubjectRequirement.html" class="type-name-link" title="class in org.example">SubjectRequirement</a> - Class in <a href="org/example/package-summary.html">org.example</a></dt>
+<dt><a href="org/example/model/SubjectRequirement.html" class="type-name-link" title="class in org.example.model">SubjectRequirement</a> - Class in <a href="org/example/model/package-summary.html">org.example.model</a></dt>
 <dd>
 <div class="block">Требование к предмету в учебном плане.</div>
 </dd>
-<dt><a href="org/example/SubjectRequirement.html#%3Cinit%3E(java.lang.String,org.example.GradeType)" class="member-name-link">SubjectRequirement(String, GradeType)</a> - Constructor for class org.example.<a href="org/example/SubjectRequirement.html" title="class in org.example">SubjectRequirement</a></dt>
+<dt><a href="org/example/model/SubjectRequirement.html#%3Cinit%3E(java.lang.String,org.example.core.GradeType)" class="member-name-link">SubjectRequirement(String, GradeType)</a> - Constructor for class org.example.model.<a href="org/example/model/SubjectRequirement.html" title="class in org.example.model">SubjectRequirement</a></dt>
 <dd>
 <div class="block">Конструктор.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:T">T</h2>
 <dl class="index">
-<dt><a href="org/example/GradeType.html#THESIS" class="member-name-link">THESIS</a> - Enum constant in enum class org.example.<a href="org/example/GradeType.html" title="enum class in org.example">GradeType</a></dt>
+<dt><a href="org/example/core/GradeType.html#THESIS" class="member-name-link">THESIS</a> - Enum constant in enum class org.example.core.<a href="org/example/core/GradeType.html" title="enum class in org.example.core">GradeType</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:V">V</h2>
 <dl class="index">
-<dt><a href="org/example/GradeType.html#valueOf(java.lang.String)" class="member-name-link">valueOf(String)</a> - Static method in enum class org.example.<a href="org/example/GradeType.html" title="enum class in org.example">GradeType</a></dt>
+<dt><a href="org/example/core/GradeType.html#valueOf(java.lang.String)" class="member-name-link">valueOf(String)</a> - Static method in enum class org.example.core.<a href="org/example/core/GradeType.html" title="enum class in org.example.core">GradeType</a></dt>
 <dd>
 <div class="block">Returns the enum constant of this class with the specified name.</div>
 </dd>
-<dt><a href="org/example/Mark.html#valueOf(java.lang.String)" class="member-name-link">valueOf(String)</a> - Static method in enum class org.example.<a href="org/example/Mark.html" title="enum class in org.example">Mark</a></dt>
+<dt><a href="org/example/core/Mark.html#valueOf(java.lang.String)" class="member-name-link">valueOf(String)</a> - Static method in enum class org.example.core.<a href="org/example/core/Mark.html" title="enum class in org.example.core">Mark</a></dt>
 <dd>
 <div class="block">Returns the enum constant of this class with the specified name.</div>
 </dd>
-<dt><a href="org/example/GradeType.html#values()" class="member-name-link">values()</a> - Static method in enum class org.example.<a href="org/example/GradeType.html" title="enum class in org.example">GradeType</a></dt>
+<dt><a href="org/example/core/GradeType.html#values()" class="member-name-link">values()</a> - Static method in enum class org.example.core.<a href="org/example/core/GradeType.html" title="enum class in org.example.core">GradeType</a></dt>
 <dd>
 <div class="block">Returns an array containing the constants of this enum class, in
 the order they are declared.</div>
 </dd>
-<dt><a href="org/example/Mark.html#values()" class="member-name-link">values()</a> - Static method in enum class org.example.<a href="org/example/Mark.html" title="enum class in org.example">Mark</a></dt>
+<dt><a href="org/example/core/Mark.html#values()" class="member-name-link">values()</a> - Static method in enum class org.example.core.<a href="org/example/core/Mark.html" title="enum class in org.example.core">Mark</a></dt>
 <dd>
 <div class="block">Returns an array containing the constants of this enum class, in
 the order they are declared.</div>
