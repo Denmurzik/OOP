@@ -1,9 +1,11 @@
-package org.example;
+package org.example.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.example.core.GradeType;
+
 
 /**
  * Учебный план.
@@ -15,9 +17,9 @@ public class Curriculum {
     /**
      * Добавляет требование в учебный план.
      *
-     * @param semester    Номер семестра
+     * @param semester Номер семестра
      * @param subjectName Название предмета
-     * @param type        Тип контроля
+     * @param type Тип контроля
      */
     public void addRequirement(int semester, String subjectName, GradeType type) {
         requirements.computeIfAbsent(semester, k -> new ArrayList<>())
@@ -40,14 +42,8 @@ public class Curriculum {
                 return false;
             }
 
-            for (SubjectRequirement req : semesterRequirements) {
-                boolean passed = semester.getGrades().stream()
-                        .anyMatch(g -> g.getSubjectName().equals(req.getSubjectName())
-                                && g.getType() == req.getType()
-                                && g.getValue() > Mark.FAIL.getValue());
-                if (!passed) {
-                    return false;
-                }
+            if (!semester.isClosed(semesterRequirements)) {
+                return false;
             }
         }
         return true;

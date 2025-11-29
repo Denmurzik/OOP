@@ -1,4 +1,4 @@
-package org.example;
+package org.example.core;
 
 /**
  * Хранит информацию об одной оценке.

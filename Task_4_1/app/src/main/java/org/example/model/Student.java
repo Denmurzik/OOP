@@ -1,6 +1,5 @@
-package org.example;
+package org.example.model;
 
-import java.util.List;
 
 /**
  * Класс Студент.
@@ -111,45 +110,15 @@ public class Student {
             return false;
         }
 
-        List<Grade> grades = gradeBook.getGrades();
-        List<Grade> finalGrades = grades.stream()
-                .filter(Grade::isDiplomGrade)
-                .toList();
-
-        if (finalGrades.isEmpty()) {
+        if (gradeBook.hasSatisfactoryGrades()) {
             return false;
         }
 
-        if (hasSatisfactory(finalGrades)) {
+        if (gradeBook.getExcellentPercentage() < 0.75) {
             return false;
         }
 
-        if (!hasExcellentPercentage(finalGrades)) {
-            return false;
-        }
-
-        return isThesisExcellent(grades);
-    }
-
-    private boolean hasSatisfactory(List<Grade> grades) {
-        return grades.stream()
-                .anyMatch(g -> g.getMark() == Mark.SATISFACTORY);
-    }
-
-    private boolean hasExcellentPercentage(List<Grade> grades) {
-        long excellentCount = grades.stream()
-                .filter(g -> g.getMark() == Mark.EXCELLENT)
-                .count();
-        double excellentPercentage = (double) excellentCount / grades.size();
-        return excellentPercentage >= 0.75;
-    }
-
-    private boolean isThesisExcellent(List<Grade> grades) {
-        return grades.stream()
-                .filter(g -> g.getType() == GradeType.THESIS)
-                .findFirst()
-                .map(g -> g.getMark() == Mark.EXCELLENT)
-                .orElse(false);
+        return gradeBook.isThesisExcellent();
     }
 
     /**
@@ -170,4 +139,5 @@ public class Student {
 
         return !semester.hasSatisfactoryInDiplomGrades() && !semester.hasFailedPassFail();
     }
+
 }

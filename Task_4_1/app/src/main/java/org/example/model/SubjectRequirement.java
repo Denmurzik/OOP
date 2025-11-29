@@ -1,4 +1,6 @@
-package org.example;
+package org.example.model;
+
+import org.example.core.GradeType;
 
 /**
  * Требование к предмету в учебном плане.
@@ -11,7 +13,7 @@ public class SubjectRequirement {
      * Конструктор.
      *
      * @param subjectName Название предмета
-     * @param type Тип контроля
+     * @param type        Тип контроля
      */
     public SubjectRequirement(String subjectName, GradeType type) {
         this.subjectName = subjectName;

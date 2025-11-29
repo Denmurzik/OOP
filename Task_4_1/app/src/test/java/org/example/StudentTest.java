@@ -4,6 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.example.core.Grade;
+import org.example.core.GradeType;
+import org.example.core.Mark;
+import org.example.model.GradeBook;
+import org.example.model.Student;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
