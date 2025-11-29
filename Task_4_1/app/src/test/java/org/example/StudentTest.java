@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.example.core.Grade;
 import org.example.core.GradeType;
 import org.example.core.Mark;
+import org.example.model.Curriculum;
 import org.example.model.GradeBook;
 import org.example.model.Student;
 import org.junit.jupiter.api.DisplayName;
@@ -190,7 +191,13 @@ class StudentTest {
         book.addGrade(3, new Grade("Сессия 3 Зачет", GradeType.PASS_FAIL_TEST, Mark.PASS));
         book.addGrade(2, new Grade("Сессия 2 Экз", GradeType.EXAM, Mark.SATISFACTORY));
 
+        Curriculum curriculum = new Curriculum();
+        curriculum.addRequirement(3, "Сессия 3 Экз", GradeType.EXAM);
+        curriculum.addRequirement(3, "Сессия 3 Дифф", GradeType.DIFF_TEST);
+        curriculum.addRequirement(3, "Сессия 3 Зачет", GradeType.PASS_FAIL_TEST);
+
         Student student = new Student("Студент", 4, book);
+        student.setCurriculum(curriculum);
 
         assertTrue(student.canGetIncreasedScholarship());
     }
@@ -202,7 +209,12 @@ class StudentTest {
         book.addGrade(3, new Grade("Сессия 3 Экз", GradeType.EXAM, Mark.SATISFACTORY));
         book.addGrade(3, new Grade("Сессия 3 Зачет", GradeType.PASS_FAIL_TEST, Mark.PASS));
 
+        Curriculum curriculum = new Curriculum();
+        curriculum.addRequirement(3, "Сессия 3 Экз", GradeType.EXAM);
+        curriculum.addRequirement(3, "Сессия 3 Зачет", GradeType.PASS_FAIL_TEST);
+
         Student student = new Student("Студент", 4, book);
+        student.setCurriculum(curriculum);
 
         assertFalse(student.canGetIncreasedScholarship());
     }
@@ -214,7 +226,12 @@ class StudentTest {
         book.addGrade(3, new Grade("Сессия 3 Экз", GradeType.EXAM, Mark.EXCELLENT));
         book.addGrade(3, new Grade("Сессия 3 Зачет", GradeType.PASS_FAIL_TEST, Mark.FAIL));
 
+        Curriculum curriculum = new Curriculum();
+        curriculum.addRequirement(3, "Сессия 3 Экз", GradeType.EXAM);
+        curriculum.addRequirement(3, "Сессия 3 Зачет", GradeType.PASS_FAIL_TEST);
+
         Student student = new Student("Студент", 4, book);
+        student.setCurriculum(curriculum);
 
         assertFalse(student.canGetIncreasedScholarship());
     }

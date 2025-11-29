@@ -76,17 +76,6 @@ public class Semester {
     }
 
     /**
-     * Проверяет, есть ли незачеты.
-     *
-     * @return true, если есть незачет
-     */
-    public boolean hasFailedPassFail() {
-        return grades.stream()
-                .filter(g -> g.getType() == GradeType.PASS_FAIL_TEST)
-                .anyMatch(g -> g.getMark() != Mark.PASS);
-    }
-
-    /**
      * Сумма значений оценок, идущих в диплом (для расчета среднего балла).
      * Учитываются только экзамены и дифф. зачеты с оценкой не ниже
      * удовлетворительно.
@@ -121,7 +110,7 @@ public class Semester {
      */
     public boolean isClosed(List<SubjectRequirement> plan) {
         if (plan == null || plan.isEmpty()) {
-            return true; // Если требований нет, семестр считается закрытым
+            return true;
         }
 
         for (SubjectRequirement req : plan) {

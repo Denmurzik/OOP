@@ -1,5 +1,6 @@
 package org.example.model;
 
+import java.util.List;
 
 /**
  * Класс Студент.
@@ -12,13 +13,6 @@ public class Student {
     private final GradeBook gradeBook;
     private Curriculum curriculum;
 
-    /**
-     * Конструктор.
-     *
-     * @param name            Имя студента
-     * @param currentSemester Текущий семестр
-     * @param gradeBook       Зачетная книжка
-     */
     public Student(String name, int currentSemester, GradeBook gradeBook) {
         this.name = name;
         this.currentSemester = currentSemester;
@@ -137,7 +131,18 @@ public class Student {
             return false;
         }
 
-        return !semester.hasSatisfactoryInDiplomGrades() && !semester.hasFailedPassFail();
+        List<SubjectRequirement> plan = null;
+        if (curriculum != null) {
+            plan = curriculum.getRequirements(lastSession);
+        }
+
+        // Сессия должна быть закрыта (все сдано, нет двоек и незачетов)
+        if (!semester.isClosed(plan)) {
+            return false;
+        }
+
+        // И не должно быть троек
+        return !semester.hasSatisfactoryInDiplomGrades();
     }
 
 }

@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import org.example.core.GradeType;
 
-
 /**
  * Учебный план.
  */
@@ -24,6 +23,10 @@ public class Curriculum {
     public void addRequirement(int semester, String subjectName, GradeType type) {
         requirements.computeIfAbsent(semester, k -> new ArrayList<>())
                 .add(new SubjectRequirement(subjectName, type));
+    }
+
+    public List<SubjectRequirement> getRequirements(int semester) {
+        return requirements.getOrDefault(semester, new ArrayList<>());
     }
 
     /**
