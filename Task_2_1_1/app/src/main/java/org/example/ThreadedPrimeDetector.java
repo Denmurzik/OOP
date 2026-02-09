@@ -37,7 +37,7 @@ public class ThreadedPrimeDetector implements PrimeDetector {
             threads[i] = new WorkerThread(numbers, start, end, resultHolder);
             threads[i].start();
         }
-
+        
         for (Thread thread : threads) {
             if (thread != null) {
                 try {
