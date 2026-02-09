@@ -254,13 +254,6 @@ public class PrimeBenchmark {
     }
 
     /**
-     * Возвращает тестовый массив простых чисел.
-     */
-    public static int[] getTestData() {
-        return LARGE_PRIMES.clone();
-    }
-
-    /**
      * Запускает все бенчмарки и возвращает результаты.
      * 
      * @param threadCounts массив количеств потоков для тестирования
