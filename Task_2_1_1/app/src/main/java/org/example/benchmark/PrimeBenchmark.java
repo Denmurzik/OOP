@@ -263,7 +263,7 @@ public class PrimeBenchmark {
         warmup();
 
         List<BenchmarkResult> results = new ArrayList<>();
-   
+
         results.add(benchmarkSequential());
 
         for (int threadCount : threadCounts) {
@@ -336,8 +336,7 @@ public class PrimeBenchmark {
         }
 
         long avgTime = totalTime / benchmarkRuns;
-        int availableProcessors = Runtime.getRuntime().availableProcessors();
-        return new BenchmarkResult("Параллельное", avgTime, availableProcessors);
+        return new BenchmarkResult("Параллельное", avgTime, -1);
     }
 
     /**

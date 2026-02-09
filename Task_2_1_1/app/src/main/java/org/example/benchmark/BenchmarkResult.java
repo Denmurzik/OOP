@@ -39,6 +39,10 @@ public class BenchmarkResult {
 
     @Override
     public String toString() {
+        if (threadCount == -1) {
+            return String.format("%-30s | %8.2f ms",
+                    testName, getExecutionTimeMs());
+        }
         return String.format("%-30s | %8.2f ms | %d потоков",
                 testName, getExecutionTimeMs(), threadCount);
     }
