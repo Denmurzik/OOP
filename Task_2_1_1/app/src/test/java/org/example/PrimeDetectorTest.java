@@ -70,8 +70,8 @@ class PrimeDetectorTest {
     @Test
     void testExample2_Sequential() {
         int[] numbers = { 20319251, 6997901, 6997927, 6997937, 17858849,
-                6997967, 6998009, 6998029, 6998039, 20165149,
-                6998051, 6998053 };
+            6997967, 6998009, 6998029, 6998039, 20165149,
+            6998051, 6998053 };
         PrimeDetector detector = new SequentialPrimeDetector();
         assertFalse(detector.hasNonPrime(numbers));
     }
@@ -79,8 +79,8 @@ class PrimeDetectorTest {
     @Test
     void testExample2_Threaded() {
         int[] numbers = { 20319251, 6997901, 6997927, 6997937, 17858849,
-                6997967, 6998009, 6998029, 6998039, 20165149,
-                6998051, 6998053 };
+            6997967, 6998009, 6998029, 6998039, 20165149,
+            6998051, 6998053 };
         PrimeDetector detector = new ThreadedPrimeDetector(4);
         assertFalse(detector.hasNonPrime(numbers));
     }
@@ -88,8 +88,8 @@ class PrimeDetectorTest {
     @Test
     void testExample2_Stream() {
         int[] numbers = { 20319251, 6997901, 6997927, 6997937, 17858849,
-                6997967, 6998009, 6998029, 6998039, 20165149,
-                6998051, 6998053 };
+            6997967, 6998009, 6998029, 6998039, 20165149,
+            6998051, 6998053 };
         PrimeDetector detector = new StreamPrimeDetector();
         assertFalse(detector.hasNonPrime(numbers));
     }
@@ -130,8 +130,8 @@ class PrimeDetectorTest {
     @Test
     void testAllDetectorsAgree() {
         int[] testCases = {
-                2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
-                100, 101, 102, 103, 104, 997, 998, 999, 1000
+            2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+            100, 101, 102, 103, 104, 997, 998, 999, 1000
         };
 
         PrimeDetector sequential = new SequentialPrimeDetector();

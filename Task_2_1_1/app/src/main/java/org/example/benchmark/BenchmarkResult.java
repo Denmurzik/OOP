@@ -10,7 +10,7 @@ public class BenchmarkResult {
 
     /**
      * Создает результат бенчмарка.
-     * 
+
      * @param testName           название теста
      * @param executionTimeNanos время выполнения
      * @param threadCount        количество использованных потоков

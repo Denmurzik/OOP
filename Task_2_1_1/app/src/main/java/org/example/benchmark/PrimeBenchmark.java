@@ -244,7 +244,7 @@ public class PrimeBenchmark {
 
     /**
      * Создает экземпляр.
-     * 
+
      * @param warmupRuns    количество прогревочных запусков
      * @param benchmarkRuns количество замеров для усреднения
      */
@@ -255,7 +255,7 @@ public class PrimeBenchmark {
 
     /**
      * Запускает все бенчмарки и возвращает результаты.
-     * 
+
      * @param threadCounts массив количеств потоков для тестирования
      * @return список результатов бенчмарков
      */
