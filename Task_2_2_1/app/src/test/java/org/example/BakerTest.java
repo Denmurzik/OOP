@@ -1,20 +1,21 @@
 package org.example;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 class BakerTest {
 
     @Test
     void testBakerCooksAndPutsToStorage() throws InterruptedException {
         OrderQueue queue = new OrderQueue();
-        Storage storage = new Storage(5);
-
         Order order = new Order(1);
         order.setState(OrderState.QUEUED);
         queue.put(order);
         queue.shutdown(); // Пекарь обработает 1 заказ и завершится
 
+        Storage storage = new Storage(5);
         Baker baker = new Baker("Тест", 100, queue, storage);
         Thread thread = new Thread(baker);
         thread.start();

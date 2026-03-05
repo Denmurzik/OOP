@@ -1,7 +1,6 @@
 package org.example;
 
 import com.google.gson.Gson;
-
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -11,17 +10,25 @@ import java.io.Reader;
  */
 public class PizzeriaConfig {
 
+    /**
+     * Конфиг пекаря.
+     */
     public static class BakerConfig {
         public String name;
         public int cookingTimeMs;
     }
 
-
+    /**
+     * Конфиг курьера.
+     */
     public static class CourierConfig {
         public String name;
         public int trunkCapacity;
     }
 
+    /**
+     * Конфиг заказа.
+     */
     public static class OrderConfig {
         public int id;
     }

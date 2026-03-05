@@ -7,7 +7,7 @@ public class Main {
     /**
      * Запуск.
      *
-     * @param args
+     * @param args аргументы
      */
     public static void main(String[] args) {
         PizzeriaConfig config = PizzeriaConfig.load("/config.json");

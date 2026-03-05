@@ -15,9 +15,9 @@ public class Courier implements Runnable {
     /**
      * Конструктор курьера.
      *
-     * @param name
-     * @param trunkCapacity
-     * @param storage
+     * @param name          имя
+     * @param trunkCapacity багажник
+     * @param storage       склад
      */
     public Courier(String name, int trunkCapacity, Storage storage) {
         this.name = name;

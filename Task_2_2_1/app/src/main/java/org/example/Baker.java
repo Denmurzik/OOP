@@ -10,12 +10,12 @@ public class Baker implements Runnable {
     private final Storage storage;
 
     /**
-     * Конструктор .
+     * Конструктор.
      *
-     * @param name
-     * @param cookingTimeMs 
-     * @param orderQueue
-     * @param storage
+     * @param name          имя
+     * @param cookingTimeMs время
+     * @param orderQueue    очередь
+     * @param storage       склад
      */
     public Baker(String name, int cookingTimeMs, OrderQueue orderQueue, Storage storage) {
         this.name = name;
@@ -45,7 +45,8 @@ public class Baker implements Runnable {
             }
 
             storage.put(order);
-            System.out.println("  Пекарь " + name + " положил заказ [" + order.getId() + "] на склад");
+            System.out.println("  Пекарь " + name + " положил заказ [" + order.getId() 
+                + "] на склад");
         }
     }
 

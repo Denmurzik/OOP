@@ -53,7 +53,6 @@ public class Pizzeria {
             orderQueue.put(order);
         }
 
-
         try {
             Thread.sleep(config.workingTimeMs);
         } catch (InterruptedException e) {
@@ -67,10 +66,10 @@ public class Pizzeria {
      * Завершает работу пиццерии.
      */
     private void shutdown() {
-        //закрываем очередь
+        // закрываем очередь
         orderQueue.shutdown();
 
-        //ждём пекарей
+        // ждём пекарей
         for (Thread t : bakerThreads) {
             try {
                 t.join();
@@ -79,10 +78,10 @@ public class Pizzeria {
         }
         System.out.println("Все пекари завершили работу.");
 
-        //закрываем склад
+        // закрываем склад
         storage.shutdown();
 
-        //ждём  курьеров
+        // ждём курьеров
         for (Thread t : courierThreads) {
             try {
                 t.join();

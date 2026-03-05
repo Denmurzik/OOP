@@ -1,7 +1,9 @@
 package org.example;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CourierTest {
 
@@ -48,7 +50,7 @@ class CourierTest {
         storage.put(o3);
         storage.shutdown();
 
-        // Багажник на 2  первый рейс возьмёт 2, второй  1
+        // Багажник на 2 первый рейс возьмёт 2, второй 1
         Courier courier = new Courier("Тест", 2, storage);
         Thread thread = new Thread(courier);
         thread.start();
