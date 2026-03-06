@@ -30,6 +30,9 @@ public class Storage {
             try {
                 wait();
             } catch (InterruptedException e) {
+                System.err.println("Storage прерывание при размещении заказа ["
+                        + order.getId() + "]");
+                Thread.currentThread().interrupt();
                 return;
             }
         }
@@ -52,6 +55,8 @@ public class Storage {
             try {
                 wait();
             } catch (InterruptedException e) {
+                System.err.println("Storage прерывание при ожидании пицц");
+                Thread.currentThread().interrupt();
                 return new ArrayList<>();
             }
         }

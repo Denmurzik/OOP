@@ -45,6 +45,9 @@ public class Courier implements Runnable {
             try {
                 Thread.sleep(DELIVERY_TIME_MS);
             } catch (InterruptedException e) {
+                System.err.println("Курьер " + name
+                        + ": прерван при доставке " + pizzas.size() + " пицц");
+                Thread.currentThread().interrupt();
                 break;
             }
 

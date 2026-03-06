@@ -56,6 +56,8 @@ public class Pizzeria {
         try {
             Thread.sleep(config.workingTimeMs);
         } catch (InterruptedException e) {
+            System.err.println("Pizzeria рабочее время прервано досрочно");
+            Thread.currentThread().interrupt();
         }
 
         System.out.println("=== Пиццерия закрывается. Приём заказов остановлен. ===");
@@ -74,6 +76,9 @@ public class Pizzeria {
             try {
                 t.join();
             } catch (InterruptedException e) {
+                System.err.println("Pizzeria прерывание при ожидании пекаря "
+                        + t.getName());
+                Thread.currentThread().interrupt();
             }
         }
         System.out.println("Все пекари завершили работу.");
@@ -86,6 +91,9 @@ public class Pizzeria {
             try {
                 t.join();
             } catch (InterruptedException e) {
+                System.err.println("Pizzeri прерывание при ожидании курьера "
+                        + t.getName());
+                Thread.currentThread().interrupt();
             }
         }
         System.out.println("Все курьеры завершили работу. Пиццерия закрыта.");
