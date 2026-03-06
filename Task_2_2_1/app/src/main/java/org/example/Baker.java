@@ -41,10 +41,10 @@ public class Baker implements Runnable {
             try {
                 Thread.sleep(cookingTimeMs);
             } catch (InterruptedException e) {
-                System.err.println("Пекарь " + name
-                        + ": прерван при готовке заказа [" + order.getId() + "]");
                 Thread.currentThread().interrupt();
-                break;
+                throw new RuntimeException(
+                        "Пекарь " + name + ": прерван при готовке заказа ["
+                                + order.getId() + "]", e);
             }
 
             storage.put(order);

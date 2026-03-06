@@ -29,9 +29,9 @@ public class OrderQueue {
             try {
                 wait();
             } catch (InterruptedException e) {
-                System.err.println("Order очередь прерывание при ожидании заказа");
                 Thread.currentThread().interrupt();
-                return null;
+                throw new RuntimeException(
+                        "OrderQueue: прерывание при ожидании заказа", e);
             }
         }
         if (queue.isEmpty()) {

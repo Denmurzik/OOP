@@ -30,10 +30,9 @@ public class Storage {
             try {
                 wait();
             } catch (InterruptedException e) {
-                System.err.println("Storage прерывание при размещении заказа ["
-                        + order.getId() + "]");
                 Thread.currentThread().interrupt();
-                return;
+                throw new RuntimeException(
+                        "Storage: прерывание при размещении заказа [" + order.getId() + "]", e);
             }
         }
         if (closed) {
@@ -55,9 +54,9 @@ public class Storage {
             try {
                 wait();
             } catch (InterruptedException e) {
-                System.err.println("Storage прерывание при ожидании пицц");
                 Thread.currentThread().interrupt();
-                return new ArrayList<>();
+                throw new RuntimeException(
+                        "Storage: прерывание при ожидании пицц", e);
             }
         }
         if (pizzas.isEmpty()) {
