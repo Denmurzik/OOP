@@ -48,7 +48,7 @@ public class PizzeriaConfig {
     public static PizzeriaConfig load(String resourcePath) {
         InputStream stream = PizzeriaConfig.class.getResourceAsStream(resourcePath);
         if (stream == null) {
-            throw new RuntimeException("Файл не найден: " + resourcePath);
+            throw new ConfigLoadException("Файл не найден: " + resourcePath);
         }
         Reader reader = new InputStreamReader(stream);
         Gson gson = new Gson();

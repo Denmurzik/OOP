@@ -82,7 +82,7 @@ class PizzeriaConfigTest {
 
     @Test
     void testLoadMissingFileThrows() {
-        assertThrows(RuntimeException.class, () -> {
+        assertThrows(ConfigLoadException.class, () -> {
             PizzeriaConfig.load("/not_exists.json");
         });
     }

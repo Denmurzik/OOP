@@ -10,6 +10,16 @@ public class Main {
      * @param args аргументы
      */
     public static void main(String[] args) {
+        Thread.setDefaultUncaughtExceptionHandler((thread, ex) -> {
+            if (ex instanceof ConfigLoadException) {
+                System.err.println("Ошибка конфигурации " + ex.getMessage());
+            } else if (ex instanceof PizzeriaInterruptException) {
+                System.err.println(thread.getName() + " Прерывание " + ex.getMessage());
+            } else {
+                System.err.println(thread.getName() + " Ошибка " + ex.getMessage());
+            }
+        });
+
         try {
             PizzeriaConfig config = PizzeriaConfig.load("/config.json");
             System.out.println("Пиццерия открывается!");
@@ -22,8 +32,12 @@ public class Main {
 
             Pizzeria pizzeria = new Pizzeria(config);
             pizzeria.start();
+        } catch (ConfigLoadException e) {
+            System.err.println("Ошибка конфигурации " + e.getMessage());
+        } catch (PizzeriaInterruptException e) {
+            System.err.println("Прерывание работы " + e.getMessage());
         } catch (Exception e) {
-            System.err.println("Ошибка запуска пиццерии: " + e.getMessage());
+            System.err.println("Какая-то ошибка " + e.getMessage());
         }
     }
 }

@@ -30,7 +30,7 @@ public class OrderQueue {
                 wait();
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
-                throw new RuntimeException(
+                throw new PizzeriaInterruptException(
                         "OrderQueue: прерывание при ожидании заказа", e);
             }
         }

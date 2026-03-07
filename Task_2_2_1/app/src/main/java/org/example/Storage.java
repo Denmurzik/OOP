@@ -31,7 +31,7 @@ public class Storage {
                 wait();
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
-                throw new RuntimeException(
+                throw new PizzeriaInterruptException(
                         "Storage: прерывание при размещении заказа [" + order.getId() + "]", e);
             }
         }
@@ -55,7 +55,7 @@ public class Storage {
                 wait();
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
-                throw new RuntimeException(
+                throw new PizzeriaInterruptException(
                         "Storage: прерывание при ожидании пицц", e);
             }
         }

@@ -42,9 +42,10 @@ public class Baker implements Runnable {
                 Thread.sleep(cookingTimeMs);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
-                throw new RuntimeException(
+                throw new PizzeriaInterruptException(
                         "Пекарь " + name + ": прерван при готовке заказа ["
-                                + order.getId() + "]", e);
+                                + order.getId() + "]",
+                        e);
             }
 
             storage.put(order);
