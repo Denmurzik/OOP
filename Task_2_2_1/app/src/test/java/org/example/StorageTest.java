@@ -79,4 +79,17 @@ class StorageTest {
         storage.shutdown();
         assertTrue(storage.isClosed());
     }
+
+    @Test
+    void testTakeUpToThrowsExceptionOnInterrupt() {
+        Storage storage = new Storage(5);
+
+        Thread.currentThread().interrupt();
+
+        try {
+            storage.takeUpTo(1);
+        } catch (PizzeriaInterruptException e) {
+            assertEquals("Storage: прерывание при ожидании пицц", e.getMessage());
+        }
+    }
 }

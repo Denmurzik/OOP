@@ -68,4 +68,21 @@ class CourierTest {
         Courier courier = new Courier("Алексей", 3, new Storage(1));
         assertEquals("Алексей", courier.getName());
     }
+
+    @Test
+    void testCourierThrowsExceptionOnInterrupt() {
+        Storage storage = new Storage(5);
+        Order order = new Order(1);
+        order.setState(OrderState.COOKING);
+        storage.put(order); // Одна пицца на складе
+        Courier courier = new Courier("Алексей", 3, storage);
+
+        Thread.currentThread().interrupt();
+
+        try {
+            courier.run();
+        } catch (PizzeriaInterruptException e) {
+            assertEquals("Курьер Алексей: прерван при доставке 1 пицц", e.getMessage());
+        }
+    }
 }
