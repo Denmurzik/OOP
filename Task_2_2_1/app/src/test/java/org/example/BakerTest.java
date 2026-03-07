@@ -68,4 +68,26 @@ class BakerTest {
         Baker baker = new Baker("Иван", 100, new OrderQueue(), new Storage(1));
         assertEquals("Иван", baker.getName());
     }
+
+    @Test
+    void testBakerThrowsExceptionOnInterrupt() {
+        OrderQueue queue = new OrderQueue();
+        Order order = new Order(1);
+        order.setState(OrderState.QUEUED);
+        queue.put(order);
+
+        Storage storage = new Storage(5);
+        Baker baker = new Baker("Иван", 10000, queue, storage);
+
+        Thread.currentThread().interrupt();
+
+        try {
+            baker.run();
+        } catch (PizzeriaInterruptException e) {
+            assertEquals("Пекарь Иван: прерван при готовке заказа [1]", e.getMessage());
+        }
+
+        assertEquals(OrderState.COOKING, order.getState());
+        assertEquals(0, storage.size());
+    }
 }
