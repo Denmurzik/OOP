@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.controller.GameController"
+            style="-fx-background-color: #0f3460;">
+
+    <top>
+        <HBox alignment="CENTER" spacing="30">
+            <padding>
+                <Insets top="10" bottom="10" left="10" right="10"/>
+            </padding>
+            <Label fx:id="scoreLabel" text="Счёт: 0"
+                   style="-fx-font-size: 16; -fx-text-fill: white;"/>
+            <Label fx:id="levelLabel" text="Длина: 1"
+                   style="-fx-font-size: 16; -fx-text-fill: white;"/>
+            <Label fx:id="stateLabel" text=""
+                   style="-fx-font-size: 16; -fx-text-fill: #e17055; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <Canvas fx:id="gameCanvas" width="600" height="450"/>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER" spacing="15">
+            <padding>
+                <Insets top="10" bottom="10" left="10" right="10"/>
+            </padding>
+            <Button text="Новая игра" onAction="#onRestart"
+                    style="-fx-font-size: 14;"/>
+            <Button text="Пауза" onAction="#onPause"
+                    style="-fx-font-size: 14;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
