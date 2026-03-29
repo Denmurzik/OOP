@@ -1,4 +1,4 @@
-package org.example;
+package org.example.exception;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;

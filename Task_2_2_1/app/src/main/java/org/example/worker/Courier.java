@@ -1,6 +1,10 @@
-package org.example;
+package org.example.worker;
 
 import java.util.List;
+import org.example.exception.PizzeriaInterruptException;
+import org.example.order.Order;
+import org.example.order.OrderState;
+import org.example.storage.Storage;
 
 /**
  * Курьер.

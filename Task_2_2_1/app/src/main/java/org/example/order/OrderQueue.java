@@ -1,6 +1,7 @@
-package org.example;
+package org.example.order;
 
 import java.util.LinkedList;
+import org.example.exception.PizzeriaInterruptException;
 
 /**
  * Очередь заказов.

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.order;
 
 /**
  * Заказ на пиццу.

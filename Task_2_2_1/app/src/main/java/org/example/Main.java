@@ -1,5 +1,9 @@
 package org.example;
 
+import org.example.config.PizzeriaConfig;
+import org.example.exception.ConfigLoadException;
+import org.example.exception.PizzeriaInterruptException;
+
 /**
  * Main.
  */
@@ -11,12 +15,13 @@ public class Main {
      */
     public static void main(String[] args) {
         Thread.setDefaultUncaughtExceptionHandler((thread, ex) -> {
-            if (ex instanceof ConfigLoadException) {
-                System.err.println("Ошибка конфигурации " + ex.getMessage());
-            } else if (ex instanceof PizzeriaInterruptException) {
-                System.err.println(thread.getName() + " Прерывание " + ex.getMessage());
-            } else {
-                System.err.println(thread.getName() + " Ошибка " + ex.getMessage());
+            switch (ex) {
+                case ConfigLoadException e ->
+                        System.err.println("Ошибка конфигурации " + e.getMessage());
+                case PizzeriaInterruptException e ->
+                        System.err.println(thread.getName() + " Прерывание " + e.getMessage());
+                default ->
+                        System.err.println(thread.getName() + " Ошибка " + ex.getMessage());
             }
         });
 

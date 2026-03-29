@@ -1,4 +1,10 @@
-package org.example;
+package org.example.worker;
+
+import org.example.exception.PizzeriaInterruptException;
+import org.example.order.Order;
+import org.example.order.OrderQueue;
+import org.example.order.OrderState;
+import org.example.storage.Storage;
 
 /**
  * Пекарь.

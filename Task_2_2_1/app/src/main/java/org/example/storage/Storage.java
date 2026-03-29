@@ -1,7 +1,10 @@
-package org.example;
+package org.example.storage;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.example.exception.PizzeriaInterruptException;
+import org.example.order.Order;
+import org.example.order.OrderState;
 
 /**
  * Склад готовых пицц.

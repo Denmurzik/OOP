@@ -2,6 +2,7 @@ package org.example;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
+import org.example.config.PizzeriaConfig;
 import org.junit.jupiter.api.Test;
 
 /**

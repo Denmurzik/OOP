@@ -1,8 +1,13 @@
-package org.example;
+package org.example.worker;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
+import org.example.exception.PizzeriaInterruptException;
+import org.example.order.Order;
+import org.example.order.OrderQueue;
+import org.example.order.OrderState;
+import org.example.storage.Storage;
 import org.junit.jupiter.api.Test;
 
 class BakerTest {
