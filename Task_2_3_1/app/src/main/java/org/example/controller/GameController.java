@@ -1,5 +1,8 @@
 package org.example.controller;
 
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Set;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -7,19 +10,15 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import org.example.model.Direction;
-import org.example.model.Point;
-import org.example.model.Snake;
-import org.example.model.WinCondition;
 import org.example.model.GameConfig;
 import org.example.model.GameField;
 import org.example.model.GameModel;
 import org.example.model.GameSnapshot;
 import org.example.model.GameState;
+import org.example.model.Point;
+import org.example.model.Snake;
+import org.example.model.WinCondition;
 import org.example.view.GameRenderer;
-
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Set;
 
 /**
  * Контроллер.
@@ -46,6 +45,9 @@ public class GameController {
     private static final int MAX_QUEUE_SIZE = 3;
 
 
+    /**
+     * Инициализация.
+     */
     @FXML
     public void initialize() {
         GameConfig config = GameConfig.defaultConfig();
@@ -214,8 +216,8 @@ public class GameController {
      */
     private Set<Point> createObstacles(GameConfig config) {
         Set<Point> obstacles = new HashSet<>();
-        int cx = config.getWidth() / 2;
-        int cy = config.getHeight() / 2;
+        final int cx = config.getWidth() / 2;
+        final int cy = config.getHeight() / 2;
 
         // Горизонтальная стенка сверху
         for (int x = 5; x <= 8; x++) {

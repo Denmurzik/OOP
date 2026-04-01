@@ -13,7 +13,11 @@ public class GameSnapshot {
     private final int snakeSize;
     private final GameField field;
 
-    public GameSnapshot(List<Point> snakeSegments, List<Food> foods, GameState state, int score, int snakeSize, GameField field) {
+    /**
+     * Конструктор.
+     */
+    public GameSnapshot(List<Point> snakeSegments, List<Food> foods, GameState state, 
+                        int score, int snakeSize, GameField field) {
         this.snakeSegments = snakeSegments;
         this.foods = foods;
         this.state = state;

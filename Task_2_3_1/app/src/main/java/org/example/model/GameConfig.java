@@ -10,6 +10,9 @@ public class GameConfig {
     private final int winLength;
     private final long tickMs;
 
+    /**
+     * Конструктор.
+     */
     public GameConfig(int width, int height, int foodCount, int winLength, long tickMs) {
         this.width = width;
         this.height = height;

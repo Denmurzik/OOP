@@ -18,10 +18,16 @@ public class GameModel {
     private GameState state;
     private int score;
 
+    /**
+     * Конструктор без рандома.
+     */
     public GameModel(GameConfig config, GameField field, WinCondition winCondition) {
         this(config, field, winCondition, new Random());
     }
 
+    /**
+     * Конструктор.
+     */
     public GameModel(GameConfig config, GameField field, WinCondition winCondition, Random random) {
         this.config = config;
         this.field = field;

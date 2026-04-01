@@ -14,12 +14,18 @@ public class GameField {
     private final int height;
     private final Set<Point> obstacles;
 
+    /**
+     * Основной конструктор.
+     */
     public GameField(int width, int height) {
         this.width = width;
         this.height = height;
         this.obstacles = new HashSet<>();
     }
 
+    /**
+     * Конструктор с препятствиями.
+     */
     public GameField(int width, int height, Set<Point> obstacles) {
         this.width = width;
         this.height = height;

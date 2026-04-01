@@ -1,5 +1,6 @@
 package org.example.view;
 
+import java.util.List;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -9,8 +10,6 @@ import org.example.model.Food;
 import org.example.model.GameSnapshot;
 import org.example.model.GameState;
 import org.example.model.Point;
-
-import java.util.List;
 
 /**
  * Отрисовка игры.

@@ -1,26 +1,34 @@
 package org.example.model;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Random;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Random;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 class GameModelTest {
     private GameModel model;
+    private GameConfig config;
+    private GameField field;
 
     @BeforeEach
     void setUp() {
-        GameConfig config = new GameConfig(10, 10, 1, 5, 200);
-        GameField field = new GameField(10, 10);
+        config = new GameConfig(10, 10, 1, 5, 200);
+        field = new GameField(10, 10);
         WinCondition winCondition = new WinCondition() {
             @Override
             public boolean checkWin(Snake snake, int score) {
                 return snake.size() >= 5;
             }
         };
-        model = new GameModel(config, field, winCondition, new Random(42));
+        model = new GameModel(config, field, winCondition, new Random(0));
+    }
+
+    @Test
+    void testGetters() {
+        assertEquals(config, model.getConfig());
+        assertEquals(field, model.getField());
     }
 
     @Test
@@ -42,7 +50,6 @@ class GameModelTest {
 
     @Test
     void gameOverOnWallCollision() {
-        // Двигаем змейку вправо до стены
         for (int i = 0; i < 20; i++) {
             model.tick();
             if (model.getState() == GameState.GAME_OVER) {
@@ -54,7 +61,6 @@ class GameModelTest {
 
     @Test
     void gameOverOnSelfCollision() {
-        // Маленькое поле 5x5, змейка наращивается вручную и врезается в себя
         GameConfig config = new GameConfig(5, 5, 0, 100, 200);
         GameField field = new GameField(5, 5);
         WinCondition win = new WinCondition() {
@@ -65,13 +71,12 @@ class GameModelTest {
         };
         GameModel m = new GameModel(config, field, win, new Random(42));
 
-        // Наращиваем змейку, формируя петлю
-        Snake snake = m.getSnake(); // голова (2,2), направление RIGHT
-        snake.grow(new Point(3, 2)); // [(3,2), (2,2)]
-        snake.grow(new Point(3, 3)); // [(3,3), (3,2), (2,2)]
-        snake.grow(new Point(2, 3)); // [(2,3), (3,3), (3,2), (2,2)]
 
-        // Направление RIGHT, тик: голова (2,3) -> (3,3), а (3,3) уже в теле
+        Snake snake = m.getSnake();
+        snake.grow(new Point(3, 2));
+        snake.grow(new Point(3, 3));
+        snake.grow(new Point(2, 3));
+
         m.changeDirection(Direction.RIGHT);
         m.tick();
 
@@ -83,7 +88,6 @@ class GameModelTest {
         model.changeDirection(Direction.UP);
         model.tick();
         Point head = model.getSnake().getHead();
-        // Начальная позиция (5, 5), после UP -> (5, 4)
         assertEquals(4, head.getY());
     }
 
@@ -92,7 +96,7 @@ class GameModelTest {
         model.togglePause();
         assertEquals(GameState.PAUSED, model.getState());
         Point headBefore = model.getSnake().getHead();
-        model.tick(); // не должен сработать на паузе
+        model.tick();
         assertEquals(headBefore, model.getSnake().getHead());
         model.togglePause();
         assertEquals(GameState.RUNNING, model.getState());
@@ -111,7 +115,6 @@ class GameModelTest {
     @Test
     void foodCountMaintained() {
         assertEquals(1, model.getFoods().size());
-        // После нескольких тиков еда всё ещё есть
         for (int i = 0; i < 3; i++) {
             model.tick();
         }
