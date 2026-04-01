@@ -158,7 +158,7 @@ class GameModelTest {
             }
         };
         model.getFoods().add(superFood);
-        model.tick(); 
+        model.tick();
         assertEquals(4, model.getSnake().size()); 
         assertEquals(3, model.getScore());
     }
