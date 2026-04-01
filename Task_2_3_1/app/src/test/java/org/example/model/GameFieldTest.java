@@ -44,7 +44,6 @@ class GameFieldTest {
         Set<Point> obstacles = Set.of(new Point(0, 0));
         GameField field = new GameField(2, 2, obstacles);
         Snake snake = new Snake(new Point(1, 0), Direction.RIGHT);
-        // Поле 2x2: (0,0) препятствие, (1,0) змейка -> свободны (0,1) и (1,1)
         Point free = field.getRandomFreePoint(snake, new ArrayList<>(), new Random(42));
         assertNotNull(free);
         assertNotEquals(new Point(0, 0), free);
@@ -53,7 +52,6 @@ class GameFieldTest {
 
     @Test
     void randomFreePointReturnsNullWhenNoSpace() {
-        // Поле 1x1, занято змейкой
         GameField field = new GameField(1, 1);
         Snake snake = new Snake(new Point(0, 0), Direction.RIGHT);
         Point free = field.getRandomFreePoint(snake, new ArrayList<>(), new Random());
