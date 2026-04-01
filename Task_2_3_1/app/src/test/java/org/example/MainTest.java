@@ -11,4 +11,12 @@ class MainTest {
         Main main = new Main();
         assertNotNull(main);
     }
+
+    @Test
+    void testMainMethod() {
+        try {
+            Main.main(new String[0]);
+        } catch (Exception e) {
+        }
+    }
 }

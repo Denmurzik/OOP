@@ -11,12 +11,13 @@ class GameModelTest {
     private GameModel model;
     private GameConfig config;
     private GameField field;
+    private WinCondition winCondition;
 
     @BeforeEach
     void setUp() {
         config = new GameConfig(10, 10, 1, 5, 200);
         field = new GameField(10, 10);
-        WinCondition winCondition = new WinCondition() {
+        winCondition = new WinCondition() {
             @Override
             public boolean checkWin(Snake snake, int score) {
                 return snake.size() >= 5;
@@ -121,5 +122,44 @@ class GameModelTest {
         if (model.getState() == GameState.RUNNING) {
             assertTrue(model.getFoods().size() >= 1);
         }
+    }
+
+    @Test
+    void testThreeArgConstructor() {
+        GameModel m = new GameModel(config, field, winCondition);
+        assertEquals(GameState.RUNNING, m.getState());
+    }
+
+    @Test
+    void testGetSnapshot() {
+        GameSnapshot snapshot = model.getSnapshot();
+        assertEquals(model.getState(), snapshot.getState());
+        assertEquals(model.getScore(), snapshot.getScore());
+        assertEquals(model.getFoods().size(), snapshot.getFoods().size());
+        assertEquals(model.getSnake().size(), snapshot.getSnakeSize());
+        assertEquals(model.getField(), snapshot.getField());
+    }
+
+    @Test
+    void testObstacleCollision() {
+        GameField f = new GameField(10, 10, java.util.Set.of(new Point(6, 5)));
+        GameModel m = new GameModel(config, f, winCondition, new Random(0));
+        m.tick(); 
+        assertEquals(GameState.GAME_OVER, m.getState());
+    }
+
+    @Test
+    void testFoodWithLargeGrowth() {
+        model.getFoods().clear();
+        Food superFood = new Food(new Point(6, 5)) {
+            @Override
+            public int getGrowthValue() {
+                return 3;
+            }
+        };
+        model.getFoods().add(superFood);
+        model.tick(); 
+        assertEquals(4, model.getSnake().size()); 
+        assertEquals(3, model.getScore());
     }
 }
