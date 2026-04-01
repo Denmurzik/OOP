@@ -28,11 +28,9 @@ class GameControllerTest {
         GameController controller = new GameController();
         assertNotNull(controller);
 
-
         injectField(controller, "gameCanvas", new Canvas(800, 600));
         injectField(controller, "scoreLabel", new Label());
         injectField(controller, "stateLabel", new Label());
-
 
         controller.initialize();
         
