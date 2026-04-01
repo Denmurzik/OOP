@@ -8,24 +8,34 @@ import javafx.stage.Stage;
 import org.example.controller.GameController;
 
 /**
- * Главный класс JavaFX приложения "Змейка".
+ * Главный.
  */
 public class SnakeApp extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("game.fxml"));
-        Parent root = loader.load();
+    public void start(Stage primaryStage) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("game.fxml"));
+            Parent root = loader.load();
 
-        Scene scene = new Scene(root);
+            Scene scene = new Scene(root);
 
-        GameController controller = loader.getController();
-        controller.initKeyHandling(scene);
+            GameController controller = loader.getController();
+            controller.initKeyHandling(scene);
 
-        primaryStage.setTitle("Змейка");
-        primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
-        primaryStage.show();
+            primaryStage.setTitle("Змейка");
+            primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
+            primaryStage.show();
+        } catch (Exception e) {
+            javafx.scene.control.Alert alert
+                = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
+            alert.setTitle("Ошибка инициализации");
+            alert.setHeaderText("ОШИБКА: Не удалось загрузить интерфейс игры");
+            alert.setContentText("Убедитесь, что файл game.fxml существует.\nПодробности: "
+                + e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     public static void main(String[] args) {

@@ -2,14 +2,41 @@ package org.example.model;
 
 /**
  * Конфигурация игры.
- *
- * @param width     ширина поля в клетках (N)
- * @param height    высота поля в клетках (M)
- * @param foodCount количество еды на поле одновременно (T)
- * @param winLength длина змейки для победы (L)
- * @param tickMs    интервал между тиками в миллисекундах (скорость)
  */
-public record GameConfig(int width, int height, int foodCount, int winLength, long tickMs) {
+public class GameConfig {
+    private final int width;
+    private final int height;
+    private final int foodCount;
+    private final int winLength;
+    private final long tickMs;
+
+    public GameConfig(int width, int height, int foodCount, int winLength, long tickMs) {
+        this.width = width;
+        this.height = height;
+        this.foodCount = foodCount;
+        this.winLength = winLength;
+        this.tickMs = tickMs;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getFoodCount() {
+        return foodCount;
+    }
+
+    public int getWinLength() {
+        return winLength;
+    }
+
+    public long getTickMs() {
+        return tickMs;
+    }
 
     /**
      * Конфигурация по умолчанию.

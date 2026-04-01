@@ -26,7 +26,7 @@ public enum Direction {
     }
 
     /**
-     * Проверяет, является ли данное направление противоположным текущему.
+     * Проверяет является ли данное направление противоположным текущему.
      */
     public boolean isOpposite(Direction other) {
         return this.dx + other.dx == 0 && this.dy + other.dy == 0;

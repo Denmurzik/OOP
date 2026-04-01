@@ -1,7 +1,7 @@
 package org.example;
 
 /**
- * Точка входа в приложение.
+ * Мэйн.
  */
 public class Main {
     public static void main(String[] args) {

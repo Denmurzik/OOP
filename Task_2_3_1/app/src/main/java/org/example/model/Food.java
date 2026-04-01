@@ -1,9 +1,10 @@
 package org.example.model;
 
 /**
- * Еда на игровом поле.
+ * Класс еды.
+ * Разные типы еды могут давать разный рост змейки.
  */
-public class Food {
+public abstract class Food {
     private final Point position;
 
     public Food(Point position) {
@@ -13,4 +14,9 @@ public class Food {
     public Point getPosition() {
         return position;
     }
+
+    /**
+     * Количество сегментов, на которое вырастет змейка при поедании.
+     */
+    public abstract int getGrowthValue();
 }

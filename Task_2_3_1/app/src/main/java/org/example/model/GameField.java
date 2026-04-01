@@ -1,14 +1,13 @@
 package org.example.model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
 /**
- * Игровое поле размером width x height с препятствиями.
+ * Игровое поле.
  */
 public class GameField {
     private final int width;
@@ -36,15 +35,15 @@ public class GameField {
     }
 
     public Set<Point> getObstacles() {
-        return Collections.unmodifiableSet(obstacles);
+        return obstacles;
     }
 
     /**
      * Проверяет, находится ли точка в пределах поля.
      */
     public boolean isInBounds(Point point) {
-        return point.x() >= 0 && point.x() < width
-                && point.y() >= 0 && point.y() < height;
+        return point.getX() >= 0 && point.getX() < width
+                && point.getY() >= 0 && point.getY() < height;
     }
 
     /**

@@ -1,11 +1,10 @@
 package org.example.model;
 
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Змейка — упорядоченный набор сегментов с головой и хвостом.
+ * Змейка.
  */
 public class Snake {
     private final LinkedList<Point> segments;
@@ -35,10 +34,10 @@ public class Snake {
     }
 
     /**
-     * Возвращает неизменяемый список сегментов.
+     * Возвращает список сегментов.
      */
     public List<Point> getSegments() {
-        return Collections.unmodifiableList(segments);
+        return segments;
     }
 
     public Direction getDirection() {
@@ -46,7 +45,7 @@ public class Snake {
     }
 
     /**
-     * Устанавливает новое направление, если оно не противоположно текущему.
+     * Устанавливает новое направление если оно не противоположно текущему.
      */
     public void setDirection(Direction newDirection) {
         if (!direction.isOpposite(newDirection)) {
@@ -55,7 +54,7 @@ public class Snake {
     }
 
     /**
-     * Перемещает змейку: добавляет голову, удаляет хвост.
+     * Добавляет голову удаляет хвост.
      */
     public void move(Point newHead) {
         segments.addFirst(newHead);
@@ -63,21 +62,21 @@ public class Snake {
     }
 
     /**
-     * Растит змейку: добавляет голову без удаления хвоста.
+     * Добавляет голову без удаления хвоста.
      */
     public void grow(Point newHead) {
         segments.addFirst(newHead);
     }
 
     /**
-     * Проверяет, занимает ли змейка данную клетку.
+     * Занимает ли змейка данную клетку.
      */
     public boolean contains(Point point) {
         return segments.contains(point);
     }
 
     /**
-     * Возвращает длину змейки.
+     * Возвращает длину.
      */
     public int size() {
         return segments.size();

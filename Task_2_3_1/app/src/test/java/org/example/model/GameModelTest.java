@@ -14,7 +14,12 @@ class GameModelTest {
     void setUp() {
         GameConfig config = new GameConfig(10, 10, 1, 5, 200);
         GameField field = new GameField(10, 10);
-        WinCondition winCondition = (snake, score) -> snake.size() >= 5;
+        WinCondition winCondition = new WinCondition() {
+            @Override
+            public boolean checkWin(Snake snake, int score) {
+                return snake.size() >= 5;
+            }
+        };
         model = new GameModel(config, field, winCondition, new Random(42));
     }
 
@@ -31,8 +36,8 @@ class GameModelTest {
         Point headBefore = model.getSnake().getHead();
         model.tick();
         Point headAfter = model.getSnake().getHead();
-        assertEquals(headBefore.x() + 1, headAfter.x());
-        assertEquals(headBefore.y(), headAfter.y());
+        assertEquals(headBefore.getX() + 1, headAfter.getX());
+        assertEquals(headBefore.getY(), headAfter.getY());
     }
 
     @Test
@@ -52,7 +57,12 @@ class GameModelTest {
         // Маленькое поле 5x5, змейка наращивается вручную и врезается в себя
         GameConfig config = new GameConfig(5, 5, 0, 100, 200);
         GameField field = new GameField(5, 5);
-        WinCondition win = (snake, score) -> false;
+        WinCondition win = new WinCondition() {
+            @Override
+            public boolean checkWin(Snake snake, int score) {
+                return false;
+            }
+        };
         GameModel m = new GameModel(config, field, win, new Random(42));
 
         // Наращиваем змейку, формируя петлю
@@ -74,7 +84,7 @@ class GameModelTest {
         model.tick();
         Point head = model.getSnake().getHead();
         // Начальная позиция (5, 5), после UP -> (5, 4)
-        assertEquals(4, head.y());
+        assertEquals(4, head.getY());
     }
 
     @Test

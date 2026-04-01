@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Центральная модель игры — управляет логикой змейки, еды и состоянием.
+ * Управляет логикой змейки, еды и состоянием.
  */
 public class GameModel {
     private final GameConfig config;
@@ -33,9 +33,9 @@ public class GameModel {
     /**
      * Сбрасывает игру в начальное состояние.
      */
-    public void reset() {
-        int startX = config.width() / 2;
-        int startY = config.height() / 2;
+    public synchronized void reset() {
+        int startX = config.getWidth() / 2;
+        int startY = config.getHeight() / 2;
         this.snake = new Snake(new Point(startX, startY), Direction.RIGHT);
         this.foods = new ArrayList<>();
         this.state = GameState.RUNNING;
@@ -44,9 +44,9 @@ public class GameModel {
     }
 
     /**
-     * Один тик игры — перемещение змейки, проверка коллизий и еды.
+     * Один тик игры перемещение змейки, проверка коллизий и еды.
      */
-    public void tick() {
+    public synchronized void tick() {
         if (state != GameState.RUNNING) {
             return;
         }
@@ -76,14 +76,18 @@ public class GameModel {
         if (eaten != null) {
             snake.grow(newHead);
             foods.remove(eaten);
-            score++;
+            score += eaten.getGrowthValue();
+            // рост
+            for (int i = 1; i < eaten.getGrowthValue(); i++) {
+                snake.grow(snake.getHead());
+            }
             spawnFood();
         } else {
             snake.move(newHead);
         }
 
         // Проверка победы
-        if (winCondition.isMet(snake, score)) {
+        if (winCondition.checkWin(snake, score)) {
             state = GameState.WON;
         }
     }
@@ -91,14 +95,14 @@ public class GameModel {
     /**
      * Меняет направление змейки.
      */
-    public void changeDirection(Direction direction) {
+    public synchronized void changeDirection(Direction direction) {
         snake.setDirection(direction);
     }
 
     /**
      * Переключает паузу.
      */
-    public void togglePause() {
+    public synchronized void togglePause() {
         if (state == GameState.RUNNING) {
             state = GameState.PAUSED;
         } else if (state == GameState.PAUSED) {
@@ -119,16 +123,15 @@ public class GameModel {
      * Спавнит еду до тех пор, пока на поле не будет нужное количество.
      */
     private void spawnFood() {
-        while (foods.size() < config.foodCount()) {
+        while (foods.size() < config.getFoodCount()) {
             Point pos = field.getRandomFreePoint(snake, foods, random);
             if (pos == null) {
-                break; // нет свободных клеток
+                break; 
             }
-            foods.add(new Food(pos));
+            foods.add(new BasicFood(pos));
         }
     }
 
-    // Геттеры
 
     public Snake getSnake() {
         return snake;
@@ -138,8 +141,22 @@ public class GameModel {
         return foods;
     }
 
-    public GameState getState() {
+    public synchronized GameState getState() {
         return state;
+    }
+
+    /**
+     * Возвращает снимок текущего состояния для отрисовки.
+     */
+    public synchronized GameSnapshot getSnapshot() {
+        return new GameSnapshot(
+                new ArrayList<>(snake.getSegments()),
+                new ArrayList<>(foods),
+                state,
+                score,
+                snake.size(),
+                field
+        );
     }
 
     public int getScore() {
