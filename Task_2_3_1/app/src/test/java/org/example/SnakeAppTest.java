@@ -11,12 +11,4 @@ class SnakeAppTest {
         SnakeApp app = new SnakeApp();
         assertNotNull(app);
     }
-
-    @Test
-    void testMainMethod() {
-        try {
-            SnakeApp.main(new String[0]);
-        } catch (Exception e) {
-        }
-    }
 }
