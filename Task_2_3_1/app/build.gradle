@@ -9,6 +9,7 @@ plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
     id 'jacoco'
+    alias(libs.plugins.javafx)
 }
 
 repositories {
@@ -42,6 +43,11 @@ tasks.named('test') {
     // Use JUnit Platform for unit tests
     useJUnitPlatform()
     finalizedBy jacocoTestReport 
+}
+
+javafx {
+    version = "21.0.5"
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.graphics', 'javafx.base' ]
 }
 
 jacocoTestReport {
