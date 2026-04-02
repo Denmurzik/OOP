@@ -37,6 +37,7 @@ public class GuiCoverageTest {
             Platform.startup(latch::countDown);
             latch.await(5, TimeUnit.SECONDS);
         } catch (IllegalStateException e) {
+            // ignore
         }
     }
 
@@ -71,7 +72,9 @@ public class GuiCoverageTest {
                 latch.countDown();
             }
         });
-        if (!latch.await(5, TimeUnit.SECONDS)) throw new RuntimeException("Timeout GameRenderer");
+        if (!latch.await(5, TimeUnit.SECONDS)) {
+            throw new RuntimeException("Timeout GameRenderer");
+        }
         if (error.get() != null) {
             throw new RuntimeException(error.get());
         }
@@ -97,29 +100,41 @@ public class GuiCoverageTest {
                 try { 
                     invokeMethodArgs(controller, "handleKey", 
                             new Class<?>[]{KeyCode.class}, new Object[]{KeyCode.W}); 
-                } catch (Exception e) {}
+                } catch (Exception e) {
+                    // ignore
+                }
                 
                 try { 
                     invokeMethodArgs(controller, "handleKey", 
                             new Class<?>[]{KeyCode.class}, new Object[]{KeyCode.ESCAPE}); 
-                } catch (Exception e) {}
+                } catch (Exception e) {
+                    // ignore
+                }
                 
                 try { 
                     invokeMethodArgs(controller, "handleKey", 
                             new Class<?>[]{KeyCode.class}, new Object[]{KeyCode.ENTER}); 
-                } catch (Exception e) {}
+                } catch (Exception e) {
+                    // ignore
+                }
                 
                 try { 
                     invokeMethod(controller, "onPause"); 
-                } catch (Exception e) {}
+                } catch (Exception e) {
+                    // ignore
+                }
                 
                 try { 
                     invokeMethod(controller, "onRestart"); 
-                } catch (Exception e) {}
+                } catch (Exception e) {
+                    // ignore
+                }
                 
                 try { 
                     invokeMethod(controller, "stopGameThread"); 
-                } catch (Exception e) {}
+                } catch (Exception e) {
+                    // ignore
+                }
                 
                 System.out.println("Execution of GameController UI methods successful.");
                 
@@ -129,7 +144,9 @@ public class GuiCoverageTest {
                 latch.countDown();
             }
         });
-        if (!latch.await(5, TimeUnit.SECONDS)) throw new RuntimeException("Timeout GameController");
+        if (!latch.await(5, TimeUnit.SECONDS)) {
+            throw new RuntimeException("Timeout GameController");
+        }
         if (error.get() != null) {
             throw new RuntimeException(error.get());
         }
@@ -146,11 +163,14 @@ public class GuiCoverageTest {
                 Stage stage = new Stage();
                 app.start(stage);
             } catch (Exception e) {
+                // ignore
             } finally {
                 latch.countDown();
             }
         });
-        if (!latch.await(5, TimeUnit.SECONDS)) throw new RuntimeException("Timeout SnakeApp");
+        if (!latch.await(5, TimeUnit.SECONDS)) {
+            throw new RuntimeException("Timeout SnakeApp");
+        }
     }
 
     private void invokeMethod(Object target, String methodName) throws Exception {
