@@ -34,7 +34,7 @@ public class SnakeApp extends Application {
             alert.setHeaderText("ОШИБКА: Не удалось загрузить интерфейс игры");
             alert.setContentText("Убедитесь, что файл game.fxml существует.\nПодробности: "
                 + e.getMessage());
-            alert.showAndWait();
+            alert.show();
         }
     }
 
