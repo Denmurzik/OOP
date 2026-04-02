@@ -34,7 +34,7 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Build with Gradle and generate report
-        run: ./gradlew build jacocoTestReport
+        run: xvfb-run ./gradlew build jacocoTestReport
 
       - name: List files for debugging
         run: ls -R
