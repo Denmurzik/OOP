@@ -17,6 +17,7 @@ public class GameModel {
     private List<Food> foods;
     private GameState state;
     private int score;
+    private ModelListener listener;
 
     /**
      * Конструктор без рандома.
@@ -47,6 +48,7 @@ public class GameModel {
         this.state = GameState.RUNNING;
         this.score = 0;
         spawnFood();
+        notifyListener();
     }
 
     /**
@@ -96,6 +98,7 @@ public class GameModel {
         if (winCondition.checkWin(snake, score)) {
             state = GameState.WON;
         }
+        notifyListener();
     }
 
     /**
@@ -114,6 +117,7 @@ public class GameModel {
         } else if (state == GameState.PAUSED) {
             state = GameState.RUNNING;
         }
+        notifyListener();
     }
 
     private Food findFoodAt(Point point) {
@@ -123,6 +127,22 @@ public class GameModel {
             }
         }
         return null;
+    }
+
+    /**
+     * Устанавливает слушателя изменений модели.
+     */
+    public void setListener(ModelListener listener) {
+        this.listener = listener;
+    }
+
+    /**
+     * Уведомляет слушателя о текущем состоянии.
+     */
+    private void notifyListener() {
+        if (listener != null) {
+            listener.onModelUpdated(getSnapshot());
+        }
     }
 
     /**

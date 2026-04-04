@@ -15,12 +15,12 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import org.example.controller.GameController;
 import org.example.model.GameConfig;
 import org.example.model.GameField;
 import org.example.model.GameModel;
 import org.example.model.WinCondition;
 import org.example.view.GameRenderer;
+import org.example.view.GameView;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -81,63 +81,50 @@ public class GuiCoverageTest {
     }
 
     @Test
-    void testGameControllerCoverage() throws InterruptedException {
+    void testGameViewCoverage() throws InterruptedException {
         CountDownLatch latch = new CountDownLatch(1);
         AtomicReference<Throwable> error = new AtomicReference<>();
         Platform.runLater(() -> {
             try {
-                GameController controller = new GameController();
-                injectField(controller, "gameCanvas", new Canvas(800, 600));
-                injectField(controller, "scoreLabel", new Label());
-                injectField(controller, "stateLabel", new Label());
-                injectField(controller, "levelLabel", new Label());
+                GameView view = new GameView();
+                injectField(view, "gameCanvas", new Canvas(800, 600));
+                injectField(view, "scoreLabel", new Label());
+                injectField(view, "stateLabel", new Label());
+                injectField(view, "levelLabel", new Label());
 
-                controller.initialize();
+                view.initialize();
 
                 Scene scene = new Scene(new Pane());
-                controller.initKeyHandling(scene);
+                view.initKeyHandling(scene);
 
-                try { 
-                    invokeMethodArgs(controller, "handleKey", 
-                            new Class<?>[]{KeyCode.class}, new Object[]{KeyCode.W}); 
+                try {
+                    invokeMethodArgs(view, "handleKey",
+                            new Class<?>[]{KeyCode.class}, new Object[]{KeyCode.W});
                 } catch (Exception e) {
                     // ignore
                 }
-                
-                try { 
-                    invokeMethodArgs(controller, "handleKey", 
-                            new Class<?>[]{KeyCode.class}, new Object[]{KeyCode.ESCAPE}); 
+
+                try {
+                    invokeMethodArgs(view, "handleKey",
+                            new Class<?>[]{KeyCode.class}, new Object[]{KeyCode.ESCAPE});
                 } catch (Exception e) {
                     // ignore
                 }
-                
-                try { 
-                    invokeMethodArgs(controller, "handleKey", 
-                            new Class<?>[]{KeyCode.class}, new Object[]{KeyCode.ENTER}); 
+
+                try {
+                    invokeMethod(view, "onPause");
                 } catch (Exception e) {
                     // ignore
                 }
-                
-                try { 
-                    invokeMethod(controller, "onPause"); 
+
+                try {
+                    invokeMethod(view, "onRestart");
                 } catch (Exception e) {
                     // ignore
                 }
-                
-                try { 
-                    invokeMethod(controller, "onRestart"); 
-                } catch (Exception e) {
-                    // ignore
-                }
-                
-                try { 
-                    invokeMethod(controller, "stopGameThread"); 
-                } catch (Exception e) {
-                    // ignore
-                }
-                
-                System.out.println("Execution of GameController UI methods successful.");
-                
+
+                System.out.println("Execution of GameView UI methods successful.");
+
             } catch (Throwable globalE) {
                 error.set(globalE);
             } finally {
@@ -145,14 +132,12 @@ public class GuiCoverageTest {
             }
         });
         if (!latch.await(5, TimeUnit.SECONDS)) {
-            throw new RuntimeException("Timeout GameController");
+            throw new RuntimeException("Timeout GameView");
         }
         if (error.get() != null) {
             throw new RuntimeException(error.get());
         }
     }
-
-
 
     @Test
     void testSnakeAppStartCoverage() throws InterruptedException {
@@ -179,7 +164,7 @@ public class GuiCoverageTest {
         method.invoke(target);
     }
 
-    private void invokeMethodArgs(Object target, String methodName, 
+    private void invokeMethodArgs(Object target, String methodName,
                                   Class<?>[] types, Object[] args) throws Exception {
         Method method = target.getClass().getDeclaredMethod(methodName, types);
         method.setAccessible(true);

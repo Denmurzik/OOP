@@ -3,53 +3,32 @@ package org.example.controller;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Set;
-import javafx.animation.AnimationTimer;
-import javafx.fxml.FXML;
-import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Label;
-import javafx.scene.input.KeyCode;
 import org.example.model.Direction;
 import org.example.model.GameConfig;
 import org.example.model.GameField;
 import org.example.model.GameModel;
-import org.example.model.GameSnapshot;
 import org.example.model.GameState;
+import org.example.model.ModelListener;
 import org.example.model.Point;
 import org.example.model.Snake;
 import org.example.model.WinCondition;
-import org.example.view.GameRenderer;
 
 /**
  * Контроллер.
  */
 public class GameController {
-    private static final int CELL_SIZE = 30;
+    private static final int MAX_QUEUE_SIZE = 3;
 
-    @FXML
-    private Canvas gameCanvas;
-    @FXML
-    private Label scoreLabel;
-    @FXML
-    private Label levelLabel;
-    @FXML
-    private Label stateLabel;
-
-    private GameModel model;
-    private GameRenderer renderer;
-    private AnimationTimer renderLoop;
+    private final GameModel model;
+    private final LinkedList<Direction> directionQueue = new LinkedList<>();
 
     private Thread gameThread;
     private volatile boolean running;
-    private final LinkedList<Direction> directionQueue = new LinkedList<>();
-    private static final int MAX_QUEUE_SIZE = 3;
-
 
     /**
-     * Инициализация.
+     * Инициализирует.
      */
-    @FXML
-    public void initialize() {
+    public GameController(ModelListener listener) {
         GameConfig config = GameConfig.defaultConfig();
         Set<Point> obstacles = createObstacles(config);
         GameField field = new GameField(config.getWidth(), config.getHeight(), obstacles);
@@ -59,57 +38,40 @@ public class GameController {
                 return snake.size() >= config.getWinLength();
             }
         });
-
-        renderer = new GameRenderer(gameCanvas, CELL_SIZE);
-
+        model.setListener(listener);
         startGameThread();
-        startRenderLoop();
     }
 
     /**
-     * Привязывает обработку клавиатуры к сцене.
+     * Обрабатывает нажатие клавиши направления.
      */
-    public void initKeyHandling(Scene scene) {
-        scene.setOnKeyPressed(new javafx.event.EventHandler<javafx.scene.input.KeyEvent>() {
-            @Override
-            public void handle(javafx.scene.input.KeyEvent event) {
-                handleKey(event.getCode());
+    public void handleDirection(Direction dir) {
+        synchronized (directionQueue) {
+            if (directionQueue.size() < MAX_QUEUE_SIZE) {
+                directionQueue.add(dir);
             }
-        });
+        }
     }
 
-    private void handleKey(KeyCode code) {
-        Direction dir = null;
-        switch (code) {
-            case UP:
-            case W:
-                dir = Direction.UP;
-                break;
-            case DOWN:
-            case S:
-                dir = Direction.DOWN;
-                break;
-            case LEFT:
-            case A:
-                dir = Direction.LEFT;
-                break;
-            case RIGHT:
-            case D:
-                dir = Direction.RIGHT;
-                break;
-            case SPACE:
-                model.togglePause();
-                break;
-            default:
-                break;
+    /**
+     * Переключает паузу.
+     */
+    public void handlePause() {
+        model.togglePause();
+    }
+
+    /**
+     * Перезапускает игру.
+     */
+    public void handleRestart() {
+        stopGameThread();
+        synchronized (model) {
+            model.reset();
         }
-        if (dir != null) {
-            synchronized (directionQueue) {
-                if (directionQueue.size() < MAX_QUEUE_SIZE) {
-                    directionQueue.add(dir);
-                }
-            }
+        synchronized (directionQueue) {
+            directionQueue.clear();
         }
+        startGameThread();
     }
 
     /**
@@ -159,65 +121,12 @@ public class GameController {
     }
 
     /**
-     * Запускает цикл отрисовки.
-     */
-    private void startRenderLoop() {
-        renderLoop = new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                GameSnapshot snapshot = model.getSnapshot();
-                renderer.render(snapshot);
-                updateLabels(snapshot);
-            }
-        };
-        renderLoop.start();
-    }
-
-    private void updateLabels(GameSnapshot snapshot) {
-        scoreLabel.setText("Счёт: " + snapshot.getScore());
-        levelLabel.setText("Длина: " + snapshot.getSnakeSize());
-
-        switch (snapshot.getState()) {
-            case PAUSED:
-                stateLabel.setText("ПАУЗА");
-                break;
-            case GAME_OVER:
-                stateLabel.setText("ИГРА ОКОНЧЕНА");
-                break;
-            case WON:
-                stateLabel.setText("ПОБЕДА!");
-                break;
-            default:
-                stateLabel.setText("");
-                break;
-        }
-    }
-
-    @FXML
-    private void onRestart() {
-        stopGameThread();
-        synchronized (model) {
-            model.reset();
-        }
-        synchronized (directionQueue) {
-            directionQueue.clear();
-        }
-        stateLabel.setText("");
-        startGameThread();
-    }
-
-    @FXML
-    private void onPause() {
-        model.togglePause();
-    }
-
-    /**
      * Создаёт набор препятствий на поле.
      */
     private Set<Point> createObstacles(GameConfig config) {
         Set<Point> obstacles = new HashSet<>();
-        final int cx = config.getWidth() / 2;
-        final int cy = config.getHeight() / 2;
+        int cx = config.getWidth() / 2;
+        int cy = config.getHeight() / 2;
 
         // Горизонтальная стенка сверху
         for (int x = 5; x <= 8; x++) {

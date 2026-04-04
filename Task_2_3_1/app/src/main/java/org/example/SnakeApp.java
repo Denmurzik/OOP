@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.example.controller.GameController;
+import org.example.view.GameView;
 
 /**
  * Главный.
@@ -20,8 +20,8 @@ public class SnakeApp extends Application {
 
             Scene scene = new Scene(root);
 
-            GameController controller = loader.getController();
-            controller.initKeyHandling(scene);
+            GameView view = loader.getController();
+            view.initKeyHandling(scene);
 
             primaryStage.setTitle("Змейка");
             primaryStage.setScene(scene);

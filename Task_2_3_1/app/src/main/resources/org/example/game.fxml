@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.controller.GameController"
+            fx:controller="org.example.view.GameView"
             style="-fx-background-color: #0f3460;">
 
     <top>
