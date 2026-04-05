@@ -104,7 +104,13 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E()" class="member-name-link">OrderQueue</a>()</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Безлимитная очередь.</div>
+</div>
+<div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(int)" class="member-name-link">OrderQueue</a><wbr>(int&nbsp;capacity)</code></div>
+<div class="col-last odd-row-color">
+<div class="block">Очередь с ограниченной вместимостью.</div>
+</div>
 </div>
 </section>
 </li>
@@ -124,7 +130,7 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Проверяет закрыта ли очередь.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#put(org.example.order.Order)" class="member-name-link">put</a><wbr>(<a href="Order.html" title="class in org.example.order">Order</a>&nbsp;order)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Добавляет заказ в очередь.</div>
@@ -132,7 +138,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#shutdown()" class="member-name-link">shutdown</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Зкрывает очередь.</div>
+<div class="block">Закрывает очередь.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#size()" class="member-name-link">size</a>()</code></div>
@@ -143,6 +149,11 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#take()" class="member-name-link">take</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Забирает заказ из очереди.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a><wbr>&lt;<a href="Order.html" title="class in org.example.order">Order</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#takeUpTo(int)" class="member-name-link">takeUpTo</a><wbr>(int&nbsp;maxCount)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Забирает несколько заказов.</div>
 </div>
 </div>
 </div>
@@ -165,6 +176,18 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;()">
 <h3>OrderQueue</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">OrderQueue</span>()</div>
+<div class="block">Безлимитная очередь.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="&lt;init&gt;(int)">
+<h3>OrderQueue</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">OrderQueue</span><wbr><span class="parameters">(int&nbsp;capacity)</span></div>
+<div class="block">Очередь с ограниченной вместимостью.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>capacity</code> - вместимость (-1  безлимитная)</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -178,11 +201,13 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="put(org.example.order.Order)">
 <h3>put</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">put</span><wbr><span class="parameters">(<a href="Order.html" title="class in org.example.order">Order</a>&nbsp;order)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">put</span><wbr><span class="parameters">(<a href="Order.html" title="class in org.example.order">Order</a>&nbsp;order)</span></div>
 <div class="block">Добавляет заказ в очередь.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>order</code> - заказ</dd>
+<dt>Returns:</dt>
+<dd>true если заказ добавлен, false если очередь закрыта</dd>
 </dl>
 </section>
 </li>
@@ -198,10 +223,23 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="takeUpTo(int)">
+<h3>takeUpTo</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Order.html" title="class in org.example.order">Order</a>&gt;</span>&nbsp;<span class="element-name">takeUpTo</span><wbr><span class="parameters">(int&nbsp;maxCount)</span></div>
+<div class="block">Забирает несколько заказов.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>maxCount</code> - максимум заказов</dd>
+<dt>Returns:</dt>
+<dd>список заказов</dd>
+</dl>
+</section>
+</li>
+<li>
 <section class="detail" id="shutdown()">
 <h3>shutdown</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">shutdown</span>()</div>
-<div class="block">Зкрывает очередь.</div>
+<div class="block">Закрывает очередь.</div>
 </section>
 </li>
 <li>
