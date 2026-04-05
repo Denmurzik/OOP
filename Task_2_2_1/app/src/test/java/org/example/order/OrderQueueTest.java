@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
+import org.example.exception.PizzeriaInterruptException;
 import org.junit.jupiter.api.Test;
 
 class OrderQueueTest {
@@ -78,5 +80,74 @@ class OrderQueueTest {
         queue.shutdown();
         consumer.join(2000);
         assertFalse(consumer.isAlive());
+    }
+
+    @Test
+    void testBoundedQueueBlocksWhenFull() throws InterruptedException {
+        OrderQueue queue = new OrderQueue(1);
+        queue.put(new Order(1));
+
+        Thread putter = new Thread(() -> queue.put(new Order(2)));
+        putter.start();
+        Thread.sleep(200);
+        assertTrue(putter.isAlive(), "Поток должен ждать очередь полная");
+
+        queue.take();
+        putter.join(2000);
+        assertFalse(putter.isAlive());
+        assertEquals(1, queue.size());
+    }
+
+    @Test
+    void testTakeUpToReturnsAvailable() {
+        OrderQueue queue = new OrderQueue();
+        queue.put(new Order(1));
+        queue.put(new Order(2));
+
+        List<Order> taken = queue.takeUpTo(10);
+        assertEquals(2, taken.size());
+        assertEquals(0, queue.size());
+    }
+
+    @Test
+    void testTakeUpToRespectsLimit() {
+        OrderQueue queue = new OrderQueue();
+        queue.put(new Order(1));
+        queue.put(new Order(2));
+        queue.put(new Order(3));
+
+        List<Order> taken = queue.takeUpTo(2);
+        assertEquals(2, taken.size());
+        assertEquals(1, queue.size());
+    }
+
+    @Test
+    void testTakeUpToOnEmptyShutdownReturnsEmpty() {
+        OrderQueue queue = new OrderQueue();
+        queue.shutdown();
+
+        List<Order> taken = queue.takeUpTo(5);
+        assertTrue(taken.isEmpty());
+    }
+
+    @Test
+    void testPutReturnsFalseWhenClosed() {
+        OrderQueue queue = new OrderQueue();
+        queue.shutdown();
+        assertFalse(queue.put(new Order(1)));
+        assertEquals(0, queue.size());
+    }
+
+    @Test
+    void testTakeUpToThrowsExceptionOnInterrupt() {
+        OrderQueue queue = new OrderQueue();
+
+        Thread.currentThread().interrupt();
+
+        try {
+            queue.takeUpTo(1);
+        } catch (PizzeriaInterruptException e) {
+            assertEquals("OrderQueue: прерывание при ожидании заказов", e.getMessage());
+        }
     }
 }

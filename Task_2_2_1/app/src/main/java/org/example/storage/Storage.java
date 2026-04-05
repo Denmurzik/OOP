@@ -1,18 +1,15 @@
 package org.example.storage;
 
-import java.util.ArrayList;
 import java.util.List;
-import org.example.exception.PizzeriaInterruptException;
 import org.example.order.Order;
+import org.example.order.OrderQueue;
 import org.example.order.OrderState;
 
 /**
  * Склад готовых пицц.
  */
 public class Storage {
-    private final List<Order> pizzas = new ArrayList<>();
-    private final int capacity;
-    private boolean closed = false;
+    private final OrderQueue queue;
 
     /**
      * Конструктор склада.
@@ -20,7 +17,7 @@ public class Storage {
      * @param capacity вместимость склада
      */
     public Storage(int capacity) {
-        this.capacity = capacity;
+        this.queue = new OrderQueue(capacity);
     }
 
     /**
@@ -28,22 +25,10 @@ public class Storage {
      *
      * @param order готовый заказ
      */
-    public synchronized void put(Order order) {
-        while (pizzas.size() >= capacity && !closed) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                throw new PizzeriaInterruptException(
-                        "Storage: прерывание при размещении заказа [" + order.getId() + "]", e);
-            }
+    public void put(Order order) {
+        if (queue.put(order)) {
+            order.setState(OrderState.STORED);
         }
-        if (closed) {
-            return;
-        }
-        pizzas.add(order);
-        order.setState(OrderState.STORED);
-        notifyAll();
     }
 
     /**
@@ -52,34 +37,15 @@ public class Storage {
      * @param maxCount максимум пицц
      * @return список заказов
      */
-    public synchronized List<Order> takeUpTo(int maxCount) {
-        while (pizzas.isEmpty() && !closed) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                throw new PizzeriaInterruptException(
-                        "Storage: прерывание при ожидании пицц", e);
-            }
-        }
-        if (pizzas.isEmpty()) {
-            return new ArrayList<>();
-        }
-        int count = Math.min(maxCount, pizzas.size());
-        List<Order> taken = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            taken.add(pizzas.remove(0));
-        }
-        notifyAll();
-        return taken;
+    public List<Order> takeUpTo(int maxCount) {
+        return queue.takeUpTo(maxCount);
     }
 
     /**
      * Закрыть склад.
      */
-    public synchronized void shutdown() {
-        closed = true;
-        notifyAll();
+    public void shutdown() {
+        queue.shutdown();
     }
 
     /**
@@ -87,8 +53,8 @@ public class Storage {
      *
      * @return размер склада
      */
-    public synchronized int size() {
-        return pizzas.size();
+    public int size() {
+        return queue.size();
     }
 
     /**
@@ -96,7 +62,7 @@ public class Storage {
      *
      * @return true если закрыт
      */
-    public synchronized boolean isClosed() {
-        return closed;
+    public boolean isClosed() {
+        return queue.isClosed();
     }
 }

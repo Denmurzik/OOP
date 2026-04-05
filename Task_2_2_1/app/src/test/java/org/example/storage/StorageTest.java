@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
-import org.example.exception.PizzeriaInterruptException;
 import org.example.order.Order;
 import org.junit.jupiter.api.Test;
 
@@ -80,18 +79,5 @@ class StorageTest {
         assertFalse(storage.isClosed());
         storage.shutdown();
         assertTrue(storage.isClosed());
-    }
-
-    @Test
-    void testTakeUpToThrowsExceptionOnInterrupt() {
-        Storage storage = new Storage(5);
-
-        Thread.currentThread().interrupt();
-
-        try {
-            storage.takeUpTo(1);
-        } catch (PizzeriaInterruptException e) {
-            assertEquals("Storage: прерывание при ожидании пицц", e.getMessage());
-        }
     }
 }
