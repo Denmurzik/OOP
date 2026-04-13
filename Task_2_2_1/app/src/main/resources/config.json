@@ -1,0 +1,98 @@
+{
+    "bakers": [
+        {
+            "name": "Константин Ивлев",
+            "cookingTimeMs": 2000
+        },
+        {
+            "name": "Гордон Рамзи",
+            "cookingTimeMs": 4000
+        },
+        {
+            "name": "Ник Диджовани",
+            "cookingTimeMs": 3000
+        },
+        {
+            "name": "Друже Обломов",
+            "cookingTimeMs": 5000
+        }
+    ],
+    "couriers": [
+        {
+            "name": "Еда",
+            "trunkCapacity": 2
+        },
+        {
+            "name": "Лавка",
+            "trunkCapacity": 3
+        },
+        {
+            "name": "Самокат",
+            "trunkCapacity": 4
+        }
+    ],
+    "storageCapacity": 8,
+    "workingTimeMs": 30000,
+    "orders": [
+        {
+            "id": 1
+        },
+        {
+            "id": 2
+        },
+        {
+            "id": 3
+        },
+        {
+            "id": 4
+        },
+        {
+            "id": 5
+        },
+        {
+            "id": 6
+        },
+        {
+            "id": 7
+        },
+        {
+            "id": 8
+        },
+        {
+            "id": 9
+        },
+        {
+            "id": 10
+        },
+        {
+            "id": 11
+        },
+        {
+            "id": 12
+        },
+        {
+            "id": 13
+        },
+        {
+            "id": 14
+        },
+        {
+            "id": 15
+        },
+        {
+            "id": 16
+        },
+        {
+            "id": 17
+        },
+        {
+            "id": 18
+        },
+        {
+            "id": 19
+        },
+        {
+            "id": 20
+        }
+    ]
+}
