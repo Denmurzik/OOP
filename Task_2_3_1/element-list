@@ -1,4 +1,5 @@
 org.example
 org.example.controller
 org.example.model
+org.example.storage
 org.example.view
