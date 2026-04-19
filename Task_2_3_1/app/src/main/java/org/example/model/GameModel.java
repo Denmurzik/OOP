@@ -64,18 +64,21 @@ public class GameModel {
         // Проверка столкновения со стеной
         if (!field.isInBounds(newHead)) {
             state = GameState.GAME_OVER;
+            notifyListener();
             return;
         }
 
         // Проверка столкновения с препятствием
         if (field.isObstacle(newHead)) {
             state = GameState.GAME_OVER;
+            notifyListener();
             return;
         }
 
         // Проверка столкновения с телом
         if (snake.contains(newHead)) {
             state = GameState.GAME_OVER;
+            notifyListener();
             return;
         }
 

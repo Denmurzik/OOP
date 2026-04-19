@@ -23,11 +23,9 @@ public class GameRenderer {
     private static final Color OBSTACLE_COLOR = Color.web("#327485ff");
 
     private final Canvas canvas;
-    private final int cellSize;
 
-    public GameRenderer(Canvas canvas, int cellSize) {
+    public GameRenderer(Canvas canvas) {
         this.canvas = canvas;
-        this.cellSize = cellSize;
     }
 
     /**
@@ -42,27 +40,40 @@ public class GameRenderer {
         gc.setFill(BACKGROUND);
         gc.fillRect(0, 0, w, h);
 
+        int fieldW = snapshot.getField().getWidth();
+        int fieldH = snapshot.getField().getHeight();
+
+        // Вычисляем размер клетки и смещение для центрирования
+        double cellByWidth = w / fieldW;
+        double cellByHeight = h / fieldH;
+        double cellSize = Math.min(cellByWidth, cellByHeight);
+        double offsetX = (w - cellSize * fieldW) / 2;
+        double offsetY = (h - cellSize * fieldH) / 2;
+
         // Сетка
         gc.setStroke(GRID_COLOR);
         gc.setLineWidth(0.5);
-        for (int x = 0; x <= snapshot.getField().getWidth(); x++) {
-            gc.strokeLine(x * cellSize, 0, x * cellSize, h);
+        for (int x = 0; x <= fieldW; x++) {
+            double px = offsetX + x * cellSize;
+            gc.strokeLine(px, offsetY, px, offsetY + cellSize * fieldH);
         }
-        for (int y = 0; y <= snapshot.getField().getHeight(); y++) {
-            gc.strokeLine(0, y * cellSize, w, y * cellSize);
+        for (int y = 0; y <= fieldH; y++) {
+            double py = offsetY + y * cellSize;
+            gc.strokeLine(offsetX, py, offsetX + cellSize * fieldW, py);
         }
 
         // Препятствия
         gc.setFill(OBSTACLE_COLOR);
         for (Point p : snapshot.getField().getObstacles()) {
-            gc.fillRect(p.getX() * cellSize, p.getY() * cellSize, cellSize, cellSize);
+            gc.fillRect(offsetX + p.getX() * cellSize, offsetY + p.getY() * cellSize,
+                    cellSize, cellSize);
         }
 
         // Еда
         gc.setFill(FOOD_COLOR);
         for (Food food : snapshot.getFoods()) {
             Point p = food.getPosition();
-            gc.fillOval(p.getX() * cellSize + 2, p.getY() * cellSize + 2,
+            gc.fillOval(offsetX + p.getX() * cellSize + 2, offsetY + p.getY() * cellSize + 2,
                     cellSize - 4, cellSize - 4);
         }
 
@@ -71,23 +82,27 @@ public class GameRenderer {
         for (int i = 0; i < segments.size(); i++) {
             Point p = segments.get(i);
             gc.setFill(i == 0 ? SNAKE_HEAD : SNAKE_BODY);
-            gc.fillRoundRect(p.getX() * cellSize + 1, p.getY() * cellSize + 1,
+            gc.fillRoundRect(offsetX + p.getX() * cellSize + 1,
+                    offsetY + p.getY() * cellSize + 1,
                     cellSize - 2, cellSize - 2, 6, 6);
         }
 
         // Оверлей при окончании игры
-        if (snapshot.getState() == GameState.GAME_OVER || snapshot.getState() == GameState.WON) {
-            gc.setFill(Color.rgb(0, 0, 0, 0.6));
+        if (snapshot.getState() == GameState.GAME_OVER) {
+            gc.setFill(Color.rgb(0, 0, 0, 0.7));
             gc.fillRect(0, 0, w, h);
 
-            gc.setFill(Color.WHITE);
-            gc.setFont(new Font(36));
+            gc.setFill(Color.web("#e17055"));
+            gc.setFont(new Font(48));
             gc.setTextAlign(TextAlignment.CENTER);
-            String text = snapshot.getState() == GameState.WON ? "ПОБЕДА!" : "ИГРА ОКОНЧЕНА";
-            gc.fillText(text, w / 2, h / 2);
+            gc.fillText("ПОРАЖЕНИЕ", w / 2, h / 2 - 20);
 
-            gc.setFont(new Font(18));
-            gc.fillText("Нажмите 'Новая игра'", w / 2, h / 2 + 40);
+            gc.setFill(Color.WHITE);
+            gc.setFont(new Font(24));
+            gc.fillText("Ваш счёт: " + snapshot.getScore(), w / 2, h / 2 + 25);
+
+            gc.setFont(new Font(16));
+            gc.fillText("Нажмите 'Новая игра'", w / 2, h / 2 + 60);
         }
     }
 }

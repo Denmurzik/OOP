@@ -53,7 +53,7 @@ public class GuiCoverageTest {
         Platform.runLater(() -> {
             try {
                 Canvas canvas = new Canvas(800, 600);
-                GameRenderer renderer = new GameRenderer(canvas, 10);
+                GameRenderer renderer = new GameRenderer(canvas);
                 assertNotNull(renderer);
 
                 GameConfig config = GameConfig.defaultConfig();
@@ -87,12 +87,15 @@ public class GuiCoverageTest {
         Platform.runLater(() -> {
             try {
                 GameView view = new GameView();
-                injectField(view, "gameCanvas", new Canvas(800, 600));
+                Pane container = new Pane();
+                container.setPrefSize(800, 600);
+                injectField(view, "gameCanvas", new Canvas());
+                injectField(view, "canvasContainer", container);
                 injectField(view, "scoreLabel", new Label());
                 injectField(view, "stateLabel", new Label());
-                injectField(view, "levelLabel", new Label());
 
                 view.initialize();
+                view.startGame(org.example.model.Difficulty.NORMAL);
 
                 Scene scene = new Scene(new Pane());
                 view.initKeyHandling(scene);

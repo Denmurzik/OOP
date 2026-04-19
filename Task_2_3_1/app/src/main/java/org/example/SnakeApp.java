@@ -5,36 +5,33 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.example.view.GameView;
+import org.example.view.ErrorDialog;
+import org.example.view.MenuView;
 
 /**
- * Главный.
+ * JavaFX.
  */
 public class SnakeApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("game.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/menu.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);
 
-            GameView view = loader.getController();
-            view.initKeyHandling(scene);
+            MenuView menu = loader.getController();
+            menu.init(primaryStage);
 
             primaryStage.setTitle("Змейка");
             primaryStage.setScene(scene);
-            primaryStage.setResizable(false);
+            primaryStage.setResizable(true);
+            primaryStage.setMinWidth(400);
+            primaryStage.setMinHeight(400);
             primaryStage.show();
         } catch (Exception e) {
-            javafx.scene.control.Alert alert
-                = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
-            alert.setTitle("Ошибка инициализации");
-            alert.setHeaderText("ОШИБКА: Не удалось загрузить интерфейс игры");
-            alert.setContentText("Убедитесь, что файл game.fxml существует.\nПодробности: "
-                + e.getMessage());
-            alert.show();
+            ErrorDialog.show(e);
         }
     }
 

@@ -47,4 +47,11 @@ public class GameConfig {
     public static GameConfig defaultConfig() {
         return new GameConfig(20, 15, 3, 10, 200);
     }
+
+    /**
+     * Создаёт конфигурацию с заданной сложностью.
+     */
+    public static GameConfig withDifficulty(Difficulty difficulty) {
+        return new GameConfig(20, 15, 3, 10, difficulty.getTickMs());
+    }
 }
