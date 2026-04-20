@@ -21,6 +21,7 @@ public class SnakeApp extends Application {
 
             Scene scene = new Scene(root);
 
+
             MenuView menu = loader.getController();
             menu.init(primaryStage);
 
