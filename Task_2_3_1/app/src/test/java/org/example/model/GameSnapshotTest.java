@@ -20,11 +20,11 @@ class GameSnapshotTest {
                 field
         );
 
-        assertSame(GameState.RUNNING, snapshot.getState());
-        assertEquals(150, snapshot.getScore());
-        assertEquals(8, snapshot.getSnakeSize());
-        assertEquals(0, snapshot.getFoods().size());
-        assertEquals(0, snapshot.getSnakeSegments().size());
-        assertSame(field, snapshot.getField());
+        assertSame(GameState.RUNNING, snapshot.state());
+        assertEquals(150, snapshot.score());
+        assertEquals(8, snapshot.snakeSize());
+        assertEquals(0, snapshot.foods().size());
+        assertEquals(0, snapshot.snakeSegments().size());
+        assertSame(field, snapshot.field());
     }
 }

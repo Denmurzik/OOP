@@ -133,11 +133,11 @@ class GameModelTest {
     @Test
     void testGetSnapshot() {
         GameSnapshot snapshot = model.getSnapshot();
-        assertEquals(model.getState(), snapshot.getState());
-        assertEquals(model.getScore(), snapshot.getScore());
-        assertEquals(model.getFoods().size(), snapshot.getFoods().size());
-        assertEquals(model.getSnake().size(), snapshot.getSnakeSize());
-        assertEquals(model.getField(), snapshot.getField());
+        assertEquals(model.getState(), snapshot.state());
+        assertEquals(model.getScore(), snapshot.score());
+        assertEquals(model.getFoods().size(), snapshot.foods().size());
+        assertEquals(model.getSnake().size(), snapshot.snakeSize());
+        assertEquals(model.getField(), snapshot.field());
     }
 
     @Test

@@ -40,8 +40,8 @@ public class GameRenderer {
         gc.setFill(BACKGROUND);
         gc.fillRect(0, 0, w, h);
 
-        int fieldW = snapshot.getField().getWidth();
-        int fieldH = snapshot.getField().getHeight();
+        int fieldW = snapshot.field().getWidth();
+        int fieldH = snapshot.field().getHeight();
 
         // Вычисляем размер клетки и смещение для центрирования
         double cellByWidth = w / fieldW;
@@ -64,21 +64,21 @@ public class GameRenderer {
 
         // Препятствия
         gc.setFill(OBSTACLE_COLOR);
-        for (Point p : snapshot.getField().getObstacles()) {
+        for (Point p : snapshot.field().getObstacles()) {
             gc.fillRect(offsetX + p.getX() * cellSize, offsetY + p.getY() * cellSize,
                     cellSize, cellSize);
         }
 
         // Еда
         gc.setFill(FOOD_COLOR);
-        for (Food food : snapshot.getFoods()) {
+        for (Food food : snapshot.foods()) {
             Point p = food.getPosition();
             gc.fillOval(offsetX + p.getX() * cellSize + 2, offsetY + p.getY() * cellSize + 2,
                     cellSize - 4, cellSize - 4);
         }
 
         // Змейка
-        List<Point> segments = snapshot.getSnakeSegments();
+        List<Point> segments = snapshot.snakeSegments();
         for (int i = 0; i < segments.size(); i++) {
             Point p = segments.get(i);
             gc.setFill(i == 0 ? SNAKE_HEAD : SNAKE_BODY);
@@ -88,7 +88,7 @@ public class GameRenderer {
         }
 
         // Оверлей при окончании игры
-        if (snapshot.getState() == GameState.GAME_OVER) {
+        if (snapshot.state() == GameState.GAME_OVER) {
             gc.setFill(Color.rgb(0, 0, 0, 0.7));
             gc.fillRect(0, 0, w, h);
 
@@ -99,7 +99,7 @@ public class GameRenderer {
 
             gc.setFill(Color.WHITE);
             gc.setFont(new Font(24));
-            gc.fillText("Ваш счёт: " + snapshot.getScore(), w / 2, h / 2 + 25);
+            gc.fillText("Ваш счёт: " + snapshot.score(), w / 2, h / 2 + 25);
 
             gc.setFont(new Font(16));
             gc.fillText("Нажмите 'Новая игра'", w / 2, h / 2 + 60);

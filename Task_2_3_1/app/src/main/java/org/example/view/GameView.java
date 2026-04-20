@@ -152,9 +152,9 @@ public class GameView implements ModelListener {
     }
 
     private void updateLabels(GameSnapshot snapshot) {
-        scoreLabel.setText("Счёт: " + snapshot.getScore());
+        scoreLabel.setText("Счёт: " + snapshot.score());
 
-        switch (snapshot.getState()) {
+        switch (snapshot.state()) {
             case PAUSED:
                 stateLabel.setText("ПАУЗА");
                 break;
@@ -171,8 +171,8 @@ public class GameView implements ModelListener {
         if (scoreSaved) {
             return;
         }
-        if (snapshot.getState() == GameState.GAME_OVER || snapshot.getState() == GameState.WON) {
-            scoreStorage.saveIfBetter(snapshot.getScore());
+        if (snapshot.state() == GameState.GAME_OVER || snapshot.state() == GameState.WON) {
+            scoreStorage.saveIfBetter(snapshot.score());
             scoreSaved = true;
         }
     }
