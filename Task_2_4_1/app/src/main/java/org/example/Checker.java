@@ -1,5 +1,14 @@
 package org.example;
 
+import java.io.File;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import org.example.model.Assignment;
 import org.example.model.Checkpoint;
 import org.example.model.Config;
@@ -12,16 +21,7 @@ import org.example.runner.CheckstyleRunner;
 import org.example.runner.GitClient;
 import org.example.runner.GradleRunner;
 
-import java.io.File;
-import java.time.LocalDate;
-import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+/** Основная оркестрация: прогоняет проверки по всем студентам из конфига. */
 public class Checker {
 
     private final Config config;
@@ -30,18 +30,24 @@ public class Checker {
     private final GradleRunner gradle;
     private final CheckstyleRunner checkstyle;
 
+    /** Создаёт проверку на основе конфига. */
     public Checker(Config config, File workDir) {
         this.config = config;
         this.workDir = workDir;
         long timeout = config.getSettings().getTestTimeoutSeconds() * 4L;
-        if (timeout < 30) timeout = 30;
+        if (timeout < 30) {
+            timeout = 30;
+        }
         this.git = new GitClient(timeout);
         long gradleTimeout = config.getSettings().getTestTimeoutSeconds() * 2L;
-        if (gradleTimeout < 60) gradleTimeout = 60;
+        if (gradleTimeout < 60) {
+            gradleTimeout = 60;
+        }
         this.gradle = new GradleRunner(gradleTimeout);
         this.checkstyle = new CheckstyleRunner();
     }
 
+    /** Запускает проверку и возвращает отчёты, сгруппированные по группам. */
     public Map<Group, List<StudentReport>> run() {
         Map<Group, List<StudentReport>> byGroup = new LinkedHashMap<>();
         for (Group g : config.getGroups()) {
@@ -53,16 +59,18 @@ public class Checker {
 
         for (Assignment a : config.getAssignments()) {
             Student student = config.findStudent(a.getNick());
-            if (student == null) continue;
-            Group group = config.findGroupOf(a.getNick());
+            if (student == null) {
+                continue;
+            }
             StudentReport report = new StudentReport(student);
-
             File repoDir = new File(clonesDir, student.getNick());
             boolean cloned = git.cloneOrUpdate(student.getRepo(), repoDir);
 
             for (String labId : a.getLabIds()) {
                 Lab lab = config.findLab(labId);
-                if (lab == null) continue;
+                if (lab == null) {
+                    continue;
+                }
                 LabResult r = new LabResult(student, lab);
                 report.getResults().add(r);
 
@@ -73,7 +81,6 @@ public class Checker {
 
                 File labDir = findLabDir(repoDir, labId);
                 if (labDir == null) {
-                    // Задача не сдана — только возможный бонус
                     int bonus = config.getSettings().getBonusFor(student.getNick(), labId);
                     r.setBonus(bonus);
                     r.setTotalScore(bonus);
@@ -102,18 +109,20 @@ public class Checker {
                 r.setTotalScore(score + bonus);
             }
 
-            if (cloned) report.setActivity(computeActivity(repoDir));
+            if (cloned) {
+                report.setActivity(computeActivity(repoDir));
+            }
 
-            // Оценка с учётом активности
             int total = report.totalScore();
             String grade = Scoring.grade(total, config);
             if (!"-".equals(grade)
                     && report.getActivity() < config.getSettings().getActivityThreshold()) {
-                // штраф: снижаем оценку на единицу, но не ниже "2"
                 try {
                     int g = Integer.parseInt(grade);
                     int lower = g - 1;
-                    if (lower < 2) lower = 2;
+                    if (lower < 2) {
+                        lower = 2;
+                    }
                     grade = String.valueOf(lower);
                 } catch (NumberFormatException ignore) {
                     // оставляем как есть
@@ -121,13 +130,15 @@ public class Checker {
             }
             report.setGrade(grade);
 
-            // Оценки на каждую контрольную точку
             for (Checkpoint cp : config.getCheckpoints()) {
                 String cpGrade = Scoring.gradeOnCheckpoint(report, cp.getDate(), config);
                 report.getCheckpointGrades().put(cp.getName(), cpGrade);
             }
 
-            if (group != null) byGroup.get(group).add(report);
+            Group group = config.findGroupOf(a.getNick());
+            if (group != null) {
+                byGroup.get(group).add(report);
+            }
         }
         return byGroup;
     }
@@ -142,7 +153,6 @@ public class Checker {
                 }
             }
         }
-        // В корне (без подпапки)
         if (new File(repoDir, "build.gradle").exists()
                 || new File(repoDir, "build.gradle.kts").exists()) {
             return repoDir;
@@ -153,12 +163,13 @@ public class Checker {
     private double computeActivity(File repoDir) {
         LocalDate from = firstLabStart();
         LocalDate to = LocalDate.now();
-        if (from == null || !from.isBefore(to)) return 0.0;
-
+        if (from == null || !from.isBefore(to)) {
+            return 0.0;
+        }
         List<String> dates = git.commitDates(repoDir, from, to);
-        if (dates.isEmpty()) return 0.0;
-
-        // Номер недели = число дней от from делить на 7
+        if (dates.isEmpty()) {
+            return 0.0;
+        }
         Set<Long> activeWeeks = new HashSet<>();
         for (String s : dates) {
             try {
@@ -166,13 +177,17 @@ public class Checker {
                 long days = d.toEpochDay() - from.toEpochDay();
                 activeWeeks.add(days / 7);
             } catch (Exception ignore) {
-                // неверная дата — просто пропускаем
+                // неверная дата — пропускаем
             }
         }
         long totalWeeks = (to.toEpochDay() - from.toEpochDay()) / 7 + 1;
-        if (totalWeeks < 1) totalWeeks = 1;
+        if (totalWeeks < 1) {
+            totalWeeks = 1;
+        }
         double ratio = (double) activeWeeks.size() / totalWeeks;
-        if (ratio > 1.0) ratio = 1.0;
+        if (ratio > 1.0) {
+            ratio = 1.0;
+        }
         return ratio;
     }
 
@@ -180,9 +195,13 @@ public class Checker {
         LocalDate min = null;
         for (Lab l : config.getLabs()) {
             LocalDate d = l.getSoftDeadline();
-            if (d != null && (min == null || d.isBefore(min))) min = d;
+            if (d != null && (min == null || d.isBefore(min))) {
+                min = d;
+            }
         }
-        if (min != null) return min.minusWeeks(2);
+        if (min != null) {
+            return min.minusWeeks(2);
+        }
         return LocalDate.now().minusWeeks(10);
     }
 }

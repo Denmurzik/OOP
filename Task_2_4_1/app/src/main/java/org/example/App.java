@@ -1,5 +1,8 @@
 package org.example;
 
+import java.io.File;
+import java.util.List;
+import java.util.Map;
 import org.example.dsl.DslLoader;
 import org.example.model.Config;
 import org.example.model.Group;
@@ -7,12 +10,10 @@ import org.example.model.StudentReport;
 import org.example.report.HtmlReporter;
 import org.example.runner.GitAuthCheck;
 
-import java.io.File;
-import java.util.List;
-import java.util.Map;
-
+/** Точка входа приложения oop-checker. */
 public class App {
 
+    /** Парсит команду, находит DSL-скрипт и запускает проверку. */
     public static void main(String[] args) throws Exception {
         if (args.length == 0) {
             System.err.println("Использование: oop-checker <команда>");

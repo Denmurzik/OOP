@@ -1,5 +1,7 @@
 package org.example.report;
 
+import java.util.List;
+import java.util.Map;
 import org.example.model.Checkpoint;
 import org.example.model.Config;
 import org.example.model.Group;
@@ -7,14 +9,15 @@ import org.example.model.Lab;
 import org.example.model.LabResult;
 import org.example.model.StudentReport;
 
-import java.util.List;
-import java.util.Map;
-
+/** Формирует HTML-отчёт по результатам проверки. */
 public class HtmlReporter {
 
+    /** Собирает HTML с таблицами per-lab, сводной и по контрольным точкам. */
     public String build(Config config, Map<Group, List<StudentReport>> data) {
         StringBuilder html = new StringBuilder();
-        html.append("<!DOCTYPE html>\n<html><head><meta charset=\"UTF-8\"><title>OOP-checker report</title>\n");
+        html.append("<!DOCTYPE html>\n");
+        html.append("<html><head><meta charset=\"UTF-8\">");
+        html.append("<title>OOP-checker report</title>\n");
         html.append("<style>");
         html.append("body{font-family:monospace;} ");
         html.append("table{border-collapse:collapse;margin:10px 0;} ");
@@ -25,12 +28,16 @@ public class HtmlReporter {
         for (Map.Entry<Group, List<StudentReport>> e : data.entrySet()) {
             Group group = e.getKey();
             List<StudentReport> reports = e.getValue();
-            if (reports.isEmpty()) continue;
+            if (reports.isEmpty()) {
+                continue;
+            }
 
             html.append("<h2>Группа ").append(escape(group.getName())).append("</h2>\n");
 
             for (Lab lab : config.getLabs()) {
-                if (!labUsedIn(reports, lab.getId())) continue;
+                if (!labUsedIn(reports, lab.getId())) {
+                    continue;
+                }
                 html.append(labTable(lab, reports));
             }
 
@@ -46,7 +53,9 @@ public class HtmlReporter {
 
     private boolean labUsedIn(List<StudentReport> reports, String labId) {
         for (StudentReport r : reports) {
-            if (r.findResult(labId) != null) return true;
+            if (r.findResult(labId) != null) {
+                return true;
+            }
         }
         return false;
     }
@@ -55,11 +64,14 @@ public class HtmlReporter {
         StringBuilder sb = new StringBuilder();
         sb.append("<table><caption>Лабораторная ").append(escape(lab.getId()))
                 .append(" (").append(escape(lab.getName())).append(")</caption>\n");
-        sb.append("<tr><th>Студент</th><th>Сборка</th><th>Документация</th><th>Style guide</th>")
-                .append("<th>Тесты</th><th>Доп. балл</th><th>Общий балл</th></tr>\n");
+        sb.append("<tr><th>Студент</th><th>Сборка</th><th>Документация</th>");
+        sb.append("<th>Style guide</th><th>Тесты</th><th>Доп. балл</th>");
+        sb.append("<th>Общий балл</th></tr>\n");
         for (StudentReport r : reports) {
             LabResult res = r.findResult(lab.getId());
-            if (res == null) continue;
+            if (res == null) {
+                continue;
+            }
             sb.append("<tr>");
             sb.append("<td>").append(escape(r.getStudent().getFullName())).append("</td>");
             sb.append("<td>").append(mark(res.isBuildOk())).append("</td>");
@@ -78,7 +90,8 @@ public class HtmlReporter {
 
     private String summaryTable(Group group, List<StudentReport> reports, Config config) {
         StringBuilder sb = new StringBuilder();
-        sb.append("<table><caption>Общая статистика группы ").append(escape(group.getName())).append("</caption>\n");
+        sb.append("<table><caption>Общая статистика группы ")
+                .append(escape(group.getName())).append("</caption>\n");
         sb.append("<tr><th>Студент</th>");
         for (Lab lab : config.getLabs()) {
             if (labUsedIn(reports, lab.getId())) {
@@ -90,7 +103,9 @@ public class HtmlReporter {
         for (StudentReport r : reports) {
             sb.append("<tr><td>").append(escape(r.getStudent().getFullName())).append("</td>");
             for (Lab lab : config.getLabs()) {
-                if (!labUsedIn(reports, lab.getId())) continue;
+                if (!labUsedIn(reports, lab.getId())) {
+                    continue;
+                }
                 LabResult res = r.findResult(lab.getId());
                 sb.append("<td>").append(res == null ? 0 : res.getTotalScore()).append("</td>");
             }
@@ -125,10 +140,17 @@ public class HtmlReporter {
         return sb.toString();
     }
 
-    private String mark(boolean ok) { return ok ? "+" : "-"; }
+    private String mark(boolean ok) {
+        if (ok) {
+            return "+";
+        }
+        return "-";
+    }
 
     private String escape(String s) {
-        if (s == null) return "";
+        if (s == null) {
+            return "";
+        }
         return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");
     }
 }

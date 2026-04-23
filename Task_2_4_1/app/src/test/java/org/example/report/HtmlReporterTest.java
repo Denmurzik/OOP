@@ -1,5 +1,11 @@
 package org.example.report;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import org.example.model.Config;
 import org.example.model.Group;
 import org.example.model.Lab;
@@ -7,13 +13,6 @@ import org.example.model.LabResult;
 import org.example.model.Student;
 import org.example.model.StudentReport;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class HtmlReporterTest {
 
@@ -26,18 +25,16 @@ class HtmlReporterTest {
         Student s1 = new Student("s1", "Студент №1", "u");
         group.getStudents().add(s1);
         cfg.getGroups().add(group);
-
-        StudentReport rep = new StudentReport(s1);
         LabResult r = new LabResult(s1, lab);
         r.setBuildOk(true);
         r.setDocOk(true);
         r.setStyleOk(true);
         r.setTestsPassed(10);
         r.setTotalScore(1);
+        StudentReport rep = new StudentReport(s1);
         rep.getResults().add(r);
         rep.setActivity(0.8);
         rep.setGrade("5");
-
         List<StudentReport> list = new ArrayList<>();
         list.add(rep);
         Map<Group, List<StudentReport>> data = new LinkedHashMap<>();

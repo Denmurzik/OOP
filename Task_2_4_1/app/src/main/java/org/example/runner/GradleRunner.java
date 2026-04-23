@@ -1,38 +1,43 @@
 package org.example.runner;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
+/** Запускает gradle build/javadoc/test и парсит результаты тестов. */
 public class GradleRunner {
 
     private final long timeoutSeconds;
 
+    /** Создаёт раннер с общим таймаутом на команду. */
     public GradleRunner(long timeoutSeconds) {
         this.timeoutSeconds = timeoutSeconds;
     }
 
+    /** Итог тестов: сколько прошло, упало, пропущено. */
     public static class TestStats {
         public int passed;
         public int failed;
         public int skipped;
     }
 
+    /** Запускает сборку без тестов, возвращает true при успехе. */
     public boolean build(File projectDir) {
         return runGradle(projectDir, "build", "-x", "test") == 0;
     }
 
+    /** Запускает генерацию javadoc, возвращает true при успехе. */
     public boolean javadoc(File projectDir) {
         return runGradle(projectDir, "javadoc") == 0;
     }
 
+    /** Запускает тесты и возвращает статистику по XML-отчётам. */
     public TestStats test(File projectDir) {
         TestStats stats = new TestStats();
         runGradle(projectDir, "test");
@@ -42,7 +47,7 @@ public class GradleRunner {
             if (files != null) {
                 for (File xml : files) {
                     if (xml.getName().startsWith("TEST-") && xml.getName().endsWith(".xml")) {
-                        parseJUnitXml(xml, stats);
+                        parseJunitXml(xml, stats);
                     }
                 }
             }
@@ -52,19 +57,25 @@ public class GradleRunner {
 
     private File findTestResultsDir(File projectDir) {
         File a = new File(projectDir, "build/test-results/test");
-        if (a.isDirectory()) return a;
+        if (a.isDirectory()) {
+            return a;
+        }
         File[] modules = projectDir.listFiles();
         if (modules != null) {
             for (File m : modules) {
-                if (!m.isDirectory()) continue;
+                if (!m.isDirectory()) {
+                    continue;
+                }
                 File b = new File(m, "build/test-results/test");
-                if (b.isDirectory()) return b;
+                if (b.isDirectory()) {
+                    return b;
+                }
             }
         }
         return null;
     }
 
-    private void parseJUnitXml(File xml, TestStats stats) {
+    private void parseJunitXml(File xml, TestStats stats) {
         try {
             DocumentBuilder b = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             Document doc = b.parse(xml);
@@ -78,7 +89,9 @@ public class GradleRunner {
                 stats.failed += failures + errors;
                 stats.skipped += skipped;
                 int passed = tests - failures - errors - skipped;
-                if (passed < 0) passed = 0;
+                if (passed < 0) {
+                    passed = 0;
+                }
                 stats.passed += passed;
             }
         } catch (Exception ignore) {
@@ -88,7 +101,9 @@ public class GradleRunner {
 
     private int intAttr(NamedNodeMap attrs, String name) {
         Node n = attrs.getNamedItem(name);
-        if (n == null) return 0;
+        if (n == null) {
+            return 0;
+        }
         try {
             return Integer.parseInt(n.getNodeValue().trim());
         } catch (Exception e) {
@@ -108,15 +123,18 @@ public class GradleRunner {
             } else if (!windows && wrapperSh.exists()) {
                 full.add(wrapperSh.getAbsolutePath());
             } else {
-                // Нет подходящего wrapper'а — используем gradle из PATH
                 full.add(windows ? "gradle.bat" : "gradle");
             }
             full.add("--no-daemon");
-            for (String arg : args) full.add(arg);
+            for (String arg : args) {
+                full.add(arg);
+            }
 
             String[] cmdArr = full.toArray(new String[0]);
             ProcessHelper.Result r = ProcessHelper.run(projectDir, timeoutSeconds, cmdArr);
-            if (r.timedOut) return -1;
+            if (r.timedOut) {
+                return -1;
+            }
             return r.exitCode;
         } catch (Exception e) {
             return -1;

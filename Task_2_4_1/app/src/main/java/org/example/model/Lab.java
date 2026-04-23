@@ -2,6 +2,7 @@ package org.example.model;
 
 import java.time.LocalDate;
 
+/** Описание одной лабораторной работы. */
 public class Lab {
     private String id;
     private String name;
@@ -9,9 +10,13 @@ public class Lab {
     private LocalDate softDeadline;
     private LocalDate hardDeadline;
 
-    public Lab() {}
+    /** Конструктор без аргументов нужен для DSL. */
+    public Lab() {
+    }
 
-    public Lab(String id, String name, int maxScore, LocalDate softDeadline, LocalDate hardDeadline) {
+    /** Полный конструктор. */
+    public Lab(String id, String name, int maxScore,
+               LocalDate softDeadline, LocalDate hardDeadline) {
         this.id = id;
         this.name = name;
         this.maxScore = maxScore;
@@ -19,18 +24,43 @@ public class Lab {
         this.hardDeadline = hardDeadline;
     }
 
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
+    public String getId() {
+        return id;
+    }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    public int getMaxScore() { return maxScore; }
-    public void setMaxScore(int maxScore) { this.maxScore = maxScore; }
+    public String getName() {
+        return name;
+    }
 
-    public LocalDate getSoftDeadline() { return softDeadline; }
-    public void setSoftDeadline(LocalDate softDeadline) { this.softDeadline = softDeadline; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public LocalDate getHardDeadline() { return hardDeadline; }
-    public void setHardDeadline(LocalDate hardDeadline) { this.hardDeadline = hardDeadline; }
+    public int getMaxScore() {
+        return maxScore;
+    }
+
+    public void setMaxScore(int maxScore) {
+        this.maxScore = maxScore;
+    }
+
+    public LocalDate getSoftDeadline() {
+        return softDeadline;
+    }
+
+    public void setSoftDeadline(LocalDate softDeadline) {
+        this.softDeadline = softDeadline;
+    }
+
+    public LocalDate getHardDeadline() {
+        return hardDeadline;
+    }
+
+    public void setHardDeadline(LocalDate hardDeadline) {
+        this.hardDeadline = hardDeadline;
+    }
 }

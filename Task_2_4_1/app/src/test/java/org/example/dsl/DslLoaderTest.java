@@ -1,14 +1,14 @@
 package org.example.dsl;
 
-import org.example.model.Config;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.File;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.example.model.Config;
+import org.junit.jupiter.api.Test;
 
 class DslLoaderTest {
 

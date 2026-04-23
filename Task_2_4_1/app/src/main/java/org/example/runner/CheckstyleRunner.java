@@ -6,7 +6,6 @@ import com.puppycrawl.tools.checkstyle.PropertiesExpander;
 import com.puppycrawl.tools.checkstyle.api.AuditEvent;
 import com.puppycrawl.tools.checkstyle.api.AuditListener;
 import com.puppycrawl.tools.checkstyle.api.Configuration;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -14,16 +13,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+/** Проверка кода Google Java Style через Checkstyle API. */
 public class CheckstyleRunner {
 
     /** Количество нарушений стиля в src/main/java, или -1 при ошибке. */
     public int countViolations(File projectDir) {
         File srcRoot = findJavaSrc(projectDir);
-        if (srcRoot == null) return -1;
+        if (srcRoot == null) {
+            return -1;
+        }
 
         List<File> javaFiles = new ArrayList<>();
         collectJava(srcRoot, javaFiles);
-        if (javaFiles.isEmpty()) return 0;
+        if (javaFiles.isEmpty()) {
+            return 0;
+        }
 
         try {
             File configFile = extractConfigToTempFile();
@@ -47,7 +51,9 @@ public class CheckstyleRunner {
 
     private File extractConfigToTempFile() throws Exception {
         InputStream in = getClass().getResourceAsStream("/google_checks.xml");
-        if (in == null) throw new IllegalStateException("google_checks.xml нет в ресурсах");
+        if (in == null) {
+            throw new IllegalStateException("google_checks.xml нет в ресурсах");
+        }
         File tmp = File.createTempFile("google_checks", ".xml");
         tmp.deleteOnExit();
         FileOutputStream out = new FileOutputStream(tmp);
@@ -63,13 +69,19 @@ public class CheckstyleRunner {
 
     private File findJavaSrc(File projectDir) {
         File a = new File(projectDir, "src/main/java");
-        if (a.isDirectory()) return a;
+        if (a.isDirectory()) {
+            return a;
+        }
         File[] modules = projectDir.listFiles();
         if (modules != null) {
             for (File m : modules) {
-                if (!m.isDirectory()) continue;
+                if (!m.isDirectory()) {
+                    continue;
+                }
                 File b = new File(m, "src/main/java");
-                if (b.isDirectory()) return b;
+                if (b.isDirectory()) {
+                    return b;
+                }
             }
         }
         return null;
@@ -77,22 +89,41 @@ public class CheckstyleRunner {
 
     private void collectJava(File dir, List<File> out) {
         File[] files = dir.listFiles();
-        if (files == null) return;
+        if (files == null) {
+            return;
+        }
         for (File f : files) {
-            if (f.isDirectory()) collectJava(f, out);
-            else if (f.getName().endsWith(".java")) out.add(f);
+            if (f.isDirectory()) {
+                collectJava(f, out);
+            } else if (f.getName().endsWith(".java")) {
+                out.add(f);
+            }
         }
     }
 
     /** Слушатель, считающий ошибки стиля. */
     private static class CountingListener implements AuditListener {
-        int count = 0;
+        private int count;
 
-        @Override public void auditStarted(AuditEvent e) {}
-        @Override public void auditFinished(AuditEvent e) {}
-        @Override public void fileStarted(AuditEvent e) {}
-        @Override public void fileFinished(AuditEvent e) {}
-        @Override public void addException(AuditEvent e, Throwable t) {}
+        @Override
+        public void auditStarted(AuditEvent e) {
+        }
+
+        @Override
+        public void auditFinished(AuditEvent e) {
+        }
+
+        @Override
+        public void fileStarted(AuditEvent e) {
+        }
+
+        @Override
+        public void fileFinished(AuditEvent e) {
+        }
+
+        @Override
+        public void addException(AuditEvent e, Throwable t) {
+        }
 
         @Override
         public void addError(AuditEvent e) {

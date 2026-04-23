@@ -1,12 +1,11 @@
 package org.example;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.time.LocalDate;
 import org.example.model.Config;
 import org.example.model.Lab;
 import org.junit.jupiter.api.Test;
-
-import java.time.LocalDate;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ScoringTest {
 
