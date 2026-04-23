@@ -2,10 +2,12 @@ package org.example.report;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import org.example.model.Checkpoint;
 import org.example.model.Config;
 import org.example.model.Group;
 import org.example.model.Lab;
@@ -49,5 +51,42 @@ class HtmlReporterTest {
         assertTrue(html.contains("10/0/0"));
         assertTrue(html.contains("80%"));
         assertTrue(html.contains(">5<"));
+    }
+
+    @Test
+    void htmlWithCheckpointsAndNullValues() {
+        Config cfg = new Config();
+        Lab lab = new Lab("2-1-1", "<Простые>", 1, null, null);
+        cfg.getLabs().add(lab);
+        cfg.getCheckpoints().add(new Checkpoint("КТ1", LocalDate.of(2026, 4, 1)));
+        Group group = new Group("101");
+        Student s = new Student("x", null, "u");
+        group.getStudents().add(s);
+        cfg.getGroups().add(group);
+
+        StudentReport rep = new StudentReport(s);
+        rep.getResults().add(new LabResult(s, lab));
+        rep.setGrade("3");
+        List<StudentReport> list = new ArrayList<>();
+        list.add(rep);
+        Map<Group, List<StudentReport>> data = new LinkedHashMap<>();
+        data.put(group, list);
+
+        String html = new HtmlReporter().build(cfg, data);
+        assertTrue(html.contains("Оценки по контрольным точкам"));
+        assertTrue(html.contains("&lt;Простые&gt;"));
+        assertTrue(html.contains("КТ1"));
+    }
+
+    @Test
+    void htmlSkipsEmptyGroups() {
+        Config cfg = new Config();
+        Group group = new Group("empty");
+        cfg.getGroups().add(group);
+        Map<Group, List<StudentReport>> data = new LinkedHashMap<>();
+        data.put(group, new ArrayList<>());
+
+        String html = new HtmlReporter().build(cfg, data);
+        assertTrue(!html.contains("Группа empty"));
     }
 }
