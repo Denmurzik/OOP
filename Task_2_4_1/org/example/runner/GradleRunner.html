@@ -91,6 +91,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">GradleRunner</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Запускает gradle build/javadoc/test и парсит результаты тестов.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -105,7 +106,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static class&nbsp;</code></div>
 <div class="col-second even-row-color"><code><a href="GradleRunner.TestStats.html" class="type-name-link" title="class in org.example.runner">GradleRunner.TestStats</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Итог тестов: сколько прошло, упало, пропущено.</div>
+</div>
 </div>
 </section>
 </li>
@@ -118,7 +121,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(long)" class="member-name-link">GradleRunner</a><wbr>(long&nbsp;timeoutSeconds)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Создаёт раннер с общим таймаутом на команду.</div>
+</div>
 </div>
 </section>
 </li>
@@ -135,13 +140,19 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#build(java.io.File)" class="member-name-link">build</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link">File</a>&nbsp;projectDir)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Запускает сборку без тестов, возвращает true при успехе.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#javadoc(java.io.File)" class="member-name-link">javadoc</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link">File</a>&nbsp;projectDir)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Запускает генерацию javadoc, возвращает true при успехе.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="GradleRunner.TestStats.html" title="class in org.example.runner">GradleRunner.TestStats</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#test(java.io.File)" class="member-name-link">test</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link">File</a>&nbsp;projectDir)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Запускает тесты и возвращает статистику по XML-отчётам.</div>
+</div>
 </div>
 </div>
 </div>
@@ -163,6 +174,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(long)">
 <h3>GradleRunner</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">GradleRunner</span><wbr><span class="parameters">(long&nbsp;timeoutSeconds)</span></div>
+<div class="block">Создаёт раннер с общим таймаутом на команду.</div>
 </section>
 </li>
 </ul>
@@ -177,18 +189,21 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="build(java.io.File)">
 <h3>build</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">build</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link">File</a>&nbsp;projectDir)</span></div>
+<div class="block">Запускает сборку без тестов, возвращает true при успехе.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="javadoc(java.io.File)">
 <h3>javadoc</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">javadoc</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link">File</a>&nbsp;projectDir)</span></div>
+<div class="block">Запускает генерацию javadoc, возвращает true при успехе.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="test(java.io.File)">
 <h3>test</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="GradleRunner.TestStats.html" title="class in org.example.runner">GradleRunner.TestStats</a></span>&nbsp;<span class="element-name">test</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link">File</a>&nbsp;projectDir)</span></div>
+<div class="block">Запускает тесты и возвращает статистику по XML-отчётам.</div>
 </section>
 </li>
 </ul>

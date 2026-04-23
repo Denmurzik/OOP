@@ -91,6 +91,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Scoring</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Подсчёт баллов и оценок.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -122,14 +123,14 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#grade(int,org.example.model.Config)" class="member-name-link">grade</a><wbr>(int&nbsp;totalScore,
  <a href="model/Config.html" title="class in org.example.model">Config</a>&nbsp;config)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Оценка по сумме баллов и таблице порогов из настроек.</div>
+<div class="block">Оценка по общей сумме баллов.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#gradeOnCheckpoint(org.example.model.StudentReport,java.time.LocalDate,org.example.model.Config)" class="member-name-link">gradeOnCheckpoint</a><wbr>(<a href="model/StudentReport.html" title="class in org.example.model">StudentReport</a>&nbsp;report,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/LocalDate.html" title="class or interface in java.time" class="external-link">LocalDate</a>&nbsp;ctDate,
  <a href="model/Config.html" title="class in org.example.model">Config</a>&nbsp;config)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Оценка на контрольную точку: учитываются только лабы со soft-дедлайном до даты КТ.</div>
+<div class="block">Оценка на КТ: учитываются лабы со soft-дедлайном до её даты.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#scoreFor(boolean,org.example.model.Lab,java.time.LocalDate)" class="member-name-link">scoreFor</a><wbr>(boolean&nbsp;allGreen,
@@ -184,7 +185,7 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">gradeOnCheckpoint</span><wbr><span class="parameters">(<a href="model/StudentReport.html" title="class in org.example.model">StudentReport</a>&nbsp;report,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/LocalDate.html" title="class or interface in java.time" class="external-link">LocalDate</a>&nbsp;ctDate,
  <a href="model/Config.html" title="class in org.example.model">Config</a>&nbsp;config)</span></div>
-<div class="block">Оценка на контрольную точку: учитываются только лабы со soft-дедлайном до даты КТ.</div>
+<div class="block">Оценка на КТ: учитываются лабы со soft-дедлайном до её даты.</div>
 </section>
 </li>
 <li>
@@ -192,7 +193,7 @@ loadScripts(document, 'script');</script>
 <h3>grade</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">grade</span><wbr><span class="parameters">(int&nbsp;totalScore,
  <a href="model/Config.html" title="class in org.example.model">Config</a>&nbsp;config)</span></div>
-<div class="block">Оценка по сумме баллов и таблице порогов из настроек.</div>
+<div class="block">Оценка по общей сумме баллов.</div>
 </section>
 </li>
 </ul>
