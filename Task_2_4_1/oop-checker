@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Запускает fat-jar приложения oop-checker.
+# Конфиг oop-checker.groovy ищется в текущей директории.
+DIR="$(cd "$(dirname "$0")" && pwd)"
+JAR="$DIR/app/build/libs/oop-checker-all.jar"
+if [ ! -f "$JAR" ]; then
+    echo "jar не найден, собираю..."
+    (cd "$DIR" && ./gradlew :app:jar)
+fi
+exec java -jar "$JAR" "$@"
