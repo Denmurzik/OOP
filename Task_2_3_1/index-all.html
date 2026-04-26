@@ -49,7 +49,20 @@ loadScripts(document, 'script');</script>
 <div class="header">
 <h1>Index</h1>
 </div>
-<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:U">U</a>&nbsp;<a href="#I:V">V</a>&nbsp;<a href="#I:W">W</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
+<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:K">K</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:U">U</a>&nbsp;<a href="#I:V">V</a>&nbsp;<a href="#I:W">W</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
+<h2 class="title" id="I:A">A</h2>
+<dl class="index">
+<dt><a href="org/example/model/GameModel.html#addEnemy(org.example.model.AiSnake)" class="member-name-link">addEnemy(AiSnake)</a> - Method in class org.example.model.<a href="org/example/model/GameModel.html" title="class in org.example.model">GameModel</a></dt>
+<dd>
+<div class="block">Добавляет змейку-робота в игру.</div>
+</dd>
+<dt><a href="org/example/model/AiSnake.html" class="type-name-link" title="class in org.example.model">AiSnake</a> - Class in <a href="org/example/model/package-summary.html">org.example.model</a></dt>
+<dd>
+<div class="block">Змейка-робот: обёртка над Snake + стратегия поведения.</div>
+</dd>
+<dt><a href="org/example/model/AiSnake.html#%3Cinit%3E(org.example.model.Snake,org.example.model.SnakeStrategy)" class="member-name-link">AiSnake(Snake, SnakeStrategy)</a> - Constructor for class org.example.model.<a href="org/example/model/AiSnake.html" title="class in org.example.model">AiSnake</a></dt>
+<dd>&nbsp;</dd>
+</dl>
 <h2 class="title" id="I:B">B</h2>
 <dl class="index">
 <dt><a href="org/example/model/BasicFood.html" class="type-name-link" title="class in org.example.model">BasicFood</a> - Class in <a href="org/example/model/package-summary.html">org.example.model</a></dt>
@@ -74,6 +87,10 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:D">D</h2>
 <dl class="index">
+<dt><a href="org/example/model/AiSnake.html#decide(org.example.model.GameSnapshot)" class="member-name-link">decide(GameSnapshot)</a> - Method in class org.example.model.<a href="org/example/model/AiSnake.html" title="class in org.example.model">AiSnake</a></dt>
+<dd>
+<div class="block">Спрашивает у стратегии следующее направление.</div>
+</dd>
 <dt><a href="org/example/model/GameConfig.html#defaultConfig()" class="member-name-link">defaultConfig()</a> - Static method in class org.example.model.<a href="org/example/model/GameConfig.html" title="class in org.example.model">GameConfig</a></dt>
 <dd>
 <div class="block">Конфигурация по умолчанию.</div>
@@ -93,6 +110,34 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="org/example/model/Difficulty.html#EASY" class="member-name-link">EASY</a> - Enum constant in enum class org.example.model.<a href="org/example/model/Difficulty.html" title="enum class in org.example.model">Difficulty</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="org/example/model/GameSnapshot.html#enemies()" class="member-name-link">enemies()</a> - Method in record class org.example.model.<a href="org/example/model/GameSnapshot.html" title="class in org.example.model">GameSnapshot</a></dt>
+<dd>
+<div class="block">Returns the value of the <code>enemies</code> record component.</div>
+</dd>
+<dt><a href="org/example/model/EnemyCounts.html" class="type-name-link" title="class in org.example.model">EnemyCounts</a> - Record Class in <a href="org/example/model/package-summary.html">org.example.model</a></dt>
+<dd>
+<div class="block">Количество врагов каждого типа на поле.</div>
+</dd>
+<dt><a href="org/example/model/EnemyCounts.html#%3Cinit%3E(int,int,int)" class="member-name-link">EnemyCounts(int, int, int)</a> - Constructor for record class org.example.model.<a href="org/example/model/EnemyCounts.html" title="class in org.example.model">EnemyCounts</a></dt>
+<dd>
+<div class="block">Creates an instance of a <code>EnemyCounts</code> record class.</div>
+</dd>
+<dt><a href="org/example/model/EnemySnapshot.html" class="type-name-link" title="class in org.example.model">EnemySnapshot</a> - Record Class in <a href="org/example/model/package-summary.html">org.example.model</a></dt>
+<dd>
+<div class="block">Снимок состояния враждебной змейки для отрисовки.</div>
+</dd>
+<dt><a href="org/example/model/EnemySnapshot.html#%3Cinit%3E(java.util.List,java.lang.String)" class="member-name-link">EnemySnapshot(List&lt;Point&gt;, String)</a> - Constructor for record class org.example.model.<a href="org/example/model/EnemySnapshot.html" title="class in org.example.model">EnemySnapshot</a></dt>
+<dd>
+<div class="block">Creates an instance of a <code>EnemySnapshot</code> record class.</div>
+</dd>
+<dt><a href="org/example/model/EnemyCounts.html#equals(java.lang.Object)" class="member-name-link">equals(Object)</a> - Method in record class org.example.model.<a href="org/example/model/EnemyCounts.html" title="class in org.example.model">EnemyCounts</a></dt>
+<dd>
+<div class="block">Indicates whether some other object is "equal to" this one.</div>
+</dd>
+<dt><a href="org/example/model/EnemySnapshot.html#equals(java.lang.Object)" class="member-name-link">equals(Object)</a> - Method in record class org.example.model.<a href="org/example/model/EnemySnapshot.html" title="class in org.example.model">EnemySnapshot</a></dt>
+<dd>
+<div class="block">Indicates whether some other object is "equal to" this one.</div>
+</dd>
 <dt><a href="org/example/model/GameSnapshot.html#equals(java.lang.Object)" class="member-name-link">equals(Object)</a> - Method in record class org.example.model.<a href="org/example/model/GameSnapshot.html" title="class in org.example.model">GameSnapshot</a></dt>
 <dd>
 <div class="block">Indicates whether some other object is "equal to" this one.</div>
@@ -137,9 +182,9 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Контроллер.</div>
 </dd>
-<dt><a href="org/example/controller/GameController.html#%3Cinit%3E(org.example.model.ModelListener,org.example.model.Difficulty)" class="member-name-link">GameController(ModelListener, Difficulty)</a> - Constructor for class org.example.controller.<a href="org/example/controller/GameController.html" title="class in org.example.controller">GameController</a></dt>
+<dt><a href="org/example/controller/GameController.html#%3Cinit%3E(org.example.model.ModelListener,org.example.model.Difficulty,org.example.model.EnemyCounts)" class="member-name-link">GameController(ModelListener, Difficulty, EnemyCounts)</a> - Constructor for class org.example.controller.<a href="org/example/controller/GameController.html" title="class in org.example.controller">GameController</a></dt>
 <dd>
-<div class="block">Инициализирует контроллер с заданной сложностью.</div>
+<div class="block">Инициализирует контроллер с заданной сложностью и количеством врагов.</div>
 </dd>
 <dt><a href="org/example/model/GameField.html" class="type-name-link" title="class in org.example.model">GameField</a> - Class in <a href="org/example/model/package-summary.html">org.example.model</a></dt>
 <dd>
@@ -175,7 +220,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Снимок состояния игры для отрисовки.</div>
 </dd>
-<dt><a href="org/example/model/GameSnapshot.html#%3Cinit%3E(java.util.List,java.util.List,org.example.model.GameState,int,int,org.example.model.GameField)" class="member-name-link">GameSnapshot(List&lt;Point&gt;, List&lt;Food&gt;, GameState, int, int, GameField)</a> - Constructor for record class org.example.model.<a href="org/example/model/GameSnapshot.html" title="class in org.example.model">GameSnapshot</a></dt>
+<dt><a href="org/example/model/GameSnapshot.html#%3Cinit%3E(java.util.List,java.util.List,org.example.model.GameState,int,int,org.example.model.GameField,java.util.List)" class="member-name-link">GameSnapshot(List&lt;Point&gt;, List&lt;Food&gt;, GameState, int, int, GameField, List&lt;EnemySnapshot&gt;)</a> - Constructor for record class org.example.model.<a href="org/example/model/GameSnapshot.html" title="class in org.example.model">GameSnapshot</a></dt>
 <dd>
 <div class="block">Creates an instance of a <code>GameSnapshot</code> record class.</div>
 </dd>
@@ -196,6 +241,8 @@ loadScripts(document, 'script');</script>
 <dt><a href="org/example/model/Direction.html#getDx()" class="member-name-link">getDx()</a> - Method in enum class org.example.model.<a href="org/example/model/Direction.html" title="enum class in org.example.model">Direction</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/model/Direction.html#getDy()" class="member-name-link">getDy()</a> - Method in enum class org.example.model.<a href="org/example/model/Direction.html" title="enum class in org.example.model">Direction</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/model/GameModel.html#getEnemies()" class="member-name-link">getEnemies()</a> - Method in class org.example.model.<a href="org/example/model/GameModel.html" title="class in org.example.model">GameModel</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/model/GameModel.html#getField()" class="member-name-link">getField()</a> - Method in class org.example.model.<a href="org/example/model/GameModel.html" title="class in org.example.model">GameModel</a></dt>
 <dd>&nbsp;</dd>
@@ -221,7 +268,7 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/model/Food.html#getPosition()" class="member-name-link">getPosition()</a> - Method in class org.example.model.<a href="org/example/model/Food.html" title="class in org.example.model">Food</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="org/example/model/GameField.html#getRandomFreePoint(org.example.model.Snake,java.util.List,java.util.Random)" class="member-name-link">getRandomFreePoint(Snake, List&lt;Food&gt;, Random)</a> - Method in class org.example.model.<a href="org/example/model/GameField.html" title="class in org.example.model">GameField</a></dt>
+<dt><a href="org/example/model/GameField.html#getRandomFreePoint(java.util.List,java.util.List,java.util.Random)" class="member-name-link">getRandomFreePoint(List&lt;Snake&gt;, List&lt;Food&gt;, Random)</a> - Method in class org.example.model.<a href="org/example/model/GameField.html" title="class in org.example.model">GameField</a></dt>
 <dd>
 <div class="block">Находит случайную свободную клетку на поле.</div>
 </dd>
@@ -231,6 +278,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Возвращает список сегментов.</div>
 </dd>
+<dt><a href="org/example/model/AiSnake.html#getSnake()" class="member-name-link">getSnake()</a> - Method in class org.example.model.<a href="org/example/model/AiSnake.html" title="class in org.example.model">AiSnake</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="org/example/model/GameModel.html#getSnake()" class="member-name-link">getSnake()</a> - Method in class org.example.model.<a href="org/example/model/GameModel.html" title="class in org.example.model">GameModel</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/model/GameModel.html#getSnapshot()" class="member-name-link">getSnapshot()</a> - Method in class org.example.model.<a href="org/example/model/GameModel.html" title="class in org.example.model">GameModel</a></dt>
@@ -238,6 +287,8 @@ loadScripts(document, 'script');</script>
 <div class="block">Возвращает снимок текущего состояния для отрисовки.</div>
 </dd>
 <dt><a href="org/example/model/GameModel.html#getState()" class="member-name-link">getState()</a> - Method in class org.example.model.<a href="org/example/model/GameModel.html" title="class in org.example.model">GameModel</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/model/AiSnake.html#getStrategy()" class="member-name-link">getStrategy()</a> - Method in class org.example.model.<a href="org/example/model/AiSnake.html" title="class in org.example.model">AiSnake</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/model/Snake.html#getTail()" class="member-name-link">getTail()</a> - Method in class org.example.model.<a href="org/example/model/Snake.html" title="class in org.example.model">Snake</a></dt>
 <dd>
@@ -256,6 +307,16 @@ loadScripts(document, 'script');</script>
 <dt><a href="org/example/model/Point.html#getX()" class="member-name-link">getX()</a> - Method in class org.example.model.<a href="org/example/model/Point.html" title="class in org.example.model">Point</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/model/Point.html#getY()" class="member-name-link">getY()</a> - Method in class org.example.model.<a href="org/example/model/Point.html" title="class in org.example.model">Point</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/model/EnemyCounts.html#greedy()" class="member-name-link">greedy()</a> - Method in record class org.example.model.<a href="org/example/model/EnemyCounts.html" title="class in org.example.model">EnemyCounts</a></dt>
+<dd>
+<div class="block">Returns the value of the <code>greedy</code> record component.</div>
+</dd>
+<dt><a href="org/example/model/strategy/GreedyStrategy.html" class="type-name-link" title="class in org.example.model.strategy">GreedyStrategy</a> - Class in <a href="org/example/model/strategy/package-summary.html">org.example.model.strategy</a></dt>
+<dd>
+<div class="block">Жадная стратегия: всегда движется к ближайшей еде.</div>
+</dd>
+<dt><a href="org/example/model/strategy/GreedyStrategy.html#%3Cinit%3E()" class="member-name-link">GreedyStrategy()</a> - Constructor for class org.example.model.strategy.<a href="org/example/model/strategy/GreedyStrategy.html" title="class in org.example.model.strategy">GreedyStrategy</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/model/Snake.html#grow(org.example.model.Point)" class="member-name-link">grow(Point)</a> - Method in class org.example.model.<a href="org/example/model/Snake.html" title="class in org.example.model">Snake</a></dt>
 <dd>
@@ -278,6 +339,14 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="org/example/model/Difficulty.html#HARD" class="member-name-link">HARD</a> - Enum constant in enum class org.example.model.<a href="org/example/model/Difficulty.html" title="enum class in org.example.model">Difficulty</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="org/example/model/EnemyCounts.html#hashCode()" class="member-name-link">hashCode()</a> - Method in record class org.example.model.<a href="org/example/model/EnemyCounts.html" title="class in org.example.model">EnemyCounts</a></dt>
+<dd>
+<div class="block">Returns a hash code value for this object.</div>
+</dd>
+<dt><a href="org/example/model/EnemySnapshot.html#hashCode()" class="member-name-link">hashCode()</a> - Method in record class org.example.model.<a href="org/example/model/EnemySnapshot.html" title="class in org.example.model">EnemySnapshot</a></dt>
+<dd>
+<div class="block">Returns a hash code value for this object.</div>
+</dd>
 <dt><a href="org/example/model/GameSnapshot.html#hashCode()" class="member-name-link">hashCode()</a> - Method in record class org.example.model.<a href="org/example/model/GameSnapshot.html" title="class in org.example.model">GameSnapshot</a></dt>
 <dd>
 <div class="block">Returns a hash code value for this object.</div>
@@ -289,6 +358,16 @@ loadScripts(document, 'script');</script>
 <div class="block">Хранилище рекорда.</div>
 </dd>
 <dt><a href="org/example/storage/HighScoreStorage.html#%3Cinit%3E()" class="member-name-link">HighScoreStorage()</a> - Constructor for class org.example.storage.<a href="org/example/storage/HighScoreStorage.html" title="class in org.example.storage">HighScoreStorage</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/model/EnemyCounts.html#hunter()" class="member-name-link">hunter()</a> - Method in record class org.example.model.<a href="org/example/model/EnemyCounts.html" title="class in org.example.model">EnemyCounts</a></dt>
+<dd>
+<div class="block">Returns the value of the <code>hunter</code> record component.</div>
+</dd>
+<dt><a href="org/example/model/strategy/HunterStrategy.html" class="type-name-link" title="class in org.example.model.strategy">HunterStrategy</a> - Class in <a href="org/example/model/strategy/package-summary.html">org.example.model.strategy</a></dt>
+<dd>
+<div class="block">Стратегия охотника: преследует голову игрока.</div>
+</dd>
+<dt><a href="org/example/model/strategy/HunterStrategy.html#%3Cinit%3E()" class="member-name-link">HunterStrategy()</a> - Constructor for class org.example.model.strategy.<a href="org/example/model/strategy/HunterStrategy.html" title="class in org.example.model.strategy">HunterStrategy</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:I">I</h2>
@@ -305,9 +384,19 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Инициализация.</div>
 </dd>
+<dt><a href="org/example/view/MenuView.html#initialize()" class="member-name-link">initialize()</a> - Method in class org.example.view.<a href="org/example/view/MenuView.html" title="class in org.example.view">MenuView</a></dt>
+<dd>
+<div class="block">Инициализация спинеров с диапазоном 0–4.</div>
+</dd>
 <dt><a href="org/example/view/GameView.html#initKeyHandling(javafx.scene.Scene)" class="member-name-link">initKeyHandling(Scene)</a> - Method in class org.example.view.<a href="org/example/view/GameView.html" title="class in org.example.view">GameView</a></dt>
 <dd>
 <div class="block">Привязывает обработку клавиатуры к сцене.</div>
+</dd>
+<dt><a href="org/example/model/AiSnake.html#isAlive()" class="member-name-link">isAlive()</a> - Method in class org.example.model.<a href="org/example/model/AiSnake.html" title="class in org.example.model">AiSnake</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/model/strategy/StrategyUtils.html#isCellSafe(org.example.model.Point,org.example.model.GameSnapshot,org.example.model.Snake)" class="member-name-link">isCellSafe(Point, GameSnapshot, Snake)</a> - Static method in class org.example.model.strategy.<a href="org/example/model/strategy/StrategyUtils.html" title="class in org.example.model.strategy">StrategyUtils</a></dt>
+<dd>
+<div class="block">Проверяет, безопасно ли пойти в клетку.</div>
 </dd>
 <dt><a href="org/example/model/GameField.html#isInBounds(org.example.model.Point)" class="member-name-link">isInBounds(Point)</a> - Method in class org.example.model.<a href="org/example/model/GameField.html" title="class in org.example.model">GameField</a></dt>
 <dd>
@@ -321,6 +410,11 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Проверяет является ли данное направление противоположным текущему.</div>
 </dd>
+</dl>
+<h2 class="title" id="I:K">K</h2>
+<dl class="index">
+<dt><a href="org/example/model/AiSnake.html#kill()" class="member-name-link">kill()</a> - Method in class org.example.model.<a href="org/example/model/AiSnake.html" title="class in org.example.model">AiSnake</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:L">L</h2>
 <dl class="index">
@@ -343,6 +437,10 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="org/example/Main.html#%3Cinit%3E()" class="member-name-link">Main()</a> - Constructor for class org.example.<a href="org/example/Main.html" title="class in org.example">Main</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="org/example/model/strategy/StrategyUtils.html#manhattan(org.example.model.Point,org.example.model.Point)" class="member-name-link">manhattan(Point, Point)</a> - Static method in class org.example.model.strategy.<a href="org/example/model/strategy/StrategyUtils.html" title="class in org.example.model.strategy">StrategyUtils</a></dt>
+<dd>
+<div class="block">Manhattan расстояние между двумя точками.</div>
+</dd>
 <dt><a href="org/example/view/MenuView.html" class="type-name-link" title="class in org.example.view">MenuView</a> - Class in <a href="org/example/view/package-summary.html">org.example.view</a></dt>
 <dd>
 <div class="block">Контроллер главного меню.</div>
@@ -364,6 +462,30 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:N">N</h2>
 <dl class="index">
+<dt><a href="org/example/model/SnakeStrategy.html#name()" class="member-name-link">name()</a> - Method in interface org.example.model.<a href="org/example/model/SnakeStrategy.html" title="interface in org.example.model">SnakeStrategy</a></dt>
+<dd>
+<div class="block">Имя стратегии.</div>
+</dd>
+<dt><a href="org/example/model/strategy/GreedyStrategy.html#name()" class="member-name-link">name()</a> - Method in class org.example.model.strategy.<a href="org/example/model/strategy/GreedyStrategy.html" title="class in org.example.model.strategy">GreedyStrategy</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/model/strategy/HunterStrategy.html#name()" class="member-name-link">name()</a> - Method in class org.example.model.strategy.<a href="org/example/model/strategy/HunterStrategy.html" title="class in org.example.model.strategy">HunterStrategy</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/model/strategy/RandomStrategy.html#name()" class="member-name-link">name()</a> - Method in class org.example.model.strategy.<a href="org/example/model/strategy/RandomStrategy.html" title="class in org.example.model.strategy">RandomStrategy</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/model/SnakeStrategy.html#nextMove(org.example.model.Snake,org.example.model.GameSnapshot)" class="member-name-link">nextMove(Snake, GameSnapshot)</a> - Method in interface org.example.model.<a href="org/example/model/SnakeStrategy.html" title="interface in org.example.model">SnakeStrategy</a></dt>
+<dd>
+<div class="block">Возвращает следующее направление движения для данной змейки.</div>
+</dd>
+<dt><a href="org/example/model/strategy/GreedyStrategy.html#nextMove(org.example.model.Snake,org.example.model.GameSnapshot)" class="member-name-link">nextMove(Snake, GameSnapshot)</a> - Method in class org.example.model.strategy.<a href="org/example/model/strategy/GreedyStrategy.html" title="class in org.example.model.strategy">GreedyStrategy</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/model/strategy/HunterStrategy.html#nextMove(org.example.model.Snake,org.example.model.GameSnapshot)" class="member-name-link">nextMove(Snake, GameSnapshot)</a> - Method in class org.example.model.strategy.<a href="org/example/model/strategy/HunterStrategy.html" title="class in org.example.model.strategy">HunterStrategy</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/model/strategy/RandomStrategy.html#nextMove(org.example.model.Snake,org.example.model.GameSnapshot)" class="member-name-link">nextMove(Snake, GameSnapshot)</a> - Method in class org.example.model.strategy.<a href="org/example/model/strategy/RandomStrategy.html" title="class in org.example.model.strategy">RandomStrategy</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/model/strategy/StrategyUtils.html#nonReverseDirections(org.example.model.Direction)" class="member-name-link">nonReverseDirections(Direction)</a> - Static method in class org.example.model.strategy.<a href="org/example/model/strategy/StrategyUtils.html" title="class in org.example.model.strategy">StrategyUtils</a></dt>
+<dd>
+<div class="block">Возвращает все направления кроме противоположного текущему.</div>
+</dd>
 <dt><a href="org/example/model/Difficulty.html#NORMAL" class="member-name-link">NORMAL</a> - Enum constant in enum class org.example.model.<a href="org/example/model/Difficulty.html" title="enum class in org.example.model">Difficulty</a></dt>
 <dd>&nbsp;</dd>
 </dl>
@@ -383,6 +505,8 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/model/package-summary.html">org.example.model</a> - package org.example.model</dt>
 <dd>&nbsp;</dd>
+<dt><a href="org/example/model/strategy/package-summary.html">org.example.model.strategy</a> - package org.example.model.strategy</dt>
+<dd>&nbsp;</dd>
 <dt><a href="org/example/storage/package-summary.html">org.example.storage</a> - package org.example.storage</dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/view/package-summary.html">org.example.view</a> - package org.example.view</dt>
@@ -401,6 +525,18 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:R">R</h2>
 <dl class="index">
+<dt><a href="org/example/model/EnemyCounts.html#random()" class="member-name-link">random()</a> - Method in record class org.example.model.<a href="org/example/model/EnemyCounts.html" title="class in org.example.model">EnemyCounts</a></dt>
+<dd>
+<div class="block">Returns the value of the <code>random</code> record component.</div>
+</dd>
+<dt><a href="org/example/model/strategy/RandomStrategy.html" class="type-name-link" title="class in org.example.model.strategy">RandomStrategy</a> - Class in <a href="org/example/model/strategy/package-summary.html">org.example.model.strategy</a></dt>
+<dd>
+<div class="block">Стратегия случайного движения.</div>
+</dd>
+<dt><a href="org/example/model/strategy/RandomStrategy.html#%3Cinit%3E()" class="member-name-link">RandomStrategy()</a> - Constructor for class org.example.model.strategy.<a href="org/example/model/strategy/RandomStrategy.html" title="class in org.example.model.strategy">RandomStrategy</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/model/strategy/RandomStrategy.html#%3Cinit%3E(java.util.Random)" class="member-name-link">RandomStrategy(Random)</a> - Constructor for class org.example.model.strategy.<a href="org/example/model/strategy/RandomStrategy.html" title="class in org.example.model.strategy">RandomStrategy</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="org/example/view/GameRenderer.html#render(org.example.model.GameSnapshot)" class="member-name-link">render(GameSnapshot)</a> - Method in class org.example.view.<a href="org/example/view/GameRenderer.html" title="class in org.example.view">GameRenderer</a></dt>
 <dd>
 <div class="block">Отрисовывает снимок состояния игры.</div>
@@ -423,6 +559,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="org/example/model/GameSnapshot.html#score()" class="member-name-link">score()</a> - Method in record class org.example.model.<a href="org/example/model/GameSnapshot.html" title="class in org.example.model">GameSnapshot</a></dt>
 <dd>
 <div class="block">Returns the value of the <code>score</code> record component.</div>
+</dd>
+<dt><a href="org/example/model/EnemySnapshot.html#segments()" class="member-name-link">segments()</a> - Method in record class org.example.model.<a href="org/example/model/EnemySnapshot.html" title="class in org.example.model">EnemySnapshot</a></dt>
+<dd>
+<div class="block">Returns the value of the <code>segments</code> record component.</div>
 </dd>
 <dt><a href="org/example/model/Snake.html#setDirection(org.example.model.Direction)" class="member-name-link">setDirection(Direction)</a> - Method in class org.example.model.<a href="org/example/model/Snake.html" title="class in org.example.model">Snake</a></dt>
 <dd>
@@ -462,11 +602,15 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Returns the value of the <code>snakeSize</code> record component.</div>
 </dd>
+<dt><a href="org/example/model/SnakeStrategy.html" class="type-name-link" title="interface in org.example.model">SnakeStrategy</a> - Interface in <a href="org/example/model/package-summary.html">org.example.model</a></dt>
+<dd>
+<div class="block">Стратегия поведения змейки-робота.</div>
+</dd>
 <dt><a href="org/example/SnakeApp.html#start(javafx.stage.Stage)" class="member-name-link">start(Stage)</a> - Method in class org.example.<a href="org/example/SnakeApp.html" title="class in org.example">SnakeApp</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="org/example/view/GameView.html#startGame(org.example.model.Difficulty)" class="member-name-link">startGame(Difficulty)</a> - Method in class org.example.view.<a href="org/example/view/GameView.html" title="class in org.example.view">GameView</a></dt>
+<dt><a href="org/example/view/GameView.html#startGame(org.example.model.Difficulty,org.example.model.EnemyCounts)" class="member-name-link">startGame(Difficulty, EnemyCounts)</a> - Method in class org.example.view.<a href="org/example/view/GameView.html" title="class in org.example.view">GameView</a></dt>
 <dd>
-<div class="block">Запускает игру с заданной сложностью.</div>
+<div class="block">Запускает игру с заданной сложностью и количеством врагов.</div>
 </dd>
 <dt><a href="org/example/model/GameSnapshot.html#state()" class="member-name-link">state()</a> - Method in record class org.example.model.<a href="org/example/model/GameSnapshot.html" title="class in org.example.model">GameSnapshot</a></dt>
 <dd>
@@ -476,16 +620,32 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Останавливает игру (вызывается при возврате в меню).</div>
 </dd>
+<dt><a href="org/example/model/EnemySnapshot.html#strategyName()" class="member-name-link">strategyName()</a> - Method in record class org.example.model.<a href="org/example/model/EnemySnapshot.html" title="class in org.example.model">EnemySnapshot</a></dt>
+<dd>
+<div class="block">Returns the value of the <code>strategyName</code> record component.</div>
+</dd>
+<dt><a href="org/example/model/strategy/StrategyUtils.html" class="type-name-link" title="class in org.example.model.strategy">StrategyUtils</a> - Class in <a href="org/example/model/strategy/package-summary.html">org.example.model.strategy</a></dt>
+<dd>
+<div class="block">Вспомогательные методы для стратегий.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:T">T</h2>
 <dl class="index">
 <dt><a href="org/example/model/GameModel.html#tick()" class="member-name-link">tick()</a> - Method in class org.example.model.<a href="org/example/model/GameModel.html" title="class in org.example.model">GameModel</a></dt>
 <dd>
-<div class="block">Один тик игры перемещение змейки, проверка коллизий и еды.</div>
+<div class="block">Один тик игры — движение игрока, движение врагов, проверка коллизий.</div>
 </dd>
 <dt><a href="org/example/model/GameModel.html#togglePause()" class="member-name-link">togglePause()</a> - Method in class org.example.model.<a href="org/example/model/GameModel.html" title="class in org.example.model">GameModel</a></dt>
 <dd>
 <div class="block">Переключает паузу.</div>
+</dd>
+<dt><a href="org/example/model/EnemyCounts.html#toString()" class="member-name-link">toString()</a> - Method in record class org.example.model.<a href="org/example/model/EnemyCounts.html" title="class in org.example.model">EnemyCounts</a></dt>
+<dd>
+<div class="block">Returns a string representation of this record class.</div>
+</dd>
+<dt><a href="org/example/model/EnemySnapshot.html#toString()" class="member-name-link">toString()</a> - Method in record class org.example.model.<a href="org/example/model/EnemySnapshot.html" title="class in org.example.model">EnemySnapshot</a></dt>
+<dd>
+<div class="block">Returns a string representation of this record class.</div>
 </dd>
 <dt><a href="org/example/model/GameSnapshot.html#toString()" class="member-name-link">toString()</a> - Method in record class org.example.model.<a href="org/example/model/GameSnapshot.html" title="class in org.example.model">GameSnapshot</a></dt>
 <dd>
@@ -542,7 +702,7 @@ the order they are declared.</div>
 <dt><a href="org/example/model/GameState.html#WON" class="member-name-link">WON</a> - Enum constant in enum class org.example.model.<a href="org/example/model/GameState.html" title="enum class in org.example.model">GameState</a></dt>
 <dd>&nbsp;</dd>
 </dl>
-<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:U">U</a>&nbsp;<a href="#I:V">V</a>&nbsp;<a href="#I:W">W</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
+<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:K">K</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:U">U</a>&nbsp;<a href="#I:V">V</a>&nbsp;<a href="#I:W">W</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
 </div>
 </div>
 </body>

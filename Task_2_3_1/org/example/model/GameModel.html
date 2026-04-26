@@ -131,12 +131,20 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#changeDirection(org.example.model.Direction)" class="member-name-link">changeDirection</a><wbr>(<a href="Direction.html" title="enum class in org.example.model">Direction</a>&nbsp;direction)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addEnemy(org.example.model.AiSnake)" class="member-name-link">addEnemy</a><wbr>(<a href="AiSnake.html" title="class in org.example.model">AiSnake</a>&nbsp;enemy)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Добавляет змейку-робота в игру.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#changeDirection(org.example.model.Direction)" class="member-name-link">changeDirection</a><wbr>(<a href="Direction.html" title="enum class in org.example.model">Direction</a>&nbsp;direction)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Меняет направление змейки.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="GameConfig.html" title="class in org.example.model">GameConfig</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getConfig()" class="member-name-link">getConfig</a>()</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="GameConfig.html" title="class in org.example.model">GameConfig</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getConfig()" class="member-name-link">getConfig</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a><wbr>&lt;<a href="AiSnake.html" title="class in org.example.model">AiSnake</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getEnemies()" class="member-name-link">getEnemies</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="GameField.html" title="class in org.example.model">GameField</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getField()" class="member-name-link">getField</a>()</code></div>
@@ -171,7 +179,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#tick()" class="member-name-link">tick</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Один тик игры перемещение змейки, проверка коллизий и еды.</div>
+<div class="block">Один тик игры — движение игрока, движение врагов, проверка коллизий.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#togglePause()" class="member-name-link">togglePause</a>()</code></div>
@@ -230,10 +238,17 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="addEnemy(org.example.model.AiSnake)">
+<h3>addEnemy</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addEnemy</span><wbr><span class="parameters">(<a href="AiSnake.html" title="class in org.example.model">AiSnake</a>&nbsp;enemy)</span></div>
+<div class="block">Добавляет змейку-робота в игру.</div>
+</section>
+</li>
+<li>
 <section class="detail" id="tick()">
 <h3>tick</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">tick</span>()</div>
-<div class="block">Один тик игры перемещение змейки, проверка коллизий и еды.</div>
+<div class="block">Один тик игры — движение игрока, движение врагов, проверка коллизий.</div>
 </section>
 </li>
 <li>
@@ -267,6 +282,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getFoods()">
 <h3>getFoods</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Food.html" title="class in org.example.model">Food</a>&gt;</span>&nbsp;<span class="element-name">getFoods</span>()</div>
+</section>
+</li>
+<li>
+<section class="detail" id="getEnemies()">
+<h3>getEnemies</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="AiSnake.html" title="class in org.example.model">AiSnake</a>&gt;</span>&nbsp;<span class="element-name">getEnemies</span>()</div>
 </section>
 </li>
 <li>

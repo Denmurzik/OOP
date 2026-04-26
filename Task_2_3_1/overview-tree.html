@@ -54,6 +54,7 @@ loadScripts(document, 'script');</script>
 <li><a href="org/example/package-tree.html">org.example</a>, </li>
 <li><a href="org/example/controller/package-tree.html">org.example.controller</a>, </li>
 <li><a href="org/example/model/package-tree.html">org.example.model</a>, </li>
+<li><a href="org/example/model/strategy/package-tree.html">org.example.model.strategy</a>, </li>
 <li><a href="org/example/storage/package-tree.html">org.example.storage</a>, </li>
 <li><a href="org/example/view/package-tree.html">org.example.view</a></li>
 </ul>
@@ -62,6 +63,7 @@ loadScripts(document, 'script');</script>
 <ul>
 <li class="circle">java.lang.<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" class="type-name-link external-link" title="class or interface in java.lang">Object</a>
 <ul>
+<li class="circle">org.example.model.<a href="org/example/model/AiSnake.html" class="type-name-link" title="class in org.example.model">AiSnake</a></li>
 <li class="circle">javafx.application.Application
 <ul>
 <li class="circle">org.example.<a href="org/example/SnakeApp.html" class="type-name-link" title="class in org.example">SnakeApp</a></li>
@@ -79,11 +81,15 @@ loadScripts(document, 'script');</script>
 <li class="circle">org.example.model.<a href="org/example/model/GameModel.html" class="type-name-link" title="class in org.example.model">GameModel</a></li>
 <li class="circle">org.example.view.<a href="org/example/view/GameRenderer.html" class="type-name-link" title="class in org.example.view">GameRenderer</a></li>
 <li class="circle">org.example.view.<a href="org/example/view/GameView.html" class="type-name-link" title="class in org.example.view">GameView</a> (implements org.example.model.<a href="org/example/model/ModelListener.html" title="interface in org.example.model">ModelListener</a>)</li>
+<li class="circle">org.example.model.strategy.<a href="org/example/model/strategy/GreedyStrategy.html" class="type-name-link" title="class in org.example.model.strategy">GreedyStrategy</a> (implements org.example.model.<a href="org/example/model/SnakeStrategy.html" title="interface in org.example.model">SnakeStrategy</a>)</li>
 <li class="circle">org.example.storage.<a href="org/example/storage/HighScoreStorage.html" class="type-name-link" title="class in org.example.storage">HighScoreStorage</a></li>
+<li class="circle">org.example.model.strategy.<a href="org/example/model/strategy/HunterStrategy.html" class="type-name-link" title="class in org.example.model.strategy">HunterStrategy</a> (implements org.example.model.<a href="org/example/model/SnakeStrategy.html" title="interface in org.example.model">SnakeStrategy</a>)</li>
 <li class="circle">org.example.<a href="org/example/Main.html" class="type-name-link" title="class in org.example">Main</a></li>
 <li class="circle">org.example.view.<a href="org/example/view/MenuView.html" class="type-name-link" title="class in org.example.view">MenuView</a></li>
 <li class="circle">org.example.model.<a href="org/example/model/Point.html" class="type-name-link" title="class in org.example.model">Point</a></li>
+<li class="circle">org.example.model.strategy.<a href="org/example/model/strategy/RandomStrategy.html" class="type-name-link" title="class in org.example.model.strategy">RandomStrategy</a> (implements org.example.model.<a href="org/example/model/SnakeStrategy.html" title="interface in org.example.model">SnakeStrategy</a>)</li>
 <li class="circle">org.example.model.<a href="org/example/model/Snake.html" class="type-name-link" title="class in org.example.model">Snake</a></li>
+<li class="circle">org.example.model.strategy.<a href="org/example/model/strategy/StrategyUtils.html" class="type-name-link" title="class in org.example.model.strategy">StrategyUtils</a></li>
 </ul>
 </li>
 </ul>
@@ -92,6 +98,7 @@ loadScripts(document, 'script');</script>
 <h2 title="Interface Hierarchy">Interface Hierarchy</h2>
 <ul>
 <li class="circle">org.example.model.<a href="org/example/model/ModelListener.html" class="type-name-link" title="interface in org.example.model">ModelListener</a></li>
+<li class="circle">org.example.model.<a href="org/example/model/SnakeStrategy.html" class="type-name-link" title="interface in org.example.model">SnakeStrategy</a></li>
 <li class="circle">org.example.model.<a href="org/example/model/WinCondition.html" class="type-name-link" title="interface in org.example.model">WinCondition</a></li>
 </ul>
 </section>
@@ -118,6 +125,8 @@ loadScripts(document, 'script');</script>
 <ul>
 <li class="circle">java.lang.<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Record.html" class="type-name-link external-link" title="class or interface in java.lang">Record</a>
 <ul>
+<li class="circle">org.example.model.<a href="org/example/model/EnemyCounts.html" class="type-name-link" title="class in org.example.model">EnemyCounts</a></li>
+<li class="circle">org.example.model.<a href="org/example/model/EnemySnapshot.html" class="type-name-link" title="class in org.example.model">EnemySnapshot</a></li>
 <li class="circle">org.example.model.<a href="org/example/model/GameSnapshot.html" class="type-name-link" title="class in org.example.model">GameSnapshot</a></li>
 </ul>
 </li>

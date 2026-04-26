@@ -135,7 +135,7 @@ loadScripts(document, 'script');</script>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getObstacles()" class="member-name-link">getObstacles</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Point.html" title="class in org.example.model">Point</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getRandomFreePoint(org.example.model.Snake,java.util.List,java.util.Random)" class="member-name-link">getRandomFreePoint</a><wbr>(<a href="Snake.html" title="class in org.example.model">Snake</a>&nbsp;snake,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getRandomFreePoint(java.util.List,java.util.List,java.util.Random)" class="member-name-link">getRandomFreePoint</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Snake.html" title="class in org.example.model">Snake</a>&gt;&nbsp;snakes,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Food.html" title="class in org.example.model">Food</a>&gt;&nbsp;foods,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Random.html" title="class or interface in java.util" class="external-link">Random</a>&nbsp;random)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
@@ -229,12 +229,13 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="getRandomFreePoint(org.example.model.Snake,java.util.List,java.util.Random)">
+<section class="detail" id="getRandomFreePoint(java.util.List,java.util.List,java.util.Random)">
 <h3>getRandomFreePoint</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Point.html" title="class in org.example.model">Point</a></span>&nbsp;<span class="element-name">getRandomFreePoint</span><wbr><span class="parameters">(<a href="Snake.html" title="class in org.example.model">Snake</a>&nbsp;snake,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Point.html" title="class in org.example.model">Point</a></span>&nbsp;<span class="element-name">getRandomFreePoint</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Snake.html" title="class in org.example.model">Snake</a>&gt;&nbsp;snakes,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Food.html" title="class in org.example.model">Food</a>&gt;&nbsp;foods,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Random.html" title="class or interface in java.util" class="external-link">Random</a>&nbsp;random)</span></div>
-<div class="block">Находит случайную свободную клетку на поле.</div>
+<div class="block">Находит случайную свободную клетку на поле.
+ Свободная — не занята ни одной змейкой, не препятствие, не еда.</div>
 </section>
 </li>
 </ul>

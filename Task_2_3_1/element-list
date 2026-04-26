@@ -1,5 +1,6 @@
 org.example
 org.example.controller
 org.example.model
+org.example.model.strategy
 org.example.storage
 org.example.view
