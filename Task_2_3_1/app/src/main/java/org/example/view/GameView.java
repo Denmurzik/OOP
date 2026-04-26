@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import org.example.controller.GameController;
 import org.example.model.Difficulty;
 import org.example.model.Direction;
+import org.example.model.EnemyCounts;
 import org.example.model.GameSnapshot;
 import org.example.model.GameState;
 import org.example.model.ModelListener;
@@ -63,10 +64,10 @@ public class GameView implements ModelListener {
     }
 
     /**
-     * Запускает игру с заданной сложностью.
+     * Запускает игру с заданной сложностью и количеством врагов.
      */
-    public void startGame(Difficulty difficulty) {
-        controller = new GameController(this, difficulty);
+    public void startGame(Difficulty difficulty, EnemyCounts counts) {
+        controller = new GameController(this, difficulty, counts);
     }
 
     /**

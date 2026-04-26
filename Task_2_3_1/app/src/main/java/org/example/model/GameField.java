@@ -61,13 +61,14 @@ public class GameField {
 
     /**
      * Находит случайную свободную клетку на поле.
+     * Свободная — не занята ни одной змейкой, не препятствие, не еда.
      */
-    public Point getRandomFreePoint(Snake snake, List<Food> foods, Random random) {
+    public Point getRandomFreePoint(List<Snake> snakes, List<Food> foods, Random random) {
         List<Point> freePoints = new ArrayList<>();
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 Point p = new Point(x, y);
-                if (!snake.contains(p) && !isObstacle(p) && !isFoodAt(p, foods)) {
+                if (!isObstacle(p) && !isFoodAt(p, foods) && !isAnySnakeAt(p, snakes)) {
                     freePoints.add(p);
                 }
             }
@@ -76,6 +77,15 @@ public class GameField {
             return null;
         }
         return freePoints.get(random.nextInt(freePoints.size()));
+    }
+
+    private boolean isAnySnakeAt(Point point, List<Snake> snakes) {
+        for (Snake snake : snakes) {
+            if (snake.contains(point)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean isFoodAt(Point point, List<Food> foods) {

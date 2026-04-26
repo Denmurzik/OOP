@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
@@ -44,7 +45,7 @@ class GameFieldTest {
         Set<Point> obstacles = Set.of(new Point(0, 0));
         GameField field = new GameField(2, 2, obstacles);
         Snake snake = new Snake(new Point(1, 0), Direction.RIGHT);
-        Point free = field.getRandomFreePoint(snake, new ArrayList<>(), new Random(42));
+        Point free = field.getRandomFreePoint(List.of(snake), new ArrayList<>(), new Random(42));
         assertNotNull(free);
         assertNotEquals(new Point(0, 0), free);
         assertNotEquals(new Point(1, 0), free);
@@ -54,7 +55,7 @@ class GameFieldTest {
     void randomFreePointReturnsNullWhenNoSpace() {
         GameField field = new GameField(1, 1);
         Snake snake = new Snake(new Point(0, 0), Direction.RIGHT);
-        Point free = field.getRandomFreePoint(snake, new ArrayList<>(), new Random());
+        Point free = field.getRandomFreePoint(List.of(snake), new ArrayList<>(), new Random());
         assertNull(free);
     }
 }

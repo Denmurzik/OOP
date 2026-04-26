@@ -17,7 +17,8 @@ class GameSnapshotTest {
                 GameState.RUNNING,
                 150,
                 8,
-                field
+                field,
+                Collections.emptyList()
         );
 
         assertSame(GameState.RUNNING, snapshot.state());

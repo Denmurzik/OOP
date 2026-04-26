@@ -95,7 +95,8 @@ public class GuiCoverageTest {
                 injectField(view, "stateLabel", new Label());
 
                 view.initialize();
-                view.startGame(org.example.model.Difficulty.NORMAL);
+                view.startGame(org.example.model.Difficulty.NORMAL,
+                        new org.example.model.EnemyCounts(0, 0, 0));
 
                 Scene scene = new Scene(new Pane());
                 view.initKeyHandling(scene);

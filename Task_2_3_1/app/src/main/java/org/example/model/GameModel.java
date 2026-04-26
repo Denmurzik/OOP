@@ -1,7 +1,9 @@
 package org.example.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -15,6 +17,7 @@ public class GameModel {
 
     private Snake snake;
     private List<Food> foods;
+    private List<AiSnake> enemies;
     private GameState state;
     private int score;
     private ModelListener listener;
@@ -45,6 +48,7 @@ public class GameModel {
         int startY = config.getHeight() / 2;
         this.snake = new Snake(new Point(startX, startY), Direction.RIGHT);
         this.foods = new ArrayList<>();
+        this.enemies = new ArrayList<>();
         this.state = GameState.RUNNING;
         this.score = 0;
         spawnFood();
@@ -52,56 +56,178 @@ public class GameModel {
     }
 
     /**
-     * Один тик игры перемещение змейки, проверка коллизий и еды.
+     * Добавляет змейку-робота в игру.
+     */
+    public synchronized void addEnemy(AiSnake enemy) {
+        enemies.add(enemy);
+    }
+
+    /**
+     * Один тик игры — движение игрока, движение врагов, проверка коллизий.
      */
     public synchronized void tick() {
         if (state != GameState.RUNNING) {
             return;
         }
 
-        Point newHead = snake.getHead().move(snake.getDirection());
+ 
+        GameSnapshot worldBefore = getSnapshot();
 
-        // Проверка столкновения со стеной
-        if (!field.isInBounds(newHead)) {
+ 
+        Map<AiSnake, Point> enemyHeads = new HashMap<>();
+        for (AiSnake enemy : enemies) {
+            if (!enemy.isAlive()) {
+                continue;
+            }
+            Direction dir = enemy.decide(worldBefore);
+            enemy.getSnake().setDirection(dir);
+            Point newHead = enemy.getSnake().getHead().move(enemy.getSnake().getDirection());
+            enemyHeads.put(enemy, newHead);
+        }
+
+      
+        Point playerNewHead = snake.getHead().move(snake.getDirection());
+
+        if (!field.isInBounds(playerNewHead) || field.isObstacle(playerNewHead)
+                || snake.contains(playerNewHead)) {
             state = GameState.GAME_OVER;
             notifyListener();
             return;
         }
 
-        // Проверка столкновения с препятствием
-        if (field.isObstacle(newHead)) {
+        boolean headOn = false;
+        for (Map.Entry<AiSnake, Point> entry : enemyHeads.entrySet()) {
+            if (entry.getValue().equals(playerNewHead)) {
+                entry.getKey().kill();
+                headOn = true;
+            }
+        }
+        if (headOn) {
+            state = GameState.GAME_OVER;
+            enemies.removeIf(e -> !e.isAlive());
+            notifyListener();
+            return;
+        }
+
+
+        if (isPlayerHittingEnemyBody(playerNewHead)) {
             state = GameState.GAME_OVER;
             notifyListener();
             return;
         }
 
-        // Проверка столкновения с телом
-        if (snake.contains(newHead)) {
-            state = GameState.GAME_OVER;
-            notifyListener();
-            return;
-        }
 
-        // Проверка еды
-        Food eaten = findFoodAt(newHead);
+        Food eaten = findFoodAt(playerNewHead);
         if (eaten != null) {
-            snake.grow(newHead);
+            snake.grow(playerNewHead);
             foods.remove(eaten);
             score += eaten.getGrowthValue();
-            // рост
             for (int i = 1; i < eaten.getGrowthValue(); i++) {
                 snake.grow(snake.getHead());
             }
-            spawnFood();
         } else {
-            snake.move(newHead);
+            snake.move(playerNewHead);
         }
 
-        // Проверка победы
+
+        moveEnemies(enemyHeads);
+
+        enemies.removeIf(e -> !e.isAlive());
+
+        spawnFood();
+
         if (winCondition.checkWin(snake, score)) {
             state = GameState.WON;
         }
         notifyListener();
+    }
+
+    /**
+     * Применяет движение всех живых ИИ с проверкой коллизий.
+     */
+    private void moveEnemies(Map<AiSnake, Point> enemyHeads) {
+        for (Map.Entry<AiSnake, Point> e1 : enemyHeads.entrySet()) {
+            if (!e1.getKey().isAlive()) {
+                continue;
+            }
+            for (Map.Entry<AiSnake, Point> e2 : enemyHeads.entrySet()) {
+                if (e1.getKey() == e2.getKey() || !e2.getKey().isAlive()) {
+                    continue;
+                }
+                if (e1.getValue().equals(e2.getValue())) {
+                    e1.getKey().kill();
+                    e2.getKey().kill();
+                }
+            }
+        }
+
+        // Применяем движение каждого живого
+        for (Map.Entry<AiSnake, Point> entry : enemyHeads.entrySet()) {
+            AiSnake enemy = entry.getKey();
+            if (!enemy.isAlive()) {
+                continue;
+            }
+            Point newHead = entry.getValue();
+            Snake enemySnake = enemy.getSnake();
+
+            // Проверки
+            if (!field.isInBounds(newHead) || field.isObstacle(newHead)) {
+                enemy.kill();
+                continue;
+            }
+            if (enemySnake.contains(newHead)) {
+                enemy.kill();
+                continue;
+            }
+            // Тело игрока
+            if (snake.contains(newHead)) {
+                enemy.kill();
+                continue;
+            }
+            // Тело других врагов
+            if (isOtherEnemyBodyAt(newHead, enemy)) {
+                enemy.kill();
+                continue;
+            }
+
+            // Поедание еды
+            Food eaten = findFoodAt(newHead);
+            if (eaten != null) {
+                enemySnake.grow(newHead);
+                foods.remove(eaten);
+            } else {
+                enemySnake.move(newHead);
+            }
+        }
+    }
+
+    private boolean isPlayerHittingEnemyBody(Point point) {
+        for (AiSnake enemy : enemies) {
+            if (!enemy.isAlive()) {
+                continue;
+            }
+            List<Point> segs = enemy.getSnake().getSegments();
+            // Проверяем все сегменты кроме хвоста
+            int last = segs.size() - 1;
+            for (int i = 0; i < last; i++) {
+                if (segs.get(i).equals(point)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean isOtherEnemyBodyAt(Point point, AiSnake exclude) {
+        for (AiSnake enemy : enemies) {
+            if (enemy == exclude || !enemy.isAlive()) {
+                continue;
+            }
+            if (enemy.getSnake().contains(point)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -152,15 +278,26 @@ public class GameModel {
      * Спавнит еду до тех пор, пока на поле не будет нужное количество.
      */
     private void spawnFood() {
+        List<Snake> allSnakes = collectAllSnakes();
         while (foods.size() < config.getFoodCount()) {
-            Point pos = field.getRandomFreePoint(snake, foods, random);
+            Point pos = field.getRandomFreePoint(allSnakes, foods, random);
             if (pos == null) {
-                break; 
+                break;
             }
             foods.add(new BasicFood(pos));
         }
     }
 
+    private List<Snake> collectAllSnakes() {
+        List<Snake> all = new ArrayList<>();
+        all.add(snake);
+        for (AiSnake e : enemies) {
+            if (e.isAlive()) {
+                all.add(e.getSnake());
+            }
+        }
+        return all;
+    }
 
     public Snake getSnake() {
         return snake;
@@ -168,6 +305,10 @@ public class GameModel {
 
     public List<Food> getFoods() {
         return foods;
+    }
+
+    public List<AiSnake> getEnemies() {
+        return enemies;
     }
 
     public synchronized GameState getState() {
@@ -178,13 +319,23 @@ public class GameModel {
      * Возвращает снимок текущего состояния для отрисовки.
      */
     public synchronized GameSnapshot getSnapshot() {
+        List<EnemySnapshot> enemySnaps = new ArrayList<>();
+        for (AiSnake e : enemies) {
+            if (e.isAlive()) {
+                enemySnaps.add(new EnemySnapshot(
+                        new ArrayList<>(e.getSnake().getSegments()),
+                        e.getStrategy().name()
+                ));
+            }
+        }
         return new GameSnapshot(
                 new ArrayList<>(snake.getSegments()),
                 new ArrayList<>(foods),
                 state,
                 score,
                 snake.size(),
-                field
+                field,
+                enemySnaps
         );
     }
 

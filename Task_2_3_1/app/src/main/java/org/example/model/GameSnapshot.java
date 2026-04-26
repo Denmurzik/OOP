@@ -11,6 +11,7 @@ public record GameSnapshot(
         GameState state,
         int score,
         int snakeSize,
-        GameField field
+        GameField field,
+        List<EnemySnapshot> enemies
 ) {
 }

@@ -6,6 +6,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
+import org.example.model.EnemySnapshot;
 import org.example.model.Food;
 import org.example.model.GameSnapshot;
 import org.example.model.GameState;
@@ -21,6 +22,11 @@ public class GameRenderer {
     private static final Color SNAKE_BODY = Color.web("#00ce67ff");
     private static final Color FOOD_COLOR = Color.web("#e17055");
     private static final Color OBSTACLE_COLOR = Color.web("#327485ff");
+
+    // Цвета врагов по стратегиям
+    private static final Color GREEDY_COLOR = Color.web("#c0392b");   // красный
+    private static final Color RANDOM_COLOR = Color.web("#8e44ad");   // фиолетовый
+    private static final Color HUNTER_COLOR = Color.web("#2c3e50");   // тёмно-синий
 
     private final Canvas canvas;
 
@@ -77,7 +83,21 @@ public class GameRenderer {
                     cellSize - 4, cellSize - 4);
         }
 
-        // Змейка
+        // Враги (рисуются до игрока, чтобы игрок был сверху)
+        for (EnemySnapshot enemy : snapshot.enemies()) {
+            Color baseColor = colorForStrategy(enemy.strategyName());
+            Color headColor = baseColor.darker();
+            List<Point> enemySegs = enemy.segments();
+            for (int i = 0; i < enemySegs.size(); i++) {
+                Point p = enemySegs.get(i);
+                gc.setFill(i == 0 ? headColor : baseColor);
+                gc.fillRoundRect(offsetX + p.getX() * cellSize + 1,
+                        offsetY + p.getY() * cellSize + 1,
+                        cellSize - 2, cellSize - 2, 6, 6);
+            }
+        }
+
+        // Змейка игрока
         List<Point> segments = snapshot.snakeSegments();
         for (int i = 0; i < segments.size(); i++) {
             Point p = segments.get(i);
@@ -103,6 +123,19 @@ public class GameRenderer {
 
             gc.setFont(new Font(16));
             gc.fillText("Нажмите 'Новая игра'", w / 2, h / 2 + 60);
+        }
+    }
+
+    private Color colorForStrategy(String name) {
+        switch (name) {
+            case "Greedy":
+                return GREEDY_COLOR;
+            case "Random":
+                return RANDOM_COLOR;
+            case "Hunter":
+                return HUNTER_COLOR;
+            default:
+                return Color.GRAY;
         }
     }
 }

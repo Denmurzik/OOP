@@ -6,15 +6,22 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import org.example.model.AiSnake;
 import org.example.model.Difficulty;
 import org.example.model.Direction;
+import org.example.model.EnemyCounts;
 import org.example.model.GameConfig;
 import org.example.model.GameField;
 import org.example.model.GameModel;
 import org.example.model.GameState;
 import org.example.model.ModelListener;
 import org.example.model.Point;
+import org.example.model.Snake;
+import org.example.model.SnakeStrategy;
 import org.example.model.WinCondition;
+import org.example.model.strategy.GreedyStrategy;
+import org.example.model.strategy.HunterStrategy;
+import org.example.model.strategy.RandomStrategy;
 import org.example.view.ErrorDialog;
 
 /**
@@ -42,17 +49,19 @@ public class GameController {
     private final LinkedList<Direction> directionQueue = new LinkedList<>();
     private final ModelListener listener;
     private final Difficulty difficulty;
+    private final EnemyCounts enemyCounts;
 
     private GameModel model;
     private Thread gameThread;
     private volatile boolean running;
 
     /**
-     * Инициализирует контроллер с заданной сложностью.
+     * Инициализирует контроллер с заданной сложностью и количеством врагов.
      */
-    public GameController(ModelListener listener, Difficulty difficulty) {
+    public GameController(ModelListener listener, Difficulty difficulty, EnemyCounts enemyCounts) {
         this.listener = listener;
         this.difficulty = difficulty;
+        this.enemyCounts = enemyCounts;
         model = createNewModel();
         startGameThread();
     }
@@ -94,8 +103,9 @@ public class GameController {
         stopGameThread();
     }
 
+
     /**
-     * Создаёт новую модель с новым полем и новыми препятствиями.
+     * Создаёт новую модель с новым полем, препятствиями и врагами.
      */
     private GameModel createNewModel() {
         GameConfig config = GameConfig.withDifficulty(difficulty);
@@ -105,7 +115,65 @@ public class GameController {
         WinCondition winCondition = (snake, score) -> false;
         GameModel newModel = new GameModel(config, field, winCondition);
         newModel.setListener(listener);
+
+        // Спавним врагов в количестве, указанном пользователем
+        for (int i = 0; i < enemyCounts.greedy(); i++) {
+            spawnEnemy(newModel, config, new GreedyStrategy());
+        }
+        for (int i = 0; i < enemyCounts.random(); i++) {
+            spawnEnemy(newModel, config, new RandomStrategy());
+        }
+        for (int i = 0; i < enemyCounts.hunter(); i++) {
+            spawnEnemy(newModel, config, new HunterStrategy());
+        }
+
         return newModel;
+    }
+
+    /**
+     * Создаёт врага со случайной позицией подальше от игрока.
+     */
+    private void spawnEnemy(GameModel model, GameConfig config, SnakeStrategy strategy) {
+        Random random = new Random();
+        int cx = config.getWidth() / 2;
+        int cy = config.getHeight() / 2;
+
+        Point startPos = null;
+        for (int attempt = 0; attempt < 100; attempt++) {
+            int x = random.nextInt(config.getWidth());
+            int y = random.nextInt(config.getHeight());
+            // Подальше от игрока (минимум 5 клеток)
+            if (Math.abs(x - cx) + Math.abs(y - cy) < 5) {
+                continue;
+            }
+            Point p = new Point(x, y);
+            if (model.getField().isObstacle(p)) {
+                continue;
+            }
+            // Не на уже размещённого врага
+            if (isCellTakenByEnemy(p, model)) {
+                continue;
+            }
+            startPos = p;
+            break;
+        }
+        if (startPos == null) {
+            return;  // не нашли место — пропускаем
+        }
+
+        Direction[] dirs = Direction.values();
+        Direction dir = dirs[random.nextInt(dirs.length)];
+        Snake snake = new Snake(startPos, dir);
+        model.addEnemy(new AiSnake(snake, strategy));
+    }
+
+    private boolean isCellTakenByEnemy(Point p, GameModel model) {
+        for (AiSnake e : model.getEnemies()) {
+            if (e.getSnake().contains(p)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
