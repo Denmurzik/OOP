@@ -91,7 +91,7 @@ loadScripts(document, 'script');</script>
 </div>
 <section class="class-description" id="class-description">
 <hr>
-<div class="type-signature"><span class="modifiers">public record </span><span class="element-name type-name-label">EnemySnapshot</span>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Point.html" title="class in org.example.model">Point</a>&gt;&nbsp;segments, <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;strategyName)
+<div class="type-signature"><span class="modifiers">public record </span><span class="element-name type-name-label">EnemySnapshot</span>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Point.html" title="class in org.example.model">Point</a>&gt;&nbsp;segments, <a href="StrategyType.html" title="enum class in org.example.model">StrategyType</a>&nbsp;type)
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Record.html" title="class or interface in java.lang" class="external-link">Record</a></span></div>
 <div class="block">Снимок состояния враждебной змейки для отрисовки.</div>
 </section>
@@ -105,8 +105,8 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.util.List,java.lang.String)" class="member-name-link">EnemySnapshot</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Point.html" title="class in org.example.model">Point</a>&gt;&nbsp;segments,
- <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;strategyName)</code></div>
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.util.List,org.example.model.StrategyType)" class="member-name-link">EnemySnapshot</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Point.html" title="class in org.example.model">Point</a>&gt;&nbsp;segments,
+ <a href="StrategyType.html" title="enum class in org.example.model">StrategyType</a>&nbsp;type)</code></div>
 <div class="col-last even-row-color">
 <div class="block">Creates an instance of a <code>EnemySnapshot</code> record class.</div>
 </div>
@@ -139,15 +139,15 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Returns the value of the <code>segments</code> record component.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#strategyName()" class="member-name-link">strategyName</a>()</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#toString()" class="member-name-link">toString</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Returns the value of the <code>strategyName</code> record component.</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#toString()" class="member-name-link">toString</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Returns a string representation of this record class.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="StrategyType.html" title="enum class in org.example.model">StrategyType</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#type()" class="member-name-link">type</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the value of the <code>type</code> record component.</div>
 </div>
 </div>
 </div>
@@ -167,15 +167,15 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(java.util.List,java.lang.String)">
+<section class="detail" id="&lt;init&gt;(java.util.List,org.example.model.StrategyType)">
 <h3>EnemySnapshot</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">EnemySnapshot</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Point.html" title="class in org.example.model">Point</a>&gt;&nbsp;segments,
- <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;strategyName)</span></div>
+ <a href="StrategyType.html" title="enum class in org.example.model">StrategyType</a>&nbsp;type)</span></div>
 <div class="block">Creates an instance of a <code>EnemySnapshot</code> record class.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>segments</code> - the value for the <code>segments</code> record component</dd>
-<dd><code>strategyName</code> - the value for the <code>strategyName</code> record component</dd>
+<dd><code>type</code> - the value for the <code>type</code> record component</dd>
 </dl>
 </section>
 </li>
@@ -240,13 +240,13 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="strategyName()">
-<h3>strategyName</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">strategyName</span>()</div>
-<div class="block">Returns the value of the <code>strategyName</code> record component.</div>
+<section class="detail" id="type()">
+<h3>type</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="StrategyType.html" title="enum class in org.example.model">StrategyType</a></span>&nbsp;<span class="element-name">type</span>()</div>
+<div class="block">Returns the value of the <code>type</code> record component.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the value of the <code>strategyName</code> record component</dd>
+<dd>the value of the <code>type</code> record component</dd>
 </dl>
 </section>
 </li>

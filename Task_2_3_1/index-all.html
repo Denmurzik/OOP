@@ -58,7 +58,7 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="org/example/model/AiSnake.html" class="type-name-link" title="class in org.example.model">AiSnake</a> - Class in <a href="org/example/model/package-summary.html">org.example.model</a></dt>
 <dd>
-<div class="block">Змейка-робот: обёртка над Snake + стратегия поведения.</div>
+<div class="block">Змейка ИИ snake плюс стратегия.</div>
 </dd>
 <dt><a href="org/example/model/AiSnake.html#%3Cinit%3E(org.example.model.Snake,org.example.model.SnakeStrategy)" class="member-name-link">AiSnake(Snake, SnakeStrategy)</a> - Constructor for class org.example.model.<a href="org/example/model/AiSnake.html" title="class in org.example.model">AiSnake</a></dt>
 <dd>&nbsp;</dd>
@@ -126,7 +126,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Снимок состояния враждебной змейки для отрисовки.</div>
 </dd>
-<dt><a href="org/example/model/EnemySnapshot.html#%3Cinit%3E(java.util.List,java.lang.String)" class="member-name-link">EnemySnapshot(List&lt;Point&gt;, String)</a> - Constructor for record class org.example.model.<a href="org/example/model/EnemySnapshot.html" title="class in org.example.model">EnemySnapshot</a></dt>
+<dt><a href="org/example/model/EnemySnapshot.html#%3Cinit%3E(java.util.List,org.example.model.StrategyType)" class="member-name-link">EnemySnapshot(List&lt;Point&gt;, StrategyType)</a> - Constructor for record class org.example.model.<a href="org/example/model/EnemySnapshot.html" title="class in org.example.model">EnemySnapshot</a></dt>
 <dd>
 <div class="block">Creates an instance of a <code>EnemySnapshot</code> record class.</div>
 </dd>
@@ -312,9 +312,11 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Returns the value of the <code>greedy</code> record component.</div>
 </dd>
+<dt><a href="org/example/model/StrategyType.html#GREEDY" class="member-name-link">GREEDY</a> - Enum constant in enum class org.example.model.<a href="org/example/model/StrategyType.html" title="enum class in org.example.model">StrategyType</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="org/example/model/strategy/GreedyStrategy.html" class="type-name-link" title="class in org.example.model.strategy">GreedyStrategy</a> - Class in <a href="org/example/model/strategy/package-summary.html">org.example.model.strategy</a></dt>
 <dd>
-<div class="block">Жадная стратегия: всегда движется к ближайшей еде.</div>
+<div class="block">Всегда движется к ближайшей еде.</div>
 </dd>
 <dt><a href="org/example/model/strategy/GreedyStrategy.html#%3Cinit%3E()" class="member-name-link">GreedyStrategy()</a> - Constructor for class org.example.model.strategy.<a href="org/example/model/strategy/GreedyStrategy.html" title="class in org.example.model.strategy">GreedyStrategy</a></dt>
 <dd>&nbsp;</dd>
@@ -363,9 +365,11 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Returns the value of the <code>hunter</code> record component.</div>
 </dd>
+<dt><a href="org/example/model/StrategyType.html#HUNTER" class="member-name-link">HUNTER</a> - Enum constant in enum class org.example.model.<a href="org/example/model/StrategyType.html" title="enum class in org.example.model">StrategyType</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="org/example/model/strategy/HunterStrategy.html" class="type-name-link" title="class in org.example.model.strategy">HunterStrategy</a> - Class in <a href="org/example/model/strategy/package-summary.html">org.example.model.strategy</a></dt>
 <dd>
-<div class="block">Стратегия охотника: преследует голову игрока.</div>
+<div class="block">Стратегия охотника преследует голову игрока.</div>
 </dd>
 <dt><a href="org/example/model/strategy/HunterStrategy.html#%3Cinit%3E()" class="member-name-link">HunterStrategy()</a> - Constructor for class org.example.model.strategy.<a href="org/example/model/strategy/HunterStrategy.html" title="class in org.example.model.strategy">HunterStrategy</a></dt>
 <dd>&nbsp;</dd>
@@ -396,7 +400,7 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/model/strategy/StrategyUtils.html#isCellSafe(org.example.model.Point,org.example.model.GameSnapshot,org.example.model.Snake)" class="member-name-link">isCellSafe(Point, GameSnapshot, Snake)</a> - Static method in class org.example.model.strategy.<a href="org/example/model/strategy/StrategyUtils.html" title="class in org.example.model.strategy">StrategyUtils</a></dt>
 <dd>
-<div class="block">Проверяет, безопасно ли пойти в клетку.</div>
+<div class="block">Проверяет безопасно ли пойти в клетку.</div>
 </dd>
 <dt><a href="org/example/model/GameField.html#isInBounds(org.example.model.Point)" class="member-name-link">isInBounds(Point)</a> - Method in class org.example.model.<a href="org/example/model/GameField.html" title="class in org.example.model">GameField</a></dt>
 <dd>
@@ -462,16 +466,6 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:N">N</h2>
 <dl class="index">
-<dt><a href="org/example/model/SnakeStrategy.html#name()" class="member-name-link">name()</a> - Method in interface org.example.model.<a href="org/example/model/SnakeStrategy.html" title="interface in org.example.model">SnakeStrategy</a></dt>
-<dd>
-<div class="block">Имя стратегии.</div>
-</dd>
-<dt><a href="org/example/model/strategy/GreedyStrategy.html#name()" class="member-name-link">name()</a> - Method in class org.example.model.strategy.<a href="org/example/model/strategy/GreedyStrategy.html" title="class in org.example.model.strategy">GreedyStrategy</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="org/example/model/strategy/HunterStrategy.html#name()" class="member-name-link">name()</a> - Method in class org.example.model.strategy.<a href="org/example/model/strategy/HunterStrategy.html" title="class in org.example.model.strategy">HunterStrategy</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="org/example/model/strategy/RandomStrategy.html#name()" class="member-name-link">name()</a> - Method in class org.example.model.strategy.<a href="org/example/model/strategy/RandomStrategy.html" title="class in org.example.model.strategy">RandomStrategy</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="org/example/model/SnakeStrategy.html#nextMove(org.example.model.Snake,org.example.model.GameSnapshot)" class="member-name-link">nextMove(Snake, GameSnapshot)</a> - Method in interface org.example.model.<a href="org/example/model/SnakeStrategy.html" title="interface in org.example.model">SnakeStrategy</a></dt>
 <dd>
 <div class="block">Возвращает следующее направление движения для данной змейки.</div>
@@ -529,6 +523,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Returns the value of the <code>random</code> record component.</div>
 </dd>
+<dt><a href="org/example/model/StrategyType.html#RANDOM" class="member-name-link">RANDOM</a> - Enum constant in enum class org.example.model.<a href="org/example/model/StrategyType.html" title="enum class in org.example.model">StrategyType</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="org/example/model/strategy/RandomStrategy.html" class="type-name-link" title="class in org.example.model.strategy">RandomStrategy</a> - Class in <a href="org/example/model/strategy/package-summary.html">org.example.model.strategy</a></dt>
 <dd>
 <div class="block">Стратегия случайного движения.</div>
@@ -620,9 +616,9 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Останавливает игру (вызывается при возврате в меню).</div>
 </dd>
-<dt><a href="org/example/model/EnemySnapshot.html#strategyName()" class="member-name-link">strategyName()</a> - Method in record class org.example.model.<a href="org/example/model/EnemySnapshot.html" title="class in org.example.model">EnemySnapshot</a></dt>
+<dt><a href="org/example/model/StrategyType.html" class="type-name-link" title="enum class in org.example.model">StrategyType</a> - Enum Class in <a href="org/example/model/package-summary.html">org.example.model</a></dt>
 <dd>
-<div class="block">Returns the value of the <code>strategyName</code> record component.</div>
+<div class="block">Тип стратегии поведения змейки-робота.</div>
 </dd>
 <dt><a href="org/example/model/strategy/StrategyUtils.html" class="type-name-link" title="class in org.example.model.strategy">StrategyUtils</a> - Class in <a href="org/example/model/strategy/package-summary.html">org.example.model.strategy</a></dt>
 <dd>
@@ -653,6 +649,20 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="org/example/model/Point.html#toString()" class="member-name-link">toString()</a> - Method in class org.example.model.<a href="org/example/model/Point.html" title="class in org.example.model">Point</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="org/example/model/EnemySnapshot.html#type()" class="member-name-link">type()</a> - Method in record class org.example.model.<a href="org/example/model/EnemySnapshot.html" title="class in org.example.model">EnemySnapshot</a></dt>
+<dd>
+<div class="block">Returns the value of the <code>type</code> record component.</div>
+</dd>
+<dt><a href="org/example/model/SnakeStrategy.html#type()" class="member-name-link">type()</a> - Method in interface org.example.model.<a href="org/example/model/SnakeStrategy.html" title="interface in org.example.model">SnakeStrategy</a></dt>
+<dd>
+<div class="block">Тип стратегии.</div>
+</dd>
+<dt><a href="org/example/model/strategy/GreedyStrategy.html#type()" class="member-name-link">type()</a> - Method in class org.example.model.strategy.<a href="org/example/model/strategy/GreedyStrategy.html" title="class in org.example.model.strategy">GreedyStrategy</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/model/strategy/HunterStrategy.html#type()" class="member-name-link">type()</a> - Method in class org.example.model.strategy.<a href="org/example/model/strategy/HunterStrategy.html" title="class in org.example.model.strategy">HunterStrategy</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/model/strategy/RandomStrategy.html#type()" class="member-name-link">type()</a> - Method in class org.example.model.strategy.<a href="org/example/model/strategy/RandomStrategy.html" title="class in org.example.model.strategy">RandomStrategy</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:U">U</h2>
 <dl class="index">
@@ -673,6 +683,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Returns the enum constant of this class with the specified name.</div>
 </dd>
+<dt><a href="org/example/model/StrategyType.html#valueOf(java.lang.String)" class="member-name-link">valueOf(String)</a> - Static method in enum class org.example.model.<a href="org/example/model/StrategyType.html" title="enum class in org.example.model">StrategyType</a></dt>
+<dd>
+<div class="block">Returns the enum constant of this class with the specified name.</div>
+</dd>
 <dt><a href="org/example/model/Difficulty.html#values()" class="member-name-link">values()</a> - Static method in enum class org.example.model.<a href="org/example/model/Difficulty.html" title="enum class in org.example.model">Difficulty</a></dt>
 <dd>
 <div class="block">Returns an array containing the constants of this enum class, in
@@ -684,6 +698,11 @@ the order they are declared.</div>
 the order they are declared.</div>
 </dd>
 <dt><a href="org/example/model/GameState.html#values()" class="member-name-link">values()</a> - Static method in enum class org.example.model.<a href="org/example/model/GameState.html" title="enum class in org.example.model">GameState</a></dt>
+<dd>
+<div class="block">Returns an array containing the constants of this enum class, in
+the order they are declared.</div>
+</dd>
+<dt><a href="org/example/model/StrategyType.html#values()" class="member-name-link">values()</a> - Static method in enum class org.example.model.<a href="org/example/model/StrategyType.html" title="enum class in org.example.model">StrategyType</a></dt>
 <dd>
 <div class="block">Returns an array containing the constants of this enum class, in
 the order they are declared.</div>
