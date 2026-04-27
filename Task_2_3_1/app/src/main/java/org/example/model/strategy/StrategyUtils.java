@@ -23,7 +23,7 @@ public class StrategyUtils {
     }
 
     /**
-     * Проверяет, безопасно ли пойти в клетку.
+     * Проверяет безопасно ли пойти в клетку.
      */
     public static boolean isCellSafe(Point p, GameSnapshot world, Snake self) {
         if (!world.field().isInBounds(p)) {

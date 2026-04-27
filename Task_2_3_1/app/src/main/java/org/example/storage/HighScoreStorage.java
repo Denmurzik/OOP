@@ -20,6 +20,13 @@ public class HighScoreStorage {
     }
 
     /**
+     * Конструктор для тестов — позволяет указать произвольный файл.
+     */
+    HighScoreStorage(File file) {
+        this.file = file;
+    }
+
+    /**
      * Загружает текущий рекорд из файла. Если файла нет  возвращает 0.
      */
     public int load() {

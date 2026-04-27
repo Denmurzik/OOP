@@ -324,7 +324,7 @@ public class GameModel {
             if (e.isAlive()) {
                 enemySnaps.add(new EnemySnapshot(
                         new ArrayList<>(e.getSnake().getSegments()),
-                        e.getStrategy().name()
+                        e.getStrategy().type()
                 ));
             }
         }

@@ -1,7 +1,7 @@
 package org.example.model;
 
 /**
- * Змейка-робот: обёртка над Snake + стратегия поведения.
+ * Змейка ИИ snake плюс стратегия.
  */
 public class AiSnake {
     private final Snake snake;

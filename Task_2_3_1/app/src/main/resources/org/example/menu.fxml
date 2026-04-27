@@ -31,19 +31,19 @@
                style="-fx-font-size: 14; -fx-text-fill: #5e592b; -fx-font-weight: bold;"/>
 
         <HBox alignment="CENTER_LEFT" spacing="10">
-            <Label text="Жадный (Greedy):"
+            <Label text="Жадный:"
                    style="-fx-font-size: 13; -fx-text-fill: #c0392b; -fx-min-width: 180;"/>
             <Spinner fx:id="greedySpinner" prefWidth="80"/>
         </HBox>
 
         <HBox alignment="CENTER_LEFT" spacing="10">
-            <Label text="Случайный (Random):"
+            <Label text="Случайный:"
                    style="-fx-font-size: 13; -fx-text-fill: #8e44ad; -fx-min-width: 180;"/>
             <Spinner fx:id="randomSpinner" prefWidth="80"/>
         </HBox>
 
         <HBox alignment="CENTER_LEFT" spacing="10">
-            <Label text="Охотник (Hunter):"
+            <Label text="Охотник:"
                    style="-fx-font-size: 13; -fx-text-fill: #2c3e50; -fx-min-width: 180;"/>
             <Spinner fx:id="hunterSpinner" prefWidth="80"/>
         </HBox>

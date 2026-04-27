@@ -7,9 +7,10 @@ import org.example.model.GameSnapshot;
 import org.example.model.Point;
 import org.example.model.Snake;
 import org.example.model.SnakeStrategy;
+import org.example.model.StrategyType;
 
 /**
- * Жадная стратегия: всегда движется к ближайшей еде.
+ * Всегда движется к ближайшей еде.
  */
 public class GreedyStrategy implements SnakeStrategy {
 
@@ -53,7 +54,7 @@ public class GreedyStrategy implements SnakeStrategy {
     }
 
     @Override
-    public String name() {
-        return "Greedy";
+    public StrategyType type() {
+        return StrategyType.GREEDY;
     }
 }

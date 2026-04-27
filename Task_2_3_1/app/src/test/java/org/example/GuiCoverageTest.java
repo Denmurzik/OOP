@@ -21,7 +21,6 @@ import org.example.model.GameModel;
 import org.example.model.WinCondition;
 import org.example.view.GameRenderer;
 import org.example.view.GameView;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -41,10 +40,6 @@ public class GuiCoverageTest {
         }
     }
 
-    @AfterAll
-    static void tearDownJfx() {
-        Platform.exit();
-    }
 
     @Test
     void testGameRendererCoverage() throws InterruptedException {

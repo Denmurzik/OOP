@@ -11,7 +11,7 @@ public interface SnakeStrategy {
     Direction nextMove(Snake self, GameSnapshot world);
 
     /**
-     * Имя стратегии.
+     * Тип стратегии.
      */
-    String name();
+    StrategyType type();
 }

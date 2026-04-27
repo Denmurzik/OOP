@@ -11,6 +11,7 @@ import org.example.model.Food;
 import org.example.model.GameSnapshot;
 import org.example.model.GameState;
 import org.example.model.Point;
+import org.example.model.StrategyType;
 
 /**
  * Отрисовка игры.
@@ -85,7 +86,7 @@ public class GameRenderer {
 
         // Враги (рисуются до игрока, чтобы игрок был сверху)
         for (EnemySnapshot enemy : snapshot.enemies()) {
-            Color baseColor = colorForStrategy(enemy.strategyName());
+            Color baseColor = colorForStrategy(enemy.type());
             Color headColor = baseColor.darker();
             List<Point> enemySegs = enemy.segments();
             for (int i = 0; i < enemySegs.size(); i++) {
@@ -126,13 +127,13 @@ public class GameRenderer {
         }
     }
 
-    private Color colorForStrategy(String name) {
-        switch (name) {
-            case "Greedy":
+    private Color colorForStrategy(StrategyType type) {
+        switch (type) {
+            case GREEDY:
                 return GREEDY_COLOR;
-            case "Random":
+            case RANDOM:
                 return RANDOM_COLOR;
-            case "Hunter":
+            case HUNTER:
                 return HUNTER_COLOR;
             default:
                 return Color.GRAY;
