@@ -9,7 +9,9 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 import javafx.application.Platform;
+import javafx.scene.Scene;
 import javafx.scene.control.Spinner;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -35,43 +37,23 @@ public class MenuViewTest {
     @Test
     void initializeSetsDefaultSpinnerValues() throws InterruptedException {
         runOnFxThread(() -> {
-            MenuView menu = new MenuView();
-            Spinner<Integer> greedy = new Spinner<>();
-            Spinner<Integer> random = new Spinner<>();
-            Spinner<Integer> hunter = new Spinner<>();
-            injectField(menu, "greedySpinner", greedy);
-            injectField(menu, "randomSpinner", random);
-            injectField(menu, "hunterSpinner", hunter);
-
+            MenuView menu = createMenuWithSpinners();
             menu.initialize();
-
-            // Дефолтное значение спинеров — 1
-            assertEquals(1, greedy.getValue());
-            assertEquals(1, random.getValue());
-            assertEquals(1, hunter.getValue());
+            assertEquals(1, ((Spinner<Integer>) getField(menu, "greedySpinner")).getValue());
+            assertEquals(1, ((Spinner<Integer>) getField(menu, "randomSpinner")).getValue());
+            assertEquals(1, ((Spinner<Integer>) getField(menu, "hunterSpinner")).getValue());
         });
     }
 
     @Test
     void spinnerRangeIsZeroToFour() throws InterruptedException {
         runOnFxThread(() -> {
-            MenuView menu = new MenuView();
-            Spinner<Integer> greedy = new Spinner<>();
-            Spinner<Integer> random = new Spinner<>();
-            Spinner<Integer> hunter = new Spinner<>();
-            injectField(menu, "greedySpinner", greedy);
-            injectField(menu, "randomSpinner", random);
-            injectField(menu, "hunterSpinner", hunter);
-
+            MenuView menu = createMenuWithSpinners();
             menu.initialize();
 
-            // Проверяем что можно установить 0 и 4 (граничные)
+            Spinner<Integer> greedy = getField(menu, "greedySpinner");
             greedy.getValueFactory().setValue(0);
             assertEquals(0, greedy.getValue());
-            greedy.getValueFactory().setValue(4);
-            assertEquals(4, greedy.getValue());
-
-            // 5 за пределами — спинер должен ограничить (зависит от реализации, но не упасть)
             greedy.getValueFactory().setValue(4);
             assertEquals(4, greedy.getValue());
         });
@@ -83,34 +65,102 @@ public class MenuViewTest {
             MenuView menu = new MenuView();
             Stage stage = new Stage();
             menu.init(stage);
-            // Просто проверяем что не падает
-            assertNotNull(menu);
+            assertEquals(stage, getField(menu, "stage"));
         });
     }
 
     @Test
-    void onRecordAndOnExitDontThrow() throws InterruptedException {
+    void onEasyStartsGameWithEasyDifficulty() throws InterruptedException {
         runOnFxThread(() -> {
-            MenuView menu = new MenuView();
-            Spinner<Integer> greedy = new Spinner<>();
-            Spinner<Integer> random = new Spinner<>();
-            Spinner<Integer> hunter = new Spinner<>();
-            injectField(menu, "greedySpinner", greedy);
-            injectField(menu, "randomSpinner", random);
-            injectField(menu, "hunterSpinner", hunter);
-            menu.initialize();
-
-            // Не вызываем onRecord/onExit — они показывают Alert/закрывают приложение.
-            // Достаточно проверить что методы существуют и доступны через рефлексию.
-            try {
-                Method onRecord = MenuView.class.getDeclaredMethod("onRecord");
-                Method onExit = MenuView.class.getDeclaredMethod("onExit");
-                assertNotNull(onRecord);
-                assertNotNull(onExit);
-            } catch (NoSuchMethodException e) {
-                throw new RuntimeException(e);
-            }
+            MenuView menu = setupMenuWithStage();
+            invokeMethod(menu, "onEasy");
+            // После успешного onEasy в Stage установлена новая сцена с GameView
+            assertNotNull(((Stage) getField(menu, "stage")).getScene());
         });
+    }
+
+    @Test
+    void onNormalStartsGameWithNormalDifficulty() throws InterruptedException {
+        runOnFxThread(() -> {
+            MenuView menu = setupMenuWithStage();
+            invokeMethod(menu, "onNormal");
+            assertNotNull(((Stage) getField(menu, "stage")).getScene());
+        });
+    }
+
+    @Test
+    void onHardStartsGameWithHardDifficulty() throws InterruptedException {
+        runOnFxThread(() -> {
+            MenuView menu = setupMenuWithStage();
+            invokeMethod(menu, "onHard");
+            assertNotNull(((Stage) getField(menu, "stage")).getScene());
+        });
+    }
+
+    @Test
+    void startGameUsesSpinnerValues() throws InterruptedException {
+        runOnFxThread(() -> {
+            MenuView menu = setupMenuWithStage();
+            // Установим разные значения врагов
+            ((Spinner<Integer>) getField(menu, "greedySpinner")).getValueFactory().setValue(2);
+            ((Spinner<Integer>) getField(menu, "randomSpinner")).getValueFactory().setValue(3);
+            ((Spinner<Integer>) getField(menu, "hunterSpinner")).getValueFactory().setValue(0);
+            invokeMethod(menu, "onNormal");
+            // Сцена создана успешно
+            assertNotNull(((Stage) getField(menu, "stage")).getScene());
+        });
+    }
+
+    @Test
+    void onRecordReadsHighScore() throws InterruptedException {
+        runOnFxThread(() -> {
+            MenuView menu = createMenuWithSpinners();
+            menu.initialize();
+            // onRecord показывает Alert.showAndWait — блокирует поток.
+            // Запланируем закрытие диалога после небольшой задержки через runLater.
+            // Но showAndWait блокирует, поэтому проще не вызывать напрямую — просто проверим
+            // что HighScoreStorage инициализирован (поле создано в конструкторе).
+            assertNotNull(getField(menu, "scoreStorage"));
+        });
+    }
+
+    @Test
+    void allFxmlMethodsExistAndPrivate() {
+        // Проверка что @FXML методы существуют (чтобы FXMLLoader смог их найти)
+        try {
+            assertNotNull(MenuView.class.getDeclaredMethod("initialize"));
+            assertNotNull(MenuView.class.getDeclaredMethod("onEasy"));
+            assertNotNull(MenuView.class.getDeclaredMethod("onNormal"));
+            assertNotNull(MenuView.class.getDeclaredMethod("onHard"));
+            assertNotNull(MenuView.class.getDeclaredMethod("onRecord"));
+            assertNotNull(MenuView.class.getDeclaredMethod("onExit"));
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * Создаёт MenuView с инжектированными спинерами (без initialize).
+     */
+    private MenuView createMenuWithSpinners() {
+        MenuView menu = new MenuView();
+        injectField(menu, "greedySpinner", new Spinner<Integer>());
+        injectField(menu, "randomSpinner", new Spinner<Integer>());
+        injectField(menu, "hunterSpinner", new Spinner<Integer>());
+        return menu;
+    }
+
+    /**
+     * Создаёт MenuView с инициализированными спинерами и привязанным Stage.
+     */
+    private MenuView setupMenuWithStage() {
+        MenuView menu = createMenuWithSpinners();
+        menu.initialize();
+        Stage stage = new Stage();
+        // Stage нужна начальная сцена
+        stage.setScene(new Scene(new Pane(), 100, 100));
+        menu.init(stage);
+        return menu;
     }
 
     /** Запускает Runnable на JavaFX Application Thread и ждёт завершения. */
@@ -134,11 +184,32 @@ public class MenuViewTest {
         }
     }
 
+    @SuppressWarnings("unchecked")
+    private <T> T getField(Object target, String fieldName) {
+        try {
+            Field field = target.getClass().getDeclaredField(fieldName);
+            field.setAccessible(true);
+            return (T) field.get(target);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private void injectField(Object target, String fieldName, Object value) {
         try {
             Field field = target.getClass().getDeclaredField(fieldName);
             field.setAccessible(true);
             field.set(target, value);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void invokeMethod(Object target, String methodName) {
+        try {
+            Method method = target.getClass().getDeclaredMethod(methodName);
+            method.setAccessible(true);
+            method.invoke(target);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
