@@ -7,6 +7,7 @@ import java.util.List;
 
 /** Работа с git через консольный клиент. */
 public class GitClient {
+    private static final List<String> DEFAULT_BRANCHES = List.of("main", "master");
 
     private final long timeoutSeconds;
 
@@ -58,7 +59,7 @@ public class GitClient {
                     return out.substring(idx + 1);
                 }
             }
-            for (String b : new String[]{"main", "master"}) {
+            for (String b : DEFAULT_BRANCHES) {
                 ProcessHelper.Result chk = ProcessHelper.run(
                         repoDir, timeoutSeconds,
                         "git", "rev-parse", "--verify", "origin/" + b);
@@ -82,15 +83,20 @@ public class GitClient {
                     "--since=" + from.toString(),
                     "--until=" + to.toString(),
                     "--format=%cI");
-            if (r.exitCode == 0) {
-                for (String line : r.output.split("\n")) {
-                    if (!line.isBlank()) {
-                        list.add(line.trim());
-                    }
+            if (r.exitCode != 0 || r.timedOut) {
+                throw new GitOperationException(
+                        "Не удалось получить историю коммитов для " + repoDir.getAbsolutePath());
+            }
+            for (String line : r.output.split("\n")) {
+                if (!line.isBlank()) {
+                    list.add(line.trim());
                 }
             }
-        } catch (Exception ignore) {
-            // не смогли получить git log — возвращаем пустой список
+        } catch (GitOperationException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new GitOperationException(
+                    "Не удалось получить историю коммитов для " + repoDir.getAbsolutePath(), e);
         }
         return list;
     }

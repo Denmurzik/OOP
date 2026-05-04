@@ -11,19 +11,21 @@ import org.example.model.StudentReport;
 
 /** Формирует HTML-отчёт по результатам проверки. */
 public class HtmlReporter {
+    private static final String HTML_HEAD = """
+            <!DOCTYPE html>
+            <html><head><meta charset="UTF-8"><title>OOP-checker report</title>
+            <style>
+            body{font-family:monospace;}
+            table{border-collapse:collapse;margin:10px 0;}
+            th,td{border:1px solid #000;padding:4px 8px;}
+            caption{text-align:left;font-weight:bold;padding:4px 0;}
+            </style></head><body>
+            """;
 
     /** Собирает HTML с таблицами per-lab, сводной и по контрольным точкам. */
     public String build(Config config, Map<Group, List<StudentReport>> data) {
         StringBuilder html = new StringBuilder();
-        html.append("<!DOCTYPE html>\n");
-        html.append("<html><head><meta charset=\"UTF-8\">");
-        html.append("<title>OOP-checker report</title>\n");
-        html.append("<style>");
-        html.append("body{font-family:monospace;} ");
-        html.append("table{border-collapse:collapse;margin:10px 0;} ");
-        html.append("th,td{border:1px solid #000;padding:4px 8px;} ");
-        html.append("caption{text-align:left;font-weight:bold;padding:4px 0;} ");
-        html.append("</style></head><body>\n");
+        html.append(HTML_HEAD);
 
         for (Map.Entry<Group, List<StudentReport>> e : data.entrySet()) {
             Group group = e.getKey();
@@ -32,7 +34,7 @@ public class HtmlReporter {
                 continue;
             }
 
-            html.append("<h2>Группа ").append(escape(group.getName())).append("</h2>\n");
+            html.append(String.format("<h2>Группа %s</h2>%n", escape(group.getName())));
 
             for (Lab lab : config.getLabs()) {
                 if (!labUsedIn(reports, lab.getId())) {
@@ -62,8 +64,9 @@ public class HtmlReporter {
 
     private String labTable(Lab lab, List<StudentReport> reports) {
         StringBuilder sb = new StringBuilder();
-        sb.append("<table><caption>Лабораторная ").append(escape(lab.getId()))
-                .append(" (").append(escape(lab.getName())).append(")</caption>\n");
+        sb.append(String.format(
+                "<table><caption>Лабораторная %s (%s)</caption>%n",
+                escape(lab.getId()), escape(lab.getName())));
         sb.append("<tr><th>Студент</th><th>Сборка</th><th>Документация</th>");
         sb.append("<th>Style guide</th><th>Тесты</th><th>Доп. балл</th>");
         sb.append("<th>Общий балл</th></tr>\n");
@@ -90,8 +93,9 @@ public class HtmlReporter {
 
     private String summaryTable(Group group, List<StudentReport> reports, Config config) {
         StringBuilder sb = new StringBuilder();
-        sb.append("<table><caption>Общая статистика группы ")
-                .append(escape(group.getName())).append("</caption>\n");
+        sb.append(String.format(
+                "<table><caption>Общая статистика группы %s</caption>%n",
+                escape(group.getName())));
         sb.append("<tr><th>Студент</th>");
         for (Lab lab : config.getLabs()) {
             if (labUsedIn(reports, lab.getId())) {
@@ -119,12 +123,12 @@ public class HtmlReporter {
 
     private String checkpointTable(Group group, List<StudentReport> reports, Config config) {
         StringBuilder sb = new StringBuilder();
-        sb.append("<table><caption>Оценки по контрольным точкам группы ")
-                .append(escape(group.getName())).append("</caption>\n");
+        sb.append(String.format(
+                "<table><caption>Оценки по контрольным точкам группы %s</caption>%n",
+                escape(group.getName())));
         sb.append("<tr><th>Студент</th>");
         for (Checkpoint cp : config.getCheckpoints()) {
-            sb.append("<th>").append(escape(cp.getName()))
-                    .append(" (").append(cp.getDate()).append(")</th>");
+            sb.append(String.format("<th>%s (%s)</th>", escape(cp.getName()), cp.getDate()));
         }
         sb.append("<th>Итог</th></tr>\n");
 

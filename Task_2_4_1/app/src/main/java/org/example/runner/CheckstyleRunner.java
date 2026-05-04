@@ -15,12 +15,13 @@ import java.util.Properties;
 
 /** Проверка кода Google Java Style через Checkstyle API. */
 public class CheckstyleRunner {
+    private static final int BUFFER_SIZE = 4096;
 
-    /** Количество нарушений стиля в src/main/java, или -1 при ошибке. */
+    /** Количество нарушений стиля в src/main/java. */
     public int countViolations(File projectDir) {
         File srcRoot = findJavaSrc(projectDir);
         if (srcRoot == null) {
-            return -1;
+            return 0;
         }
 
         List<File> javaFiles = new ArrayList<>();
@@ -45,19 +46,20 @@ public class CheckstyleRunner {
             checker.destroy();
             return listener.count;
         } catch (Exception e) {
-            return -1;
+            throw new CheckstyleRunException(
+                    "Не удалось выполнить проверку Checkstyle в " + projectDir.getAbsolutePath(), e);
         }
     }
 
     private File extractConfigToTempFile() throws Exception {
         InputStream in = getClass().getResourceAsStream("/google_checks.xml");
         if (in == null) {
-            throw new IllegalStateException("google_checks.xml нет в ресурсах");
+            throw new CheckstyleRunException("google_checks.xml нет в ресурсах");
         }
         File tmp = File.createTempFile("google_checks", ".xml");
         tmp.deleteOnExit();
         FileOutputStream out = new FileOutputStream(tmp);
-        byte[] buf = new byte[4096];
+        byte[] buf = new byte[BUFFER_SIZE];
         int n;
         while ((n = in.read(buf)) > 0) {
             out.write(buf, 0, n);

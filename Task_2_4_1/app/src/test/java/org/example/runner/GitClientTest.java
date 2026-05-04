@@ -2,6 +2,7 @@ package org.example.runner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -36,8 +37,7 @@ class GitClientTest {
         List<String> dates = new GitClient(30)
                 .commitDates(dir, LocalDate.now().minusDays(1), LocalDate.now().plusDays(1));
         assertNotNull(dates);
-        // Коммит был, поэтому хотя бы одна дата должна прийти (но не гарантируем: git может вернуть пусто в корнер-кейсе)
-        assertEquals(true, dates.size() >= 0);
+        assertEquals(true, dates.size() >= 1);
     }
 
     @Test
@@ -46,5 +46,14 @@ class GitClientTest {
         File target = new File(dir, "target");
         boolean ok = new GitClient(10).cloneOrUpdate("file:///no-such-repo-nowhere", target);
         assertEquals(false, ok);
+    }
+
+    @Test
+    void commitDatesThrowsOnNonGitDirectory() throws Exception {
+        File dir = Files.createTempDirectory("gc").toFile();
+
+        assertThrows(GitOperationException.class,
+                () -> new GitClient(10).commitDates(
+                        dir, LocalDate.now().minusDays(1), LocalDate.now().plusDays(1)));
     }
 }

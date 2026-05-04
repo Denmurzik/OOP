@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class ProcessHelperTest {
@@ -29,5 +30,12 @@ class ProcessHelperTest {
         assertEquals("out", r.output);
         assertTrue(r.timedOut);
         assertNotNull(new ProcessHelper());
+    }
+
+    @Test
+    void requestFields() {
+        ProcessHelper.Request request = new ProcessHelper.Request(null, 15, List.of("echo", "x"));
+        assertEquals(15, request.timeoutSeconds);
+        assertEquals(List.of("echo", "x"), request.command);
     }
 }

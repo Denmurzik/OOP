@@ -11,11 +11,11 @@ import org.junit.jupiter.api.Test;
 class CheckstyleRunnerTest {
 
     @Test
-    void returnsMinusOneWhenNoSrc() throws Exception {
+    void returnsZeroWhenNoSrc() throws Exception {
         File dir = Files.createTempDirectory("cs").toFile();
         dir.deleteOnExit();
         int v = new CheckstyleRunner().countViolations(dir);
-        assertEquals(-1, v);
+        assertEquals(0, v);
     }
 
     @Test
