@@ -49,7 +49,7 @@ loadScripts(document, 'script');</script>
 <div class="header">
 <h1>Index</h1>
 </div>
-<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
+<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:W">W</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a><span class="vertical-separator">|</span><a href="serialized-form.html">Serialized&nbsp;Form</a>
 <h2 class="title" id="I:A">A</h2>
 <dl class="index">
 <dt><a href="org/example/App.html" class="type-name-link" title="class in org.example">App</a> - Class in <a href="org/example/package-summary.html">org.example</a></dt>
@@ -58,6 +58,10 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="org/example/App.html#%3Cinit%3E()" class="member-name-link">App()</a> - Constructor for class org.example.<a href="org/example/App.html" title="class in org.example">App</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="org/example/AppCommand.html" class="type-name-link" title="interface in org.example">AppCommand</a> - Interface in <a href="org/example/package-summary.html">org.example</a></dt>
+<dd>
+<div class="block">Контракт для CLI-команд приложения.</div>
+</dd>
 <dt><a href="org/example/model/Assignment.html" class="type-name-link" title="class in org.example.model">Assignment</a> - Class in <a href="org/example/model/package-summary.html">org.example.model</a></dt>
 <dd>
 <div class="block">Задание студенту на проверку: его ник и список id лабораторных.</div>
@@ -108,6 +112,14 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Полный конструктор.</div>
 </dd>
+<dt><a href="org/example/runner/CheckstyleRunException.html" class="type-name-link" title="class in org.example.runner">CheckstyleRunException</a> - Exception Class in <a href="org/example/runner/package-summary.html">org.example.runner</a></dt>
+<dd>
+<div class="block">Ошибка при запуске проверки стиля.</div>
+</dd>
+<dt><a href="org/example/runner/CheckstyleRunException.html#%3Cinit%3E(java.lang.String)" class="member-name-link">CheckstyleRunException(String)</a> - Constructor for exception class org.example.runner.<a href="org/example/runner/CheckstyleRunException.html" title="class in org.example.runner">CheckstyleRunException</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/runner/CheckstyleRunException.html#%3Cinit%3E(java.lang.String,java.lang.Throwable)" class="member-name-link">CheckstyleRunException(String, Throwable)</a> - Constructor for exception class org.example.runner.<a href="org/example/runner/CheckstyleRunException.html" title="class in org.example.runner">CheckstyleRunException</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="org/example/runner/CheckstyleRunner.html" class="type-name-link" title="class in org.example.runner">CheckstyleRunner</a> - Class in <a href="org/example/runner/package-summary.html">org.example.runner</a></dt>
 <dd>
 <div class="block">Проверка кода Google Java Style через Checkstyle API.</div>
@@ -118,6 +130,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Клонирует репозиторий в targetDir или обновляет его до origin/HEAD.</div>
 </dd>
+<dt><a href="org/example/runner/ProcessHelper.Request.html#command" class="member-name-link">command</a> - Variable in class org.example.runner.<a href="org/example/runner/ProcessHelper.Request.html" title="class in org.example.runner">ProcessHelper.Request</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="org/example/runner/GitClient.html#commitDates(java.io.File,java.time.LocalDate,java.time.LocalDate)" class="member-name-link">commitDates(File, LocalDate, LocalDate)</a> - Method in class org.example.runner.<a href="org/example/runner/GitClient.html" title="class in org.example.runner">GitClient</a></dt>
 <dd>
 <div class="block">Даты коммитов в диапазоне, в формате ISO.</div>
@@ -130,7 +144,7 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/runner/CheckstyleRunner.html#countViolations(java.io.File)" class="member-name-link">countViolations(File)</a> - Method in class org.example.runner.<a href="org/example/runner/CheckstyleRunner.html" title="class in org.example.runner">CheckstyleRunner</a></dt>
 <dd>
-<div class="block">Количество нарушений стиля в src/main/java, или -1 при ошибке.</div>
+<div class="block">Количество нарушений стиля в src/main/java.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:D">D</h2>
@@ -262,6 +276,14 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Создаёт клиент с таймаутом на каждую команду.</div>
 </dd>
+<dt><a href="org/example/runner/GitOperationException.html" class="type-name-link" title="class in org.example.runner">GitOperationException</a> - Exception Class in <a href="org/example/runner/package-summary.html">org.example.runner</a></dt>
+<dd>
+<div class="block">Ошибка выполнения git-команды.</div>
+</dd>
+<dt><a href="org/example/runner/GitOperationException.html#%3Cinit%3E(java.lang.String)" class="member-name-link">GitOperationException(String)</a> - Constructor for exception class org.example.runner.<a href="org/example/runner/GitOperationException.html" title="class in org.example.runner">GitOperationException</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/runner/GitOperationException.html#%3Cinit%3E(java.lang.String,java.lang.Throwable)" class="member-name-link">GitOperationException(String, Throwable)</a> - Constructor for exception class org.example.runner.<a href="org/example/runner/GitOperationException.html" title="class in org.example.runner">GitOperationException</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="org/example/Scoring.html#grade(int,org.example.model.Config)" class="member-name-link">grade(int, Config)</a> - Static method in class org.example.<a href="org/example/Scoring.html" title="class in org.example">Scoring</a></dt>
 <dd>
 <div class="block">Оценка по общей сумме баллов.</div>
@@ -379,6 +401,10 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="org/example/runner/ProcessHelper.html#%3Cinit%3E()" class="member-name-link">ProcessHelper()</a> - Constructor for class org.example.runner.<a href="org/example/runner/ProcessHelper.html" title="class in org.example.runner">ProcessHelper</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="org/example/runner/ProcessHelper.Request.html" class="type-name-link" title="class in org.example.runner">ProcessHelper.Request</a> - Class in <a href="org/example/runner/package-summary.html">org.example.runner</a></dt>
+<dd>
+<div class="block">Параметры запуска процесса.</div>
+</dd>
 <dt><a href="org/example/runner/ProcessHelper.Result.html" class="type-name-link" title="class in org.example.runner">ProcessHelper.Result</a> - Class in <a href="org/example/runner/package-summary.html">org.example.runner</a></dt>
 <dd>
 <div class="block">Результат выполнения процесса.</div>
@@ -386,6 +412,18 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:R">R</h2>
 <dl class="index">
+<dt><a href="org/example/ReportCommand.html" class="type-name-link" title="class in org.example">ReportCommand</a> - Class in <a href="org/example/package-summary.html">org.example</a></dt>
+<dd>
+<div class="block">Команда, которая строит HTML-отчёт по DSL-конфигурации.</div>
+</dd>
+<dt><a href="org/example/ReportCommand.html#%3Cinit%3E(org.example.dsl.DslLoader,org.example.report.HtmlReporter)" class="member-name-link">ReportCommand(DslLoader, HtmlReporter)</a> - Constructor for class org.example.<a href="org/example/ReportCommand.html" title="class in org.example">ReportCommand</a></dt>
+<dd>
+<div class="block">Создаёт команду отчёта с требуемыми зависимостями.</div>
+</dd>
+<dt><a href="org/example/runner/ProcessHelper.Request.html#%3Cinit%3E(java.io.File,long,java.util.List)" class="member-name-link">Request(File, long, List&lt;String&gt;)</a> - Constructor for class org.example.runner.<a href="org/example/runner/ProcessHelper.Request.html" title="class in org.example.runner">ProcessHelper.Request</a></dt>
+<dd>
+<div class="block">Создаёт параметры запуска процесса.</div>
+</dd>
 <dt><a href="org/example/runner/ProcessHelper.Result.html#%3Cinit%3E(int,java.lang.String,boolean)" class="member-name-link">Result(int, String, boolean)</a> - Constructor for class org.example.runner.<a href="org/example/runner/ProcessHelper.Result.html" title="class in org.example.runner">ProcessHelper.Result</a></dt>
 <dd>
 <div class="block">Создаёт результат.</div>
@@ -398,6 +436,24 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Запускает команду и возвращает результат.</div>
 </dd>
+<dt><a href="org/example/AppCommand.html#run(java.io.File,java.io.PrintStream)" class="member-name-link">run(File, PrintStream)</a> - Method in interface org.example.<a href="org/example/AppCommand.html" title="interface in org.example">AppCommand</a></dt>
+<dd>
+<div class="block">Выполняет команду и пишет результат в указанный поток.</div>
+</dd>
+<dt><a href="org/example/ReportCommand.html#run(java.io.File,java.io.PrintStream)" class="member-name-link">run(File, PrintStream)</a> - Method in class org.example.<a href="org/example/ReportCommand.html" title="class in org.example">ReportCommand</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/runner/ProcessHelper.html#run(org.example.runner.ProcessHelper.Request)" class="member-name-link">run(ProcessHelper.Request)</a> - Static method in class org.example.runner.<a href="org/example/runner/ProcessHelper.html" title="class in org.example.runner">ProcessHelper</a></dt>
+<dd>
+<div class="block">Запускает команду и возвращает результат.</div>
+</dd>
+<dt><a href="org/example/runner/RunnerException.html" class="type-name-link" title="class in org.example.runner">RunnerException</a> - Exception Class in <a href="org/example/runner/package-summary.html">org.example.runner</a></dt>
+<dd>
+<div class="block">Базовое исключение для ошибок запуска внешних проверок.</div>
+</dd>
+<dt><a href="org/example/runner/RunnerException.html#%3Cinit%3E(java.lang.String)" class="member-name-link">RunnerException(String)</a> - Constructor for exception class org.example.runner.<a href="org/example/runner/RunnerException.html" title="class in org.example.runner">RunnerException</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/runner/RunnerException.html#%3Cinit%3E(java.lang.String,java.lang.Throwable)" class="member-name-link">RunnerException(String, Throwable)</a> - Constructor for exception class org.example.runner.<a href="org/example/runner/RunnerException.html" title="class in org.example.runner">RunnerException</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:S">S</h2>
 <dl class="index">
@@ -516,12 +572,19 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/runner/ProcessHelper.Result.html#timedOut" class="member-name-link">timedOut</a> - Variable in class org.example.runner.<a href="org/example/runner/ProcessHelper.Result.html" title="class in org.example.runner">ProcessHelper.Result</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="org/example/runner/ProcessHelper.Request.html#timeoutSeconds" class="member-name-link">timeoutSeconds</a> - Variable in class org.example.runner.<a href="org/example/runner/ProcessHelper.Request.html" title="class in org.example.runner">ProcessHelper.Request</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="org/example/model/StudentReport.html#totalScore()" class="member-name-link">totalScore()</a> - Method in class org.example.model.<a href="org/example/model/StudentReport.html" title="class in org.example.model">StudentReport</a></dt>
 <dd>
 <div class="block">Сумма баллов по всем лабам студента.</div>
 </dd>
 </dl>
-<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
+<h2 class="title" id="I:W">W</h2>
+<dl class="index">
+<dt><a href="org/example/runner/ProcessHelper.Request.html#workDir" class="member-name-link">workDir</a> - Variable in class org.example.runner.<a href="org/example/runner/ProcessHelper.Request.html" title="class in org.example.runner">ProcessHelper.Request</a></dt>
+<dd>&nbsp;</dd>
+</dl>
+<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:W">W</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a><span class="vertical-separator">|</span><a href="serialized-form.html">Serialized&nbsp;Form</a></main>
 </div>
 </div>
 </body>

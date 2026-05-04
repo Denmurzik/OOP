@@ -105,8 +105,13 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Class</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static class&nbsp;</code></div>
-<div class="col-second even-row-color"><code><a href="ProcessHelper.Result.html" class="type-name-link" title="class in org.example.runner">ProcessHelper.Result</a></code></div>
+<div class="col-second even-row-color"><code><a href="ProcessHelper.Request.html" class="type-name-link" title="class in org.example.runner">ProcessHelper.Request</a></code></div>
 <div class="col-last even-row-color">
+<div class="block">Параметры запуска процесса.</div>
+</div>
+<div class="col-first odd-row-color"><code>static class&nbsp;</code></div>
+<div class="col-second odd-row-color"><code><a href="ProcessHelper.Result.html" class="type-name-link" title="class in org.example.runner">ProcessHelper.Result</a></code></div>
+<div class="col-last odd-row-color">
 <div class="block">Результат выполнения процесса.</div>
 </div>
 </div>
@@ -141,6 +146,11 @@ loadScripts(document, 'script');</script>
  long&nbsp;timeoutSeconds,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>...&nbsp;command)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Запускает команду и возвращает результат.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="ProcessHelper.Result.html" title="class in org.example.runner">ProcessHelper.Result</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#run(org.example.runner.ProcessHelper.Request)" class="member-name-link">run</a><wbr>(<a href="ProcessHelper.Request.html" title="class in org.example.runner">ProcessHelper.Request</a>&nbsp;request)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Запускает команду и возвращает результат.</div>
 </div>
 </div>
@@ -180,6 +190,20 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="ProcessHelper.Result.html" title="class in org.example.runner">ProcessHelper.Result</a></span>&nbsp;<span class="element-name">run</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link">File</a>&nbsp;workDir,
  long&nbsp;timeoutSeconds,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>...&nbsp;command)</span>
+                                throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a>,
+<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></span></div>
+<div class="block">Запускает команду и возвращает результат.</div>
+<dl class="notes">
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></code></dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></code></dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="run(org.example.runner.ProcessHelper.Request)">
+<h3>run</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="ProcessHelper.Result.html" title="class in org.example.runner">ProcessHelper.Result</a></span>&nbsp;<span class="element-name">run</span><wbr><span class="parameters">(<a href="ProcessHelper.Request.html" title="class in org.example.runner">ProcessHelper.Request</a>&nbsp;request)</span>
                                 throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a>,
 <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></span></div>
 <div class="block">Запускает команду и возвращает результат.</div>
