@@ -2,7 +2,6 @@ package org.example;
 
 import java.io.File;
 import java.time.LocalDate;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -166,19 +165,14 @@ public class Checker {
         if (from == null || !from.isBefore(to)) {
             return 0.0;
         }
-        List<String> dates = git.commitDates(repoDir, from, to);
+        List<LocalDate> dates = git.commitDates(repoDir, from, to);
         if (dates.isEmpty()) {
             return 0.0;
         }
         Set<Long> activeWeeks = new HashSet<>();
-        for (String s : dates) {
-            try {
-                LocalDate d = ZonedDateTime.parse(s).toLocalDate();
-                long days = d.toEpochDay() - from.toEpochDay();
-                activeWeeks.add(days / 7);
-            } catch (Exception ignore) {
-                // неверная дата — пропускаем
-            }
+        for (LocalDate date : dates) {
+            long days = date.toEpochDay() - from.toEpochDay();
+            activeWeeks.add(days / 7);
         }
         long totalWeeks = (to.toEpochDay() - from.toEpochDay()) / 7 + 1;
         if (totalWeeks < 1) {

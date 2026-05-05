@@ -34,10 +34,11 @@ class GitClientTest {
         ProcessHelper.run(dir, 30, "git", "add", "a.txt");
         ProcessHelper.run(dir, 30, "git", "commit", "-m", "init");
 
-        List<String> dates = new GitClient(30)
+        List<LocalDate> dates = new GitClient(30)
                 .commitDates(dir, LocalDate.now().minusDays(1), LocalDate.now().plusDays(1));
         assertNotNull(dates);
         assertEquals(true, dates.size() >= 1);
+        assertEquals(LocalDate.now(), dates.get(0));
     }
 
     @Test

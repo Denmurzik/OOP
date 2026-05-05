@@ -2,6 +2,7 @@ package org.example.runner;
 
 import java.io.File;
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,9 +74,9 @@ public class GitClient {
         }
     }
 
-    /** Даты коммитов в диапазоне, в формате ISO. */
-    public List<String> commitDates(File repoDir, LocalDate from, LocalDate to) {
-        List<String> list = new ArrayList<>();
+    /** Даты коммитов в диапазоне. */
+    public List<LocalDate> commitDates(File repoDir, LocalDate from, LocalDate to) {
+        List<LocalDate> list = new ArrayList<>();
         try {
             ProcessHelper.Result r = ProcessHelper.run(
                     repoDir, timeoutSeconds,
@@ -89,11 +90,13 @@ public class GitClient {
             }
             for (String line : r.output.split("\n")) {
                 if (!line.isBlank()) {
-                    list.add(line.trim());
+                    try {
+                        list.add(ZonedDateTime.parse(line.trim()).toLocalDate());
+                    } catch (Exception ignore) {
+                        // некорректную дату пропускаем
+                    }
                 }
             }
-        } catch (GitOperationException e) {
-            throw e;
         } catch (Exception e) {
             throw new GitOperationException(
                     "Не удалось получить историю коммитов для " + repoDir.getAbsolutePath(), e);
