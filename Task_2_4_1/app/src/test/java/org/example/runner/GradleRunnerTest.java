@@ -105,10 +105,14 @@ class GradleRunnerTest {
             for (int i = 0; i < parts.length; i++) {
                 String value = escapeBatch(parts[i].trim());
                 fw.write("  if " + i + "==0 (\r\n");
-                fw.write("    > build\\test-results\\test\\TEST-" + i + ".xml echo " + value + "\r\n");
+                fw.write(
+                        "    > build\\test-results\\test\\TEST-"
+                                + i + ".xml echo " + value + "\r\n");
                 fw.write("  ) else (\r\n");
                 fw.write("    mkdir module" + i + "\\build\\test-results\\test 2>nul\r\n");
-                fw.write("    > module" + i + "\\build\\test-results\\test\\TEST-" + i + ".xml echo " + value + "\r\n");
+                fw.write(
+                        "    > module" + i + "\\build\\test-results\\test\\TEST-"
+                                + i + ".xml echo " + value + "\r\n");
                 fw.write("  )\r\n");
             }
         }
@@ -125,10 +129,14 @@ class GradleRunnerTest {
             for (int i = 0; i < parts.length; i++) {
                 String value = parts[i].trim().replace("\"", "\\\"");
                 if (i == 0) {
-                    fw.write("printf '%s\\n' \"" + value + "\" > build/test-results/test/TEST-" + i + ".xml\n");
+                    fw.write(
+                            "printf '%s\\n' \"" + value
+                                    + "\" > build/test-results/test/TEST-" + i + ".xml\n");
                 } else {
                     fw.write("mkdir -p module" + i + "/build/test-results/test\n");
-                    fw.write("printf '%s\\n' \"" + value + "\" > module" + i + "/build/test-results/test/TEST-" + i + ".xml\n");
+                    fw.write(
+                            "printf '%s\\n' \"" + value + "\" > module"
+                                    + i + "/build/test-results/test/TEST-" + i + ".xml\n");
                 }
             }
         }

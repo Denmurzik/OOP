@@ -83,7 +83,8 @@ public class HtmlReporter {
             sb.append("<td>").append(res.getTestsPassed()).append('/')
                     .append(res.getTestsFailed()).append('/')
                     .append(res.getTestsSkipped()).append("</td>");
-            sb.append("<td>").append(res.getSubmissionDate() == null ? "-" : res.getSubmissionDate())
+            sb.append("<td>").append(
+                            res.getSubmissionDate() == null ? "-" : res.getSubmissionDate())
                     .append("</td>");
             sb.append("<td>").append(escape(res.getStatus())).append("</td>");
             sb.append("<td>").append(res.getBonus()).append("</td>");

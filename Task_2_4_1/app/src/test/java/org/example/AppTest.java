@@ -45,9 +45,13 @@ class AppTest {
 
     @Test
     void reportCommandFailsClearlyWhenScriptMissing() {
-        ReportCommand command = new ReportCommand(new org.example.dsl.DslLoader(), new org.example.report.HtmlReporter());
+        ReportCommand command = new ReportCommand(
+                new org.example.dsl.DslLoader(),
+                new org.example.report.HtmlReporter());
         try {
-            command.run(new java.io.File(System.getProperty("java.io.tmpdir"), "no-script-dir"), System.out);
+            command.run(
+                    new java.io.File(System.getProperty("java.io.tmpdir"), "no-script-dir"),
+                    System.out);
         } catch (Exception e) {
             assertEquals("В рабочей директории не найден oop-checker.groovy", e.getMessage());
             return;

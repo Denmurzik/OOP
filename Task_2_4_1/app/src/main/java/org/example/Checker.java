@@ -89,7 +89,8 @@ public class Checker {
                     continue;
                 }
 
-                LocalDate submissionDate = git.lastCommitDateForPath(repoDir, repoState.branch, labDir);
+                LocalDate submissionDate = git.lastCommitDateForPath(
+                        repoDir, repoState.branch, labDir);
                 r.setSubmissionDate(submissionDate);
                 if (submissionDate == null) {
                     r.setStatus("LAB_NOT_FOUND");

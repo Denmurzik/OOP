@@ -33,7 +33,8 @@ public class ReportCommand implements AppCommand {
         Config config = dslLoader.load(script);
         GitAuthCheck gitAuthCheck = new GitAuthCheck();
         if (!gitAuthCheck.checkRemotes(config)) {
-            throw new IllegalStateException("git недоступен или удалённые операции зависают на аутентификации");
+            throw new IllegalStateException(
+                    "git недоступен или удалённые операции зависают на аутентификации");
         }
         Checker checker = new Checker(config, workDir);
         Map<Group, List<StudentReport>> data = checker.run();

@@ -58,7 +58,11 @@ class CheckerTest {
         LocalDate unrelatedDate = LocalDate.now().minusDays(1);
         File remote = createRemoteRepo(submissionDate, unrelatedDate);
 
-        Config cfg = baseConfig(remote.getAbsolutePath(), 10, submissionDate.plusDays(1), submissionDate.plusDays(20));
+        Config cfg = baseConfig(
+                remote.getAbsolutePath(),
+                10,
+                submissionDate.plusDays(1),
+                submissionDate.plusDays(20));
         cfg.getCheckpoints().add(new Checkpoint("КТ", submissionDate.plusDays(2)));
 
         File work = Files.createTempDirectory("checker").toFile();
@@ -77,7 +81,11 @@ class CheckerTest {
         LocalDate submissionDate = LocalDate.now().minusWeeks(9);
         File remote = createRemoteRepo(submissionDate, null);
 
-        Config cfg = baseConfig(remote.getAbsolutePath(), 10, submissionDate.plusWeeks(1), submissionDate.plusWeeks(3));
+        Config cfg = baseConfig(
+                remote.getAbsolutePath(),
+                10,
+                submissionDate.plusWeeks(1),
+                submissionDate.plusWeeks(3));
         cfg.getSettings().getGradeMinPercent().put(4, 70);
         cfg.getSettings().getGradeMinPercent().put(3, 50);
         cfg.getSettings().setActivityThreshold(0.95);
@@ -100,7 +108,11 @@ class CheckerTest {
         assertNotNull(data);
     }
 
-    private Config baseConfig(String repoUrl, int maxScore, LocalDate softDeadline, LocalDate hardDeadline) {
+    private Config baseConfig(
+            String repoUrl,
+            int maxScore,
+            LocalDate softDeadline,
+            LocalDate hardDeadline) {
         Config cfg = new Config();
         cfg.getLabs().add(new Lab("2-1-1", "Лаба", maxScore, softDeadline, hardDeadline));
         Group g = new Group("G");
@@ -113,7 +125,9 @@ class CheckerTest {
         return cfg;
     }
 
-    private File createRemoteRepo(LocalDate labCommitDate, LocalDate unrelatedCommitDate) throws Exception {
+    private File createRemoteRepo(
+            LocalDate labCommitDate,
+            LocalDate unrelatedCommitDate) throws Exception {
         File remote = Files.createTempDirectory("checker-remote").toFile();
         ProcessHelper.run(remote, 30, "git", "init", "--bare", "--initial-branch=main");
 
@@ -152,7 +166,10 @@ class CheckerTest {
                 fw.write("echo %args% | findstr /C:\"test\" >nul\r\n");
                 fw.write("if not errorlevel 1 (\r\n");
                 fw.write("  mkdir build\\test-results\\test 2>nul\r\n");
-                fw.write("  > build\\test-results\\test\\TEST-ok.xml echo ^<testsuite tests=\"2\" failures=\"0\" errors=\"0\" skipped=\"0\"/^>\r\n");
+                fw.write(
+                        "  > build\\test-results\\test\\TEST-ok.xml echo "
+                                + "^<testsuite tests=\"2\" failures=\"0\" "
+                                + "errors=\"0\" skipped=\"0\"/^>\r\n");
                 fw.write(")\r\n");
                 fw.write("exit /b 0\r\n");
             }
@@ -163,7 +180,10 @@ class CheckerTest {
                 fw.write("args=\"$*\"\n");
                 fw.write("case \"$args\" in *\"test\"*)\n");
                 fw.write("mkdir -p build/test-results/test\n");
-                fw.write("printf '%s\\n' '<testsuite tests=\"2\" failures=\"0\" errors=\"0\" skipped=\"0\"/>' > build/test-results/test/TEST-ok.xml\n");
+                fw.write(
+                        "printf '%s\\n' '<testsuite tests=\"2\" failures=\"0\" "
+                                + "errors=\"0\" skipped=\"0\"/>' > "
+                                + "build/test-results/test/TEST-ok.xml\n");
                 fw.write(";; esac\n");
                 fw.write("exit 0\n");
             }

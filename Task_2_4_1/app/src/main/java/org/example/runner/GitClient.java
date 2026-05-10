@@ -24,6 +24,7 @@ public class GitClient {
         public final String branch;
         public final String message;
 
+        /** Создаёт состояние подготовленного репозитория. */
         public RepoState(boolean available, String branch, String message) {
             this.available = available;
             this.branch = branch;

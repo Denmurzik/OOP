@@ -27,6 +27,7 @@ public class GradleRunner {
         public final int exitCode;
         public final String output;
 
+        /** Создаёт результат запуска gradle-команды. */
         public RunResult(boolean successful, boolean timedOut, int exitCode, String output) {
             this.successful = successful;
             this.timedOut = timedOut;
@@ -41,6 +42,7 @@ public class GradleRunner {
         public int failed;
         public int skipped;
 
+        /** Создаёт результат запуска тестов с исходным статусом команды. */
         public TestRunResult(boolean successful, boolean timedOut, int exitCode, String output) {
             super(successful, timedOut, exitCode, output);
         }
@@ -142,9 +144,14 @@ public class GradleRunner {
 
             String[] cmdArr = full.toArray(new String[0]);
             ProcessHelper.Result r = ProcessHelper.run(projectDir, timeoutSeconds, cmdArr);
-            return new TestRunResult(r.exitCode == 0 && !r.timedOut, r.timedOut, r.exitCode, r.output);
+            return new TestRunResult(
+                    r.exitCode == 0 && !r.timedOut, r.timedOut, r.exitCode, r.output);
         } catch (Exception e) {
-            return new TestRunResult(false, false, -1, e.getMessage() == null ? "" : e.getMessage());
+            return new TestRunResult(
+                    false,
+                    false,
+                    -1,
+                    e.getMessage() == null ? "" : e.getMessage());
         }
     }
 

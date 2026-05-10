@@ -51,7 +51,11 @@ class GitClientTest {
         ProcessHelper.run(dir, 30, "git", "commit", "-m", "init");
 
         List<LocalDate> dates = new GitClient(30)
-                .commitDates(dir, "main", LocalDate.now().minusDays(1), LocalDate.now().plusDays(1));
+                .commitDates(
+                        dir,
+                        "main",
+                        LocalDate.now().minusDays(1),
+                        LocalDate.now().plusDays(1));
         assertNotNull(dates);
         assertTrue(dates.size() >= 1);
         assertEquals(LocalDate.now(), dates.get(0));
@@ -80,7 +84,8 @@ class GitClientTest {
     void prepareRepositoryFailsOnInvalidUrl() throws Exception {
         File dir = Files.createTempDirectory("gc").toFile();
         File target = new File(dir, "target");
-        GitClient.RepoState state = new GitClient(10).prepareRepository("file:///no-such-repo-nowhere", target);
+        GitClient.RepoState state = new GitClient(10).prepareRepository(
+                "file:///no-such-repo-nowhere", target);
         assertEquals(false, state.available);
         assertEquals("REPO_UNAVAILABLE", state.message);
     }
@@ -91,7 +96,8 @@ class GitClientTest {
         File dir = Files.createTempDirectory("gc").toFile();
         File target = new File(dir, "target");
 
-        GitClient.RepoState state = new GitClient(30).prepareRepository(remote.getAbsolutePath(), target);
+        GitClient.RepoState state = new GitClient(30).prepareRepository(
+                remote.getAbsolutePath(), target);
 
         assertEquals(false, state.available);
         assertEquals("BRANCH_NOT_FOUND", state.message);

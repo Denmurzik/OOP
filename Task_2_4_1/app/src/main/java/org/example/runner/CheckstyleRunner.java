@@ -49,7 +49,9 @@ public class CheckstyleRunner {
             return listener.count;
         } catch (Exception e) {
             throw new CheckstyleRunException(
-                    "Не удалось выполнить проверку Checkstyle в " + projectDir.getAbsolutePath(), e);
+                    "Не удалось выполнить проверку Checkstyle в "
+                            + projectDir.getAbsolutePath(),
+                    e);
         }
     }
 
@@ -131,7 +133,9 @@ public class CheckstyleRunner {
             return;
         }
         for (File file : files) {
-            if (file.isDirectory() && !"src".equals(file.getName()) && !"build".equals(file.getName())) {
+            if (file.isDirectory()
+                    && !"src".equals(file.getName())
+                    && !"build".equals(file.getName())) {
                 collectJavaRoots(file, out);
             }
         }
