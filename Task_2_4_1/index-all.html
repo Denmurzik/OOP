@@ -74,9 +74,13 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Полный конструктор.</div>
 </dd>
+<dt><a href="org/example/runner/GitClient.RepoState.html#available" class="member-name-link">available</a> - Variable in class org.example.runner.<a href="org/example/runner/GitClient.RepoState.html" title="class in org.example.runner">GitClient.RepoState</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:B">B</h2>
 <dl class="index">
+<dt><a href="org/example/runner/GitClient.RepoState.html#branch" class="member-name-link">branch</a> - Variable in class org.example.runner.<a href="org/example/runner/GitClient.RepoState.html" title="class in org.example.runner">GitClient.RepoState</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="org/example/runner/GradleRunner.html#build(java.io.File)" class="member-name-link">build(File)</a> - Method in class org.example.runner.<a href="org/example/runner/GradleRunner.html" title="class in org.example.runner">GradleRunner</a></dt>
 <dd>
 <div class="block">Запускает сборку без тестов, возвращает true при успехе.</div>
@@ -112,6 +116,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Полный конструктор.</div>
 </dd>
+<dt><a href="org/example/runner/GitAuthCheck.html#checkRemotes(org.example.model.Config)" class="member-name-link">checkRemotes(Config)</a> - Method in class org.example.runner.<a href="org/example/runner/GitAuthCheck.html" title="class in org.example.runner">GitAuthCheck</a></dt>
+<dd>
+<div class="block">Проверяет, что обращения к удалённым репозиториям завершаются без зависания на аутентификации.</div>
+</dd>
 <dt><a href="org/example/runner/CheckstyleRunException.html" class="type-name-link" title="class in org.example.runner">CheckstyleRunException</a> - Exception Class in <a href="org/example/runner/package-summary.html">org.example.runner</a></dt>
 <dd>
 <div class="block">Ошибка при запуске проверки стиля.</div>
@@ -126,15 +134,11 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="org/example/runner/CheckstyleRunner.html#%3Cinit%3E()" class="member-name-link">CheckstyleRunner()</a> - Constructor for class org.example.runner.<a href="org/example/runner/CheckstyleRunner.html" title="class in org.example.runner">CheckstyleRunner</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="org/example/runner/GitClient.html#cloneOrUpdate(java.lang.String,java.io.File)" class="member-name-link">cloneOrUpdate(String, File)</a> - Method in class org.example.runner.<a href="org/example/runner/GitClient.html" title="class in org.example.runner">GitClient</a></dt>
-<dd>
-<div class="block">Клонирует репозиторий в targetDir или обновляет его до origin/HEAD.</div>
-</dd>
 <dt><a href="org/example/runner/ProcessHelper.Request.html#command" class="member-name-link">command</a> - Variable in class org.example.runner.<a href="org/example/runner/ProcessHelper.Request.html" title="class in org.example.runner">ProcessHelper.Request</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="org/example/runner/GitClient.html#commitDates(java.io.File,java.time.LocalDate,java.time.LocalDate)" class="member-name-link">commitDates(File, LocalDate, LocalDate)</a> - Method in class org.example.runner.<a href="org/example/runner/GitClient.html" title="class in org.example.runner">GitClient</a></dt>
+<dt><a href="org/example/runner/GitClient.html#commitDates(java.io.File,java.lang.String,java.time.LocalDate,java.time.LocalDate)" class="member-name-link">commitDates(File, String, LocalDate, LocalDate)</a> - Method in class org.example.runner.<a href="org/example/runner/GitClient.html" title="class in org.example.runner">GitClient</a></dt>
 <dd>
-<div class="block">Даты коммитов в диапазоне.</div>
+<div class="block">Даты коммитов официальной ветки в диапазоне.</div>
 </dd>
 <dt><a href="org/example/model/Config.html" class="type-name-link" title="class in org.example.model">Config</a> - Class in <a href="org/example/model/package-summary.html">org.example.model</a></dt>
 <dd>
@@ -149,10 +153,6 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:D">D</h2>
 <dl class="index">
-<dt><a href="org/example/runner/GitClient.html#defaultBranch(java.io.File)" class="member-name-link">defaultBranch(File)</a> - Method in class org.example.runner.<a href="org/example/runner/GitClient.html" title="class in org.example.runner">GitClient</a></dt>
-<dd>
-<div class="block">Возвращает имя ветки origin/HEAD (main или master), или null.</div>
-</dd>
 <dt><a href="org/example/dsl/DslLoader.html" class="type-name-link" title="class in org.example.dsl">DslLoader</a> - Class in <a href="org/example/dsl/package-summary.html">org.example.dsl</a></dt>
 <dd>
 <div class="block">Загружает Groovy-DSL-скрипт и возвращает построенный Config.</div>
@@ -162,12 +162,14 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:E">E</h2>
 <dl class="index">
+<dt><a href="org/example/runner/GradleRunner.RunResult.html#exitCode" class="member-name-link">exitCode</a> - Variable in class org.example.runner.<a href="org/example/runner/GradleRunner.RunResult.html" title="class in org.example.runner">GradleRunner.RunResult</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="org/example/runner/ProcessHelper.Result.html#exitCode" class="member-name-link">exitCode</a> - Variable in class org.example.runner.<a href="org/example/runner/ProcessHelper.Result.html" title="class in org.example.runner">ProcessHelper.Result</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:F">F</h2>
 <dl class="index">
-<dt><a href="org/example/runner/GradleRunner.TestStats.html#failed" class="member-name-link">failed</a> - Variable in class org.example.runner.<a href="org/example/runner/GradleRunner.TestStats.html" title="class in org.example.runner">GradleRunner.TestStats</a></dt>
+<dt><a href="org/example/runner/GradleRunner.TestRunResult.html#failed" class="member-name-link">failed</a> - Variable in class org.example.runner.<a href="org/example/runner/GradleRunner.TestRunResult.html" title="class in org.example.runner">GradleRunner.TestRunResult</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/model/Config.html#findGroupOf(java.lang.String)" class="member-name-link">findGroupOf(String)</a> - Method in class org.example.model.<a href="org/example/model/Config.html" title="class in org.example.model">Config</a></dt>
 <dd>
@@ -246,11 +248,15 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/model/Lab.html#getSoftDeadline()" class="member-name-link">getSoftDeadline()</a> - Method in class org.example.model.<a href="org/example/model/Lab.html" title="class in org.example.model">Lab</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="org/example/model/LabResult.html#getStatus()" class="member-name-link">getStatus()</a> - Method in class org.example.model.<a href="org/example/model/LabResult.html" title="class in org.example.model">LabResult</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="org/example/model/LabResult.html#getStudent()" class="member-name-link">getStudent()</a> - Method in class org.example.model.<a href="org/example/model/LabResult.html" title="class in org.example.model">LabResult</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/model/StudentReport.html#getStudent()" class="member-name-link">getStudent()</a> - Method in class org.example.model.<a href="org/example/model/StudentReport.html" title="class in org.example.model">StudentReport</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/model/Group.html#getStudents()" class="member-name-link">getStudents()</a> - Method in class org.example.model.<a href="org/example/model/Group.html" title="class in org.example.model">Group</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/model/LabResult.html#getSubmissionDate()" class="member-name-link">getSubmissionDate()</a> - Method in class org.example.model.<a href="org/example/model/LabResult.html" title="class in org.example.model">LabResult</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/model/LabResult.html#getTestsFailed()" class="member-name-link">getTestsFailed()</a> - Method in class org.example.model.<a href="org/example/model/LabResult.html" title="class in org.example.model">LabResult</a></dt>
 <dd>&nbsp;</dd>
@@ -276,6 +282,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Создаёт клиент с таймаутом на каждую команду.</div>
 </dd>
+<dt><a href="org/example/runner/GitClient.RepoState.html" class="type-name-link" title="class in org.example.runner">GitClient.RepoState</a> - Class in <a href="org/example/runner/package-summary.html">org.example.runner</a></dt>
+<dd>
+<div class="block">Результат подготовки локальной копии репозитория.</div>
+</dd>
 <dt><a href="org/example/runner/GitOperationException.html" class="type-name-link" title="class in org.example.runner">GitOperationException</a> - Exception Class in <a href="org/example/runner/package-summary.html">org.example.runner</a></dt>
 <dd>
 <div class="block">Ошибка выполнения git-команды.</div>
@@ -300,9 +310,13 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Создаёт раннер с общим таймаутом на команду.</div>
 </dd>
-<dt><a href="org/example/runner/GradleRunner.TestStats.html" class="type-name-link" title="class in org.example.runner">GradleRunner.TestStats</a> - Class in <a href="org/example/runner/package-summary.html">org.example.runner</a></dt>
+<dt><a href="org/example/runner/GradleRunner.RunResult.html" class="type-name-link" title="class in org.example.runner">GradleRunner.RunResult</a> - Class in <a href="org/example/runner/package-summary.html">org.example.runner</a></dt>
 <dd>
-<div class="block">Итог тестов: сколько прошло, упало, пропущено.</div>
+<div class="block">Результат запуска gradle-команды.</div>
+</dd>
+<dt><a href="org/example/runner/GradleRunner.TestRunResult.html" class="type-name-link" title="class in org.example.runner">GradleRunner.TestRunResult</a> - Class in <a href="org/example/runner/package-summary.html">org.example.runner</a></dt>
+<dd>
+<div class="block">Итог тестов: статус запуска и количества passed/failed/skipped.</div>
 </dd>
 <dt><a href="org/example/model/Group.html" class="type-name-link" title="class in org.example.model">Group</a> - Class in <a href="org/example/model/package-summary.html">org.example.model</a></dt>
 <dd>
@@ -364,6 +378,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Создаёт пустой результат для пары "студент и лаба".</div>
 </dd>
+<dt><a href="org/example/runner/GitClient.html#lastCommitDateForPath(java.io.File,java.lang.String,java.io.File)" class="member-name-link">lastCommitDateForPath(File, String, File)</a> - Method in class org.example.runner.<a href="org/example/runner/GitClient.html" title="class in org.example.runner">GitClient</a></dt>
+<dd>
+<div class="block">Последняя дата коммита в ветке, затронувшего указанный путь.</div>
+</dd>
 <dt><a href="org/example/dsl/DslLoader.html#load(java.io.File)" class="member-name-link">load(File)</a> - Method in class org.example.dsl.<a href="org/example/dsl/DslLoader.html" title="class in org.example.dsl">DslLoader</a></dt>
 <dd>
 <div class="block">Читает DSL из файла и возвращает заполненный конфиг.</div>
@@ -375,6 +393,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Парсит команду, находит DSL-скрипт и запускает проверку.</div>
 </dd>
+<dt><a href="org/example/runner/GitClient.RepoState.html#message" class="member-name-link">message</a> - Variable in class org.example.runner.<a href="org/example/runner/GitClient.RepoState.html" title="class in org.example.runner">GitClient.RepoState</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:O">O</h2>
 <dl class="index">
@@ -388,13 +408,19 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/runner/package-summary.html">org.example.runner</a> - package org.example.runner</dt>
 <dd>&nbsp;</dd>
+<dt><a href="org/example/runner/GradleRunner.RunResult.html#output" class="member-name-link">output</a> - Variable in class org.example.runner.<a href="org/example/runner/GradleRunner.RunResult.html" title="class in org.example.runner">GradleRunner.RunResult</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="org/example/runner/ProcessHelper.Result.html#output" class="member-name-link">output</a> - Variable in class org.example.runner.<a href="org/example/runner/ProcessHelper.Result.html" title="class in org.example.runner">ProcessHelper.Result</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:P">P</h2>
 <dl class="index">
-<dt><a href="org/example/runner/GradleRunner.TestStats.html#passed" class="member-name-link">passed</a> - Variable in class org.example.runner.<a href="org/example/runner/GradleRunner.TestStats.html" title="class in org.example.runner">GradleRunner.TestStats</a></dt>
+<dt><a href="org/example/runner/GradleRunner.TestRunResult.html#passed" class="member-name-link">passed</a> - Variable in class org.example.runner.<a href="org/example/runner/GradleRunner.TestRunResult.html" title="class in org.example.runner">GradleRunner.TestRunResult</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="org/example/runner/GitClient.html#prepareRepository(java.lang.String,java.io.File)" class="member-name-link">prepareRepository(String, File)</a> - Method in class org.example.runner.<a href="org/example/runner/GitClient.html" title="class in org.example.runner">GitClient</a></dt>
+<dd>
+<div class="block">Клонирует/обновляет репозиторий и переключает его на main/master.</div>
+</dd>
 <dt><a href="org/example/runner/ProcessHelper.html" class="type-name-link" title="class in org.example.runner">ProcessHelper</a> - Class in <a href="org/example/runner/package-summary.html">org.example.runner</a></dt>
 <dd>
 <div class="block">Запуск внешних процессов с таймаутом и сбором stdout/stderr.</div>
@@ -420,9 +446,15 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Создаёт команду отчёта с требуемыми зависимостями.</div>
 </dd>
+<dt><a href="org/example/runner/GitClient.RepoState.html#%3Cinit%3E(boolean,java.lang.String,java.lang.String)" class="member-name-link">RepoState(boolean, String, String)</a> - Constructor for class org.example.runner.<a href="org/example/runner/GitClient.RepoState.html" title="class in org.example.runner">GitClient.RepoState</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="org/example/runner/ProcessHelper.Request.html#%3Cinit%3E(java.io.File,long,java.util.List)" class="member-name-link">Request(File, long, List&lt;String&gt;)</a> - Constructor for class org.example.runner.<a href="org/example/runner/ProcessHelper.Request.html" title="class in org.example.runner">ProcessHelper.Request</a></dt>
 <dd>
 <div class="block">Создаёт параметры запуска процесса.</div>
+</dd>
+<dt><a href="org/example/runner/GitClient.html#resolveOfficialBranch(java.io.File)" class="member-name-link">resolveOfficialBranch(File)</a> - Method in class org.example.runner.<a href="org/example/runner/GitClient.html" title="class in org.example.runner">GitClient</a></dt>
+<dd>
+<div class="block">Возвращает поддерживаемую официальную ветку (main/master), либо null.</div>
 </dd>
 <dt><a href="org/example/runner/ProcessHelper.Result.html#%3Cinit%3E(int,java.lang.String,boolean)" class="member-name-link">Result(int, String, boolean)</a> - Constructor for class org.example.runner.<a href="org/example/runner/ProcessHelper.Result.html" title="class in org.example.runner">ProcessHelper.Result</a></dt>
 <dd>
@@ -453,6 +485,8 @@ loadScripts(document, 'script');</script>
 <dt><a href="org/example/runner/RunnerException.html#%3Cinit%3E(java.lang.String)" class="member-name-link">RunnerException(String)</a> - Constructor for exception class org.example.runner.<a href="org/example/runner/RunnerException.html" title="class in org.example.runner">RunnerException</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/runner/RunnerException.html#%3Cinit%3E(java.lang.String,java.lang.Throwable)" class="member-name-link">RunnerException(String, Throwable)</a> - Constructor for exception class org.example.runner.<a href="org/example/runner/RunnerException.html" title="class in org.example.runner">RunnerException</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/runner/GradleRunner.RunResult.html#%3Cinit%3E(boolean,boolean,int,java.lang.String)" class="member-name-link">RunResult(boolean, boolean, int, String)</a> - Constructor for class org.example.runner.<a href="org/example/runner/GradleRunner.RunResult.html" title="class in org.example.runner">GradleRunner.RunResult</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:S">S</h2>
@@ -519,9 +553,13 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/model/Lab.html#setSoftDeadline(java.time.LocalDate)" class="member-name-link">setSoftDeadline(LocalDate)</a> - Method in class org.example.model.<a href="org/example/model/Lab.html" title="class in org.example.model">Lab</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="org/example/model/LabResult.html#setStatus(java.lang.String)" class="member-name-link">setStatus(String)</a> - Method in class org.example.model.<a href="org/example/model/LabResult.html" title="class in org.example.model">LabResult</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="org/example/model/Group.html#setStudents(java.util.List)" class="member-name-link">setStudents(List&lt;Student&gt;)</a> - Method in class org.example.model.<a href="org/example/model/Group.html" title="class in org.example.model">Group</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/model/LabResult.html#setStyleOk(boolean)" class="member-name-link">setStyleOk(boolean)</a> - Method in class org.example.model.<a href="org/example/model/LabResult.html" title="class in org.example.model">LabResult</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/model/LabResult.html#setSubmissionDate(java.time.LocalDate)" class="member-name-link">setSubmissionDate(LocalDate)</a> - Method in class org.example.model.<a href="org/example/model/LabResult.html" title="class in org.example.model">LabResult</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/model/LabResult.html#setTestsFailed(int)" class="member-name-link">setTestsFailed(int)</a> - Method in class org.example.model.<a href="org/example/model/LabResult.html" title="class in org.example.model">LabResult</a></dt>
 <dd>&nbsp;</dd>
@@ -539,7 +577,7 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/model/LabResult.html#setTotalScore(int)" class="member-name-link">setTotalScore(int)</a> - Method in class org.example.model.<a href="org/example/model/LabResult.html" title="class in org.example.model">LabResult</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="org/example/runner/GradleRunner.TestStats.html#skipped" class="member-name-link">skipped</a> - Variable in class org.example.runner.<a href="org/example/runner/GradleRunner.TestStats.html" title="class in org.example.runner">GradleRunner.TestStats</a></dt>
+<dt><a href="org/example/runner/GradleRunner.TestRunResult.html#skipped" class="member-name-link">skipped</a> - Variable in class org.example.runner.<a href="org/example/runner/GradleRunner.TestRunResult.html" title="class in org.example.runner">GradleRunner.TestRunResult</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/model/Student.html" class="type-name-link" title="class in org.example.model">Student</a> - Class in <a href="org/example/model/package-summary.html">org.example.model</a></dt>
 <dd>
@@ -561,6 +599,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Создаёт пустой отчёт для студента.</div>
 </dd>
+<dt><a href="org/example/runner/GradleRunner.RunResult.html#successful" class="member-name-link">successful</a> - Variable in class org.example.runner.<a href="org/example/runner/GradleRunner.RunResult.html" title="class in org.example.runner">GradleRunner.RunResult</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:T">T</h2>
 <dl class="index">
@@ -568,7 +608,9 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Запускает тесты и возвращает статистику по XML-отчётам.</div>
 </dd>
-<dt><a href="org/example/runner/GradleRunner.TestStats.html#%3Cinit%3E()" class="member-name-link">TestStats()</a> - Constructor for class org.example.runner.<a href="org/example/runner/GradleRunner.TestStats.html" title="class in org.example.runner">GradleRunner.TestStats</a></dt>
+<dt><a href="org/example/runner/GradleRunner.TestRunResult.html#%3Cinit%3E(boolean,boolean,int,java.lang.String)" class="member-name-link">TestRunResult(boolean, boolean, int, String)</a> - Constructor for class org.example.runner.<a href="org/example/runner/GradleRunner.TestRunResult.html" title="class in org.example.runner">GradleRunner.TestRunResult</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/example/runner/GradleRunner.RunResult.html#timedOut" class="member-name-link">timedOut</a> - Variable in class org.example.runner.<a href="org/example/runner/GradleRunner.RunResult.html" title="class in org.example.runner">GradleRunner.RunResult</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/example/runner/ProcessHelper.Result.html#timedOut" class="member-name-link">timedOut</a> - Variable in class org.example.runner.<a href="org/example/runner/ProcessHelper.Result.html" title="class in org.example.runner">ProcessHelper.Result</a></dt>
 <dd>&nbsp;</dd>
