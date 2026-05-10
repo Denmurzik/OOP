@@ -1,0 +1,143 @@
+package org.example.runner;
+
+import com.puppycrawl.tools.checkstyle.Checker;
+import com.puppycrawl.tools.checkstyle.ConfigurationLoader;
+import com.puppycrawl.tools.checkstyle.PropertiesExpander;
+import com.puppycrawl.tools.checkstyle.api.AuditEvent;
+import com.puppycrawl.tools.checkstyle.api.AuditListener;
+import com.puppycrawl.tools.checkstyle.api.Configuration;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
+/** Проверка кода Google Java Style через Checkstyle API. */
+public class CheckstyleRunner {
+    private static final int BUFFER_SIZE = 4096;
+
+    /** Количество нарушений стиля в src/main/java. */
+    public int countViolations(File projectDir) {
+        List<File> srcRoots = findJavaSources(projectDir);
+        if (srcRoots.isEmpty()) {
+            return 0;
+        }
+
+        List<File> javaFiles = new ArrayList<>();
+        for (File srcRoot : srcRoots) {
+            collectJava(srcRoot, javaFiles);
+        }
+        if (javaFiles.isEmpty()) {
+            return 0;
+        }
+
+        try {
+            File configFile = extractConfigToTempFile();
+            Configuration config = ConfigurationLoader.loadConfiguration(
+                    configFile.getAbsolutePath(),
+                    new PropertiesExpander(new Properties()));
+
+            CountingListener listener = new CountingListener();
+            Checker checker = new Checker();
+            checker.setModuleClassLoader(Checker.class.getClassLoader());
+            checker.configure(config);
+            checker.addListener(listener);
+
+            checker.process(javaFiles);
+            checker.destroy();
+            return listener.count;
+        } catch (Exception e) {
+            throw new CheckstyleRunException(
+                    "Не удалось выполнить проверку Checkstyle в "
+                            + projectDir.getAbsolutePath(),
+                    e);
+        }
+    }
+
+    private File extractConfigToTempFile() throws Exception {
+        InputStream in = getClass().getResourceAsStream("/google_checks.xml");
+        if (in == null) {
+            throw new CheckstyleRunException("google_checks.xml нет в ресурсах");
+        }
+        File tmp = File.createTempFile("google_checks", ".xml");
+        tmp.deleteOnExit();
+        FileOutputStream out = new FileOutputStream(tmp);
+        byte[] buf = new byte[BUFFER_SIZE];
+        int n;
+        while ((n = in.read(buf)) > 0) {
+            out.write(buf, 0, n);
+        }
+        out.close();
+        in.close();
+        return tmp;
+    }
+
+    private List<File> findJavaSources(File projectDir) {
+        List<File> roots = new ArrayList<>();
+        collectJavaRoots(projectDir, roots);
+        return roots;
+    }
+
+    private void collectJava(File dir, List<File> out) {
+        File[] files = dir.listFiles();
+        if (files == null) {
+            return;
+        }
+        for (File f : files) {
+            if (f.isDirectory()) {
+                collectJava(f, out);
+            } else if (f.getName().endsWith(".java")) {
+                out.add(f);
+            }
+        }
+    }
+
+    /** Слушатель, считающий ошибки стиля. */
+    private static class CountingListener implements AuditListener {
+        private int count;
+
+        @Override
+        public void auditStarted(AuditEvent e) {
+        }
+
+        @Override
+        public void auditFinished(AuditEvent e) {
+        }
+
+        @Override
+        public void fileStarted(AuditEvent e) {
+        }
+
+        @Override
+        public void fileFinished(AuditEvent e) {
+        }
+
+        @Override
+        public void addException(AuditEvent e, Throwable t) {
+        }
+
+        @Override
+        public void addError(AuditEvent e) {
+            count++;
+        }
+    }
+
+    private void collectJavaRoots(File dir, List<File> out) {
+        File directRoot = new File(dir, "src/main/java");
+        if (directRoot.isDirectory()) {
+            out.add(directRoot);
+        }
+        File[] files = dir.listFiles();
+        if (files == null) {
+            return;
+        }
+        for (File file : files) {
+            if (file.isDirectory()
+                    && !"src".equals(file.getName())
+                    && !"build".equals(file.getName())) {
+                collectJavaRoots(file, out);
+            }
+        }
+    }
+}
