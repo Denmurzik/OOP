@@ -1,5 +1,7 @@
 package org.example.model;
 
+import java.time.LocalDate;
+
 /** Результат проверки одной лабораторной у одного студента. */
 public class LabResult {
     private Student student;
@@ -12,6 +14,8 @@ public class LabResult {
     private int testsSkipped;
     private int bonus;
     private int totalScore;
+    private String status = "NOT_RUN";
+    private LocalDate submissionDate;
 
     /** Создаёт пустой результат для пары "студент и лаба". */
     public LabResult(Student student, Lab lab) {
@@ -89,5 +93,21 @@ public class LabResult {
 
     public void setTotalScore(int totalScore) {
         this.totalScore = totalScore;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public LocalDate getSubmissionDate() {
+        return submissionDate;
+    }
+
+    public void setSubmissionDate(LocalDate submissionDate) {
+        this.submissionDate = submissionDate;
     }
 }

@@ -19,7 +19,10 @@ public class DslLoader {
         CompilerConfiguration cc = new CompilerConfiguration();
         cc.setScriptBaseClass("org.example.dsl.ConfigScript");
 
-        GroovyShell shell = new GroovyShell(new Binding(), cc);
+        GroovyShell shell = new GroovyShell(
+                DslLoader.class.getClassLoader(),
+                new Binding(),
+                cc);
         ConfigScript script = (ConfigScript) shell.parse(file);
 
         Config config = new Config();

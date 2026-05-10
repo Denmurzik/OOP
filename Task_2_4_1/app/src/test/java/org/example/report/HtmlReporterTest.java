@@ -32,6 +32,8 @@ class HtmlReporterTest {
         r.setDocOk(true);
         r.setStyleOk(true);
         r.setTestsPassed(10);
+        r.setSubmissionDate(LocalDate.of(2026, 3, 10));
+        r.setStatus("OK");
         r.setTotalScore(1);
         StudentReport rep = new StudentReport(s1);
         rep.getResults().add(r);
@@ -49,6 +51,8 @@ class HtmlReporterTest {
         assertTrue(html.contains("Простые числа"));
         assertTrue(html.contains("Студент №1"));
         assertTrue(html.contains("10/0/0"));
+        assertTrue(html.contains("2026-03-10"));
+        assertTrue(html.contains("OK"));
         assertTrue(html.contains("80%"));
         assertTrue(html.contains(">5<"));
     }
@@ -65,7 +69,9 @@ class HtmlReporterTest {
         cfg.getGroups().add(group);
 
         StudentReport rep = new StudentReport(s);
-        rep.getResults().add(new LabResult(s, lab));
+        LabResult result = new LabResult(s, lab);
+        result.setStatus("REPO_UNAVAILABLE");
+        rep.getResults().add(result);
         rep.setGrade("3");
         List<StudentReport> list = new ArrayList<>();
         list.add(rep);
@@ -76,6 +82,7 @@ class HtmlReporterTest {
         assertTrue(html.contains("Оценки по контрольным точкам"));
         assertTrue(html.contains("&lt;Простые&gt;"));
         assertTrue(html.contains("КТ1"));
+        assertTrue(html.contains("REPO_UNAVAILABLE"));
     }
 
     @Test

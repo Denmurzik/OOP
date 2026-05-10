@@ -68,8 +68,8 @@ public class HtmlReporter {
                 "<table><caption>Лабораторная %s (%s)</caption>%n",
                 escape(lab.getId()), escape(lab.getName())));
         sb.append("<tr><th>Студент</th><th>Сборка</th><th>Документация</th>");
-        sb.append("<th>Style guide</th><th>Тесты</th><th>Доп. балл</th>");
-        sb.append("<th>Общий балл</th></tr>\n");
+        sb.append("<th>Style guide</th><th>Тесты</th><th>Дата сдачи</th>");
+        sb.append("<th>Статус</th><th>Доп. балл</th><th>Общий балл</th></tr>\n");
         for (StudentReport r : reports) {
             LabResult res = r.findResult(lab.getId());
             if (res == null) {
@@ -83,6 +83,9 @@ public class HtmlReporter {
             sb.append("<td>").append(res.getTestsPassed()).append('/')
                     .append(res.getTestsFailed()).append('/')
                     .append(res.getTestsSkipped()).append("</td>");
+            sb.append("<td>").append(res.getSubmissionDate() == null ? "-" : res.getSubmissionDate())
+                    .append("</td>");
+            sb.append("<td>").append(escape(res.getStatus())).append("</td>");
             sb.append("<td>").append(res.getBonus()).append("</td>");
             sb.append("<td>").append(res.getTotalScore()).append("</td>");
             sb.append("</tr>\n");

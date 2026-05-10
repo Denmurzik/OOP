@@ -19,13 +19,15 @@ public class CheckstyleRunner {
 
     /** Количество нарушений стиля в src/main/java. */
     public int countViolations(File projectDir) {
-        File srcRoot = findJavaSrc(projectDir);
-        if (srcRoot == null) {
+        List<File> srcRoots = findJavaSources(projectDir);
+        if (srcRoots.isEmpty()) {
             return 0;
         }
 
         List<File> javaFiles = new ArrayList<>();
-        collectJava(srcRoot, javaFiles);
+        for (File srcRoot : srcRoots) {
+            collectJava(srcRoot, javaFiles);
+        }
         if (javaFiles.isEmpty()) {
             return 0;
         }
@@ -69,24 +71,10 @@ public class CheckstyleRunner {
         return tmp;
     }
 
-    private File findJavaSrc(File projectDir) {
-        File a = new File(projectDir, "src/main/java");
-        if (a.isDirectory()) {
-            return a;
-        }
-        File[] modules = projectDir.listFiles();
-        if (modules != null) {
-            for (File m : modules) {
-                if (!m.isDirectory()) {
-                    continue;
-                }
-                File b = new File(m, "src/main/java");
-                if (b.isDirectory()) {
-                    return b;
-                }
-            }
-        }
-        return null;
+    private List<File> findJavaSources(File projectDir) {
+        List<File> roots = new ArrayList<>();
+        collectJavaRoots(projectDir, roots);
+        return roots;
     }
 
     private void collectJava(File dir, List<File> out) {
@@ -130,6 +118,22 @@ public class CheckstyleRunner {
         @Override
         public void addError(AuditEvent e) {
             count++;
+        }
+    }
+
+    private void collectJavaRoots(File dir, List<File> out) {
+        File directRoot = new File(dir, "src/main/java");
+        if (directRoot.isDirectory()) {
+            out.add(directRoot);
+        }
+        File[] files = dir.listFiles();
+        if (files == null) {
+            return;
+        }
+        for (File file : files) {
+            if (file.isDirectory() && !"src".equals(file.getName()) && !"build".equals(file.getName())) {
+                collectJavaRoots(file, out);
+            }
         }
     }
 }

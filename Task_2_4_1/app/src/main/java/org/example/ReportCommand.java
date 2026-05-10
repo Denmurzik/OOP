@@ -9,6 +9,7 @@ import org.example.model.Config;
 import org.example.model.Group;
 import org.example.model.StudentReport;
 import org.example.report.HtmlReporter;
+import org.example.runner.GitAuthCheck;
 
 /** Команда, которая строит HTML-отчёт по DSL-конфигурации. */
 public class ReportCommand implements AppCommand {
@@ -30,6 +31,10 @@ public class ReportCommand implements AppCommand {
         }
 
         Config config = dslLoader.load(script);
+        GitAuthCheck gitAuthCheck = new GitAuthCheck();
+        if (!gitAuthCheck.checkRemotes(config)) {
+            throw new IllegalStateException("git недоступен или удалённые операции зависают на аутентификации");
+        }
         Checker checker = new Checker(config, workDir);
         Map<Group, List<StudentReport>> data = checker.run();
         out.println(htmlReporter.build(config, data));

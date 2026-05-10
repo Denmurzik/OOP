@@ -6,7 +6,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import org.example.dsl.DslLoader;
 import org.example.report.HtmlReporter;
-import org.example.runner.GitAuthCheck;
 
 /** Точка входа приложения oop-checker. */
 public class App {
@@ -33,17 +32,11 @@ public class App {
         String command = args[0];
 
         File workDir = new File(".").getCanonicalFile();
-        GitAuthCheck gitAuthCheck = new GitAuthCheck();
         Map<String, AppCommand> commands = commandRegistry();
         AppCommand appCommand = commands.get(command);
 
         if (appCommand == null) {
             err.println("Неизвестная команда: " + command);
-            return 1;
-        }
-
-        if (!gitAuthCheck.check()) {
-            err.println("git недоступен или настроен на запрос пароля");
             return 1;
         }
 

@@ -138,6 +138,8 @@ class ModelTest {
         r.setTestsSkipped(2);
         r.setBonus(1);
         r.setTotalScore(4);
+        r.setStatus("TESTS_FAILED");
+        r.setSubmissionDate(LocalDate.of(2026, 4, 1));
         assertTrue(r.isBuildOk());
         assertTrue(r.isDocOk());
         assertEquals(false, r.isStyleOk());
@@ -146,6 +148,8 @@ class ModelTest {
         assertEquals(2, r.getTestsSkipped());
         assertEquals(1, r.getBonus());
         assertEquals(4, r.getTotalScore());
+        assertEquals("TESTS_FAILED", r.getStatus());
+        assertEquals(LocalDate.of(2026, 4, 1), r.getSubmissionDate());
         assertEquals(s, r.getStudent());
         assertEquals(lab, r.getLab());
     }

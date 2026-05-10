@@ -108,7 +108,7 @@ abstract class ConfigScript extends Script {
 
         def cc = new CompilerConfiguration()
         cc.scriptBaseClass = ConfigScript.name
-        def shell = new GroovyShell(new Binding(), cc)
+        def shell = new GroovyShell(ConfigScript.class.classLoader, new Binding(), cc)
         def imported = (ConfigScript) shell.parse(f)
         imported.config = this.config
         imported.baseDir = f.parentFile

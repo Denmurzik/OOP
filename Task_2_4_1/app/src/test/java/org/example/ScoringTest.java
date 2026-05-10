@@ -41,10 +41,10 @@ class ScoringTest {
     }
 
     @Test
-    void gradeOnCheckpointConsidersOnlyEarlierLabs() {
+    void gradeOnCheckpointCountsOnlySubmittedLabs() {
         Config cfg = new Config();
         Lab early = new Lab("1", "a", 2, LocalDate.of(2026, 1, 1), null);
-        Lab late = new Lab("2", "b", 8, LocalDate.of(2099, 1, 1), null);
+        Lab late = new Lab("2", "b", 8, LocalDate.of(2026, 1, 20), null);
         cfg.getLabs().add(early);
         cfg.getLabs().add(late);
         cfg.getSettings().getGradeMinPercent().put(5, 90);
@@ -52,12 +52,16 @@ class ScoringTest {
 
         Student s = new Student("n", "fn", "r");
         StudentReport rep = new StudentReport(s);
-        LabResult r = new LabResult(s, early);
-        r.setTotalScore(2);
-        rep.getResults().add(r);
+        LabResult r1 = new LabResult(s, early);
+        r1.setSubmissionDate(LocalDate.of(2026, 1, 5));
+        r1.setTotalScore(2);
+        rep.getResults().add(r1);
+        LabResult r2 = new LabResult(s, late);
+        r2.setSubmissionDate(LocalDate.of(2026, 2, 1));
+        r2.setTotalScore(8);
+        rep.getResults().add(r2);
 
-        // На КТ в 2026-02-01 зачтётся только early (2/2 = 100%)
-        assertEquals("5", Scoring.gradeOnCheckpoint(rep, LocalDate.of(2026, 2, 1), cfg));
+        assertEquals("2", Scoring.gradeOnCheckpoint(rep, LocalDate.of(2026, 1, 25), cfg));
     }
 
     @Test
@@ -66,7 +70,6 @@ class ScoringTest {
         cfg.getLabs().add(new Lab("1", "a", 1, null, null));
         Student s = new Student("n", "fn", "r");
         StudentReport rep = new StudentReport(s);
-        // Нет лаб с soft дедлайном → возвращает "-"
         assertEquals("-", Scoring.gradeOnCheckpoint(rep, LocalDate.of(2026, 2, 1), cfg));
     }
 

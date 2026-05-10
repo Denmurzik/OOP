@@ -59,19 +59,30 @@ public class ProcessHelper {
 
         Process p = pb.start();
         StringBuilder sb = new StringBuilder();
-        BufferedReader br = new BufferedReader(
-                new InputStreamReader(p.getInputStream(), StandardCharsets.UTF_8));
-        String line;
-        while ((line = br.readLine()) != null) {
-            sb.append(line).append('\n');
-        }
-        br.close();
+        Thread collector = new Thread(() -> collectOutput(p, sb), "process-output-collector");
+        collector.setDaemon(true);
+        collector.start();
 
         boolean finished = p.waitFor(request.timeoutSeconds, TimeUnit.SECONDS);
         if (!finished) {
             p.destroyForcibly();
-            return new Result(-1, sb.toString(), true);
+            p.waitFor();
         }
-        return new Result(p.exitValue(), sb.toString(), false);
+        collector.join(TimeUnit.SECONDS.toMillis(2));
+        return new Result(finished ? p.exitValue() : -1, sb.toString(), !finished);
+    }
+
+    private static void collectOutput(Process process, StringBuilder out) {
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(process.getInputStream(), StandardCharsets.UTF_8))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                synchronized (out) {
+                    out.append(line).append('\n');
+                }
+            }
+        } catch (IOException ignore) {
+            // Процесс мог быть принудительно завершён, частичный вывод уже собран.
+        }
     }
 }

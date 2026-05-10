@@ -44,7 +44,9 @@ public class Scoring {
             }
             max += lab.getMaxScore();
             LabResult r = report.findResult(lab.getId());
-            if (r != null) {
+            if (r != null
+                    && r.getSubmissionDate() != null
+                    && !r.getSubmissionDate().isAfter(ctDate)) {
                 got += r.getTotalScore();
             }
         }

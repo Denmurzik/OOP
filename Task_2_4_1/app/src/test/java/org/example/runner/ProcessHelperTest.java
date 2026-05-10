@@ -24,6 +24,20 @@ class ProcessHelperTest {
     }
 
     @Test
+    void timesOutLongRunningCommand() throws Exception {
+        boolean windows = System.getProperty("os.name", "").toLowerCase().contains("win");
+        ProcessHelper.Result r;
+        if (windows) {
+            r = ProcessHelper.run(null, 1, "powershell", "-Command", "Start-Sleep -Seconds 3");
+        } else {
+            r = ProcessHelper.run(null, 1, "sh", "-c", "sleep 3");
+        }
+
+        assertEquals(-1, r.exitCode);
+        assertTrue(r.timedOut);
+    }
+
+    @Test
     void resultFields() {
         ProcessHelper.Result r = new ProcessHelper.Result(7, "out", true);
         assertEquals(7, r.exitCode);
